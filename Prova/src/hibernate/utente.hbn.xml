@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Utente" table="utente">
+		<id name="codiceFiscale" column="codiceFiscale">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="nome" column="nome"></property>
+		<property name="cognome" column="cognome"></property>
+		<property name="luogoNascita" column="luogoNascita"></property>
+		<property name="residenza" column="residenza"></property>
+		<property name="corsoLaurea" column="corsoLaurea"></property>
+		<property name="handicap" column="handicap"></property>
+		<property name="telefono" column="telefono"></property>
+		<property name="dataNascita" column="dataNascita"></property>
+
+	</class>
+
+</hibernate-mapping>  

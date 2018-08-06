@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.TutoreUniversitario"
+		table="tutore_universitario">
+		<id name="idTutore" column="idTutore">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="telefono" column="telefono"></property>
+		<property name="nome" column="nome"></property>
+		<property name="cognome" column="cognome"></property>
+		<property name="numRichieste" column="numRichieste"></property>
+	</class>
+
+</hibernate-mapping> 

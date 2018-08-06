@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+  <class name="model.Azienda" table="azienda">  
+    <id name="codiceFiscaleIva" column="partitaIvaCodiceFiscale">  
+     <generator class="assigned"></generator>  
+    </id>            
+    <property name="ragioneSocialeNome" column="ragioneSocialeNome"></property>
+    <property name="indirizzo" column="indirizzo"></property> 
+    <property name="nomeLegale" column="nomeLegale"></property> 
+    <property name="cognomeLegale" column="cognomeLegale"></property> 
+    <property name="foro" column="foro"></property> 
+    <property name="nomeRespTirocinio" column="nomeRespTirocinio"></property>
+    <property name="cognomeRespTirocinio" column="cognomeRespTirocinio"></property>
+    <property name="emailRespTirocinio" column="emailRespTirocinio"></property>   
+    <property name="telefonoRespTirocinio" column="telefonoRespTirocinio"></property>
+    <property name="convenzionata" column="convenzionata"></property>
+    <property name="orario" column="orario"></property>
+            
+  </class>  
+            
+ </hibernate-mapping> 

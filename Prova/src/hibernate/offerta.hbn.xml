@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Offerta" table="offerta">
+		<id name="idOfferta" column="idOfferta">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="luogo" column="luogo"></property>
+		<property name="orario" column="orario"></property>
+		<property name="obiettivi" column="obiettivi"></property>
+		<property name="modalità" column="modalità"></property>
+		<property name="rimborsiFacilitazioni"
+			column="rimborsiFacilitazioni"></property>
+		<property name="aziendaPartitaIvaCodiceFiscale"
+			column="Azienda_partitaIvaCodiceFiscale"></property>
+		<property name="mesi" column="mesi"></property>
+		<property name="ore" column="ore"></property>
+		<property name="visibile" column="visibile"></property>
+
+	</class>
+
+</hibernate-mapping> 

@@ -1,0 +1,27 @@
+.sottotitolo {
+    margin: 0;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #999;
+}
+
+.data {
+    margin-right: 8px;
+    background: url('../images/clock-2xxx.png') 20px 2px no-repeat;
+    padding: 0 12px 0 38px;
+    border-right: 1px solid #ddd;
+}
+
+.autore {
+    margin-right: 8px;
+    background: url('../images/person-2xxx.png') 0px 2px no-repeat;
+    padding: 0 12px 0 20px;
+    border-right: 1px solid #ddd;
+}
+
+.durata {
+    margin-right: 8px;
+    background: url('../images/loop-2xxx.png') 0px 2px no-repeat;
+    padding: 0 12px 0 20px;
+}
