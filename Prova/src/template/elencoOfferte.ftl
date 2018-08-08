@@ -179,15 +179,15 @@
 
 						<div class="card card-default mt-30 ml-60 mr-60">
 							<div class="card-heading card-heading-transparent">
-								<h2 class="card-title">Tirocini e stage retributi presso la Gunpowder S.r.l. (Spinoff Univ. L'Aquila)</h2>
+								<h2 class="card-title">${offerta.titolo}</h2>
 							</div>
 							<p class="sottotitolo">
-								<span class="data">Pubblicato il 30/01/2018</span>
-								<span class="emailResp">Email tutor aziendale: lorenzocollevecchio@outlook.com</span>
-								<span class="durata">Durata tirocinio: 6 mesi in 180 ore</span>
+								<span class="data">Pubblicato il ${offerta.dataPub}</span>
+								<span class="emailResp">Email tutor aziendale: ${azienda.emailRespTirocinio}</span>
+								<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 							</p>
 							<div class="card-block">
-								<p>La Gunpowder S.r.l., spinoff dell’Università dell’Aquila e registered partner Salesforce, offre stage o tirocini retribuiti su tematiche relative a motori DB, framework di sviluppo Java e Angular, e IDE (ad esempio Eclipse). Le conoscenze sulle moderne tecnologie di Digital Trasfomation e/o piattaforme CRM (Salesforce) costituiranno titolo preferenziale, anche se non strettamente necessarie.</p>
+								<p>${offerta.descrizione}</p>
 								<button type="button" class="btn btn-primary mr-10 float-right">DETTAGLI</button>
 							</div>
 						</div>
