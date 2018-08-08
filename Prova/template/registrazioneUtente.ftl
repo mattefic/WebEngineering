@@ -16,6 +16,7 @@
 		<!-- CORE CSS -->
 		<style>
 		<#include "assets/plugins/bootstrap/css/bootstrap.min.css">
+
 		<!-- THEME CSS -->
 		<#include "assets/css/essentials.css">
 		<#include "assets/css/layout.css">
@@ -23,7 +24,7 @@
 		<!-- PAGE LEVEL SCRIPTS -->
 		<#include "assets/css/color_scheme/green.css">
 		</style>
-
+		
 	</head>
 	
 	<body class="menu-vertical">

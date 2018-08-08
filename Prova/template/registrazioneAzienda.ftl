@@ -14,15 +14,17 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
 		<!-- CORE CSS -->
-		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<style>
+		<#include "assets/plugins/bootstrap/css/bootstrap.min.css">
 
 		<!-- THEME CSS -->
-		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+		<#include "assets/css/essentials.css">
+		<#include "assets/css/layout.css">
 
 		<!-- PAGE LEVEL SCRIPTS -->
-		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
-
+		<#include "assets/css/color_scheme/green.css">
+		</style>
+		
 	</head>
 	
 	<body class="menu-vertical">

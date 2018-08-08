@@ -14,15 +14,17 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
 		<!-- CORE CSS -->
-		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<style>
+		<#include "assets/plugins/bootstrap/css/bootstrap.min.css">
 
 		<!-- THEME CSS -->
-		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+		<#include "assets/css/essentials.css">
+		<#include "assets/css/layout.css">
 
 		<!-- PAGE LEVEL SCRIPTS -->
-		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
-
+		<#include "assets/css/color_scheme/green.css">
+		</style>
+		
 	</head>
 	
 	<body class="menu-vertical">
@@ -109,25 +111,25 @@
 						<div class="col-4">
 						</div>
 						<div class="heading-title heading-border heading-color col-4" style="word-wrap: break-word;">
-							<p><h5>ENTE/AZIENDA OSPITANTE:</h5>Gunpowder S.r.l.</p>
+							<p><h5>ENTE/AZIENDA OSPITANTE:</h5>${azienda.ragioneSocialeNome}</p>
 							<br>
-							<p><h5>LUOGO DI EFFETTUAZIONE DEL TIROCINIO:</h5>L'Aquila.</p>
+							<p><h5>LUOGO DI EFFETTUAZIONE DEL TIROCINIO:</h5>${offerta.luogo}</p>
 							<br>
 							<p><h5>SETTORE DI INSERIMENTO:</h5>Informatico.</p>
 							<br>
-							<p><h5>TEMPI DI ACCESSO AI LOCALI AZIENDALI:</h5>9.00 - 13.00, 16.00 - 20.00.</p>
+							<p><h5>TEMPI DI ACCESSO AI LOCALI AZIENDALI:</h5>${offerta.orario}</p>
 							<br>
-							<p><h5>NUMERO MESI TIROCINIO:</h5>6.</p>
+							<p><h5>NUMERO MESI TIROCINIO:</h5>${offerta.mesi}</p>
 							<br>
-							<p><h5>NUMERO ORE TIROCINIO:</h5>180.</p>
+							<p><h5>NUMERO ORE TIROCINIO:</h5>${offerta.ore}</p>
 							<br>
-							<p><h5>TUTORE AZIENDALE:</h5>Mario Rossi.</p>
+							<p><h5>TUTORE AZIENDALE:</h5>${azienda.nomeRespTirocinio} ${azienda.cognomeRespTirocinio}</p>
 							<br>
-							<p><h5>OBIETTIVI TIROCINIO:</h5>Formare il tirocinante relativamente a tematiche quali motori DB, framework di sviluppo Java e Angular, IDE (ad esempio Eclipse).</p>
+							<p><h5>OBIETTIVI TIROCINIO:</h5>${offerta.obiettivi}</p>
 							<br>
-							<p><h5>MODALIT&Aacute; TIROCINIO:</h5>Lavoro nel team aziendale.</p>
+							<p><h5>MODALIT&Aacute; TIROCINIO:</h5>${offerta.modalità}</p>
 							<br>
-							<p><h5>FACILITAZIONI PREVISTE:</h5>Rimborso spese.</p>
+							<p><h5>FACILITAZIONI PREVISTE:</h5>${offerta.rimborsiFacilitazioni}</p>
 						</div>
 						<div class="col-4">
 						</div>
