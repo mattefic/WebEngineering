@@ -1,0 +1,70 @@
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  cursor: pointer;
+  float: left;
+  background-color: #ffffff;
+}
+
+#listaAziende {
+  width: 200px;
+}
+
+#listaCit {
+  width: 200px;
+}
+
+#mesiOre {
+  width: 150px;
+}
+
+#cerca {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#cerc {
+  width: 353px;
+}
+
+#buttonCerca {
+  height: 45px;
+}
+
+select {
+  text-align-last:center;
+}
+
+.mesi {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+  width: 150px;
+}
+
+.ore {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+  width: 150px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+  font-size: 16px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
