@@ -16,9 +16,6 @@ import model.Utente;
 public class StoreData {
 	public static void main(String[] args) {
 
-		// creating configuration object
-		HibernateSettings settings = new HibernateSettings();
-
 		Utente e1 = new Utente();
 		e1.setCodiceFiscale("104");
 		e1.setNome("Pincos");
@@ -30,9 +27,15 @@ public class StoreData {
 		e1.setTelefono("07123");
 		e1.setLuogoNascita("ospedale");
 
-		// creating transaction object
-		Session session = settings.getSession(); 
-		Transaction t = session.beginTransaction();
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if(sessionFactory != null) {
+	
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			 sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+	Transaction t = session.beginTransaction();
 		
 	
 		Utente e2 = (Utente) session.load("model.Utente", "100");

@@ -17,16 +17,16 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 
 /**
- * Servlet implementation class PasswordDimenticata
+ * Servlet implementation class Home
  */
-@WebServlet("/PasswordDimenticata")
-public class PasswordDimenticata extends HttpServlet {
+@WebServlet("/Home")
+public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PasswordDimenticata() {
+    public Home() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +35,13 @@ public class PasswordDimenticata extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Configuration cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/passwordDimenticata.ftl");
+		Template template = cfg.getTemplate("template/home.ftl");
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {

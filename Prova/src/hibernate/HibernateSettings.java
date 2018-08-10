@@ -6,17 +6,12 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateSettings {
 	private Configuration cfg = new Configuration();
-	private SessionFactory factory;
-	private Session session;
+	private static SessionFactory factory;
 	public HibernateSettings() {
 		cfg.configure("hibernate/hibernate.cfg.xml");
 		factory = cfg.buildSessionFactory();
-		session = factory.openSession();
 	}
-	public Session getSession() {
-		return session;
-	}
-	public void setSession(Session session) {
-		this.session = session;
+	public static SessionFactory getSessionFactory() {
+		return factory;
 	}
 }

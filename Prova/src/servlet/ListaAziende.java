@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
@@ -31,7 +32,7 @@ import model.Azienda;
 /**
  * Servlet implementation class ListaAziendeServlet
  */
-@WebServlet("/ListaAziendeServlet")
+@WebServlet("/ListaAziende")
 public class ListaAziende extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,10 +49,16 @@ public class ListaAziende extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		HibernateSettings settings = new HibernateSettings();
-		Session session = settings.getSession();
-		Transaction t = session.beginTransaction();
-		
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if(sessionFactory != null) {
+	
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			 sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+	Transaction t = session.beginTransaction();
+	
 		Map<String, Object> input = new HashMap<String, Object>();
 		
 		Query query = session.createQuery("FROM Azienda");
@@ -62,12 +69,12 @@ public class ListaAziende extends HttpServlet {
 		input.put("aziende", aziende);
 		
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/eclipse-workspace/Prova/template"));
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("listaAzienda.ftl");
+		Template template = cfg.getTemplate("template/listaAzienda.ftl");
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {

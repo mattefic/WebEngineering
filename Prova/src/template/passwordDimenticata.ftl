@@ -13,16 +13,16 @@
 		<!-- WEB FONTS : use %7C instead of | (pipe) -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
-		<!-- CORE CSS -->
+			<!-- CORE CSS -->
 		<style>
-		<#include "assets/plugins/bootstrap/css/bootstrap.min.css">
+		<#include "../main/webapp/assets/plugins/bootstrap/css/bootstrap.min.css">
 
 		<!-- THEME CSS -->
-		<#include "assets/css/essentials.css">
-		<#include "assets/css/layout.css">
+		<#include "../main/webapp/assets/css/essentials.css">
+		<#include "../main/webapp/assets/css/layout.css">
 
 		<!-- PAGE LEVEL SCRIPTS -->
-		<#include "assets/css/color_scheme/green.css">
+		<#include "../main/webapp/assets/css/color_scheme/green.css">
 		</style>
 		
 	</head>

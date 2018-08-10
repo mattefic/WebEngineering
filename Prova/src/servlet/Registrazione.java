@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import freemarker.template.Configuration;
@@ -71,12 +72,15 @@ public class Registrazione extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		// creating configuration object
-		HibernateSettings settings = new HibernateSettings();
-		Session session = settings.getSession();
-		Transaction t = session.beginTransaction();
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if(sessionFactory != null) {
+	
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			 sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+	Transaction t = session.beginTransaction();
 
 		Utente e1 = new Utente();
 		e1.setCodiceFiscale(request.getParameter("CF"));

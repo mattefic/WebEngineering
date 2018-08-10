@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
@@ -29,7 +30,7 @@ import model.Offerta;
 /**
  * Servlet implementation class ListaOfferte
  */
-@WebServlet("/ListaOfferte")
+@WebServlet("/ElencoOfferte")
 public class ElencoOfferte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,10 +48,15 @@ public class ElencoOfferte extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HibernateSettings settings = new HibernateSettings();
-		Session session = settings.getSession();
-		Transaction t = session.beginTransaction();
-
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if(sessionFactory != null) {
+	
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			 sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+	Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 
 		Query query = session.createQuery("FROM Offerta");
@@ -61,15 +67,16 @@ public class ElencoOfferte extends HttpServlet {
 		input.put("offerte", offerte);
 
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/eclipse-workspace/Prova/template"));
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("listaOfferte.ftl");
+		Template template = cfg.getTemplate("template/elencoOfferte.ftl");
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();

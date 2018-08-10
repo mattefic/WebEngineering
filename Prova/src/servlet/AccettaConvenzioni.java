@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
@@ -46,9 +47,15 @@ public class AccettaConvenzioni extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HibernateSettings settings = new HibernateSettings();
-		Session session = settings.getSession();
-		Transaction t = session.beginTransaction();
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if(sessionFactory != null) {
+	
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			 sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+	Transaction t = session.beginTransaction();
 
 		Map<String, Object> input = new HashMap<String, Object>();
 
@@ -60,15 +67,16 @@ public class AccettaConvenzioni extends HttpServlet {
 		input.put("aziende", aziende);
 
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/Documents/workspace-spring/Prova/template"));
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("AccettaConvenzioni.ftl");
+		Template template = cfg.getTemplate("template/accettaConvenzioni.ftl");
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();

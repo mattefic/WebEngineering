@@ -15,16 +15,16 @@
 
 		<!-- CORE CSS -->
 		<style>
-		<#include "assets/plugins/bootstrap/css/bootstrap.min.css">
+		<#include "../main/webapp/assets/plugins/bootstrap/css/bootstrap.min.css">
 
 		<!-- THEME CSS -->
-		<#include "assets/css/essentials.css">
-		<#include "assets/css/layout.css">
-		<#include "assets/css/searchbar.css">
-		<#include "assets/css/sottotitolo.css">
+		<#include "../main/webapp/assets/css/essentials.css">
+		<#include "../main/webapp/assets/css/layout.css">
+		<#include "../main/webapp/assets/css/searchbar.css">
+		<#include "../main/webapp/assets/css/sottotitolo.css">
 
 		<!-- PAGE LEVEL SCRIPTS -->
-		<#include "assets/css/color_scheme/green.css">
+		<#include "../main/webapp/assets/css/color_scheme/green.css">
 		</style>
 		
 	</head>

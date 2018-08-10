@@ -36,15 +36,16 @@ public class RegistrazioneUtente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/eclipse-workspace/Prova/template"));
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("registrazioneUtente.ftl");
+		Template template = cfg.getTemplate("template/registrazioneUtente.ftl");
 		try {
-			template.process(null, response.getWriter());
+			template.process(null , response.getWriter());
 		} catch (TemplateException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
