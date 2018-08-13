@@ -37,7 +37,7 @@
 	<!-- SIDE MENU -->
 			<div id="mainMenu" class="navbar-toggleable-md sidebar-vertical">
 
-				<a href="index.html" class="logo text-center">
+				<a href="Home" class="logo text-center">
 					<img src=${"assets/images/_smarty/logo.png"} alt="">
 				</a>
 
@@ -58,22 +58,22 @@
 							<!-- MENU -->
 							<ul class="nav navbar-nav">
 								<li>
-									<a href="home.html">
+									<a href="Home">
 										HOME
 									</a>
 								</li>
 								<li>
-									<a href="loginRegistrazione.html">
+									<a href="LoginRegistrazione">
 										LOGIN / REGISTRAZIONE
 									</a>
 								</li>
 								<li>
-									<a href="listaAziende.html">
+									<a href="ListaAziende">
 										LISTA AZIENDE
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="ElencoOfferte">
 										ELENCO OFFERTE
 									</a>
 								</li>

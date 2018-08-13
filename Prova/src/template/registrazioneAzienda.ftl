@@ -33,7 +33,7 @@
 	<!-- SIDE MENU -->
 			<div id="mainMenu" class="sidebar-vertical">
 
-				<a href="home.html" class="logo text-center">
+				<a href="Home" class="logo text-center">
 					<img src="assets/images/_smarty/logo.png" alt="">
 				</a>
 
@@ -54,32 +54,32 @@
 							<!-- MENU -->
 							<ul class="nav navbar-nav">
 								<li>
-									<a href="home.html">
+									<a href="Home">
 										HOME
 									</a>
 								</li>
 								<li>
-									<a href="accedi.html">
+									<a href="Accedi">
 										ACCEDI
 									</a>
 								</li>
 								<li>
-									<a href="registrazioneUtente.html">
+									<a href="RegistrazioneUtente">
 										REGISTRATI COME UTENTE
 									</a>
 								</li>
 								<li>
-									<a href="registrazioneAzienda.html">
+									<a href="RegistrazioneAzienda">
 										REGISTRATI COME AZIENDA
 									</a>
 								</li>
 								<li>
-									<a href="listaAziende.html">
+									<a href="ListaAziende">
 										AZIENDE CONVENZIONATE
 									</a>
 								</li>
 								<li>
-									<a href="elencoOfferte.html">
+									<a href="ElencoOfferte">
 										OFFERTE DI TIROCINIO
 									</a>
 								</li>
@@ -318,9 +318,9 @@
 							<br>
 							<h4 class="letter-spacing-1">ACCEDI O REGISTRATI</h4>
 							<ul class="footer-links list-unstyled">
-								<li><a href="accedi.html">Accedi</a></li>
-								<li><a href="registrazioneUtente.html">Registrati come utente</a></li>
-								<li><a href="registrazioneAzienda.html">Registrati come azienda</a></li>
+								<li><a href="Accedi">Accedi</a></li>
+								<li><a href="RegistrazioneUtente">Registrati come utente</a></li>
+								<li><a href="RegistrazioneAzienda">Registrati come azienda</a></li>
 							</ul>
 							<!-- /Links -->
 
@@ -332,9 +332,9 @@
 							<br>
 							<h4 class="letter-spacing-1">NAVIGA SUL SITO</h4>
 							<ul class="footer-links list-unstyled">
-								<li><a href="home.html">Home</a></li>
-								<li><a href="listaAziende.html">Aziende convenzionate</a></li>
-								<li><a href="elencoOfferte.html">Offerte di tirocinio</a></li>
+								<li><a href="Home">Home</a></li>
+								<li><a href="ListaAziende">Aziende convenzionate</a></li>
+								<li><a href="ElencoOfferte">Offerte di tirocinio</a></li>
 							</ul>
 							<!-- /Links -->
 
