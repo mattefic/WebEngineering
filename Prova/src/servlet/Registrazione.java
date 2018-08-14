@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -97,7 +98,13 @@ public class Registrazione extends HttpServlet {
 		t.commit();// transaction is committed
 
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/eclipse-workspace/Prova/template"));
+		Map<String, String> env = System.getenv();
+		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		}
+		else {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);

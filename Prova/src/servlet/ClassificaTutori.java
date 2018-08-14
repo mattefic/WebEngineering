@@ -67,7 +67,13 @@ public class ClassificaTutori extends HttpServlet {
 		input.put("tutori", tutori);
 
 		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("C:/Users/Matteo/eclipse-workspace/Prova/template"));
+		Map<String, String> env = System.getenv();
+		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		}
+		else {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);

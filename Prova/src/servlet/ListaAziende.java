@@ -3,7 +3,6 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +67,13 @@ public class ListaAziende extends HttpServlet {
 		input.put("aziende", aziende);
 		
 		Configuration cfg = new Configuration();
+		Map<String, String> env = System.getenv();
+		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		}
+		else {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);

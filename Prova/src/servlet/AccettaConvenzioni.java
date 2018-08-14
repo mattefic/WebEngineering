@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,31 +33,33 @@ import model.Azienda;
 @WebServlet("/AccettaConvenzioni")
 public class AccettaConvenzioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccettaConvenzioni() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AccettaConvenzioni() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
-			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			new HibernateSettings();
+			sessionFactory = HibernateSettings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-	Transaction t = session.beginTransaction();
+		Transaction t = session.beginTransaction();
 
 		Map<String, Object> input = new HashMap<String, Object>();
 
-		Query query = session.createQuery("FROM Azienda a WHERE a.convenzionata=0");
+		Query<Azienda> query = session.createQuery("FROM Azienda a WHERE a.convenzionata=0");
 		List<Azienda> aziende = query.list();
 		for (Iterator iterator = aziende.iterator(); iterator.hasNext();) {
 			Azienda azienda = (Azienda) iterator.next();
@@ -66,7 +67,14 @@ public class AccettaConvenzioni extends HttpServlet {
 		input.put("aziende", aziende);
 
 		Configuration cfg = new Configuration();
+		Map<String, String> env = System.getenv();
+		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		}
+		else {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		}
+			
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
@@ -81,10 +89,12 @@ public class AccettaConvenzioni extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Matteo il processo di convenzionamento
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Matteo il processo di convenzionamento
 		doGet(request, response);
 	}
 
