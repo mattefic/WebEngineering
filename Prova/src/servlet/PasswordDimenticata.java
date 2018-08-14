@@ -28,7 +28,6 @@ public class PasswordDimenticata extends HttpServlet {
      */
     public PasswordDimenticata() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -46,7 +45,6 @@ public class PasswordDimenticata extends HttpServlet {
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +53,7 @@ public class PasswordDimenticata extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//TODO Matteo il processo di recupero password
 		doGet(request, response);
 	}
 

@@ -39,7 +39,6 @@ public class ElencoOfferte extends HttpServlet {
 	 */
 	public ElencoOfferte() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -76,7 +75,6 @@ public class ElencoOfferte extends HttpServlet {
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();
@@ -89,7 +87,6 @@ public class ElencoOfferte extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

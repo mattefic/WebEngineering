@@ -41,7 +41,6 @@ public class ListaAziende extends HttpServlet {
      */
     public ListaAziende() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -78,7 +77,6 @@ public class ListaAziende extends HttpServlet {
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();
@@ -92,7 +90,6 @@ public class ListaAziende extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
