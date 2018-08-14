@@ -1,0 +1,24 @@
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  cursor: pointer;
+  float: left;
+  background-color: #ffffff;
+}
+
+#corpo {
+  padding: 40px 0;
+}
+
+#ragFor {
+  width: 200px;
+}
+
+#bottoneCerca {
+  height: 46px;
+}
+
+.puntatore:hover{ 
+  color: #8ab933; 
+  cursor: pointer;
+}
