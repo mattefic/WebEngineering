@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO Questo è tosto, trovare un metodo per stampare le offerte e l'azienda ad essa collegata
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,8 +58,9 @@ public class ElencoOfferte extends HttpServlet {
 	Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 
+		//Query query = session.createQuery("FROM Offerta");
 		Query query = session.createQuery("FROM Offerta");
-		List<Offerta> offerte = query.list();
+		List<Object> offerte = query.list();
 		for (Iterator iterator = offerte.iterator(); iterator.hasNext();) {
 			Offerta offerta = (Offerta) iterator.next();
 		}

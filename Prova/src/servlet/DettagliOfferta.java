@@ -87,6 +87,7 @@ public class DettagliOfferta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO Matteo Programmare la richiesta di candidatura a un'offerta
 		doGet(request, response);
 	}
 
