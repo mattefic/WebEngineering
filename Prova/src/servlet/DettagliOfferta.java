@@ -77,7 +77,6 @@ public class DettagliOfferta extends HttpServlet {
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();			
@@ -88,7 +87,7 @@ public class DettagliOfferta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//TODO Matteo Programmare la richiesta di candidatura a un'offerta
 		doGet(request, response);
 	}
 

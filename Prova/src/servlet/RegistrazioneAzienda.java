@@ -28,14 +28,12 @@ public class RegistrazioneAzienda extends HttpServlet {
      */
     public RegistrazioneAzienda() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		Configuration cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
@@ -46,7 +44,6 @@ public class RegistrazioneAzienda extends HttpServlet {
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,8 +52,8 @@ public class RegistrazioneAzienda extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//TODO Francesco Programmare Registrazione Azienda
+		//Consiglio: per storare i dati prendi esempio da Registrazione 
 	}
 
 }

@@ -5,6 +5,7 @@ public class Offerta {
 	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, aziendaPartitaIvaCodiceFiscale;
 	private int idOfferta, mesi, ore, orario;
 	private boolean visibile;
+	private Azienda azienda;
 
 	public Offerta() {
 
@@ -88,6 +89,14 @@ public class Offerta {
 
 	public void setOrario(int orario) {
 		this.orario = orario;
+	}
+
+	public Azienda getAzienda() {
+		return azienda;
+	}
+
+	public void setAzienda(Azienda azienda) {
+		this.azienda = azienda;
 	}
 
 }

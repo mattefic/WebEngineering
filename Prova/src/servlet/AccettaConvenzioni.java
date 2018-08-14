@@ -40,7 +40,6 @@ public class AccettaConvenzioni extends HttpServlet {
      */
     public AccettaConvenzioni() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -76,7 +75,6 @@ public class AccettaConvenzioni extends HttpServlet {
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.commit();
@@ -86,7 +84,7 @@ public class AccettaConvenzioni extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//TODO Matteo il processo di convenzionamento
 		doGet(request, response);
 	}
 

@@ -36,21 +36,18 @@ public class Registrazione extends HttpServlet {
 	 */
 	public Registrazione() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see Servlet#getServletInfo()
 	 */
 	public String getServletInfo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -60,7 +57,6 @@ public class Registrazione extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
@@ -110,7 +106,6 @@ public class Registrazione extends HttpServlet {
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// doGet(request, response);
