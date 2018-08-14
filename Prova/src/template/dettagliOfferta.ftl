@@ -3,8 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Internship Tutor - Dettagli offerta</title>
-		<meta name="description" content="" />
-		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -16,15 +14,15 @@
 		<!-- CORE CSS -->
 		<style>
 		<#include "../main/webapp/assets/plugins/bootstrap/css/bootstrap.min.css">
-
+		
 		<!-- THEME CSS -->
 		<#include "../main/webapp/assets/css/essentials.css">
 		<#include "../main/webapp/assets/css/layout.css">
-
+		
 		<!-- PAGE LEVEL SCRIPTS -->
 		<#include "../main/webapp/assets/css/color_scheme/green.css">
 		</style>
-		
+
 	</head>
 	
 	<body class="menu-vertical">
@@ -111,7 +109,7 @@
 						<div class="col-4">
 						</div>
 						<div class="heading-title heading-border heading-color col-4" style="word-wrap: break-word;">
-							<p><h5>ENTE/AZIENDA OSPITANTE:</h5>${azienda.ragioneSocialeNome}</p>
+							<p><h5>ENTE/AZIENDA OSPITANTE:</h5><a href="dettagliAzienda.html">${azienda.ragioneSocialeNome}</a></p>
 							<br>
 							<p><h5>LUOGO DI EFFETTUAZIONE DEL TIROCINIO:</h5>${offerta.luogo}</p>
 							<br>
@@ -122,8 +120,6 @@
 							<p><h5>NUMERO MESI TIROCINIO:</h5>${offerta.mesi}</p>
 							<br>
 							<p><h5>NUMERO ORE TIROCINIO:</h5>${offerta.ore}</p>
-							<br>
-							<p><h5>TUTORE AZIENDALE:</h5>${azienda.nomeRespTirocinio} ${azienda.cognomeRespTirocinio}</p>
 							<br>
 							<p><h5>OBIETTIVI TIROCINIO:</h5>${offerta.obiettivi}</p>
 							<br>

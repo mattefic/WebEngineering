@@ -3,9 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Internship Tutor - Password dimenticata</title>
-		<meta name="description" content="" />
-		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
-
+		
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -13,18 +11,18 @@
 		<!-- WEB FONTS : use %7C instead of | (pipe) -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
-			<!-- CORE CSS -->
+		<!-- CORE CSS -->
 		<style>
 		<#include "../main/webapp/assets/plugins/bootstrap/css/bootstrap.min.css">
-
+		
 		<!-- THEME CSS -->
 		<#include "../main/webapp/assets/css/essentials.css">
 		<#include "../main/webapp/assets/css/layout.css">
-
+		
 		<!-- PAGE LEVEL SCRIPTS -->
 		<#include "../main/webapp/assets/css/color_scheme/green.css">
 		</style>
-		
+
 	</head>
 	
 	<body class="menu-vertical">
