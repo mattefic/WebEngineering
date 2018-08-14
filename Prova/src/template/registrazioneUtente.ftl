@@ -134,7 +134,7 @@
 												<label>Nome</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Nome" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il vostro nome</b>
 												</label>
 											</div>
@@ -143,7 +143,7 @@
 												<label for="register:last_name">Cognome</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Cognome" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il vostro cognome</b>
 												</label>
 											</div>
@@ -165,7 +165,7 @@
 												<label for="register:phone">Telefono</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-phone"></i>
-													<input required="" type="tel" maxlength="30">
+													<input name="Numero" required="" type="tel" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il vostro numero di telefono</b>
 												</label>
 											</div>
@@ -177,7 +177,7 @@
 											<div class="col-md-6 col-sm-6">
 												<label for="register:pass1">Data di nascita</label>
 												<label class="input mb-10">
-													<input required="" type="date">
+													<input name="Data" required="" type="date">
 													<b class="tooltip tooltip-bottom-right">Inserite la vostra data di nascita</b>
 												</label>
 											</div>
@@ -186,7 +186,7 @@
 												<label for="register:last_name">Luogo di nascita</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="LuogoNascita" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il vostro luogo di nascita</b>
 												</label>
 											</div>
@@ -198,7 +198,7 @@
 												<label>Residenza</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Residenza" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra residenza</b>
 												</label>
 											</div>
@@ -207,7 +207,7 @@
 												<label for="register:last_name">Corso di laurea</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Corso" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il vostro corso di laurea</b>
 												</label>
 											</div>
@@ -219,7 +219,7 @@
 												<label>Email</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input required="" type="email" maxlength="60">
+													<input name="E-mail" required="" type="email" maxlength="60">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra email</b>
 												</label>
 											</div>
@@ -251,7 +251,7 @@
 										<div class="row">
 											<div class="col-sm-8">
 												<label class="checkbox">
-													<input type="checkbox" value="1">
+													<input name="Handicap" type="checkbox" value="1">
 													<i></i>Portatore di handicap
 												</label>
 											</div>

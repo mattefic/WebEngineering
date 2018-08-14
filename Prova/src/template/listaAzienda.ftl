@@ -22,7 +22,7 @@
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<#include "../main/webapp/assets/css/color_scheme/green.css">
-
+		</style>
 	</head>
 	
 	<body class="menu-vertical">
@@ -164,7 +164,7 @@
 							<tbody>
 							<#list aziende as azienda>
 								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">${azienda.ragioneSocialeNome}</a></td>
+									<td><a class="puntatore" href="DettagliAzienda">${azienda.ragioneSocialeNome}</a></td>
 									<td>${azienda.indirizzo}</td>
 									<td>${azienda.codiceFiscaleIva}</td>
 									<td>${azienda.nomeLegale} ${azienda.cognomeLegale}</td>
