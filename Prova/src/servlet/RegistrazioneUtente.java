@@ -3,6 +3,8 @@ package servlet;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Map;
 
@@ -69,6 +71,7 @@ public class RegistrazioneUtente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO Francesco Programmare Registrazione Utente
 		//Consiglio: per storare i dati prendi esempio da Registrazione che poi cancelliamo, ma di base questa servlet sostituisce quella
+		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if(sessionFactory != null) {
 	
@@ -77,14 +80,16 @@ public class RegistrazioneUtente extends HttpServlet {
 			 sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-		Transaction t = session.beginTransaction();
 
 		Utente e1 = new Utente();
 		e1.setCodiceFiscale(request.getParameter("CF"));
 		e1.setNome(request.getParameter("Nome"));
 		e1.setCognome(request.getParameter("Cognome"));
 		e1.setCorsoLaurea(request.getParameter("Corso"));
-		e1.setDataNascita(Date.valueOf(request.getParameter("Data")));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String date = request.getParameter("Data");
+        LocalDate localDate = LocalDate.parse(date, formatter);
+		e1.setDataNascita(Date.valueOf(localDate));
 		e1.setHandicap(false);
 		if (request.getParameter("Handicap") != null) {
 			e1.setHandicap(true);
@@ -92,12 +97,17 @@ public class RegistrazioneUtente extends HttpServlet {
 		e1.setResidenza(request.getParameter("Residenza"));
 		e1.setTelefono(request.getParameter("Numero"));
 		e1.setLuogoNascita(request.getParameter("LuogoNascita"));
+		e1.setEmail(request.getParameter("email"));
 		
 		//Vanno ancra finiti i controlli sui parametri di input
-		if (e1.getCodiceFiscale().length() == 16)
+		if (e1.getCodiceFiscale().length() == 16) {
+			Transaction tx = session.beginTransaction();
 			session.persist(e1);
-
-		t.commit();// transaction is committed
+			tx.commit();
+			System.out.println("Salvato");
+			
+			session.close();
+		}
 
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -111,7 +121,7 @@ public class RegistrazioneUtente extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("home.ftl");
+		Template template = cfg.getTemplate("template/home.ftl");
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {

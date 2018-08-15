@@ -219,7 +219,7 @@
 												<label>Email</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input name="E-mail" required="" type="email" maxlength="60">
+													<input name="email" required="" type="email" maxlength="60">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra email</b>
 												</label>
 											</div>

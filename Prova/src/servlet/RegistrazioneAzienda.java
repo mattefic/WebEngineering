@@ -108,7 +108,7 @@ public class RegistrazioneAzienda extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("home.ftl");
+		Template template = cfg.getTemplate("template/home.ftl");
 		try {
 			template.process(null, response.getWriter());
 		} catch (TemplateException e) {

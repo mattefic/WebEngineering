@@ -73,7 +73,6 @@ public class PasswordDimenticata extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Matteo il processo di recupero password
 		String email = request.getParameter("email");
 
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
@@ -92,7 +91,7 @@ public class PasswordDimenticata extends HttpServlet {
 		if (utente.getCodiceFiscale() != null) {
 			// TODO Mandare una mail a email con un token
 		} else {
-			// TODO Notificare che la mail non esiste
+			// TODO MATTEO Notificare che la mail non esiste
 		}
 
 		doGet(request, response);

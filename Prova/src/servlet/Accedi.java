@@ -69,6 +69,9 @@ public class Accedi extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO Francesco Strutturare un sistema di login funzionante usando il security layer
+		//In parte è già fatto ma manco mi ricordo come funziona, rivedilo e fai in modo che un utente sia in grado di loggare
+		//e di rimanere loggato tramite una sessione
 		if (request.getParameter("login") != null) {
 			action_login(request, response);
 		} else {
