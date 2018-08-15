@@ -134,7 +134,7 @@
 												<label>Ragione sociale</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Nome" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra ragione sociale</b>
 												</label>
 											</div>
@@ -143,7 +143,7 @@
 												<label for="register:last_name">Partita IVA</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="11">
+													<input name="CF" required="" type="text" maxlength="11">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra partita IVA</b>
 												</label>
 											</div>
@@ -156,7 +156,7 @@
 												<label for="register:last_name">Indirizzo sede legale</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Indirizzo" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete l'indirizzo della vostra sede legale</b>
 												</label>
 											</div>
@@ -165,7 +165,7 @@
 												<label for="register:last_name">Foro competente</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="Foro" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la città alla cui sede giudiziaria le parti dovranno rivolgersi in caso di disputa legale</b>
 												</label>
 											</div>
@@ -177,7 +177,7 @@
 												<label>Nome legale rappresentante</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="NomeLeg" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il nome del vostro legale rappresentante</b>
 												</label>
 											</div>
@@ -186,7 +186,7 @@
 												<label for="register:last_name">Cognome legale rappresentante</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="CognomeLeg" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il cognome del vostro legale rappresentante</b>
 												</label>
 											</div>
@@ -198,7 +198,7 @@
 												<label>Nome responsabile convenzione tirocini</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="NomeResp" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il nome del vostro responsabile della convenzione per i tirocini</b>
 												</label>
 											</div>
@@ -207,7 +207,7 @@
 												<label for="register:last_name">Cognome responsabile convenzione tirocini</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input name="CognomeResp" required="" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il cognome del vostro responsabile della convenzione per i tirocini</b>
 												</label>
 											</div>
@@ -220,7 +220,7 @@
 												<label for="register:last_name">Email responsabile convenzione tirocini</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input required="" type="email" maxlength="40">
+													<input name="EmailResp" required="" type="email" maxlength="40">
 													<b class="tooltip tooltip-bottom-right">Scrivete l'email del vostro responsabile della convenzione per i tirocini</b>
 												</label>
 											</div>
@@ -229,7 +229,7 @@
 												<label for="register:phone">Telefono responsabile convenzione tirocini</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-phone"></i>
-													<input required="" type="tel" maxlength="30">
+													<input name="TelResp" required="" type="tel" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il numero di telefono del vostro responsabile della convenzione per i tirocini</b>
 												</label>
 											</div>

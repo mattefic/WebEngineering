@@ -91,6 +91,8 @@ public class RegistrazioneUtente extends HttpServlet {
 		e1.setResidenza(request.getParameter("Residenza"));
 		e1.setTelefono(request.getParameter("Numero"));
 		e1.setLuogoNascita(request.getParameter("LuogoNascita"));
+		
+		//Vanno ancra finiti i controlli sui parametri di input
 		if (e1.getCodiceFiscale().length() == 16)
 			session.persist(e1);
 
