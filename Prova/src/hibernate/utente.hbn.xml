@@ -10,13 +10,14 @@
 		</id>
 		<property name="nome" column="nome"></property>
 		<property name="cognome" column="cognome"></property>
+		<property name="email" column="email"></property>
 		<property name="luogoNascita" column="luogoNascita"></property>
 		<property name="residenza" column="residenza"></property>
 		<property name="corsoLaurea" column="corsoLaurea"></property>
 		<property name="handicap" column="handicap"></property>
 		<property name="telefono" column="telefono"></property>
 		<property name="dataNascita" column="dataNascita"></property>
-
+		
 	</class>
 
 </hibernate-mapping>  

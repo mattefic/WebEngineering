@@ -123,7 +123,7 @@
 										<label>Email</label>
 										<label class="input mb-10">
 											<i class="ico-append fa fa-envelope"></i>
-											<input required="" type="email" maxlength="60">
+											<input name="email" required="" type="email" maxlength="60">
 											<b class="tooltip tooltip-bottom-right">Inserite l'indirizzo email di registrazione dove manderemo la nuova password</b>
 										</label>
 

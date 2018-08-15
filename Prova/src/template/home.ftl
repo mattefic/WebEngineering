@@ -2,6 +2,7 @@
 <html lang="it">
 	<head>
 		<meta charset="utf-8" />
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 		<title>Internship Tutor - Home</title>
 
 		<!-- mobile settings -->

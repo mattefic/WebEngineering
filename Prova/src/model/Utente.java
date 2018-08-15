@@ -3,7 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Utente {
-	private String codiceFiscale, nome, cognome, luogoNascita, residenza, corsoLaurea, telefono, tipo;
+	private String codiceFiscale, nome, cognome, email, luogoNascita, residenza, corsoLaurea, telefono, tipo;
 	//tipo è {utente,azienda,amministratore}
 	private boolean handicap;
 	private Date dataNascita;
@@ -90,6 +90,14 @@ public class Utente {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

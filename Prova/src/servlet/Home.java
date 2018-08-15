@@ -36,6 +36,7 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Configuration cfg = new Configuration();
+		response.setContentType("text/html;charset=UTF-8");
 		Map<String, String> env = System.getenv();
 		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));

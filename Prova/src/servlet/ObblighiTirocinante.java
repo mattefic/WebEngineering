@@ -35,6 +35,7 @@ public class ObblighiTirocinante extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
