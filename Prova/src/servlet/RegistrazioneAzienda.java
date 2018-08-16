@@ -77,8 +77,7 @@ public class RegistrazioneAzienda extends HttpServlet {
 			 sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-	Transaction t = session.beginTransaction();
-
+		Transaction t = session.beginTransaction();
 		Azienda e1 = new Azienda();
 		e1.setCodiceFiscaleIva(request.getParameter("CF"));
 		e1.setRagioneSocialeNome(request.getParameter("Nome"));
