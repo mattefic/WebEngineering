@@ -61,7 +61,7 @@ public class SecurityLayer {
 		}
 	}
 
-	public static HttpSession createSession(HttpServletRequest request, String username, int userid) {
+	public static HttpSession createSession(HttpServletRequest request, String username, String userid) {
 		// se una sessione  è già attiva, rimuoviamola e creiamone una nuova
 		disposeSession(request);
 		HttpSession s = request.getSession(true);
