@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 16, 2018 alle 02:50
+-- Creato il: Ago 17, 2018 alle 03:14
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `azienda` (
-  `partitaIVACodiceFiscale` int(16) UNSIGNED NOT NULL,
+  `partitaIVACodiceFiscale` char(11) NOT NULL,
   `ragioneSocialeNome` varchar(30) NOT NULL,
   `indirizzo` varchar(45) NOT NULL,
   `nomeLegale` varchar(20) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `azienda` (
   `foro` varchar(30) NOT NULL,
   `nomeRespTirocinio` varchar(20) NOT NULL,
   `cognomeRespTirocinio` varchar(30) NOT NULL,
-  `telefonoRespTirocinio` int(16) UNSIGNED NOT NULL,
+  `telefonoRespTirocinio` varchar(13) NOT NULL,
   `emailRespTirocinio` varchar(45) NOT NULL,
   `orario` varchar(100) DEFAULT NULL,
   `convenzionata` bit(1) DEFAULT NULL
@@ -48,9 +48,9 @@ CREATE TABLE `azienda` (
 --
 
 INSERT INTO `azienda` (`partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`) VALUES
-(10, 'Nome1', 'Indirizzo1', 'Legal1', 'Cognome1', 'Rieti', 'nome1', 'nome2', 10101010, 'email@email', '10000-1000', b'1111111111111111111111111111111'),
-(1234567890, 'Giostra S.R.L', 'Via Roma 202', 'Marco', 'Natale', 'Ascoli Piceno', 'Valerio', 'Rossi', 346598753, 'vRossi@gmail.com', NULL, b'1111111111111111111111111111111'),
-(1234567899, 'blabla', 'Via bleble 10', 'tizio', 'caio', 'Roma', 'sempronio', 'sesterzio', 3466958761, 'cesare@gmail.com', NULL, b'1111111111111111111111111111111');
+('10', 'Nome1', 'Indirizzo1', 'Legal1', 'Cognome1', 'Rieti', 'nome1', 'nome2', '10101010', 'email@email', '10000-1000', b'1111111111111111111111111111111'),
+('1234567890', 'Giostra S.R.L', 'Via Roma 202', 'Marco', 'Natale', 'Ascoli Piceno', 'Valerio', 'Rossi', '3465987533', 'vRossi@gmail.com', NULL, b'1111111111111111111111111111111'),
+('1234567899', 'blabla', 'Via bleble 10', 'tizio', 'caio', 'Roma', 'sempronio', 'sesterzio', '3466958761', 'cesare@gmail.com', NULL, b'1111111111111111111111111111111');
 
 -- --------------------------------------------------------
 
@@ -151,18 +151,19 @@ CREATE TABLE `utente` (
   `dataNascita` date NOT NULL,
   `luogoNascita` varchar(30) NOT NULL,
   `residenza` varchar(30) NOT NULL,
-  `telefono` int(16) NOT NULL,
+  `telefono` varchar(13) NOT NULL,
   `corsoLaurea` varchar(45) NOT NULL,
   `handicap` tinyint(4) NOT NULL,
-  `email` varchar(255) DEFAULT NULL
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`) VALUES
-('GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', 346631889, 'Informatica', 0, 'france.1995@hotmail.it');
+INSERT INTO `utente` (`codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`) VALUES
+('GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234');
 
 --
 -- Indici per le tabelle scaricate
