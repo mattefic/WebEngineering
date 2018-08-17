@@ -17,7 +17,7 @@
 		<property name="handicap" column="handicap"></property>
 		<property name="telefono" column="telefono"></property>
 		<property name="dataNascita" column="dataNascita"></property>
-		
+		<property name="password" column="password"></property>
 	</class>
 
 </hibernate-mapping>  
