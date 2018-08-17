@@ -117,7 +117,7 @@
 									<h2 class="fs-20">Accedi</h2>
 								</div>
 
-								<form class="m-0 sky-form" action="#" method="post" enctype="multipart/form-data">
+								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>
 
 										<div class="row">
@@ -125,7 +125,7 @@
 												<label>Email</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input required="" type="email" maxlength="60">
+													<input name="Email" required="" type="email" maxlength="60">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra email</b>
 												</label>
 											</div>
@@ -136,7 +136,7 @@
 												<label for="register:pass2">Password</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-lock"></i>
-													<input required="" type="password" maxlength="30">
+													<input name="Password" required="" type="password" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra password</b>
 												</label>
 											</div>
@@ -157,7 +157,7 @@
 
 											<div class="col-md-3 col-sm-3 col-3 text-right">
 
-												<button class="btn btn-primary"><i class="fa fa-check"></i> ACCEDI</button>
+												<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> ACCEDI</button>
 
 											</div>
 										</div>
