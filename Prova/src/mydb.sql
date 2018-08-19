@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 17, 2018 alle 03:14
+-- Creato il: Ago 19, 2018 alle 15:42
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -40,17 +40,18 @@ CREATE TABLE `azienda` (
   `telefonoRespTirocinio` varchar(13) NOT NULL,
   `emailRespTirocinio` varchar(45) NOT NULL,
   `orario` varchar(100) DEFAULT NULL,
-  `convenzionata` bit(1) DEFAULT NULL
+  `convenzionata` tinyint(4) DEFAULT NULL,
+  `email` varchar(20) NOT NULL,
+  `password` varchar(18) NOT NULL,
+  `tipo` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `azienda`
 --
 
-INSERT INTO `azienda` (`partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`) VALUES
-('10', 'Nome1', 'Indirizzo1', 'Legal1', 'Cognome1', 'Rieti', 'nome1', 'nome2', '10101010', 'email@email', '10000-1000', b'1111111111111111111111111111111'),
-('1234567890', 'Giostra S.R.L', 'Via Roma 202', 'Marco', 'Natale', 'Ascoli Piceno', 'Valerio', 'Rossi', '3465987533', 'vRossi@gmail.com', NULL, b'1111111111111111111111111111111'),
-('1234567899', 'blabla', 'Via bleble 10', 'tizio', 'caio', 'Roma', 'sempronio', 'sesterzio', '3466958761', 'cesare@gmail.com', NULL, b'1111111111111111111111111111111');
+INSERT INTO `azienda` (`partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `tipo`) VALUES
+('12345678912', 'MGM Service', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Maurizio', 'Giostra', '3466318898', 'mg@gmail.com', NULL, 0, 'mgmservice@gmail.com', '1234', 'azienda');
 
 -- --------------------------------------------------------
 
@@ -155,15 +156,16 @@ CREATE TABLE `utente` (
   `corsoLaurea` varchar(45) NOT NULL,
   `handicap` tinyint(4) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(18) NOT NULL
+  `password` varchar(18) NOT NULL,
+  `tipo` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`) VALUES
-('GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234');
+INSERT INTO `utente` (`codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
+('GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234', 'utente');
 
 --
 -- Indici per le tabelle scaricate
