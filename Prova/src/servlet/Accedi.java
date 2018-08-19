@@ -89,18 +89,21 @@ public class Accedi extends HttpServlet {
 		Criteria criteriaAzienda = session.createCriteria(Azienda.class);
 		criteriaUtente.add(Restrictions.eq("email", email));
 		criteriaUtente.add(Restrictions.eq("password", password));
-		criteriaUtente.add(Restrictions.eq("email", email));
-		criteriaUtente.add(Restrictions.eq("password", password));
+		
+		criteriaAzienda.add(Restrictions.eq("email", email));
+		criteriaAzienda.add(Restrictions.eq("password", password));
+		
 		Utente U = (Utente) criteriaUtente.uniqueResult();
 		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
+		String userid;
 		
 		if(U != null) {
-			String userid= U.getCodiceFiscale();
+			userid= U.getCodiceFiscale();
 			SecurityLayer.createSession(request, email, userid);
 			response.sendRedirect("Home");
 		} 
 		else if(A != null){
-			String userid= A.getCodiceFiscaleIva();
+			userid= A.getCodiceFiscaleIva();
 			SecurityLayer.createSession(request, email, userid);
 			response.sendRedirect("Home");
 			}
