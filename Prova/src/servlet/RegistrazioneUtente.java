@@ -28,6 +28,7 @@ import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
 import model.Utente;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class RegistrazioneUtente
@@ -72,8 +73,7 @@ public class RegistrazioneUtente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Francesco Programmare Registrazione Utente
-		//Consiglio: per storare i dati prendi esempio da Registrazione che poi cancelliamo, ma di base questa servlet sostituisce quella
+		
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if(sessionFactory != null) {
@@ -119,6 +119,8 @@ public class RegistrazioneUtente extends HttpServlet {
 			e1.setPassword("password");
 			e1.setTipo("utente");
 			session.persist(e1);
+			SecurityLayer.createSession(request, request.getParameter("email"), request.getParameter("CF"));
+			response.sendRedirect("Home");
 		}
 		tx.commit();
 		

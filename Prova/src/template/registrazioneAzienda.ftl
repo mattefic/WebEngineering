@@ -123,6 +123,15 @@
 										<div class="row">
 
 											<div class="col-md-6 col-sm-6">
+												<label>Email Accesso</label>
+												<label class="input mb-10">
+													<i class="ico-append fa fa-user"></i>
+													<input name="Email" required="" type="text" maxlength="30">
+													<b class="tooltip tooltip-bottom-right">Scrivete la vostra email di accesso</b>
+												</label>
+											</div>
+											
+											<div class="col-md-6 col-sm-6">
 												<label>Ragione sociale</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>

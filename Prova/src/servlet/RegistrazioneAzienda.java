@@ -26,6 +26,7 @@ import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
 import model.Utente;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class RegistrazioneAzienda
@@ -70,8 +71,7 @@ public class RegistrazioneAzienda extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Francesco Programmare Registrazione Azienda
-		//Consiglio: per storare i dati prendi esempio da Registrazione
+		
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if(sessionFactory != null) {
 	
@@ -82,20 +82,27 @@ public class RegistrazioneAzienda extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		Criteria criteriaAzienda= session.createCriteria(Azienda.class);
+		Criteria criteriaUtente= session.createCriteria(Utente.class);
 		String PartitaIVA = request.getParameter("CF");
+		String Email = request.getParameter("Email");
 		String Password = request.getParameter("password");
 		String Check =request.getParameter("check");
 		criteriaAzienda.add(Restrictions.eq("codiceFiscaleIva", PartitaIVA ));
+		criteriaUtente.add(Restrictions.eq("email", Email ));
 		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
+		Utente U = (Utente) criteriaUtente.uniqueResult();
 		
 		if(PartitaIVA.length()!=11) {
 			//Ritornare errore partitaIVA inesistente
 		}
-		else if(Password.equals(Check)) {
+		else if(!Password.equals(Check)) {
 			//Ritornare errore password non confermata
 		}	
 		else if(A!=null) {
 			//Ritornare errore Azienda già registrata
+		}
+		else if(U!=null) {
+			//Ritornare errore email già utilizzata da un utente
 		}
 		else {
 			Azienda e1 = new Azienda();
@@ -109,23 +116,13 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setCognomeRespTirocinio(request.getParameter("CognomeResp"));
 			e1.setEmailRespTirocinio(request.getParameter("EmailResp"));
 			e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
-			
-			Utente e2= new Utente();
-			e2.setCodiceFiscale(request.getParameter("CF"));
-			e2.setResidenza(request.getParameter("Indirizzo"));
-			e2.setEmail(request.getParameter("EmailResp"));
-			e2.setNome(request.getParameter("Nome"));
-			e2.setTelefono(request.getParameter("TelResp"));
-			e2.setCognome("-");
-			e2.setLuogoNascita("-");
-			Date data = new Date(0000,00,00);
-			e2.setDataNascita(data);
-			e2.setCorsoLaurea("-");
-			e2.setHandicap(false);
-			e2.setPassword(request.getParameter("password"));
-			e2.setTipo("azienda");
+			e1.setConvenzionata(false);
+			e1.setTipo("azienda");
+			e1.setEmail(request.getParameter("Email"));
+			e1.setPassword(request.getParameter("password"));
 			session.persist(e1);
-			session.persist(e2);
+			SecurityLayer.createSession(request, request.getParameter("Email"), request.getParameter("CF"));
+			response.sendRedirect("Home");
 		}
 		
 		t.commit();// transaction is committed
@@ -150,5 +147,4 @@ public class RegistrazioneAzienda extends HttpServlet {
 		// doGet(request, response);
 	}
 	
-	//TODO aggiungere campo email per accesso; controllare che non ci sia una mail già creata da un utente
 }

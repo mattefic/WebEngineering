@@ -22,6 +22,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Utente;
 import security.SecurityLayer;
 
@@ -84,27 +85,30 @@ public class Accedi extends HttpServlet {
 				sessionFactory = settings.getSessionFactory();
 			}
 		Session session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(Utente.class);
-		criteria.add(Restrictions.eq("email", email));
-		criteria.add(Restrictions.eq("password", password));
-		Utente U = (Utente) criteria.uniqueResult();
+		Criteria criteriaUtente = session.createCriteria(Utente.class);
+		Criteria criteriaAzienda = session.createCriteria(Azienda.class);
+		criteriaUtente.add(Restrictions.eq("email", email));
+		criteriaUtente.add(Restrictions.eq("password", password));
+		criteriaUtente.add(Restrictions.eq("email", email));
+		criteriaUtente.add(Restrictions.eq("password", password));
+		Utente U = (Utente) criteriaUtente.uniqueResult();
+		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
 		
 		if(U != null) {
 			String userid= U.getCodiceFiscale();
 			SecurityLayer.createSession(request, email, userid);
 			response.sendRedirect("Home");
-		} else {	
-			response.getWriter().println("<script type=\"text/javascript\">");
-			response.getWriter().println("alert('Utente o password errati, riprova');");
-			response.getWriter().println("window.location = 'Accedi';");
-			response.getWriter().println("</script>");
+		} 
+		else if(A != null){
+			String userid= A.getCodiceFiscaleIva();
+			SecurityLayer.createSession(request, email, userid);
+			response.sendRedirect("Home");
+			}
+		else {
+			//Ritornare errore utente o password errati
 			}
 	}
 
 }
-		
-		
-		//TODO Francesco Strutturare un sistema di login funzionante usando il security layer
-		//In parte è già fatto ma manco mi ricordo come funziona, rivedilo e fai in modo che un utente sia in grado di loggare
-		//e di rimanere loggato tramite una sessione
+
 

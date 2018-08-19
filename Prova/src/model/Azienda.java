@@ -3,7 +3,7 @@ package model;
 public class Azienda {
 
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
-			cognomeRespTirocinio, emailRespTirocinio,  telefonoRespTirocinio, orario;
+			cognomeRespTirocinio, emailRespTirocinio,  telefonoRespTirocinio, orario, tipo , email, password;
 	private boolean convenzionata;
 	public Azienda() {
 
@@ -103,6 +103,30 @@ public class Azienda {
 
 	public void setOrario(String orario) {
 		this.orario = orario;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
