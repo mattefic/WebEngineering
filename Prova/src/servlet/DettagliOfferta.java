@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -11,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.jni.Time;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,7 +27,10 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
+import model.Candidatura;
 import model.Offerta;
+import model.Utente;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class DettagliOffertaServlet
@@ -32,46 +38,49 @@ import model.Offerta;
 @WebServlet("/DettagliOfferta")
 public class DettagliOfferta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DettagliOfferta() {
-        super();
-    }
+
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DettagliOfferta() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
 			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-	Transaction t = session.beginTransaction();
+		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
-		
+
 		String id = request.getParameter("idOfferta");
-		
+
 		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = 1");
 		Offerta offerta = (Offerta) query.uniqueResult();
 		input.put("offerta", offerta);
-		Query query2 = session.createQuery("FROM Azienda a WHERE a.codiceFiscaleIva = "+ offerta.getAziendaPartitaIvaCodiceFiscale());
+		Query query2 = session.createQuery(
+				"FROM Azienda a WHERE a.codiceFiscaleIva = " + offerta.getAziendaPartitaIvaCodiceFiscale());
 		Azienda azienda = (Azienda) query2.uniqueResult();
 		input.put("azienda", azienda);
 		System.out.println(offerta.getAziendaPartitaIvaCodiceFiscale());
 		System.out.println(azienda.getCodiceFiscaleIva());
-		
+
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
@@ -84,16 +93,41 @@ public class DettagliOfferta extends HttpServlet {
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		}
-		t.commit();			
-		
+		t.commit();
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Matteo Programmare la richiesta di candidatura a un'offerta
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO ++ Matteo Programmare la richiesta di candidatura a un'offerta
+		HttpSession Securitysession = SecurityLayer.checkSession(request);
+		String email = Securitysession.getId();
+
+		response.setContentType("text/html;charset=UTF-8");
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		Date data = new Date();
+		Candidatura candidatura = new Candidatura();
+		candidatura.setDataCanditatura(data);
+		candidatura.setStato("attesa");
+		candidatura.setUtenteCodiceFiscale(email);
+		candidatura.setOffertaIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
+		candidatura.setOffertaAziendaPartitaIvaCodiceFiscale(request.getParameter("idAzienda"));
+
+		session.persist(candidatura);
+
+		response.sendRedirect("Home");
 	}
 
 }

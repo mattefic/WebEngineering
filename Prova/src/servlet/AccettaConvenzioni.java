@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,6 +28,8 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
+import model.Candidatura;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class AccettaConvenzioni
@@ -95,8 +99,29 @@ public class AccettaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Matteo il processo di convenzionamento
-		doGet(request, response);
+		// TODO ++ Matteo il processo di convenzionamento
+		
+		HttpSession Securitysession = SecurityLayer.checkSession(request);
+		String email = Securitysession.getId();
+
+		response.setContentType("text/html;charset=UTF-8");
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		
+		Query query = session.createQuery("update Stock set convenzionata = 1" +
+				" where codiceFiscaleIva = :codiceFiscaleIva");
+		query.setParameter("codiceFiscaleIva", request.getParameter("idAzienda"));
+		query.executeUpdate();
+		
+
+		response.sendRedirect("Home");
 	}
 
 }
