@@ -59,7 +59,7 @@ public class ListaAziende extends HttpServlet {
 	
 		Map<String, Object> input = new HashMap<String, Object>();
 		
-		Query query = session.createQuery("FROM Azienda");
+		Query query = session.createQuery("FROM Azienda WHERE convenzionata=true");
 		List<Azienda> aziende = query.list();
 		for(Iterator iterator = aziende.iterator(); iterator.hasNext();){
 			Azienda azienda = (Azienda) iterator.next();
