@@ -234,7 +234,7 @@
 												<label for="register:pass2">Password</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-lock"></i>
-													<input required="" type="password" maxlength="20">
+													<input name="password" required="" type="password" maxlength="20">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra password</b>
 												</label>
 											</div>
@@ -243,7 +243,7 @@
 												<label for="register:pass2">Ripeti password</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-lock"></i>
-													<input required="" type="password" maxlength="20">
+													<input name="check" required="" type="password" maxlength="20">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra password di nuovo</b>
 												</label>
 											</div>

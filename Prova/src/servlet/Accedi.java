@@ -83,21 +83,19 @@ public class Accedi extends HttpServlet {
 				HibernateSettings settings = new HibernateSettings();
 				sessionFactory = settings.getSessionFactory();
 			}
-		System.out.println(email);
-		System.out.println(password);
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(Utente.class);
 		criteria.add(Restrictions.eq("email", email));
 		criteria.add(Restrictions.eq("password", password));
 		Utente U = (Utente) criteria.uniqueResult();
+		
 		if(U != null) {
 			String userid= U.getCodiceFiscale();
-			System.out.println(userid);
 			SecurityLayer.createSession(request, email, userid);
 			response.sendRedirect("Home");
 		} else {	
 			response.getWriter().println("<script type=\"text/javascript\">");
-			response.getWriter().println("alert('User or password incorrect, please try again');");
+			response.getWriter().println("alert('Utente o password errati, riprova');");
 			response.getWriter().println("window.location = 'Accedi';");
 			response.getWriter().println("</script>");
 			}

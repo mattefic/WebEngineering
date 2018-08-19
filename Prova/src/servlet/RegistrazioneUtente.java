@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -24,6 +26,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Utente;
 
 /**
@@ -80,35 +83,45 @@ public class RegistrazioneUtente extends HttpServlet {
 			 sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-
-		Utente e1 = new Utente();
-		e1.setCodiceFiscale(request.getParameter("CF"));
-		e1.setNome(request.getParameter("Nome"));
-		e1.setCognome(request.getParameter("Cognome"));
-		e1.setCorsoLaurea(request.getParameter("Corso"));
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String date = request.getParameter("Data");
-        LocalDate localDate = LocalDate.parse(date, formatter);
-		e1.setDataNascita(Date.valueOf(localDate));
-		e1.setHandicap(false);
-		if (request.getParameter("Handicap") != null) {
-			e1.setHandicap(true);
-		}
-		e1.setResidenza(request.getParameter("Residenza"));
-		e1.setTelefono(request.getParameter("Numero"));
-		e1.setLuogoNascita(request.getParameter("LuogoNascita"));
-		e1.setEmail(request.getParameter("email"));
+		Transaction tx = session.beginTransaction();
 		
-		//Vanno ancra finiti i controlli sui parametri di input
-		if (e1.getCodiceFiscale().length() == 16) {
-			Transaction tx = session.beginTransaction();
-			session.persist(e1);
-			tx.commit();
-			System.out.println("Salvato");
-			
-			session.close();
+		Criteria criteriaUtente= session.createCriteria(Utente.class);
+		criteriaUtente.add(Restrictions.eq("codiceFiscale", request.getParameter("CF")));
+		Utente U = (Utente) criteriaUtente.uniqueResult();
+		
+		if(U!=null) {
+			//Ritornare errore utente già esistente
 		}
-
+		else if(!request.getParameter("password").equals(request.getParameter("check"))) {
+			//Ritornare errore password non confermata
+		}
+		else if(request.getParameter("CF").length()!=16) {
+			//Ritornare errore codice fiscale inesistente
+		}
+		else {
+			Utente e1 = new Utente();
+			e1.setCodiceFiscale(request.getParameter("CF"));
+			e1.setNome(request.getParameter("Nome"));
+			e1.setCognome(request.getParameter("Cognome"));
+			e1.setCorsoLaurea(request.getParameter("Corso"));
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        	String date = request.getParameter("Data");
+        	LocalDate localDate = LocalDate.parse(date, formatter);
+			e1.setDataNascita(Date.valueOf(localDate));
+			e1.setHandicap(false);
+			if (request.getParameter("Handicap") != null) {
+				e1.setHandicap(true);
+			}
+			e1.setResidenza(request.getParameter("Residenza"));
+			e1.setTelefono(request.getParameter("Numero"));
+			e1.setLuogoNascita(request.getParameter("LuogoNascita"));
+			e1.setEmail(request.getParameter("email"));
+			e1.setPassword("password");
+			e1.setTipo("utente");
+			session.persist(e1);
+		}
+		tx.commit();
+		
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {

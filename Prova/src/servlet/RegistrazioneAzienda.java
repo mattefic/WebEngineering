@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -23,6 +25,7 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
+import model.Utente;
 
 /**
  * Servlet implementation class RegistrazioneAzienda
@@ -78,23 +81,54 @@ public class RegistrazioneAzienda extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		Azienda e1 = new Azienda();
-		e1.setCodiceFiscaleIva(request.getParameter("CF"));
-		e1.setRagioneSocialeNome(request.getParameter("Nome"));
-		e1.setIndirizzo(request.getParameter("Indirizzo"));
-		e1.setForo(request.getParameter("Foro"));
-		e1.setNomeLegale(request.getParameter("NomeLeg"));
-		e1.setCognomeLegale(request.getParameter("CognomeLeg"));
-		e1.setNomeRespTirocinio(request.getParameter("NomeResp"));
-		e1.setCognomeRespTirocinio(request.getParameter("CognomeResp"));
-		e1.setEmailRespTirocinio(request.getParameter("EmailResp"));
-		e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
+		Criteria criteriaAzienda= session.createCriteria(Azienda.class);
+		String PartitaIVA = request.getParameter("CF");
+		String Password = request.getParameter("password");
+		String Check =request.getParameter("check");
+		criteriaAzienda.add(Restrictions.eq("codiceFiscaleIva", PartitaIVA ));
+		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
 		
-		//Vanno inseriti ancora i controlli sui parmetri di input
-		session.persist(e1);
-
+		if(PartitaIVA.length()!=11) {
+			//Ritornare errore partitaIVA inesistente
+		}
+		else if(Password.equals(Check)) {
+			//Ritornare errore password non confermata
+		}	
+		else if(A!=null) {
+			//Ritornare errore Azienda già registrata
+		}
+		else {
+			Azienda e1 = new Azienda();
+			e1.setCodiceFiscaleIva(request.getParameter("CF"));
+			e1.setRagioneSocialeNome(request.getParameter("Nome"));
+			e1.setIndirizzo(request.getParameter("Indirizzo"));
+			e1.setForo(request.getParameter("Foro"));
+			e1.setNomeLegale(request.getParameter("NomeLeg"));
+			e1.setCognomeLegale(request.getParameter("CognomeLeg"));
+			e1.setNomeRespTirocinio(request.getParameter("NomeResp"));
+			e1.setCognomeRespTirocinio(request.getParameter("CognomeResp"));
+			e1.setEmailRespTirocinio(request.getParameter("EmailResp"));
+			e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
+			
+			Utente e2= new Utente();
+			e2.setCodiceFiscale(request.getParameter("CF"));
+			e2.setResidenza(request.getParameter("Indirizzo"));
+			e2.setEmail(request.getParameter("EmailResp"));
+			e2.setNome(request.getParameter("Nome"));
+			e2.setTelefono(request.getParameter("TelResp"));
+			e2.setCognome("-");
+			e2.setLuogoNascita("-");
+			Date data = new Date(0000,00,00);
+			e2.setDataNascita(data);
+			e2.setCorsoLaurea("-");
+			e2.setHandicap(false);
+			e2.setPassword(request.getParameter("password"));
+			e2.setTipo("azienda");
+			session.persist(e1);
+			session.persist(e2);
+		}
+		
 		t.commit();// transaction is committed
-
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -115,5 +149,6 @@ public class RegistrazioneAzienda extends HttpServlet {
 		}
 		// doGet(request, response);
 	}
-
+	
+	//TODO aggiungere campo email per accesso; controllare che non ci sia una mail già creata da un utente
 }

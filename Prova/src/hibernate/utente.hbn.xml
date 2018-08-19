@@ -18,6 +18,7 @@
 		<property name="telefono" column="telefono"></property>
 		<property name="dataNascita" column="dataNascita"></property>
 		<property name="password" column="password"></property>
+		<property name="tipo" column="tipo"></property>
 	</class>
 
 </hibernate-mapping>  
