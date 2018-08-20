@@ -139,7 +139,7 @@
 									<h2 class="fs-20">Inserisci offerta di tirocinio</h2>
 								</div>
 
-								<form class="m-0 sky-form" action="#" method="post" enctype="multipart/form-data">
+								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>
 
 										<div class="row">
