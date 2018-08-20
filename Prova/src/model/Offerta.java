@@ -2,8 +2,8 @@ package model;
 
 public class Offerta {
 
-	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, aziendaPartitaIvaCodiceFiscale;
-	private int idOfferta, mesi, ore, orario;
+	private String luogo, obiettivi, modalità, rimborsiFacilitazioni;
+	private int idAzienda, idOfferta, mesi, ore, orario;
 	private boolean visibile;
 	private Azienda azienda;
 
@@ -41,14 +41,6 @@ public class Offerta {
 
 	public void setRimborsiFacilitazioni(String rimborsiFacilitazioni) {
 		this.rimborsiFacilitazioni = rimborsiFacilitazioni;
-	}
-
-	public String getAziendaPartitaIvaCodiceFiscale() {
-		return aziendaPartitaIvaCodiceFiscale;
-	}
-
-	public void setAziendaPartitaIvaCodiceFiscale(String aziendaPartitaIvaCodiceFiscale) {
-		this.aziendaPartitaIvaCodiceFiscale = aziendaPartitaIvaCodiceFiscale;
 	}
 
 	public int getIdOfferta() {
@@ -97,6 +89,14 @@ public class Offerta {
 
 	public void setAzienda(Azienda azienda) {
 		this.azienda = azienda;
+	}
+
+	public int getIdAzienda() {
+		return idAzienda;
+	}
+
+	public void setIdAzienda(int idAzienda) {
+		this.idAzienda = idAzienda;
 	}
 
 }

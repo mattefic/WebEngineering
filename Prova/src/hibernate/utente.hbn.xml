@@ -5,9 +5,10 @@
 
 <hibernate-mapping>
 	<class name="model.Utente" table="utente">
-		<id name="codiceFiscale" column="codiceFiscale">
-			<generator class="assigned"></generator>
+		<id name="idUtente" column="idUtente">
 		</id>
+		<property name="codiceFiscale" column="codiceFiscale">
+		</property>
 		<property name="nome" column="nome"></property>
 		<property name="cognome" column="cognome"></property>
 		<property name="email" column="email"></property>

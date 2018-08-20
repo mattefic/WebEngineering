@@ -1,19 +1,19 @@
 package model;
 
 public class TutoreAziendale {
-	private String aziendaPartitaIvaCodiceFiscale, nome, cognome, telefono;
-	private int id_tutore;
+	private String idAzienda, nome, cognome, telefono;
+	private int idTutore;
 
 	public TutoreAziendale() {
 
 	}
 
-	public String getAziendaPartitaIvaCodiceFiscale() {
-		return aziendaPartitaIvaCodiceFiscale;
+	public String getIdAzienda() {
+		return idAzienda;
 	}
 
-	public void setAziendaPartitaIvaCodiceFiscale(String aziendaPartitaIvaCodiceFiscale) {
-		this.aziendaPartitaIvaCodiceFiscale = aziendaPartitaIvaCodiceFiscale;
+	public void setIdAzienda(String idAzienda) {
+		this.idAzienda = idAzienda;
 	}
 
 	public String getNome() {
@@ -40,12 +40,12 @@ public class TutoreAziendale {
 		this.telefono = telefono;
 	}
 
-	public int getId_tutore() {
-		return id_tutore;
+	public int getIdTutore() {
+		return idTutore;
 	}
 
-	public void setId_tutore(int id_tutore) {
-		this.id_tutore = id_tutore;
+	public void setIdTutore(int idTutore) {
+		this.idTutore = idTutore;
 	}
 
 }

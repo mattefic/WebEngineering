@@ -5,11 +5,10 @@
 
 <hibernate-mapping>
 	<class name="model.TutoreAziendale" table="tutore_aziendale">
-		<id name="id_tutore" column="id_tutore_aziendale">
+		<id name="idTutore" column="idTutore">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="aziendaPartitaIvaCodiceFiscale"
-			column="azienda_partitaIvaCodiceFiscale"></property>
+		<property name="idAzienda" column="idAzienda"></property>
 		<property name="telefono" column="telefono"></property>
 		<property name="nome" column="nome"></property>
 		<property name="cognome" column="cognome"></property>

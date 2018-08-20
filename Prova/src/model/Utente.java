@@ -4,7 +4,8 @@ import java.sql.Date;
 
 public class Utente {
 	private String codiceFiscale, nome, cognome, email, luogoNascita, residenza, corsoLaurea, telefono, tipo, password;
-	//tipo è {utente,azienda,amministratore}
+	// tipo è {utente,azienda,amministratore}
+	private int idUtente;
 	private boolean handicap;
 	private Date dataNascita;
 
@@ -106,6 +107,14 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getIdUtente() {
+		return idUtente;
+	}
+
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 }

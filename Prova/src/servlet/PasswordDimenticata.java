@@ -91,7 +91,7 @@ public class PasswordDimenticata extends HttpServlet {
 		if (utente.getCodiceFiscale() != null) {
 			// TODO Mandare una mail a email con un token
 		} else {
-			// TODO MATTEO Notificare che la mail non esiste
+			// TODO Notificare che la mail non esiste
 		}
 
 		doGet(request, response);

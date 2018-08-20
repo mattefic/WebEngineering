@@ -4,45 +4,37 @@ import java.util.Date;
 
 public class Candidatura {
 
-	private int offertaIdOfferta, tutoreUniversitarioIdTutore;
-	private String offertaAziendaPartitaIvaCodiceFiscale, utenteCodiceFiscale, stato;
+	private int idCandidatura, idOfferta, idTutore, idUtente;
+	private String  stato;
 	private Date dataCanditatura;
-	//stato è {approvata,attesa,respinta}
+	// stato è {approvata,attesa,respinta}
 
 	public Candidatura() {
 
 	}
 
-	public int getOffertaIdOfferta() {
-		return offertaIdOfferta;
+	public int getIdOfferta() {
+		return idOfferta;
 	}
 
-	public void setOffertaIdOfferta(int offertaIdOfferta) {
-		this.offertaIdOfferta = offertaIdOfferta;
+	public void setIdOfferta(int idOfferta) {
+		this.idOfferta = idOfferta;
 	}
 
-	public int getTutoreUniversitarioIdTutore() {
-		return tutoreUniversitarioIdTutore;
+	public int getIdTutore() {
+		return idTutore;
 	}
 
-	public void setTutoreUniversitarioIdTutore(int tutoreUniversitarioIdTutore) {
-		this.tutoreUniversitarioIdTutore = tutoreUniversitarioIdTutore;
+	public void setIdTutore(int idTutore) {
+		this.idTutore = idTutore;
 	}
 
-	public String getOffertaAziendaPartitaIvaCodiceFiscale() {
-		return offertaAziendaPartitaIvaCodiceFiscale;
+	public int getIdUtente() {
+		return idUtente;
 	}
 
-	public void setOffertaAziendaPartitaIvaCodiceFiscale(String offertaAziendaPartitaIvaCodiceFiscale) {
-		this.offertaAziendaPartitaIvaCodiceFiscale = offertaAziendaPartitaIvaCodiceFiscale;
-	}
-
-	public String getUtenteCodiceFiscale() {
-		return utenteCodiceFiscale;
-	}
-
-	public void setUtenteCodiceFiscale(String utenteCodiceFiscale) {
-		this.utenteCodiceFiscale = utenteCodiceFiscale;
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public String getStato() {
@@ -59,6 +51,14 @@ public class Candidatura {
 
 	public void setDataCanditatura(Date dataCanditatura) {
 		this.dataCanditatura = dataCanditatura;
+	}
+
+	public int getIdCandidatura() {
+		return idCandidatura;
+	}
+
+	public void setIdCandidatura(int idCandidatura) {
+		this.idCandidatura = idCandidatura;
 	}
 
 }

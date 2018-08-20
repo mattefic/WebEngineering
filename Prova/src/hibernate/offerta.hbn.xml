@@ -14,8 +14,7 @@
 		<property name="modalità" column="modalità"></property>
 		<property name="rimborsiFacilitazioni"
 			column="rimborsiFacilitazioni"></property>
-		<property name="aziendaPartitaIvaCodiceFiscale"
-			column="Azienda_partitaIvaCodiceFiscale"></property>
+		<property name="idAzienda" column="idAzienda"></property>
 		<property name="mesi" column="mesi"></property>
 		<property name="ore" column="ore"></property>
 		<property name="visibile" column="visibile"></property>

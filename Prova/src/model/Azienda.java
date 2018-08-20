@@ -3,8 +3,10 @@ package model;
 public class Azienda {
 
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
-			cognomeRespTirocinio, emailRespTirocinio,  telefonoRespTirocinio, orario, tipo , email, password;
+			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, tipo, email, password;
 	private boolean convenzionata;
+	private int idAzienda;
+
 	public Azienda() {
 
 	}
@@ -127,6 +129,14 @@ public class Azienda {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getIdAzienda() {
+		return idAzienda;
+	}
+
+	public void setIdAzienda(int idAzienda) {
+		this.idAzienda = idAzienda;
 	}
 
 }

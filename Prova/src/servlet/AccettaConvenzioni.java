@@ -73,13 +73,12 @@ public class AccettaConvenzioni extends HttpServlet {
 
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 		}
-			
+
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
@@ -99,11 +98,10 @@ public class AccettaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO ++ Matteo il processo di convenzionamento
-		
 		HttpSession Securitysession = SecurityLayer.checkSession(request);
 		String email = Securitysession.getId();
 
+		// TODO Controllare se l'email è di un administratore
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -114,12 +112,11 @@ public class AccettaConvenzioni extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
-		Query query = session.createQuery("update Stock set convenzionata = 1" +
-				" where codiceFiscaleIva = :codiceFiscaleIva");
+
+		Query query = session
+				.createQuery("update Stock set convenzionata = 1" + " where codiceFiscaleIva = :codiceFiscaleIva");
 		query.setParameter("codiceFiscaleIva", request.getParameter("idAzienda"));
 		query.executeUpdate();
-		
 
 		response.sendRedirect("Home");
 	}

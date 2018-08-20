@@ -4,54 +4,43 @@ import java.util.Date;
 
 public class Contratto {
 
-	private int candidaturaOffertaIdOfferta, candidaturaTutoreUniversitarioIdTutore;
+	private int idContratto, idTutoreUniversitario, idTutoreAziendale, idCandidatura, idUtente;
 	private Date dataAccettazione;
-	private String tutoreAziendaleAziendaPartitaIvaCodiceFiscale, candidaturaOffertaAziendaPartitaIvaCodiceFiscale,
-			candidaturaUtenteCodiceFiscale;
 
 	public Contratto() {
 
 	}
 
-	public int getCandidaturaOffertaIdOfferta() {
-		return candidaturaOffertaIdOfferta;
+	public int getIdTutoreUniversitario() {
+		return idTutoreUniversitario;
 	}
 
-	public void setCandidaturaOffertaIdOfferta(int candidaturaOffertaIdOfferta) {
-		this.candidaturaOffertaIdOfferta = candidaturaOffertaIdOfferta;
+	public void setIdTutoreUniversitario(int idTutoreUniversitario) {
+		this.idTutoreUniversitario = idTutoreUniversitario;
 	}
 
-	public int getCandidaturaTutoreUniversitarioIdTutore() {
-		return candidaturaTutoreUniversitarioIdTutore;
+	public int getIdTutoreAziendale() {
+		return idTutoreAziendale;
 	}
 
-	public void setCandidaturaTutoreUniversitarioIdTutore(int candidaturaTutoreUniversitarioIdTutore) {
-		this.candidaturaTutoreUniversitarioIdTutore = candidaturaTutoreUniversitarioIdTutore;
+	public void setIdTutoreAziendale(int idTutoreAziendale) {
+		this.idTutoreAziendale = idTutoreAziendale;
 	}
 
-	public String getTutoreAziendaleAziendaPartitaIvaCodiceFiscale() {
-		return tutoreAziendaleAziendaPartitaIvaCodiceFiscale;
+	public int getIdCandidatura() {
+		return idCandidatura;
 	}
 
-	public void setTutoreAziendaleAziendaPartitaIvaCodiceFiscale(String tutoreAziendaleAziendaPartitaIvaCodiceFiscale) {
-		this.tutoreAziendaleAziendaPartitaIvaCodiceFiscale = tutoreAziendaleAziendaPartitaIvaCodiceFiscale;
+	public void setIdCandidatura(int idCandidatura) {
+		this.idCandidatura = idCandidatura;
 	}
 
-	public String getCandidaturaOffertaAziendaPartitaIvaCodiceFiscale() {
-		return candidaturaOffertaAziendaPartitaIvaCodiceFiscale;
+	public int getIdUtente() {
+		return idUtente;
 	}
 
-	public void setCandidaturaOffertaAziendaPartitaIvaCodiceFiscale(
-			String candidaturaOffertaAziendaPartitaIvaCodiceFiscale) {
-		this.candidaturaOffertaAziendaPartitaIvaCodiceFiscale = candidaturaOffertaAziendaPartitaIvaCodiceFiscale;
-	}
-
-	public String getCandidaturaUtenteCodiceFiscale() {
-		return candidaturaUtenteCodiceFiscale;
-	}
-
-	public void setCandidaturaUtenteCodiceFiscale(String candidaturaUtenteCodiceFiscale) {
-		this.candidaturaUtenteCodiceFiscale = candidaturaUtenteCodiceFiscale;
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public Date getDataAccettazione() {
@@ -60,6 +49,14 @@ public class Contratto {
 
 	public void setDataAccettazione(Date dataAccettazione) {
 		this.dataAccettazione = dataAccettazione;
+	}
+
+	public int getIdContratto() {
+		return idContratto;
+	}
+
+	public void setIdContratto(int idContratto) {
+		this.idContratto = idContratto;
 	}
 
 }

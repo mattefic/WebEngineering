@@ -70,10 +70,10 @@ public class DettagliOfferta extends HttpServlet {
 		Offerta offerta = (Offerta) query.uniqueResult();
 		input.put("offerta", offerta);
 		Query query2 = session.createQuery(
-				"FROM Azienda a WHERE a.codiceFiscaleIva = " + offerta.getAziendaPartitaIvaCodiceFiscale());
+				"FROM Azienda a WHERE a.codiceFiscaleIva = " + offerta.getIdAzienda());
 		Azienda azienda = (Azienda) query2.uniqueResult();
 		input.put("azienda", azienda);
-		System.out.println(offerta.getAziendaPartitaIvaCodiceFiscale());
+		System.out.println(offerta.getIdAzienda());
 		System.out.println(azienda.getCodiceFiscaleIva());
 
 		Configuration cfg = new Configuration();
@@ -103,10 +103,8 @@ public class DettagliOfferta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO ++ Matteo Programmare la richiesta di candidatura a un'offerta
 		HttpSession Securitysession = SecurityLayer.checkSession(request);
 		String email = Securitysession.getId();
-
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -121,9 +119,10 @@ public class DettagliOfferta extends HttpServlet {
 		Candidatura candidatura = new Candidatura();
 		candidatura.setDataCanditatura(data);
 		candidatura.setStato("attesa");
-		candidatura.setUtenteCodiceFiscale(email);
-		candidatura.setOffertaIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
-		candidatura.setOffertaAziendaPartitaIvaCodiceFiscale(request.getParameter("idAzienda"));
+		//TODO cercare tramite email per settare l'idUtente
+		int idUtente = 0;
+		candidatura.setIdUtente(idUtente);
+		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
 
 		session.persist(candidatura);
 

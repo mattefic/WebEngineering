@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Ago 19, 2018 alle 15:42
--- Versione del server: 10.1.25-MariaDB
--- Versione PHP: 7.1.7
+-- Host: 127.0.0.1:3306
+-- Creato il: Ago 20, 2018 alle 08:29
+-- Versione del server: 5.7.21
+-- Versione PHP: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,7 +28,9 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `azienda`
 --
 
-CREATE TABLE `azienda` (
+DROP TABLE IF EXISTS `azienda`;
+CREATE TABLE IF NOT EXISTS `azienda` (
+  `idAzienda` int(16) NOT NULL AUTO_INCREMENT,
   `partitaIVACodiceFiscale` char(11) NOT NULL,
   `ragioneSocialeNome` varchar(30) NOT NULL,
   `indirizzo` varchar(45) NOT NULL,
@@ -43,15 +45,17 @@ CREATE TABLE `azienda` (
   `convenzionata` tinyint(4) DEFAULT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(18) NOT NULL,
-  `tipo` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tipo` varchar(16) NOT NULL,
+  PRIMARY KEY (`partitaIVACodiceFiscale`),
+  KEY `IdAzienda` (`idAzienda`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `azienda`
 --
 
-INSERT INTO `azienda` (`partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `tipo`) VALUES
-('12345678912', 'MGM Service', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Maurizio', 'Giostra', '3466318898', 'mg@gmail.com', NULL, 0, 'mgmservice@gmail.com', '1234', 'azienda');
+INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `tipo`) VALUES
+(1, '12345678912', 'MGM Service', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Maurizio', 'Giostra', '3466318898', 'mg@gmail.com', NULL, 0, 'mgmservice@gmail.com', '1234', 'azienda');
 
 -- --------------------------------------------------------
 
@@ -59,11 +63,16 @@ INSERT INTO `azienda` (`partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indiriz
 -- Struttura della tabella `canditatura`
 --
 
-CREATE TABLE `canditatura` (
-  `Offerta_idOfferta` int(11) NOT NULL,
-  `Offerta_Azienda_partitaIVA/CodiceFiscale` int(10) UNSIGNED NOT NULL,
-  `Utente_codiceFiscale` char(16) NOT NULL,
-  `Tutore_Universitario_idTutore` int(11) NOT NULL
+DROP TABLE IF EXISTS `canditatura`;
+CREATE TABLE IF NOT EXISTS `canditatura` (
+  `idCandidatura` int(11) NOT NULL AUTO_INCREMENT,
+  `idOfferta` int(11) NOT NULL,
+  `idUtente` int(16) NOT NULL,
+  `idTutore` int(11) NOT NULL,
+  `stato` varchar(16) NOT NULL,
+  `dataCandidatura` date NOT NULL,
+  PRIMARY KEY (`idOfferta`,`idUtente`,`idTutore`),
+  KEY `idCandidatura` (`idCandidatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,12 +81,18 @@ CREATE TABLE `canditatura` (
 -- Struttura della tabella `contratto`
 --
 
-CREATE TABLE `contratto` (
-  `Tutore_Aziendale_Azienda_partitaIVA/CodiceFiscale` int(11) NOT NULL,
-  `Canditatura_Offerta_idOfferta` int(11) NOT NULL,
-  `Canditatura_Offerta_Azienda_partitaIVA/CodiceFiscale` int(10) UNSIGNED NOT NULL,
-  `Canditatura_Utente_codiceFiscale` char(16) NOT NULL,
-  `Canditatura_Tutore_Universitario_idTutore` int(11) NOT NULL
+DROP TABLE IF EXISTS `contratto`;
+CREATE TABLE IF NOT EXISTS `contratto` (
+  `idContratto` int(11) NOT NULL AUTO_INCREMENT,
+  `idTutoreAziendale` int(11) NOT NULL,
+  `idOfferta` int(11) NOT NULL,
+  `idUtente` int(11) NOT NULL,
+  `idTutoreUniversitario` int(11) NOT NULL,
+  `dataAccettazione` date NOT NULL,
+  PRIMARY KEY (`idTutoreAziendale`,`idOfferta`,`idUtente`,`idTutoreUniversitario`),
+  KEY `fk_Contratto_Tutore_Aziendale1_idx` (`idTutoreAziendale`),
+  KEY `fk_Contratto_Canditatura1_idx` (`idOfferta`,`idUtente`,`idTutoreUniversitario`),
+  KEY `idContratto` (`idContratto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -86,8 +101,9 @@ CREATE TABLE `contratto` (
 -- Struttura della tabella `offerta`
 --
 
-CREATE TABLE `offerta` (
-  `idOfferta` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `offerta`;
+CREATE TABLE IF NOT EXISTS `offerta` (
+  `idOfferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `luogo` varchar(30) NOT NULL,
   `orario` varchar(100) NOT NULL,
   `mesi` int(10) UNSIGNED NOT NULL,
@@ -96,19 +112,19 @@ CREATE TABLE `offerta` (
   `modalità` varchar(200) NOT NULL,
   `rimborsi/facilitazioni` varchar(200) NOT NULL,
   `visibile` tinyint(4) NOT NULL,
-  `Azienda_partitaIVA/CodiceFiscale` int(10) UNSIGNED NOT NULL,
+  `idAzienda` int(11) UNSIGNED NOT NULL,
   `rimborsiFacilitazioni` varchar(255) DEFAULT NULL,
-  `Azienda_partitaIvaCodiceFiscale` varchar(255) DEFAULT NULL,
-  `aziendaPartitaIvaCodiceFiscale` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idOfferta`,`idAzienda`),
+  KEY `fk_Offerta_Azienda_idx` (`idAzienda`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `offerta`
 --
 
-INSERT INTO `offerta` (`idOfferta`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalità`, `rimborsi/facilitazioni`, `visibile`, `Azienda_partitaIVA/CodiceFiscale`, `rimborsiFacilitazioni`, `Azienda_partitaIvaCodiceFiscale`, `aziendaPartitaIvaCodiceFiscale`) VALUES
-(1, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO', '10', NULL),
-(2, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO', '10', NULL);
+INSERT INTO `offerta` (`idOfferta`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalità`, `rimborsi/facilitazioni`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
+(1, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO'),
+(2, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO');
 
 -- --------------------------------------------------------
 
@@ -116,13 +132,15 @@ INSERT INTO `offerta` (`idOfferta`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi
 -- Struttura della tabella `tutore_aziendale`
 --
 
-CREATE TABLE `tutore_aziendale` (
-  `Azienda_partitaIVA/CodiceFiscale` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tutore_aziendale`;
+CREATE TABLE IF NOT EXISTS `tutore_aziendale` (
+  `idTutore` int(11) NOT NULL AUTO_INCREMENT,
+  `idAzienda` int(11) UNSIGNED NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `telefono` int(10) UNSIGNED NOT NULL,
-  `id_tutore_aziendale` int(11) NOT NULL,
-  `azienda_partitaIvaCodiceFiscale` varchar(255) DEFAULT NULL
+  `telefono` varchar(15) NOT NULL,
+  PRIMARY KEY (`idAzienda`),
+  KEY `idTutore` (`idTutore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -131,12 +149,14 @@ CREATE TABLE `tutore_aziendale` (
 -- Struttura della tabella `tutore_universitario`
 --
 
-CREATE TABLE `tutore_universitario` (
+DROP TABLE IF EXISTS `tutore_universitario`;
+CREATE TABLE IF NOT EXISTS `tutore_universitario` (
   `idTutore` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
   `telefono` int(11) DEFAULT NULL,
-  `numRichieste` int(11) DEFAULT NULL
+  `numRichieste` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idTutore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -145,7 +165,9 @@ CREATE TABLE `tutore_universitario` (
 -- Struttura della tabella `utente`
 --
 
-CREATE TABLE `utente` (
+DROP TABLE IF EXISTS `utente`;
+CREATE TABLE IF NOT EXISTS `utente` (
+  `idUtente` int(11) NOT NULL AUTO_INCREMENT,
   `codiceFiscale` char(16) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
@@ -157,76 +179,18 @@ CREATE TABLE `utente` (
   `handicap` tinyint(4) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(18) NOT NULL,
-  `tipo` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tipo` varchar(16) NOT NULL,
+  PRIMARY KEY (`codiceFiscale`),
+  KEY `idUtente` (`idUtente`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
-('GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234', 'utente');
-
---
--- Indici per le tabelle scaricate
---
-
---
--- Indici per le tabelle `azienda`
---
-ALTER TABLE `azienda`
-  ADD PRIMARY KEY (`partitaIVACodiceFiscale`);
-
---
--- Indici per le tabelle `canditatura`
---
-ALTER TABLE `canditatura`
-  ADD PRIMARY KEY (`Offerta_idOfferta`,`Offerta_Azienda_partitaIVA/CodiceFiscale`,`Utente_codiceFiscale`,`Tutore_Universitario_idTutore`),
-  ADD KEY `fk_Canditatura_Utente1_idx` (`Utente_codiceFiscale`),
-  ADD KEY `fk_Canditatura_Tutore_Universitario1_idx` (`Tutore_Universitario_idTutore`);
-
---
--- Indici per le tabelle `contratto`
---
-ALTER TABLE `contratto`
-  ADD PRIMARY KEY (`Tutore_Aziendale_Azienda_partitaIVA/CodiceFiscale`,`Canditatura_Offerta_idOfferta`,`Canditatura_Offerta_Azienda_partitaIVA/CodiceFiscale`,`Canditatura_Utente_codiceFiscale`,`Canditatura_Tutore_Universitario_idTutore`),
-  ADD KEY `fk_Contratto_Tutore_Aziendale1_idx` (`Tutore_Aziendale_Azienda_partitaIVA/CodiceFiscale`),
-  ADD KEY `fk_Contratto_Canditatura1_idx` (`Canditatura_Offerta_idOfferta`,`Canditatura_Offerta_Azienda_partitaIVA/CodiceFiscale`,`Canditatura_Utente_codiceFiscale`,`Canditatura_Tutore_Universitario_idTutore`);
-
---
--- Indici per le tabelle `offerta`
---
-ALTER TABLE `offerta`
-  ADD PRIMARY KEY (`idOfferta`,`Azienda_partitaIVA/CodiceFiscale`),
-  ADD KEY `fk_Offerta_Azienda_idx` (`Azienda_partitaIVA/CodiceFiscale`);
-
---
--- Indici per le tabelle `tutore_aziendale`
---
-ALTER TABLE `tutore_aziendale`
-  ADD PRIMARY KEY (`Azienda_partitaIVA/CodiceFiscale`);
-
---
--- Indici per le tabelle `tutore_universitario`
---
-ALTER TABLE `tutore_universitario`
-  ADD PRIMARY KEY (`idTutore`);
-
---
--- Indici per le tabelle `utente`
---
-ALTER TABLE `utente`
-  ADD PRIMARY KEY (`codiceFiscale`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
---
-
---
--- AUTO_INCREMENT per la tabella `offerta`
---
-ALTER TABLE `offerta`
-  MODIFY `idOfferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+INSERT INTO `utente` (`idUtente`, `codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
+(1, 'GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234', 'utente');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
