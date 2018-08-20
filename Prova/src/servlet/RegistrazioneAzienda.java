@@ -121,7 +121,7 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setEmail(request.getParameter("Email"));
 			e1.setPassword(request.getParameter("password"));
 			session.persist(e1);
-			SecurityLayer.createSession(request, request.getParameter("Email"), request.getParameter("CF"));
+			SecurityLayer.createSession(request, request.getParameter("Email"), request.getParameter("CF"), "azienda");
 			response.sendRedirect("Home");
 		}
 		

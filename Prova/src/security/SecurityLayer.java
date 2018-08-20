@@ -61,7 +61,7 @@ public class SecurityLayer {
 		}
 	}
 
-	public static HttpSession createSession(HttpServletRequest request, String username, String userid) {
+	public static HttpSession createSession(HttpServletRequest request, String username, String userid, String tipo) {
 		// se una sessione  è già attiva, rimuoviamola e creiamone una nuova
 		disposeSession(request);
 		HttpSession s = request.getSession(true);
@@ -69,6 +69,7 @@ public class SecurityLayer {
 		s.setAttribute("ip", request.getRemoteHost());
 		s.setAttribute("inizio-sessione", Calendar.getInstance());
 		s.setAttribute("userid", userid);
+		s.setAttribute("tipo", tipo);
 		return s;
 	}
 

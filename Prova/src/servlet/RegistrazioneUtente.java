@@ -116,10 +116,10 @@ public class RegistrazioneUtente extends HttpServlet {
 			e1.setTelefono(request.getParameter("Numero"));
 			e1.setLuogoNascita(request.getParameter("LuogoNascita"));
 			e1.setEmail(request.getParameter("email"));
-			e1.setPassword("password");
+			e1.setPassword(request.getParameter("password"));
 			e1.setTipo("utente");
 			session.persist(e1);
-			SecurityLayer.createSession(request, request.getParameter("email"), request.getParameter("CF"));
+			SecurityLayer.createSession(request, request.getParameter("email"), request.getParameter("CF"), "utente");
 			response.sendRedirect("Home");
 		}
 		tx.commit();

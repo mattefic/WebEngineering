@@ -119,7 +119,7 @@ public class DettagliOfferta extends HttpServlet {
 		Candidatura candidatura = new Candidatura();
 		candidatura.setDataCanditatura(data);
 		candidatura.setStato("attesa");
-		//TODO cercare tramite email per settare l'idUtente
+		//TODO Cercare tramite email per settare l'idUtente
 		int idUtente = 0;
 		candidatura.setIdUtente(idUtente);
 		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));

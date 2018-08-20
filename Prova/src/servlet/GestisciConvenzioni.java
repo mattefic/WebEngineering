@@ -34,14 +34,14 @@ import security.SecurityLayer;
 /**
  * Servlet implementation class AccettaConvenzioni
  */
-@WebServlet("/AccettaConvenzioni")
-public class AccettaConvenzioni extends HttpServlet {
+@WebServlet("/GestisciConvenzioni")
+public class GestisciConvenzioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AccettaConvenzioni() {
+	public GestisciConvenzioni() {
 		super();
 	}
 
@@ -83,7 +83,7 @@ public class AccettaConvenzioni extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/accettaConvenzioni.ftl");
+		Template template = cfg.getTemplate("template/gestisciConvenzioni.ftl");
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
@@ -98,11 +98,10 @@ public class AccettaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession Securitysession = SecurityLayer.checkSession(request);
-		String email = Securitysession.getId();
-
-		// TODO Controllare se l'email è di un administratore
+		HttpSession securitySession = SecurityLayer.checkSession(request);
+		String tipo = (String) securitySession.getAttribute("tipo");
 		response.setContentType("text/html;charset=UTF-8");
+
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
 
@@ -112,13 +111,14 @@ public class AccettaConvenzioni extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
+		if (tipo.equals("admin")) {
+			Query query = session
+					.createQuery("update Stock set convenzionata = 1" + " where codiceFiscaleIva = :codiceFiscaleIva");
+			query.setParameter("codiceFiscaleIva", request.getParameter("idAzienda"));
+			query.executeUpdate();
+		}
+		t.commit();
 
-		Query query = session
-				.createQuery("update Stock set convenzionata = 1" + " where codiceFiscaleIva = :codiceFiscaleIva");
-		query.setParameter("codiceFiscaleIva", request.getParameter("idAzienda"));
-		query.executeUpdate();
-
-		response.sendRedirect("Home");
+		response.sendRedirect("GestisciConvenzioni");
 	}
-
 }
