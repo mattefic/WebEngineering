@@ -117,7 +117,6 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setEmailRespTirocinio(request.getParameter("EmailResp"));
 			e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
 			e1.setConvenzionata(false);
-			e1.setTipo("azienda");
 			e1.setEmail(request.getParameter("Email"));
 			e1.setPassword(request.getParameter("password"));
 			session.persist(e1);

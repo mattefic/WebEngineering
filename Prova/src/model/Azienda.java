@@ -8,7 +8,7 @@ import javax.persistence.Table;
 public class Azienda {
 
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
-			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, tipo, email, password;
+			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password;
 	private boolean convenzionata;
 	private int idAzienda;
 
@@ -110,14 +110,6 @@ public class Azienda {
 
 	public void setOrario(String orario) {
 		this.orario = orario;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public String getEmail() {

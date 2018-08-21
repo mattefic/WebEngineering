@@ -2,7 +2,7 @@ package model;
 
 public class Offerta {
 
-	private String luogo, obiettivi, modalit√†, rimborsiFacilitazioni;
+	private String luogo, obiettivi, modalit‡, rimborsiFacilitazioni;
 	private int idAzienda, idOfferta, mesi, ore, orario;
 	private boolean visibile;
 	private Azienda azienda;
@@ -27,12 +27,12 @@ public class Offerta {
 		this.obiettivi = obiettivi;
 	}
 
-	public String getModalit√†() {
-		return modalit√†;
+	public String getModalit‡() {
+		return modalit‡;
 	}
 
-	public void setModalit√†(String modalit√†) {
-		this.modalit√† = modalit√†;
+	public void setModalit‡(String modalit‡) {
+		this.modalit‡= modalit‡;
 	}
 
 	public String getRimborsiFacilitazioni() {
