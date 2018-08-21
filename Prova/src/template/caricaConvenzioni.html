@@ -2,7 +2,7 @@
 <html lang="it">
 	<head>
 		<meta charset="utf-8" />
-		<title>Internship Tutor - Dettagli azienda</title>
+		<title>Internship Tutor - Carica convenzioni firmate</title>
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -18,14 +18,14 @@
 		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
 
-		<style>
-		.checked {
-			color: #8ab933;
-		}
-		</style>
-
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+		<style>
+		.puntatore:hover{ 
+			color: #8ab933; 
+			cursor: pointer;
+		}
+		</style>
 
 	</head>
 	
@@ -67,18 +67,18 @@
 									</a>
 								</li>
 								<li>
-									<a href="dettagliAzienda.html">
-										I TUOI DATI
+									<a href="gestisciConvenzioni.html">
+										GESTISCI CONVENZIONI
 									</a>
 								</li>
 								<li>
-									<a href="inserisciTirocinio.html">
-										INSERISCI OFFERTA DI TIROCINIO
+									<a href="caricaConvenzioni.html">
+										CARICA CONVENZIONI FIRMATE
 									</a>
 								</li>
 								<li>
-									<a href="elencoCandidature.html">
-										CANDIDATURE RICEVUTE
+									<a href="visualizzaStatistiche.html">
+										VISUALIZZA STATISTICHE
 									</a>
 								</li>
 								<li>
@@ -101,58 +101,97 @@
 
 			</div>
 			<!-- /SIDE MENU -->
-		
+			
 			<section class="page-header page-header-xs">
 				<div class="container">
 
-					<h1 class="text-center">DETTAGLI AZIENDA</h1>
+					<h1 class="text-center">CARICA CONVENZIONI FIRMATE</h1>
 
 				</div>
 			</section>
-	
-			<section>
-				<div class="container">
-					
-					<div class="row">
-						<!-- H4 -->
-						<div class="col-4">
-						</div>
-						<div class="heading-title heading-border heading-color col-4" style="word-wrap: break-word;">
-							<p><h5>RAGIONE SOCIALE:</h5>Gunpowder S.r.l.</p>
-							<br>
-							<p><h5>PARTITA IVA:</h5>03297040366.</p>
-							<br>
-							<p><h5>INDIRIZZO SEDE LEGALE:</h5>Via Turati 13.</p>
-							<br>
-							<p><h5>FORO COMPETENTE:</h5>L'Aquila.</p>
-							<br>
-							<p><h5>LEGALE RAPPRESENTANTE:</h5>Giovanni Rana.</p>
-							<br>
-							<p><h5>TUTOR AZIENDALE:</h5>Mario Rossi.</p>
-							<br>
-							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>3456790890.</p>
-							<br>
-							<p><h5>EMAIL TUTOR AZIENDALE:</h5>mariorossi@outlook.com.</p>
-							<br>
-							<p><h5>CONVENZIONE:</h5><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>.</p>
-							<br>
-							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>.
-							</p>
-						</div>
-						<div class="col-4">
-						</div>
+			
+			
+			<div class="container">	
+				<div class="card card-danger mt-50 ml-200 mr-200">
+					<div class="p-0 card-block text-center">
+						<table class="table m-0">
+							<thead>
+								<tr>
+									<th>RAGIONE SOCIALE</th>
+									<th>CARICA CONVENZIONE FIRMATA</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td>
+										<div class="fancy-file-upload fancy-file-primary">
+											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+											<span class="button">CARICA</span>
+										</div>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>							
 					</div>
 				</div>
-			</section>
-			<!-- / -->
+			</div>
 			
 			<!-- FOOTER -->
-			<footer id="footer">
+			<footer id="footer" class="mt-50">
 				<div class="container">
 
 					<div class="row justify-content-center">
@@ -222,9 +261,14 @@
 					</div>
 				</div>
 			</footer>			<!-- /FOOTER -->
-		
-			</div>
-		<!-- /wrapper -->
+
+		<!-- JAVASCRIPT FILES -->
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+		<script src="assets/js/scripts.js"></script>
+	</div>
+	<!-- /wrapper -->
 
 </body>
 </html>
