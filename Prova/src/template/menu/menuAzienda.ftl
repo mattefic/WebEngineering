@@ -1,12 +1,12 @@
 <ul class="nav navbar-nav">
-	<li><a href="home.html"> HOME </a></li>
-	<li><a href="#"> ESCI </a></li>
-	<li><a href="dettagliAzienda.html"> I TUOI DATI </a></li>
-	<li><a href="inserisciTirocinio.html"> INSERISCI OFFERTA DI
+	<li><a href="Home"> HOME </a></li>
+	<li><a href="Logout"> ESCI </a></li>
+	<li><a href="DettagliAzienda"> I TUOI DATI </a></li>
+	<li><a href="InserisciTirocinio"> INSERISCI OFFERTA DI
 			TIROCINIO </a></li>
-	<li><a href="elencoCandidature.html"> CANDIDATURE RICEVUTE </a></li>
-	<li><a href="listaAziende.html"> AZIENDE CONVENZIONATE </a></li>
-	<li><a href="elencoOfferte.html"> OFFERTE DI TIROCINIO </a></li>
+	<li><a href="ElencoCandidature"> CANDIDATURE RICEVUTE </a></li>
+	<li><a href="ListaAziende"> AZIENDE CONVENZIONATE </a></li>
+	<li><a href="ElencoOfferte"> OFFERTE DI TIROCINIO </a></li>
 </ul>
 
 

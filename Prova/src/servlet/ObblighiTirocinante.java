@@ -60,7 +60,6 @@ public class ObblighiTirocinante extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
-		System.out.println(serverData.menu.get("azienda"));
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {

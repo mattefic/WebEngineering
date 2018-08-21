@@ -88,7 +88,6 @@ public class ElencoOfferte extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
-		System.out.println(serverData.menu.get("azienda"));
 		Template template = cfg.getTemplate("template/elencoOfferte.ftl");
 		try {
 			template.process(input, response.getWriter());

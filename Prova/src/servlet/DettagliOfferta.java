@@ -72,8 +72,6 @@ public class DettagliOfferta extends HttpServlet {
 				"FROM Azienda a WHERE a.codiceFiscaleIva = " + offerta.getIdAzienda());
 		Azienda azienda = (Azienda) query2.uniqueResult();
 		input.put("azienda", azienda);
-		System.out.println(offerta.getIdAzienda());
-		System.out.println(azienda.getCodiceFiscaleIva());
 
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -95,7 +93,6 @@ public class DettagliOfferta extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
-		System.out.println(serverData.menu.get("azienda"));
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
