@@ -26,6 +26,7 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Offerta;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class ListaOfferte
@@ -79,6 +80,15 @@ public class ElencoOfferte extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+		ServerStart serverData = new ServerStart();
+		String tipo = "visitatore";
+		if (SecurityLayer.checkSession(request) != null) {
+			if (SecurityLayer.checkSession(request).getAttribute("tipo") != null) {
+				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
+			}
+		}
+		input.put("menu", serverData.menu.get(tipo));
+		System.out.println(serverData.menu.get("azienda"));
 		Template template = cfg.getTemplate("template/elencoOfferte.ftl");
 		try {
 			template.process(input, response.getWriter());

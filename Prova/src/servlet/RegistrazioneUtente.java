@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -62,8 +63,18 @@ public class RegistrazioneUtente extends HttpServlet {
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/registrazioneUtente.ftl");
+		Map<String, Object> input = new HashMap<String, Object>();
+		ServerStart serverData = new ServerStart();
+		String tipo = "visitatore";
+		if (SecurityLayer.checkSession(request) != null) {
+			if (SecurityLayer.checkSession(request).getAttribute("tipo") != null) {
+				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
+			}
+		}
+		input.put("menu", serverData.menu.get(tipo));
+		System.out.println(serverData.menu.get("azienda"));
 		try {
-			template.process(null , response.getWriter());
+			template.process(input , response.getWriter());
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		}

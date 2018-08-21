@@ -3,6 +3,7 @@ package servlet;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Utente;
+import security.SecurityLayer;
 
 /**
  * Servlet implementation class PasswordDimenticata
@@ -60,8 +62,18 @@ public class PasswordDimenticata extends HttpServlet {
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/passwordDimenticata.ftl");
+		Map<String, Object> input = new HashMap<String, Object>();
+		ServerStart serverData = new ServerStart();
+		String tipo = "visitatore";
+		if (SecurityLayer.checkSession(request) != null) {
+			if (SecurityLayer.checkSession(request).getAttribute("tipo") != null) {
+				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
+			}
+		}
+		input.put("menu", serverData.menu.get(tipo));
+		System.out.println(serverData.menu.get("azienda"));
 		try {
-			template.process(null, response.getWriter());
+			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		}
@@ -93,7 +105,6 @@ public class PasswordDimenticata extends HttpServlet {
 		} else {
 			// TODO Notificare che la mail non esiste
 		}
-
 		doGet(request, response);
 	}
 	
