@@ -14,5 +14,6 @@ public class ServerStart {
 		menu.put("azienda", "menu/MenuAzienda.ftl");
 		menu.put("admin", "menu/MenuAdmin.ftl");
 		menu.put("visitatore", "menu/MenuVisitatore.ftl");
+		new hibernate.HibernateSettings();
 	}
 }
