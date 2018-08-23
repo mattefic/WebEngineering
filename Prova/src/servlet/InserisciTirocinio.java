@@ -11,12 +11,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Offerta;
 import security.SecurityLayer;
 
 /**
@@ -25,18 +32,20 @@ import security.SecurityLayer;
 @WebServlet("/InserisciTirocinio")
 public class InserisciTirocinio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InserisciTirocinio() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public InserisciTirocinio() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -66,11 +75,39 @@ public class InserisciTirocinio extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Programmare inserimento Offerta
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Programmare inserimento Offerta (Non testato ancora)
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+		if (httpSession.getAttribute("tipo").equals("azienda")) {
+			Offerta offerta = new Offerta();
+			offerta.setIdAzienda(Integer.parseInt((String) httpSession.getAttribute("id")));
+			offerta.setLuogo(request.getParameter("luogo"));
+			offerta.setMesi(Integer.parseInt((String) request.getParameter("mesi")));
+			offerta.setModalità(request.getParameter("modalità"));
+			offerta.setObiettivi(request.getParameter("obiettivi"));
+			offerta.setOrario(request.getParameter("orario"));
+			offerta.setRimborsiFacilitazioni(request.getParameter("luogo"));
+			offerta.setOre(Integer.parseInt((String) request.getParameter("ore")));
+			offerta.setVisibile(true);
+
+			SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+			if (sessionFactory != null) {
+
+			} else {
+				HibernateSettings settings = new HibernateSettings();
+				sessionFactory = settings.getSessionFactory();
+			}
+			Session session = sessionFactory.openSession();
+			Transaction t = session.beginTransaction();
+
+			session.persist(offerta);
+			t.commit();
+
+		}
 	}
 
 }

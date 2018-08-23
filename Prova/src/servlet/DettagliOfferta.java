@@ -108,8 +108,8 @@ public class DettagliOfferta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession Securitysession = SecurityLayer.checkSession(request);
-		String email = Securitysession.getId();
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+		String email = httpSession.getId();
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -124,8 +124,7 @@ public class DettagliOfferta extends HttpServlet {
 		Candidatura candidatura = new Candidatura();
 		candidatura.setDataCanditatura(data);
 		candidatura.setStato("attesa");
-		//TODO Cercare tramite email per settare l'idUtente
-		int idUtente = 0;
+		int idUtente = Integer.parseInt((String)httpSession.getAttribute("userid"));
 		candidatura.setIdUtente(idUtente);
 		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
 

@@ -100,7 +100,7 @@ public class PasswordDimenticata extends HttpServlet {
 		query.setParameter("email", email);
 		Utente utente = query.uniqueResult();
 		if (utente.getCodiceFiscale() != null) {
-			// TODO Mandare una mail a email con un token
+			// TODO Mandare una mail a email con un token (L'email può essere salvata su un file come esempio)
 		} else {
 			// TODO Notificare che la mail non esiste
 		}

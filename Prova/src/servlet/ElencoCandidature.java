@@ -75,7 +75,6 @@ public class ElencoCandidature extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Accettare o rifiutare candidatura
-		doGet(request, response);
 	}
 
 }

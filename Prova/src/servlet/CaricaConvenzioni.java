@@ -1,16 +1,22 @@
 package servlet;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -76,7 +82,15 @@ public class CaricaConvenzioni extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Caricamento Convenzione
-		doGet(request, response);
+		HttpSession session = SecurityLayer.checkSession(request);
+		if (session.getAttribute("tipo").equals("admin")) {
+			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda"));
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(request.getParameter("file"));
+			bw.close();
+			fw.close();
+		}
 	}
 
 }

@@ -2,8 +2,8 @@ package model;
 
 public class Offerta {
 
-	private String luogo, obiettivi, modalità, rimborsiFacilitazioni;
-	private int idAzienda, idOfferta, mesi, ore, orario;
+	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, orario;
+	private int idAzienda, idOfferta, mesi, ore;
 	private boolean visibile;
 	private Azienda azienda;
 
@@ -75,12 +75,12 @@ public class Offerta {
 		this.visibile = visibile;
 	}
 
-	public int getOrario() {
+	public String getOrario() {
 		return orario;
 	}
 
-	public void setOrario(int orario) {
-		this.orario = orario;
+	public void setOrario(String string) {
+		this.orario = string;
 	}
 
 	public Azienda getAzienda() {
