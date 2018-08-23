@@ -31,7 +31,6 @@ public class ElencoCandidature extends HttpServlet {
 	 */
 	public ElencoCandidature() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -75,7 +74,7 @@ public class ElencoCandidature extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Accettare o rifiutare candidatura
 		doGet(request, response);
 	}
 

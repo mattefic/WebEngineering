@@ -31,7 +31,6 @@ public class CaricaConvenzioni extends HttpServlet {
 	 */
 	public CaricaConvenzioni() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
