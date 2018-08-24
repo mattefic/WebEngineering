@@ -149,7 +149,7 @@
 							</div>
 							<p class="sottotitolo">
 								<span class="data">Pubblicato il ${offerta.dataPub}</span>
-								<span class="emailResp">Email tutor aziendale:</span>
+								<span class="emailResp">Email tutor aziendale: <a href="mailto:lorenzocollevecchio@outlook.com">lorenzocollevecchio@outlook.com</a></span>
 								<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 							</p>
 							<div class="card-block">
