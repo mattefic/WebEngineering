@@ -96,7 +96,7 @@
 							<br>
 							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>3456790890.</p>
 							<br>
-							<p><h5>EMAIL TUTOR AZIENDALE:</h5>mariorossi@outlook.com.</p>
+							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="mariorossi@outlook.com">mariorossi@outlook.com.</a></p>
 							<br>
 							<p><h5>CONVENZIONE:</h5><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>.</p>
 							<br>
