@@ -81,10 +81,9 @@ public class CaricaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Caricamento Convenzione
 		HttpSession session = SecurityLayer.checkSession(request);
 		if (session.getAttribute("tipo").equals("admin")) {
-			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda"));
+			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda") + ".pdf");
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(request.getParameter("file"));

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Contratto {
 
-	private int idContratto, idTutoreUniversitario, idTutoreAziendale, idCandidatura, idUtente;
+	private int idContratto, idTutoreUniversitario, idTutoreAziendale, idUtente;
 	private Date dataAccettazione;
 
 	public Contratto() {
@@ -25,14 +25,6 @@ public class Contratto {
 
 	public void setIdTutoreAziendale(int idTutoreAziendale) {
 		this.idTutoreAziendale = idTutoreAziendale;
-	}
-
-	public int getIdCandidatura() {
-		return idCandidatura;
-	}
-
-	public void setIdCandidatura(int idCandidatura) {
-		this.idCandidatura = idCandidatura;
 	}
 
 	public int getIdUtente() {

@@ -14,7 +14,6 @@
 			column="idTutoreUniversitario"></property>
 		<property name="dataAccettazione" column="dataAccettazione"></property>
 		<property name="idTutoreAziendale" column="idTutoreAziendale"></property>
-		<property name="idCandidatura" column="idCandidatura"></property>
 		<property name="idUtente" column="idUtente"></property>
 	</class>
 </hibernate-mapping> 

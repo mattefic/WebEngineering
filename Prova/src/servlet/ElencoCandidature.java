@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -11,12 +12,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Candidatura;
+import model.Contratto;
+import model.Offerta;
 import security.SecurityLayer;
 
 /**
@@ -75,6 +86,41 @@ public class ElencoCandidature extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Accettare o rifiutare candidatura
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+		int idAzienda = Integer.parseInt((String) httpSession.getAttribute("userid"));
+		int idCandidatura = Integer.parseInt((String) request.getParameter("candidatura"));
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		if (httpSession.getAttribute("tipo").equals("azienda")) {
+			if (request.getParameter("accetta").equals("accetta")) {
+				// Accetta
+				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
+				query.setParameter("idCandidatura", idCandidatura);
+				Candidatura candidatura = (Candidatura) query.uniqueResult();
+				session.delete(candidatura);
+
+				Contratto contratto = new Contratto();
+				//FIXME
+				contratto.setIdTutoreAziendale(candidatura.getIdTutore());
+				contratto.setIdTutoreUniversitario(candidatura.getIdTutore());
+				contratto.setIdUtente(candidatura.getIdUtente());
+				contratto.setDataAccettazione(new Date());
+			} else {
+				// Rifiuta
+				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
+				query.setParameter("idCandidatura", idCandidatura);
+				Candidatura candidatura = (Candidatura) query.uniqueResult();
+				session.delete(candidatura);
+
+			}
+		}
 	}
 
 }
