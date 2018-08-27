@@ -103,7 +103,6 @@ public class PasswordDimenticata extends HttpServlet {
 		query.setParameter("email", email);
 		Utente utente = query.uniqueResult();
 		if (utente.getCodiceFiscale() != null) {
-			// TODO Mandare una mail a email con un token (L'email può essere salvata su un file come esempio)
 			//Genero il token
 			Random r= new Random();
 			int x;
@@ -148,7 +147,7 @@ public class PasswordDimenticata extends HttpServlet {
 		t.commit();
 		session.close();
 		} else {
-			// TODO Notificare che la mail non esiste
+			// TODO Francesco Notificare che la mail non esiste
 		}
 		doGet(request, response);
 	}

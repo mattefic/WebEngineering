@@ -70,7 +70,7 @@ public class PeriodoTirocinio extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Salvare il periodo del tirocinio
+		// TODO Francesco Salvare il periodo del tirocinio
 		doGet(request, response);
 	}
 

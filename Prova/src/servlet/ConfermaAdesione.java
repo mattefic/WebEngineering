@@ -71,7 +71,7 @@ public class ConfermaAdesione extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Confermare adesione
+		//TODO Matteo Confermare adesione
 		doGet(request, response);
 	}
 
