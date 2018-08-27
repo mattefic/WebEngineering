@@ -96,58 +96,7 @@
 											<span class="button">CARICA</span>
 										</div>
 									</td>
-								</tr>
-								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
-								
+								</tr>								
 							</tbody>
 						</table>							
 					</div>

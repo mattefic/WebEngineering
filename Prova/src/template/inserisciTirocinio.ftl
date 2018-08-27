@@ -111,15 +111,15 @@
 											<div class="col-md-6 col-sm-6">
 												<label>Titolo dell'offerta di tirocinio</label>
 												<label class="input mb-10">
-													<input required="" type="text" maxlength="30">
-													<b class="tooltip tooltip-bottom-right">Scrivete il titolo della vostra offerta di tirocinio</b>
+													<input required="" name="titolo" type="text" maxlength="30">
+													<b class="tooltip tooltip-right">Scrivete il titolo della vostra offerta di tirocinio</b>
 												</label>
 											</div>
 
 											<div class="col-md-6 col-sm-6">
 												<label for="register:last_name">Luogo di effettuazione del tirocinio</label>
 												<label class="input mb-10">
-													<input required="" type="text" maxlength="30">
+													<input required="" name="luogo" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il luogo nel quale si svolgerà il tirocinio</b>
 												</label>
 											</div>
@@ -131,7 +131,7 @@
 											<div class="col-md-6 col-sm-6">
 												<label for="register:last_name">Settore di inserimento</label>
 												<label class="input mb-10">
-													<input required="" type="text" maxlength="30">
+													<input required="" name="settore" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il settore al quale verranno assegnati i tirocinanti</b>
 												</label>
 											</div>
@@ -139,7 +139,7 @@
 											<div class="col-md-6 col-sm-6">
 												<label for="register:last_name">Tempi di accesso ai locali aziendali</label>
 												<label class="input mb-10">
-													<input required="" type="text" maxlength="35">
+													<input required="" name="orario" type="text" maxlength="35">
 													<b class="tooltip tooltip-bottom-right">Scrivete i vostri orari di apertura e chiusura</b>
 												</label>
 											</div>
@@ -150,7 +150,7 @@
 											<div class="col-md-6 col-sm-6">
 												<label>Numero mesi tirocinio</label>
 												<label class="input mb-10">
-													<input required="" type="number" maxlength="30">
+													<input required="" name="mesi" type="number" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la durata in mesi del tirocinio</b>
 												</label>
 											</div>
@@ -158,7 +158,7 @@
 											<div class="col-md-6 col-sm-6">
 												<label for="register:last_name">Numero ore tirocinio</label>
 												<label class="input mb-10">
-													<input required="" type="number" maxlength="30">
+													<input required="" name="ore" type="number" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la durata in ore del tirocinio</b>
 												</label>
 											</div>
@@ -169,7 +169,7 @@
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Facilitazioni previste</label>
 												<label class="input mb-10">
-													<input required="" type="text" maxlength="80">
+													<input required="" name="facilitazioni" type="text" maxlength="80">
 													<b class="tooltip tooltip-bottom-right">Scrivete gli eventuali rimborsi spese o altre facilitazioni previste</b>
 												</label>
 											</div>
@@ -180,7 +180,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Descrizione tirocinio</label>
-												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
+												<input required="" name="descrizione" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">
@@ -196,7 +196,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Obiettivi tirocinio</label>
-												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
+												<input required="" name="obiettivi" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">
@@ -212,7 +212,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Modalità tirocinio</label>
-												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
+												<input required="" name="modalità" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">

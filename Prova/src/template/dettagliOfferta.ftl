@@ -101,7 +101,10 @@
 						<div class="col-4">
 						</div>
 						<div class="col-4 text-center">
+						<form>
+						<input type="hidden" value=${offerta.idOfferta}>
 						<button type="button" class="btn btn-primary">ADERISCI</button>
+						</form>
 						</div>
 						<div class="col-4">
 						</div>

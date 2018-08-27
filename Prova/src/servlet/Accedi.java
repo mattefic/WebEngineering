@@ -108,11 +108,11 @@ public class Accedi extends HttpServlet {
 		String userid;
 
 		if (U != null) {
-			userid = U.getCodiceFiscale();
+			userid = String.valueOf(U.getIdUtente());
 			SecurityLayer.createSession(request, email, userid, U.getTipo());
 			response.sendRedirect("Home");
 		} else if (A != null) {
-			userid = A.getCodiceFiscaleIva();
+			userid = String.valueOf(A.getIdAzienda());
 			SecurityLayer.createSession(request, email, userid, "azienda");
 			response.sendRedirect("Home");
 		} else {

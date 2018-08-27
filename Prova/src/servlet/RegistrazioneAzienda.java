@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -130,7 +131,10 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setEmail(request.getParameter("Email"));
 			e1.setPassword(request.getParameter("password"));
 			session.persist(e1);
-			SecurityLayer.createSession(request, request.getParameter("Email"), request.getParameter("CF"), "azienda");
+			Query queryAzienda=session.createQuery("FROM Azienda a WHERE a.email= :email");
+			queryAzienda.setParameter("email", request.getParameter("Email"));
+			Azienda azienda= (Azienda) queryAzienda.uniqueResult();
+			SecurityLayer.createSession(request, request.getParameter("Email"), String.valueOf(azienda.getIdAzienda()), "azienda");
 			response.sendRedirect("Home");
 		}
 		

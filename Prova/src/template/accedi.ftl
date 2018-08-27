@@ -117,8 +117,6 @@
 												<!-- Inform Tip -->                                        
 												<div class="form-tip form-inline pt-20">
 													<a class="no-text-decoration fs-13 block" href="PasswordDimenticata">Password dimenticata?</a>
-													<a class="no-text-decoration fs-13 block ml-30" href="RegistrazioneUtente">Sei registrato come utente?</a>
-													<a class="no-text-decoration fs-13 block ml-30" href="RegistrazioneAzienda">Sei registrato come azienda?</a>
 												</div>
 												
 											</div>

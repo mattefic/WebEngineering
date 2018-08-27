@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO inserire descrizione, settore, titolo, risolvere problema modalità
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,6 +46,7 @@ public class InserisciTirocinio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -80,16 +81,18 @@ public class InserisciTirocinio extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
 			Offerta offerta = new Offerta();
-			offerta.setIdAzienda(Integer.parseInt((String) httpSession.getAttribute("id")));
+			offerta.setIdAzienda(Integer.parseInt((String) httpSession.getAttribute("userid")));
 			offerta.setLuogo(request.getParameter("luogo"));
 			offerta.setMesi(Integer.parseInt((String) request.getParameter("mesi")));
-			offerta.setModalità(request.getParameter("modalità"));
+			//offerta.setModalità(request.getParameter("modalità"));
+			offerta.setModalità("Problema");
 			offerta.setObiettivi(request.getParameter("obiettivi"));
 			offerta.setOrario(request.getParameter("orario"));
-			offerta.setRimborsiFacilitazioni(request.getParameter("luogo"));
+			offerta.setRimborsiFacilitazioni(request.getParameter("facilitazioni"));
 			offerta.setOre(Integer.parseInt((String) request.getParameter("ore")));
 			offerta.setVisibile(true);
 
@@ -105,7 +108,7 @@ public class InserisciTirocinio extends HttpServlet {
 
 			session.persist(offerta);
 			t.commit();
-
+			response.sendRedirect("Home");
 		}
 	}
 

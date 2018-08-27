@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO rendere dinamico ftl e riempirlo
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -62,7 +62,7 @@ public class ElencoCandidature extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/accedi.ftl");
+		Template template = cfg.getTemplate("template/elencoCandidature.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";

@@ -11,7 +11,7 @@
 		<property name="luogo" column="luogo"></property>
 		<property name="orario" column="orario"></property>
 		<property name="obiettivi" column="obiettivi"></property>
-		<property name="modalità" column="modalità"></property>
+		<property name="modalità" column="modalita"></property>
 		<property name="rimborsiFacilitazioni"
 			column="rimborsiFacilitazioni"></property>
 		<property name="idAzienda" column="idAzienda"></property>

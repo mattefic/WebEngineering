@@ -68,8 +68,8 @@ public class DettagliOfferta extends HttpServlet {
 		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = 1");
 		Offerta offerta = (Offerta) query.uniqueResult();
 		input.put("offerta", offerta);
-		Query query2 = session.createQuery(
-				"FROM Azienda a WHERE a.codiceFiscaleIva = " + offerta.getIdAzienda());
+		Query query2 = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
+		query2.setParameter("idAzienda", offerta.getIdAzienda());
 		Azienda azienda = (Azienda) query2.uniqueResult();
 		input.put("azienda", azienda);
 

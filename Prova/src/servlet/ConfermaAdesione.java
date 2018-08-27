@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO da testare appena finito elenco offerte
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,6 +37,7 @@ public class ConfermaAdesione extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO Riempire un campo con i dati dell'offerta selezionata
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
