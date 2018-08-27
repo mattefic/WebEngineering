@@ -130,6 +130,7 @@ public class PasswordDimenticata extends HttpServlet {
 			querycheck.setParameter("token", token);
 			Utente utentecheck = querycheck.uniqueResult();
 			
+			//Ciclo while nel caso in cui mettiamo colonna token.
 			while(utentecheck!=null) {
 				//Rigenero il token
 				token="";
