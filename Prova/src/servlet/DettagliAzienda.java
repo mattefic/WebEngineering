@@ -12,11 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Azienda;
 import security.SecurityLayer;
 
 /**
@@ -39,8 +46,17 @@ public class DettagliAzienda extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//TODO trovare l'azienda
 		response.setContentType("text/html;charset=UTF-8");
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -54,6 +70,12 @@ public class DettagliAzienda extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/dettagliAzienda.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
+
+		Query query = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
+		query.setParameter("idAzienda", request.getParameter("idAzienda"));
+		Azienda azienda = (Azienda) query.uniqueResult();
+		input.put("azienda", azienda);
+
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {
