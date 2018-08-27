@@ -102,8 +102,9 @@ public class PasswordDimenticata extends HttpServlet {
 		Query<Utente> query = session.createQuery("FROM Utente where email = :email");
 		query.setParameter("email", email);
 		Utente utente = query.uniqueResult();
-		if (utente.getCodiceFiscale() != null) {
-			// TODO Mandare una mail a email con un token (L'email può essere salvata su un file come esempio)
+		
+		if (utente != null) {
+					
 			//Genero il token
 			Random r= new Random();
 			int x;
@@ -125,32 +126,56 @@ public class PasswordDimenticata extends HttpServlet {
 				}
 			}
 			
-			System.out.println(token);
+			Query<Utente> querycheck = session.createQuery("FROM Utente where password = :token");
+			querycheck.setParameter("token", token);
+			Utente utentecheck = querycheck.uniqueResult();
 			
-			//Setto il token come password dell'utente
-			utente.setPassword(token);
-			System.out.println(utente.getPassword());
-			//Scrivo email
-			FileWriter w;
-			w=new FileWriter("Password Dimenticata.txt");
-			BufferedWriter b;
-			b=new BufferedWriter (w);
-			b.write("Internship Tutor");
-			b.newLine();
-			b.write("Abbiamo ricevuto la tua richiesta");
-			b.newLine();
-			b.write("I tuoi nuovi dati di accesso sono");
-			b.newLine();
-			b.write("E-mail: " + utente.getEmail());
-			b.newLine();
-			b.write("Password: " + token);
-			b.close();
-		t.commit();
-		session.close();
+			while(utentecheck!=null) {
+				//Rigenero il token
+				token="";
+				for(int i=0; i<18; i++) {
+					x=r.nextInt(3);
+					if(x==0) {
+						c= (char) ((int)'A'+ r.nextInt(26));
+						token= token + c;
+					}
+					else if(x==1) {
+						x=r.nextInt(10);
+						token= token + x;
+					}
+					else {
+						c= (char) ((int)'a' + r.nextInt(26));
+						token= token + c;
+					}
+				}
+				Query<Utente> querycheck2 = session.createQuery("FROM Utente where password = :token");
+				querycheck.setParameter("token", token);
+				utentecheck = querycheck2.uniqueResult();
+			}
+			
+				//Setto il token come password dell'utente
+				utente.setPassword(token);
+
+				//Scrivo email
+				FileWriter w;
+				w=new FileWriter("Password Dimenticata.txt");
+				BufferedWriter b;
+				b=new BufferedWriter (w);
+				b.write("Internship Tutor");
+				b.newLine();
+				b.write("Abbiamo ricevuto la tua richiesta");
+				b.newLine();
+				b.write("I tuoi nuovi dati di accesso sono");
+				b.newLine();
+				b.write("E-mail: " + utente.getEmail());
+				b.newLine();
+				b.write("Password: " + token);
+				b.close();
+				t.commit();
+				session.close();
 		} else {
 			// TODO Notificare che la mail non esiste
 		}
 		doGet(request, response);
 	}
-	
 }
