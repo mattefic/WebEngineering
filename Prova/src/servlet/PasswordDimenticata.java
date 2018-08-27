@@ -1,11 +1,14 @@
 package servlet;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -101,6 +104,49 @@ public class PasswordDimenticata extends HttpServlet {
 		Utente utente = query.uniqueResult();
 		if (utente.getCodiceFiscale() != null) {
 			// TODO Mandare una mail a email con un token (L'email può essere salvata su un file come esempio)
+			//Genero il token
+			Random r= new Random();
+			int x;
+			char c;
+			String token = "";
+			for(int i=0; i<18; i++) {
+				x=r.nextInt(3);
+				if(x==0) {
+					c= (char) ((int)'A'+ r.nextInt(26));
+					token= token + c;
+				}
+				else if(x==1) {
+					x=r.nextInt(10);
+					token= token + x;
+				}
+				else {
+					c= (char) ((int)'a' + r.nextInt(26));
+					token= token + c;
+				}
+			}
+			
+			System.out.println(token);
+			
+			//Setto il token come password dell'utente
+			utente.setPassword(token);
+			System.out.println(utente.getPassword());
+			//Scrivo email
+			FileWriter w;
+			w=new FileWriter("Password Dimenticata.txt");
+			BufferedWriter b;
+			b=new BufferedWriter (w);
+			b.write("Internship Tutor");
+			b.newLine();
+			b.write("Abbiamo ricevuto la tua richiesta");
+			b.newLine();
+			b.write("I tuoi nuovi dati di accesso sono");
+			b.newLine();
+			b.write("E-mail: " + utente.getEmail());
+			b.newLine();
+			b.write("Password: " + token);
+			b.close();
+		t.commit();
+		session.close();
 		} else {
 			// TODO Notificare che la mail non esiste
 		}
