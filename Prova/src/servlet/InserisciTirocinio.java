@@ -80,7 +80,6 @@ public class InserisciTirocinio extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Programmare inserimento Offerta (Non testato ancora)
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
 			Offerta offerta = new Offerta();

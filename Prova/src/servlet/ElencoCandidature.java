@@ -85,7 +85,6 @@ public class ElencoCandidature extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Accettare o rifiutare candidatura
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 		int idAzienda = Integer.parseInt((String) httpSession.getAttribute("userid"));
 		int idCandidatura = Integer.parseInt((String) request.getParameter("candidatura"));
@@ -104,14 +103,21 @@ public class ElencoCandidature extends HttpServlet {
 				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
-				session.delete(candidatura);
-
-				Contratto contratto = new Contratto();
-				//FIXME
-				contratto.setIdTutoreAziendale(candidatura.getIdTutore());
-				contratto.setIdTutoreUniversitario(candidatura.getIdTutore());
-				contratto.setIdUtente(candidatura.getIdUtente());
-				contratto.setDataAccettazione(new Date());
+				int idOfferta = candidatura.getIdOfferta();
+				Query queryOfferta = session
+						.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
+				queryOfferta.setParameter("idAzienda", httpSession.getAttribute("iduser"));
+				queryOfferta.setParameter("idOfferta", idOfferta);
+				Offerta offerta = (Offerta) queryOfferta.uniqueResult();
+				if (offerta != null) {
+					session.delete(candidatura);
+					Contratto contratto = new Contratto();
+					contratto.setIdOfferta(offerta.getIdOfferta());
+					contratto.setIdTutoreAziendale(candidatura.getIdTutore());
+					contratto.setIdTutoreUniversitario(candidatura.getIdTutore());
+					contratto.setIdUtente(candidatura.getIdUtente());
+					contratto.setDataAccettazione(new Date());
+				}
 			} else {
 				// Rifiuta
 				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
