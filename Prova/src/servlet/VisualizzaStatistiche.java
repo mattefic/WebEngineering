@@ -1,42 +1,43 @@
 package servlet;
-//TODO Francesco dinamicizza ftl
-//TODO Lorenzo aggiungere bottone di conferma caricamento
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Offerta;
 import security.SecurityLayer;
 
 /**
- * Servlet implementation class CaricaConvenzioni
+ * Servlet implementation class VisualizzaStatistiche
  */
-@WebServlet("/CaricaConvenzioni")
-public class CaricaConvenzioni extends HttpServlet {
+@WebServlet("/VisualizzaStatistiche")
+public class VisualizzaStatistiche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CaricaConvenzioni() {
+	public VisualizzaStatistiche() {
 		super();
 	}
 
@@ -46,6 +47,7 @@ public class CaricaConvenzioni extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Recuperare i diversi tipi di statistica e dinamicizzare l'ftl
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -58,7 +60,7 @@ public class CaricaConvenzioni extends HttpServlet {
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/caricaConvenzioni.ftl");
+		Template template = cfg.getTemplate("template/visualizzaStatistiche.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
@@ -68,6 +70,20 @@ public class CaricaConvenzioni extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			new HibernateSettings();
+			sessionFactory = HibernateSettings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		//TODO Fare query diverse + input.put delle liste ottenute
+		Query query = session.createQuery("");
+		List<Offerta> offerta = (List<Offerta>) query.getResultList();
+		input.put("offerta", offerta);
+		t.commit();
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
@@ -82,15 +98,7 @@ public class CaricaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = SecurityLayer.checkSession(request);
-		if (session.getAttribute("tipo").equals("admin")) {
-			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda") + ".pdf");
-			FileWriter fw = new FileWriter(file);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(request.getParameter("file"));
-			bw.close();
-			fw.close();
-		}
+		doGet(request, response);
 	}
 
 }
