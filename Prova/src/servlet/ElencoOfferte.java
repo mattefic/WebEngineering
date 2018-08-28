@@ -1,5 +1,6 @@
 package servlet;
-//TODO Matteo Questo è tosto, trovare un metodo per stampare le offerte e l'azienda ad essa collegata
+
+//TODO Matteo Fare il fottuto JOIN
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Offerta;
 import security.SecurityLayer;
 
@@ -50,30 +52,31 @@ public class ElencoOfferte extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
 			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-	Transaction t = session.beginTransaction();
+		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 
-		//Query query = session.createQuery("FROM Offerta");
 		Query query = session.createQuery("FROM Offerta");
+		Query queryAzienda = session.createQuery("FROM Azienda");
 		List<Object> offerte = query.list();
+		Azienda azienda = (Azienda) queryAzienda.uniqueResult();
 		for (Iterator iterator = offerte.iterator(); iterator.hasNext();) {
 			Offerta offerta = (Offerta) iterator.next();
+			offerta.setAzienda(azienda);
 		}
 		input.put("offerte", offerte);
 
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
