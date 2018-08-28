@@ -70,12 +70,12 @@ public class DettagliAzienda extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/dettagliAzienda.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
-
+		
 		Query query = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
 		query.setParameter("idAzienda", request.getParameter("idAzienda"));
 		Azienda azienda = (Azienda) query.uniqueResult();
 		input.put("azienda", azienda);
-
+		
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {

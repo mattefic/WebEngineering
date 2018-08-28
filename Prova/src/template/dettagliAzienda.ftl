@@ -82,23 +82,23 @@
 						<div class="col-4">
 						</div>
 						<div class="heading-title heading-border heading-color col-4" style="word-wrap: break-word;">
-							<p><h5>RAGIONE SOCIALE:</h5>Gunpowder S.r.l.</p>
+							<p><h5>RAGIONE SOCIALE:</h5>${azienda.ragioneSocialeNome}</p>
 							<br>
-							<p><h5>PARTITA IVA:</h5>03297040366.</p>
+							<p><h5>PARTITA IVA:</h5>${azienda.codiceFiscaleIva}</p>
 							<br>
-							<p><h5>INDIRIZZO SEDE LEGALE:</h5>Via Turati 13.</p>
+							<p><h5>INDIRIZZO SEDE LEGALE:</h5>${azienda.indirizzo}</p>
 							<br>
-							<p><h5>FORO COMPETENTE:</h5>L'Aquila.</p>
+							<p><h5>FORO COMPETENTE:</h5>${azienda.foro}</p>
 							<br>
-							<p><h5>LEGALE RAPPRESENTANTE:</h5>Giovanni Rana.</p>
+							<p><h5>LEGALE RAPPRESENTANTE:</h5>${azienda.nomeLegale} ${azienda.cognomeLegale}</p>
 							<br>
-							<p><h5>TUTOR AZIENDALE:</h5>Mario Rossi.</p>
+							<p><h5>TUTOR AZIENDALE:</h5>${azienda.nomeRespTirocinio} ${azienda.cognomeRespTirocinio}</p>
 							<br>
-							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>3456790890.</p>
+							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>${azienda.telefonoRespTirocionio}</p>
 							<br>
-							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="mariorossi@outlook.com">mariorossi@outlook.com.</a></p>
+							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="${azienda.emailRespTirocinio}">${azienda.emailRespTirocinio}</a></p>
 							<br>
-							<p><h5>CONVENZIONE:</h5><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>.</p>
+							<p><h5>CONVENZIONE:</h5><a href="${azienda.convenzione}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
 							<br>
 							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
 								<span class="fa fa-star checked"></span>
