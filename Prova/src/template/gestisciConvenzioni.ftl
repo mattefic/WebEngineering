@@ -71,11 +71,11 @@
 			<!-- SEARCH -->
 					
 			<div class="container">
-				
+				<#list aziende as azienda>
 				<div class="box-static box-border-top mt-50 ml-30 mr-30 p-30">
 
 					<div class="box-title mb-30">
-						<h2 class="fs-20">Gunpowder S.r.l.</h2>
+						<h2 class="fs-20">${azienda.ragioneSocialeNome}</h2>
 					</div>
 					
 					<form class="m-0 sky-form" action="#" method="post">
@@ -87,8 +87,7 @@
 									<label>Ragione sociale</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
-									<b class="tooltip tooltip-bottom-right">Scrivete la vostra ragione sociale</b>
+									<input required="" type="text" maxlength="30" value="${azienda.ragioneSocialeNome}" disabled>
 									</label>
 								</div>
 
@@ -96,7 +95,7 @@
 									<label for="register:last_name">Partita IVA</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="11" disabled>
+									<input required="" type="text" maxlength="11" value="${azienda.codiceFiscaleIva}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete la vostra partita IVA</b>
 									</label>
 								</div>
@@ -105,7 +104,7 @@
 									<label for="register:last_name">Indirizzo sede legale</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.indirizzo}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete l'indirizzo della vostra sede legale</b>
 									</label>
 								</div>
@@ -114,7 +113,7 @@
 									<label for="register:last_name">Foro competente</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.foro}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete la città alla cui sede giudiziaria le parti dovranno rivolgersi in caso di disputa legale</b>
 									</label>
 								</div>
@@ -126,7 +125,7 @@
 									<label>Nome legale rappresentante</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.nomeLegale}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete il nome del vostro legale rappresentante</b>
 									</label>
 								</div>
@@ -135,7 +134,7 @@
 									<label for="register:last_name">Cognome legale rappresentante</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.cognomeLegale}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete il cognome del vostro legale rappresentante</b>
 									</label>
 								</div>
@@ -144,7 +143,7 @@
 									<label>Nome responsabile convenzione tirocini</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.nomeRespTirocinio}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete il nome del vostro responsabile della convenzione per i tirocini</b>
 									</label>
 								</div>
@@ -153,7 +152,7 @@
 									<label for="register:last_name">Cognome responsabile convenzione tirocini</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-user"></i>
-									<input required="" type="text" maxlength="30" disabled>
+									<input required="" type="text" maxlength="30" value="${azienda.cognomeRespTirocinio}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete il cognome del vostro responsabile della convenzione per i tirocini</b>
 									</label>
 								</div>
@@ -166,7 +165,7 @@
 									<label for="register:last_name">Email responsabile convenzione tirocini</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-envelope"></i>
-									<input required="" type="email" maxlength="40" disabled>
+									<input required="" type="email" maxlength="40" value="${azienda.emailRespTirocinio}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete l'email del vostro responsabile della convenzione per i tirocini</b>
 									</label>
 								</div>
@@ -175,14 +174,21 @@
 									<label for="register:phone">Telefono responsabile convenzione tirocini</label>
 									<label class="input mb-10">
 									<i class="ico-append fa fa-phone"></i>
-									<input required="" type="tel" maxlength="30" disabled>
+									<input required="" type="tel" maxlength="30" value="${azienda.telefonoRespTirocinio}" disabled>
 									<b class="tooltip tooltip-bottom-right">Scrivete il numero di telefono del vostro responsabile della convenzione per i tirocini</b>
 									</label>
 								</div>
-												
+								
+											
 								<div class="mt-30 col-md-3 col-sm-3">
-									<button class="btn btn-danger float-right"><i class="fa fa-close"></i> RIFIUTA</button>
-									<button class="btn btn-primary float-right"><i class="fa fa-check"></i> ACCETTA</button>
+									<form class="m-0 sky-form" action="#" method="post">
+									<input  type="hidden" name="rifiuta" value=${azienda.idAzienda}>	
+									<button type="submit" class="btn btn-danger float-right"><i class="fa fa-close"></i> RIFIUTA</button>
+									</form>
+									<form class="m-0 sky-form" action="#" method="post">
+									<input  type="hidden" name="accetta" value=${azienda.idAzienda}>	
+									<button type="submit" class="btn btn-primary float-right"><i class="fa fa-check"></i> ACCETTA</button>
+									</form>
 								</div>
 							</div>
 										
@@ -190,7 +196,7 @@
 
 					</form>
 				</div>
-				
+				</#list>
 				<br>
 				
 			</div>

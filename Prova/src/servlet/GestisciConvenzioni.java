@@ -1,5 +1,5 @@
 package servlet;
-//TODO Francesco rendere dinamico ftl
+//TODO Fixare Accetta/Rifiuta
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -119,14 +119,21 @@ public class GestisciConvenzioni extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		if (tipo.equals("admin")) {
-			Query query = session
-					.createQuery("update Stock set convenzionata = 1" + " where codiceFiscaleIva = :codiceFiscaleIva");
-			query.setParameter("codiceFiscaleIva", request.getParameter("idAzienda"));
-			query.executeUpdate();
+		if (tipo.equals("admin") && request.getParameter("accetta")!=null) {
+			System.out.println(request.getParameter("accetta"));
+			String hql ="UPDATE Azienda set convenzionata = 1 " + "WHERE idAzienda = :idAzienda";
+			Query query = session.createQuery(hql);
+			query.setParameter("idAzienda", request.getParameter("accetta"));
+			int result = query.executeUpdate();
+		}
+		else {
+			System.out.println(request.getParameter("rifiuta"));
+			String hql = "DELETE FROM Azienda "  + "WHERE idAzienda = :idAzienda";
+			Query query = session.createQuery(hql);
+			query.setParameter("idAzienda", request.getParameter("rifiuta"));
+			int result = query.executeUpdate();
 		}
 		t.commit();
-
 		response.sendRedirect("GestisciConvenzioni");
 	}
 }
