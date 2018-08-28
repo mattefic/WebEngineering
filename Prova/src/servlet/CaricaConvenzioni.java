@@ -1,5 +1,4 @@
 package servlet;
-//TODO Francesco dinamicizza ftl
 //TODO Lorenzo aggiungere bottone di conferma caricamento
 import java.io.BufferedWriter;
 import java.io.File;
