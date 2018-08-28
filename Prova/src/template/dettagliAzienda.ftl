@@ -94,11 +94,11 @@
 							<br>
 							<p><h5>TUTOR AZIENDALE:</h5>${azienda.nomeRespTirocinio} ${azienda.cognomeRespTirocinio}</p>
 							<br>
-							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>${azienda.telefonoRespTirocionio}</p>
+							<p><h5>TELEFONO TUTOR AZIENDALE:</h5>${azienda.telefonoRespTirocinio}</p>
 							<br>
 							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="${azienda.emailRespTirocinio}">${azienda.emailRespTirocinio}</a></p>
 							<br>
-							<p><h5>CONVENZIONE:</h5><a href="${azienda.convenzione}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
+							<p><h5>CONVENZIONE:</h5><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
 							<br>
 							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
 								<span class="fa fa-star checked"></span>

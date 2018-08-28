@@ -86,9 +86,9 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+								<#list aziende as azienda>
 								<tr>
-									<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+									<td><a class="puntatore" href="DettagliAzienda">${azienda.ragioneSocialeNome}</a></td>
 									<td>
 										<div class="fancy-file-upload fancy-file-primary">
 											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
@@ -96,7 +96,8 @@
 											<span class="button">CARICA</span>
 										</div>
 									</td>
-								</tr>								
+								</tr>
+								</#list>								
 							</tbody>
 						</table>							
 					</div>
