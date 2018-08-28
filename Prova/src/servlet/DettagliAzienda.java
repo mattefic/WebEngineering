@@ -1,5 +1,4 @@
 package servlet;
-//TODO Francesco aggiustare dinamicità nell'ftl
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
