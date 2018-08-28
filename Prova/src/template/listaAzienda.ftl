@@ -131,7 +131,7 @@
 							<tbody>
 							<#list aziende as azienda>
 								<tr>
-									<td><a class="puntatore" href="DettagliAzienda">${azienda.ragioneSocialeNome}</a></td>
+									<td><a class="puntatore" href="DettagliAzienda?idAzienda=${azienda.idAzienda}">${azienda.ragioneSocialeNome}</a></td>
 									<td>${azienda.indirizzo}</td>
 									<td>${azienda.codiceFiscaleIva}</td>
 									<td>${azienda.nomeLegale} ${azienda.cognomeLegale}</td>

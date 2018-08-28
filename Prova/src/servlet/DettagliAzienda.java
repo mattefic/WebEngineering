@@ -1,4 +1,5 @@
 package servlet;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -69,12 +70,13 @@ public class DettagliAzienda extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/dettagliAzienda.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
-		
+		int idAzienda;
+		idAzienda = Integer.parseInt(request.getParameter("idAzienda"));
 		Query query = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
-		query.setParameter("idAzienda", request.getParameter("idAzienda"));
+		query.setParameter("idAzienda", idAzienda);
 		Azienda azienda = (Azienda) query.uniqueResult();
 		input.put("azienda", azienda);
-		
+
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {
