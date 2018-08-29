@@ -1,5 +1,5 @@
 package servlet;
-//TODO Fixare Accetta/Rifiuta
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -119,18 +119,15 @@ public class GestisciConvenzioni extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		if (tipo.equals("admin") && request.getParameter("accetta")!=null) {
+		if (tipo.equals("admin") && request.getParameter("accetta") != null) {
 			System.out.println(request.getParameter("accetta"));
-			String hql ="UPDATE Azienda set convenzionata = 1 " + "WHERE idAzienda = :idAzienda";
-			Query query = session.createQuery(hql);
-			query.setParameter("idAzienda", request.getParameter("accetta"));
-			int result = query.executeUpdate();
-		}
-		else {
+			Query query = session.createQuery("UPDATE Azienda set convenzionata = 1 WHERE idAzienda = :idAzienda");
+			query.setParameter("idAzienda", Integer.parseInt(request.getParameter("accetta")));
+			query.executeUpdate();
+		} else {
 			System.out.println(request.getParameter("rifiuta"));
-			String hql = "DELETE FROM Azienda "  + "WHERE idAzienda = :idAzienda";
-			Query query = session.createQuery(hql);
-			query.setParameter("idAzienda", request.getParameter("rifiuta"));
+			Query query = session.createQuery("DELETE FROM Azienda " + "WHERE idAzienda = :idAzienda");
+			query.setParameter("idAzienda", Integer.parseInt(request.getParameter("rifiuta")));
 			int result = query.executeUpdate();
 		}
 		t.commit();

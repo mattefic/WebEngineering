@@ -3,8 +3,6 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "azienda")
 public class Azienda {
 
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,

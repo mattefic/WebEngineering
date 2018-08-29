@@ -65,7 +65,7 @@ public class ElencoOfferte extends HttpServlet {
 		Query query = session.createQuery("FROM Offerta");
 		Query queryAzienda = session.createQuery("FROM Azienda");
 		List<Object> offerte = query.list();
-		Azienda azienda = (Azienda) queryAzienda.uniqueResult();
+		Azienda azienda = (Azienda) queryAzienda.getResultList().get(0);
 		for (Iterator iterator = offerte.iterator(); iterator.hasNext();) {
 			Offerta offerta = (Offerta) iterator.next();
 			offerta.setAzienda(azienda);
