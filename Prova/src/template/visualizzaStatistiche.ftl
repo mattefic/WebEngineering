@@ -135,23 +135,13 @@
 											</tr>
 										</thead>
 										<tbody>
-										
+											<#list aziendeTirocinanti as azienda>
 											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>3</td>
+												<td><a class="puntatore" href="DettagliAzienda?idAzienda=${azienda.idAzienda}">${azienda.ragioneSocialeNome}</a></td>
+												<td>${azienda.numTirocinanti}</td>
 											</tr>
-											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>3</td>
-											</tr>
-											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>3</td>
-											</tr>
-											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>3</td>
-											</tr>
+											</#list>
+											
 										</tbody>
 									</table>							
 								</div>

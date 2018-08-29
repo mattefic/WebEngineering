@@ -101,11 +101,11 @@
 							<p><h5>CONVENZIONE:</h5><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
 							<br>
 							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>.
+								<span class="fa fa-star <#if azienda.valutazione gte 1>checked</#if>"></span>
+								<span class="fa fa-star <#if azienda.valutazione gte 2>checked</#if>"></span>
+								<span class="fa fa-star <#if azienda.valutazione gte 3>checked</#if>"></span>
+								<span class="fa fa-star <#if azienda.valutazione gte 4>checked</#if>"></span>
+								<span class="fa fa-star <#if azienda.valutazione gte 5>checked</#if>"></span>
 							</p>
 						</div>
 						<div class="col-4">

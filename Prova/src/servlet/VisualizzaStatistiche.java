@@ -49,7 +49,6 @@ public class VisualizzaStatistiche extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Recuperare i diversi tipi di statistica e dinamicizzare l'ftl
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -81,13 +80,14 @@ public class VisualizzaStatistiche extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		//TODO Fare query diverse + input.put delle liste ottenute
 		//Tutor più richiesti
 		Query queryTutori = session.createQuery("FROM TutoreUniversitario ORDER BY numRichieste DESC");
 		List<TutoreUniversitario> tutori = (List<TutoreUniversitario>) queryTutori.getResultList();
 		input.put("tutori", tutori);	
 		//Aziende con più tirocinanti
-		//Query queryTirocinanti = session.createQuery("FROM Azienda")
+		Query queryTirocinanti = session.createQuery("FROM Azienda ORDER BY numTirocinanti DESC");
+		List<Azienda> aziendeTirocinanti = (List<Azienda>) queryTirocinanti.getResultList();	
+		input.put("aziendeTirocinanti", aziendeTirocinanti);
 		//Aziende con valutazioni migliori
 		Query queryValutazione = session.createQuery("FROM Azienda ORDER BY valutazione DESC");
 		List<Azienda> aziende = (List<Azienda>) queryValutazione.getResultList();	

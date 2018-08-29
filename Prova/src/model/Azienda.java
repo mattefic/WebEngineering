@@ -9,7 +9,7 @@ public class Azienda {
 			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password;
 	private boolean convenzionata;
 	private int idAzienda, valutazione; //da 1 a 5
-
+	private int numTirocinanti;
 	public Azienda() {
 
 	}
@@ -140,6 +140,14 @@ public class Azienda {
 
 	public void setValutazione(int valutazione) {
 		this.valutazione = valutazione;
+	}
+
+	public int getNumTirocinanti() {
+		return numTirocinanti;
+	}
+
+	public void setNumTirocinanti(int numTirocinanti) {
+		this.numTirocinanti = numTirocinanti;
 	}
 
 }
