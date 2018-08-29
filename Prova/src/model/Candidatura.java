@@ -5,8 +5,11 @@ import java.util.Date;
 public class Candidatura {
 
 	private int idCandidatura, idOfferta, idTutore, idUtente, cfu;
-	private String  stato;
+	private String stato;
 	private Date dataCanditatura;
+
+	private Offerta offerta;
+	private Utente utente;
 	// stato è {approvata,attesa,respinta}
 
 	public Candidatura() {
@@ -67,6 +70,22 @@ public class Candidatura {
 
 	public void setCfu(int cfu) {
 		this.cfu = cfu;
+	}
+
+	public Offerta getOfferta() {
+		return offerta;
+	}
+
+	public void setOfferta(Offerta offerta) {
+		this.offerta = offerta;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
 
 }

@@ -1,8 +1,11 @@
 package servlet;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -27,6 +30,7 @@ import hibernate.HibernateSettings;
 import model.Candidatura;
 import model.Contratto;
 import model.Offerta;
+import model.TutoreUniversitario;
 import security.SecurityLayer;
 
 /**
@@ -49,7 +53,7 @@ public class ElencoCandidature extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//TODO Ricavare elenco candidature per l'azienda
+		// TODO Ricavare elenco candidature per l'azienda
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -72,6 +76,29 @@ public class ElencoCandidature extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		Query query = session.createQuery("FROM Candidatura");
+		List<Candidatura> candidature = query.list();
+		query = session.createQuery("FROM Offerta");
+		List<Offerta> offerte = query.list();
+		for (Candidatura candidatura : candidature) {
+			for (Offerta offerta : offerte) {
+				if (candidatura.getIdOfferta() == offerta.getIdOfferta()) {
+					offerta.getCandidature().add(candidatura);
+				}
+			}
+		}
+		input.put("offerte", offerte);
+		t.commit();
+
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
@@ -104,7 +131,8 @@ public class ElencoCandidature extends HttpServlet {
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
 				int idOfferta = candidatura.getIdOfferta();
-				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
+				Query queryOfferta = session
+						.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
 				queryOfferta.setParameter("idAzienda", httpSession.getAttribute("iduser"));
 				queryOfferta.setParameter("idOfferta", idOfferta);
 				Offerta offerta = (Offerta) queryOfferta.uniqueResult();

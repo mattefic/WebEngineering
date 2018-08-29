@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Ago 29, 2018 alle 16:39
--- Versione del server: 10.1.25-MariaDB
--- Versione PHP: 7.1.7
+-- Host: 127.0.0.1:3306
+-- Creato il: Ago 29, 2018 alle 20:11
+-- Versione del server: 5.7.21
+-- Versione PHP: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `azienda`
 --
 
-CREATE TABLE `azienda` (
-  `idAzienda` int(16) NOT NULL,
+DROP TABLE IF EXISTS `azienda`;
+CREATE TABLE IF NOT EXISTS `azienda` (
+  `idAzienda` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `partitaIVACodiceFiscale` char(11) NOT NULL,
   `ragioneSocialeNome` varchar(30) NOT NULL,
   `indirizzo` varchar(45) NOT NULL,
@@ -45,8 +46,9 @@ CREATE TABLE `azienda` (
   `email` varchar(20) NOT NULL,
   `password` varchar(18) NOT NULL,
   `valutazione` decimal(2,1) DEFAULT NULL,
-  `numTirocinanti` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `numTirocinanti` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idAzienda`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `azienda`
@@ -59,18 +61,32 @@ INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNo
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `canditatura`
+-- Struttura della tabella `candidatura`
 --
 
-CREATE TABLE `canditatura` (
-  `idCandidatura` int(11) NOT NULL,
-  `idOfferta` int(11) NOT NULL,
-  `idUtente` int(16) NOT NULL,
+DROP TABLE IF EXISTS `candidatura`;
+CREATE TABLE IF NOT EXISTS `candidatura` (
+  `idCandidatura` int(11) NOT NULL AUTO_INCREMENT,
+  `idOfferta` int(11) UNSIGNED NOT NULL,
+  `idUtente` int(11) NOT NULL,
   `idTutore` int(11) NOT NULL,
   `stato` varchar(16) NOT NULL,
   `dataCandidatura` date NOT NULL,
-  `cfu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `cfu` int(11) NOT NULL,
+  `dataCanditatura` datetime DEFAULT NULL,
+  PRIMARY KEY (`idCandidatura`) USING BTREE,
+  KEY `FKr6qi386sf4higxiwdd26pwbtc` (`idUtente`),
+  KEY `FK6c7e7h8akx33rp7kbejn5am7f` (`idOfferta`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `candidatura`
+--
+
+INSERT INTO `candidatura` (`idCandidatura`, `idOfferta`, `idUtente`, `idTutore`, `stato`, `dataCandidatura`, `cfu`, `dataCanditatura`) VALUES
+(1, 1, 1, 1, '\"attiva\"', '2018-08-07', 6, NULL),
+(2, 1, 3, 1, '\"attiva\"', '2018-08-07', 6, NULL),
+(3, 1, 3, 1, '\"attiva\"', '2018-08-07', 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -78,15 +94,20 @@ CREATE TABLE `canditatura` (
 -- Struttura della tabella `contratto`
 --
 
-CREATE TABLE `contratto` (
-  `idContratto` int(11) NOT NULL,
+DROP TABLE IF EXISTS `contratto`;
+CREATE TABLE IF NOT EXISTS `contratto` (
+  `idContratto` int(11) NOT NULL AUTO_INCREMENT,
   `idTutoreAziendale` int(11) NOT NULL,
   `idOfferta` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idTutoreUniversitario` int(11) NOT NULL,
   `dataAccettazione` date NOT NULL,
   `dataInizio` date NOT NULL,
-  `dataFine` date NOT NULL
+  `dataFine` date NOT NULL,
+  PRIMARY KEY (`idTutoreAziendale`,`idOfferta`,`idUtente`,`idTutoreUniversitario`),
+  KEY `fk_Contratto_Tutore_Aziendale1_idx` (`idTutoreAziendale`),
+  KEY `fk_Contratto_Canditatura1_idx` (`idOfferta`,`idUtente`,`idTutoreUniversitario`),
+  KEY `idContratto` (`idContratto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -95,8 +116,9 @@ CREATE TABLE `contratto` (
 -- Struttura della tabella `offerta`
 --
 
-CREATE TABLE `offerta` (
-  `idOfferta` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `offerta`;
+CREATE TABLE IF NOT EXISTS `offerta` (
+  `idOfferta` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `titolo` varchar(100) NOT NULL,
   `settore` varchar(100) NOT NULL,
@@ -109,15 +131,18 @@ CREATE TABLE `offerta` (
   `modalita` varchar(200) NOT NULL,
   `visibile` tinyint(4) NOT NULL,
   `idAzienda` int(11) UNSIGNED NOT NULL,
-  `rimborsiFacilitazioni` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `rimborsiFacilitazioni` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idOfferta`) USING BTREE,
+  KEY `FKnr1ximr4wh8aae2sf481wskpl` (`idAzienda`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `offerta`
 --
 
 INSERT INTO `offerta` (`idOfferta`, `data`, `titolo`, `settore`, `descrizione`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalita`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
-(1, '2018-08-29', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 9, 120, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il Lunedì, il Martedì e il Mercoledì mattina', 1, 1, 'Rimborso spese');
+(1, '2018-08-29', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 9, 120, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il Lunedì, il Martedì e il Mercoledì mattina', 1, 2, 'Rimborso spese'),
+(3, '2018-08-29', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 9, 120, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il Lunedì, il Martedì e il Mercoledì mattina', 1, 2, 'Rimborso spese');
 
 -- --------------------------------------------------------
 
@@ -125,12 +150,15 @@ INSERT INTO `offerta` (`idOfferta`, `data`, `titolo`, `settore`, `descrizione`, 
 -- Struttura della tabella `tutore_aziendale`
 --
 
-CREATE TABLE `tutore_aziendale` (
-  `idTutore` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tutore_aziendale`;
+CREATE TABLE IF NOT EXISTS `tutore_aziendale` (
+  `idTutore` int(11) NOT NULL AUTO_INCREMENT,
   `idAzienda` int(11) UNSIGNED NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `telefono` varchar(15) NOT NULL
+  `telefono` varchar(15) NOT NULL,
+  PRIMARY KEY (`idAzienda`),
+  KEY `idTutore` (`idTutore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -139,12 +167,14 @@ CREATE TABLE `tutore_aziendale` (
 -- Struttura della tabella `tutore_universitario`
 --
 
-CREATE TABLE `tutore_universitario` (
+DROP TABLE IF EXISTS `tutore_universitario`;
+CREATE TABLE IF NOT EXISTS `tutore_universitario` (
   `idTutore` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
   `telefono` int(11) DEFAULT NULL,
-  `numRichieste` int(11) DEFAULT NULL
+  `numRichieste` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idTutore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -153,8 +183,9 @@ CREATE TABLE `tutore_universitario` (
 -- Struttura della tabella `utente`
 --
 
-CREATE TABLE `utente` (
-  `idUtente` int(11) NOT NULL,
+DROP TABLE IF EXISTS `utente`;
+CREATE TABLE IF NOT EXISTS `utente` (
+  `idUtente` int(11) NOT NULL AUTO_INCREMENT,
   `codiceFiscale` char(16) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
@@ -166,8 +197,9 @@ CREATE TABLE `utente` (
   `handicap` tinyint(4) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(18) NOT NULL,
-  `tipo` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tipo` varchar(16) NOT NULL,
+  PRIMARY KEY (`idUtente`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -178,93 +210,22 @@ INSERT INTO `utente` (`idUtente`, `codiceFiscale`, `nome`, `cognome`, `dataNasci
 (3, 'GSTFNC95P02H779D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Castel di Lama', '3466318898', 'informatica', 0, 'supercesco@gmail.com', '1234', 'admin');
 
 --
--- Indici per le tabelle scaricate
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Indici per le tabelle `azienda`
+-- Limiti per la tabella `candidatura`
 --
-ALTER TABLE `azienda`
-  ADD PRIMARY KEY (`partitaIVACodiceFiscale`),
-  ADD KEY `IdAzienda` (`idAzienda`);
+ALTER TABLE `candidatura`
+  ADD CONSTRAINT `FK6c7e7h8akx33rp7kbejn5am7f` FOREIGN KEY (`idOfferta`) REFERENCES `offerta` (`idOfferta`),
+  ADD CONSTRAINT `FKr6qi386sf4higxiwdd26pwbtc` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`);
 
 --
--- Indici per le tabelle `canditatura`
---
-ALTER TABLE `canditatura`
-  ADD PRIMARY KEY (`idOfferta`,`idUtente`,`idTutore`),
-  ADD KEY `idCandidatura` (`idCandidatura`);
-
---
--- Indici per le tabelle `contratto`
---
-ALTER TABLE `contratto`
-  ADD PRIMARY KEY (`idTutoreAziendale`,`idOfferta`,`idUtente`,`idTutoreUniversitario`),
-  ADD KEY `fk_Contratto_Tutore_Aziendale1_idx` (`idTutoreAziendale`),
-  ADD KEY `fk_Contratto_Canditatura1_idx` (`idOfferta`,`idUtente`,`idTutoreUniversitario`),
-  ADD KEY `idContratto` (`idContratto`);
-
---
--- Indici per le tabelle `offerta`
+-- Limiti per la tabella `offerta`
 --
 ALTER TABLE `offerta`
-  ADD PRIMARY KEY (`idOfferta`,`idAzienda`),
-  ADD KEY `fk_Offerta_Azienda_idx` (`idAzienda`);
-
---
--- Indici per le tabelle `tutore_aziendale`
---
-ALTER TABLE `tutore_aziendale`
-  ADD PRIMARY KEY (`idAzienda`),
-  ADD KEY `idTutore` (`idTutore`);
-
---
--- Indici per le tabelle `tutore_universitario`
---
-ALTER TABLE `tutore_universitario`
-  ADD PRIMARY KEY (`idTutore`);
-
---
--- Indici per le tabelle `utente`
---
-ALTER TABLE `utente`
-  ADD PRIMARY KEY (`codiceFiscale`),
-  ADD KEY `idUtente` (`idUtente`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
---
-
---
--- AUTO_INCREMENT per la tabella `azienda`
---
-ALTER TABLE `azienda`
-  MODIFY `idAzienda` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT per la tabella `canditatura`
---
-ALTER TABLE `canditatura`
-  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT per la tabella `contratto`
---
-ALTER TABLE `contratto`
-  MODIFY `idContratto` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT per la tabella `offerta`
---
-ALTER TABLE `offerta`
-  MODIFY `idOfferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT per la tabella `tutore_aziendale`
---
-ALTER TABLE `tutore_aziendale`
-  MODIFY `idTutore` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT per la tabella `utente`
---
-ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  ADD CONSTRAINT `FKnr1ximr4wh8aae2sf481wskpl` FOREIGN KEY (`idAzienda`) REFERENCES `azienda` (`idAzienda`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

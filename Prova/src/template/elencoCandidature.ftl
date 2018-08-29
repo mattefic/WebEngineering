@@ -105,13 +105,13 @@
 									</div>				
 								</div>
 							</div>
-							</#list>
+							
 						</div>
 						
 						<div class="tab-pane fade" id="profile" role="tabpanel">
 							
 							<div class="form-inline">
-							<#list candidature as candidatura>
+							<#list offerta.candidature as candidatura>
 								<div class="col-md-3">
 									<div class="box-static box-border-top">
 										<div class="box-title">
@@ -131,6 +131,7 @@
 										</div>
 									</div>								
 								</div>		
+							</#list>
 							</#list>				
 							</div>
 							

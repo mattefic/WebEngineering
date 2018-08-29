@@ -1,11 +1,11 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 public class Offerta {
 
@@ -14,6 +14,7 @@ public class Offerta {
 	private boolean visibile;
 	private Date dataPub;
 	private Azienda azienda;
+	private List<Candidatura> candidature = new ArrayList<Candidatura>();
 
 	public Offerta() {
 
@@ -139,4 +140,11 @@ public class Offerta {
 		this.dataPub = dataPub;
 	}
 
+	public List<Candidatura> getCandidature() {
+		return candidature;
+	}
+
+	public void setCandidature(List<Candidatura> candidature) {
+		this.candidature = candidature;
+	}
 }
