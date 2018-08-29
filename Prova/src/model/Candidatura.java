@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Candidatura {
 
-	private int idCandidatura, idOfferta, idTutore, idUtente;
+	private int idCandidatura, idOfferta, idTutore, idUtente, cfu;
 	private String  stato;
 	private Date dataCanditatura;
 	// stato è {approvata,attesa,respinta}
@@ -59,6 +59,14 @@ public class Candidatura {
 
 	public void setIdCandidatura(int idCandidatura) {
 		this.idCandidatura = idCandidatura;
+	}
+
+	public int getCfu() {
+		return cfu;
+	}
+
+	public void setCfu(int cfu) {
+		this.cfu = cfu;
 	}
 
 }

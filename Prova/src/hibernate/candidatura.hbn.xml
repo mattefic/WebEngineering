@@ -14,5 +14,6 @@
 		<property name="idUtente" column="idUtente"></property>
 		<property name="stato" column="stato"></property>
 		<property name="dataCanditatura" column="dataCanditatura"></property>
+		<property name="cfu" column="cfu"></property>
 	</class>
 </hibernate-mapping> 

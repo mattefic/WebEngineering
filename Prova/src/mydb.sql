@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 21, 2018 alle 11:07
+-- Creato il: Ago 29, 2018 alle 16:39
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -43,15 +43,18 @@ CREATE TABLE `azienda` (
   `orario` varchar(100) DEFAULT NULL,
   `convenzionata` tinyint(4) DEFAULT NULL,
   `email` varchar(20) NOT NULL,
-  `password` varchar(18) NOT NULL
+  `password` varchar(18) NOT NULL,
+  `valutazione` decimal(2,1) DEFAULT NULL,
+  `numTirocinanti` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `azienda`
 --
 
-INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`) VALUES
-(1, '12345678912', 'MGM Service', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Maurizio', 'Giostra', '3466318898', 'mg@gmail.com', NULL, 0, 'mgmservice@gmail.com', '1234');
+INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `valutazione`, `numTirocinanti`) VALUES
+(1, '12345678912', 'MGM Service', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Maurizio', 'Giostra', '3466318898', 'mg@gmail.com', NULL, 1, 'mgmservice@gmail.com', '1234', '1.5', 12),
+(2, '21987654321', 'FGS', 'via roma 204', 'Mario', 'Rossi', 'Pagliare', 'Tizio', 'Semproni', '3338989654', 'TS@gmail.com', NULL, 1, 'FGS@gmail.com', '123456', '2.5', 13);
 
 -- --------------------------------------------------------
 
@@ -65,7 +68,8 @@ CREATE TABLE `canditatura` (
   `idUtente` int(16) NOT NULL,
   `idTutore` int(11) NOT NULL,
   `stato` varchar(16) NOT NULL,
-  `dataCandidatura` date NOT NULL
+  `dataCandidatura` date NOT NULL,
+  `cfu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -80,7 +84,9 @@ CREATE TABLE `contratto` (
   `idOfferta` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idTutoreUniversitario` int(11) NOT NULL,
-  `dataAccettazione` date NOT NULL
+  `dataAccettazione` date NOT NULL,
+  `dataInizio` date NOT NULL,
+  `dataFine` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -91,13 +97,16 @@ CREATE TABLE `contratto` (
 
 CREATE TABLE `offerta` (
   `idOfferta` int(10) UNSIGNED NOT NULL,
+  `data` date NOT NULL,
+  `titolo` varchar(100) NOT NULL,
+  `settore` varchar(100) NOT NULL,
+  `descrizione` varchar(500) NOT NULL,
   `luogo` varchar(30) NOT NULL,
   `orario` varchar(100) NOT NULL,
   `mesi` int(10) UNSIGNED NOT NULL,
   `ore` int(10) UNSIGNED NOT NULL,
   `obiettivi` varchar(300) NOT NULL,
-  `modalità` varchar(200) NOT NULL,
-  `rimborsi/facilitazioni` varchar(200) NOT NULL,
+  `modalita` varchar(200) NOT NULL,
   `visibile` tinyint(4) NOT NULL,
   `idAzienda` int(11) UNSIGNED NOT NULL,
   `rimborsiFacilitazioni` varchar(255) DEFAULT NULL
@@ -107,9 +116,8 @@ CREATE TABLE `offerta` (
 -- Dump dei dati per la tabella `offerta`
 --
 
-INSERT INTO `offerta` (`idOfferta`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalità`, `rimborsi/facilitazioni`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
-(1, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO'),
-(2, 'rieti', '10-10', 5, 60, 'EHEHEHEHEH', 'BElle', 'NOOO', 1, 10, 'NONONONONO');
+INSERT INTO `offerta` (`idOfferta`, `data`, `titolo`, `settore`, `descrizione`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalita`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
+(1, '2018-08-29', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 9, 120, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il Lunedì, il Martedì e il Mercoledì mattina', 1, 1, 'Rimborso spese');
 
 -- --------------------------------------------------------
 
@@ -166,7 +174,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`idUtente`, `codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
-(1, 'GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '1234', 'utente');
+(1, 'GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '123456', 'utente'),
+(3, 'GSTFNC95P02H779D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Castel di Lama', '3466318898', 'informatica', 0, 'supercesco@gmail.com', '1234', 'admin');
 
 --
 -- Indici per le tabelle scaricate
@@ -230,7 +239,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `azienda`
 --
 ALTER TABLE `azienda`
-  MODIFY `idAzienda` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAzienda` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT per la tabella `canditatura`
 --
@@ -245,7 +254,7 @@ ALTER TABLE `contratto`
 -- AUTO_INCREMENT per la tabella `offerta`
 --
 ALTER TABLE `offerta`
-  MODIFY `idOfferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idOfferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT per la tabella `tutore_aziendale`
 --
@@ -255,7 +264,7 @@ ALTER TABLE `tutore_aziendale`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

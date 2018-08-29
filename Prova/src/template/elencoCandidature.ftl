@@ -68,8 +68,6 @@
 
 				</div>
 			</section>
-			
-			<!-- SEARCH -->
 					
 			<div class="container">
 				
@@ -87,145 +85,59 @@
 					<!-- Tab panes -->
 					<div class="tab-content mt-10">
 						<div class="tab-pane active" id="home" role="tabpanel">			
+							<#list offerte as offerta>
 							<div class="row d-flex justify-content-center">    					
 								<div class="col-xs-8">
 									<div class="card card-default ml-15 mr-15">
 										<div class="card-heading card-heading-transparent">
-											<h2 class="card-title">Tirocini e stage retributi presso la Gunpowder S.r.l. (Spinoff Univ. L'Aquila)</h2>
+											<h2 class="card-title">${offerta.titolo}</h2>
 										</div>
 										<p class="sottotitolo">
-											<span class="data">Pubblicato il 30/01/2018</span>
-											<span class="emailResp">Email tutor aziendale: lorenzocollevecchio@outlook.com</span>
-											<span class="durata">Durata tirocinio: 6 mesi in 180 ore</span>
+											<span class="data">Pubblicato il ${offerta.dataPub}</span>
+											<span class="emailResp">Email tutor aziendale: ${offerta.azienda.emailRespTirocinio}</span>
+											<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 										</p>
 										<div class="card-block">
-											<p>La Gunpowder S.r.l., spinoff dell’Università dell’Aquila e registered partner Salesforce, offre stage o tirocini retribuiti su tematiche relative a motori DB, framework di sviluppo Java e Angular, e IDE (ad esempio Eclipse). Le conoscenze sulle moderne tecnologie di Digital Trasfomation e/o piattaforme CRM (Salesforce) costituiranno titolo preferenziale, anche se non strettamente necessarie.</p>
+											<p>${offerta.descrizione}</p>
 											<button type="button" class="btn btn-primary mr-10 float-right">DETTAGLI</button>
 											<button type="button" class="btn btn-danger float-right">NASCONDI</button>
 										</div>
 									</div>				
 								</div>
 							</div>
+							</#list>
 						</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel">
-							<div class="form-inline">
-								<div class="col-md-3">
-
-									<div class="box-static box-border-top">
-										<div class="box-title">
-											<h4 class="text-center">Lorenzo Collevecchio</h4>
-										</div>
-										<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-										<p><b>Telefono:</b> 3407678134.</p>
-										<p><b>Data di nascita:</b> 24/09/1993.</p>
-										<p><b>Luogo di nascita:</b> Teramo.</p>
-										<p><b>Residenza:</b> Teramo.</p>
-										<p><b>Corso di laurea:</b> informatica.</p>
-										<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-										<p><b>Numero CFU richiesti:</b> 12.</p>
-										<div class="text-center">
-											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
-										</div>
-									</div>								
-
-								</div>
-								<div class="col-md-3">
-
-									<div class="box-static box-border-top">
-										<div class="box-title">
-											<h4 class="text-center">Lorenzo Collevecchio</h4>
-										</div>
-										<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-										<p><b>Telefono:</b> 3407678134.</p>
-										<p><b>Data di nascita:</b> 24/09/1993.</p>
-										<p><b>Luogo di nascita:</b> Teramo.</p>
-										<p><b>Residenza:</b> Teramo.</p>
-										<p><b>Corso di laurea:</b> informatica.</p>
-										<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-										<p><b>Numero CFU richiesti:</b> 12.</p>
-										<div class="text-center">
-											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
-										</div>
-									</div>								
-
-								</div>	
-								<div class="col-md-3">
-
-									<div class="box-static box-border-top">
-										<div class="box-title">
-											<h4 class="text-center">Lorenzo Collevecchio</h4>
-										</div>
-										<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-										<p><b>Telefono:</b> 3407678134.</p>
-										<p><b>Data di nascita:</b> 24/09/1993.</p>
-										<p><b>Luogo di nascita:</b> Teramo.</p>
-										<p><b>Residenza:</b> Teramo.</p>
-										<p><b>Corso di laurea:</b> informatica.</p>
-										<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-										<p><b>Numero CFU richiesti:</b> 12.</p>
-										<div class="text-center">
-											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
-										</div>
-									</div>						
-
-								</div>
-								<div class="col-md-3">
-
-									<div class="box-static box-border-top">
-										<div class="box-title">
-											<h4 class="text-center">Lorenzo Collevecchio</h4>
-										</div>
-										<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-										<p><b>Telefono:</b> 3407678134.</p>
-										<p><b>Data di nascita:</b> 24/09/1993.</p>
-										<p><b>Luogo di nascita:</b> Teramo.</p>
-										<p><b>Residenza:</b> Teramo.</p>
-										<p><b>Corso di laurea:</b> informatica.</p>
-										<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-										<p><b>Numero CFU richiesti:</b> 12.</p>
-										<div class="text-center">
-											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
-										</div>
-									</div>						
-
-								</div>
 						
-							</div>
-							<br>
+						<div class="tab-pane fade" id="profile" role="tabpanel">
+							
 							<div class="form-inline">
+							<#list candidature as candidatura>
 								<div class="col-md-3">
-
 									<div class="box-static box-border-top">
 										<div class="box-title">
-											<h4 class="text-center">Lorenzo Collevecchio</h4>
+											<h4 class="text-center">${candidatura.utente.nome} ${candidatura.utente.cognome}</h4>
 										</div>
-										<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-										<p><b>Telefono:</b> 3407678134.</p>
-										<p><b>Data di nascita:</b> 24/09/1993.</p>
-										<p><b>Luogo di nascita:</b> Teramo.</p>
-										<p><b>Residenza:</b> Teramo.</p>
-										<p><b>Corso di laurea:</b> informatica.</p>
-										<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-										<p><b>Numero CFU richiesti:</b> 12.</p>
+										<p><b>Codice fiscale:</b> ${candidatura.utente.codiceFiscale}</p>
+										<p><b>Telefono:</b> ${candidatura.utente.telefono}</p>
+										<p><b>Data di nascita:</b> ${candidatura.utente.dataNascita}</p>
+										<p><b>Luogo di nascita:</b> ${candidatura.utente.luogoNascita}</p>
+										<p><b>Residenza:</b> ${candidatura.utente.residenza}</p>
+										<p><b>Corso di laurea:</b> ${candidatura.utente.corsoLaurea}</p>
+										<p><b>Email:</b> ${candidatura.utente.email}</p>
+										<p><b>Numero CFU richiesti:</b> ${candidatura.cfu}</p>
 										<div class="text-center">
 											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
 											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
 										</div>
-									</div>			
-
-								</div>						
+									</div>								
+								</div>		
+							</#list>				
 							</div>
+							
 						</div>
 					</div>
 				</div>
-					
-				<br>
 			</div>
-			<!-- /SEARCH -->
 			
 			<!-- FOOTER -->
 			<footer id="footer" class="mt-30">

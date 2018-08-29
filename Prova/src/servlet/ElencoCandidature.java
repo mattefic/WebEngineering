@@ -1,5 +1,5 @@
 package servlet;
-//TODO Matteo rendere dinamico ftl e riempirlo
+//TODO Francesco rendere dinamico ftl e riempirlo
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -105,8 +105,7 @@ public class ElencoCandidature extends HttpServlet {
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
 				int idOfferta = candidatura.getIdOfferta();
-				Query queryOfferta = session
-						.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
+				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
 				queryOfferta.setParameter("idAzienda", httpSession.getAttribute("iduser"));
 				queryOfferta.setParameter("idOfferta", idOfferta);
 				Offerta offerta = (Offerta) queryOfferta.uniqueResult();

@@ -13,6 +13,8 @@
 		<property name="idTutoreUniversitario"
 			column="idTutoreUniversitario"></property>
 		<property name="dataAccettazione" column="dataAccettazione"></property>
+		<property name="dataInizio" column="dataInizio"></property>
+		<property name="dataFine" column="dataFine"></property>
 		<property name="idTutoreAziendale" column="idTutoreAziendale"></property>
 		<property name="idUtente" column="idUtente"></property>
 	</class>
