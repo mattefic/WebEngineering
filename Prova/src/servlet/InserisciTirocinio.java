@@ -1,10 +1,12 @@
 package servlet;
-//TODO Francesco inserire descrizione, settore, titolo, risolvere problema modalità
+
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,15 +87,19 @@ public class InserisciTirocinio extends HttpServlet {
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
 			Offerta offerta = new Offerta();
+			Date today= Calendar.getInstance().getTime();
 			offerta.setIdAzienda(Integer.parseInt((String) httpSession.getAttribute("userid")));
+			offerta.setTitolo(request.getParameter("titolo"));
 			offerta.setLuogo(request.getParameter("luogo"));
+			offerta.setSettore(request.getParameter("settore"));
 			offerta.setMesi(Integer.parseInt((String) request.getParameter("mesi")));
-			//offerta.setModalità(request.getParameter("modalità"));
-			offerta.setModalità("Problema");
+			offerta.setModalità(request.getParameter("modalita"));
 			offerta.setObiettivi(request.getParameter("obiettivi"));
 			offerta.setOrario(request.getParameter("orario"));
 			offerta.setRimborsiFacilitazioni(request.getParameter("facilitazioni"));
+			offerta.setDescrizione(request.getParameter("descrizione"));
 			offerta.setOre(Integer.parseInt((String) request.getParameter("ore")));
+			offerta.setDataPub(today);
 			offerta.setVisibile(true);
 
 			SessionFactory sessionFactory = HibernateSettings.getSessionFactory();

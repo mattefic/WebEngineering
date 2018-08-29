@@ -212,7 +212,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Modalità tirocinio</label>
-												<input required="" name="modalità" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
+												<input required="" name="modalita" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">

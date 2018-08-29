@@ -148,7 +148,7 @@
 								<h2 class="card-title">${offerta.idOfferta}</h2>
 							</div>
 							<p class="sottotitolo">
-								<span class="data">Pubblicato il ${offerta.obiettivi}</span>
+								<span class="data">Pubblicato il ${offerta.dataPub}</span>
 								<span class="emailResp">Email tutor aziendale: <a href="mailto:${offerta.azienda.emailRespTirocinio}">${offerta.azienda.emailRespTirocinio}</a></span>
 								<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 							</p>

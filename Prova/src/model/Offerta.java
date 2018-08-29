@@ -1,11 +1,14 @@
 package model;
 
+import java.util.Date;
+
 public class Offerta {
 
-	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, orario;
+	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
 	private int idAzienda, idOfferta, mesi, ore;
 	private boolean visibile;
 	private Azienda azienda;
+	private Date dataPub;
 
 	public Offerta() {
 
@@ -97,6 +100,38 @@ public class Offerta {
 
 	public void setIdAzienda(int idAzienda) {
 		this.idAzienda = idAzienda;
+	}
+
+	public String getTitolo() {
+		return titolo;
+	}
+
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
+	}
+
+	public String getSettore() {
+		return settore;
+	}
+
+	public void setSettore(String settore) {
+		this.settore = settore;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public Date getDataPub() {
+		return dataPub;
+	}
+
+	public void setDataPub(Date dataPub) {
+		this.dataPub = dataPub;
 	}
 
 }

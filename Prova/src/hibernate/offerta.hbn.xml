@@ -8,12 +8,15 @@
 		<id name="idOfferta" column="idOfferta">
 			<generator class="assigned"></generator>
 		</id>
+		<property name="dataPub" column="data"></property>
+		<property name="titolo" column="titolo"></property>
+		<property name="settore" column="settore"></property>
+		<property name="descrizione" column="descrizione"></property>
 		<property name="luogo" column="luogo"></property>
 		<property name="orario" column="orario"></property>
 		<property name="obiettivi" column="obiettivi"></property>
 		<property name="modalità" column="modalita"></property>
-		<property name="rimborsiFacilitazioni"
-			column="rimborsiFacilitazioni"></property>
+		<property name="rimborsiFacilitazioni" column="rimborsiFacilitazioni"></property>
 		<property name="idAzienda" column="idAzienda"></property>
 		<property name="mesi" column="mesi"></property>
 		<property name="ore" column="ore"></property>
