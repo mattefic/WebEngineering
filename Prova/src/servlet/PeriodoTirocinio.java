@@ -112,7 +112,6 @@ public class PeriodoTirocinio extends HttpServlet {
 		else {
 			
 		}
-		// TODO Francesco Salvare il periodo del tirocinio
 		doGet(request, response);
 	}
 
