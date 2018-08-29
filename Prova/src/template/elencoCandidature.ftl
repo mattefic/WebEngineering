@@ -126,8 +126,11 @@
 										<p><b>Email:</b> ${candidatura.utente.email}</p>
 										<p><b>Numero CFU richiesti:</b> ${candidatura.cfu}</p>
 										<div class="text-center">
-											<button class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-											<button class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
+											<button type="submit" class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
+										<form>
+											<input name="accetta" value="accetta">
+											<button type="submit" class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
+										</form>
 										</div>
 									</div>								
 								</div>		

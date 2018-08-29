@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -11,12 +13,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
 import security.SecurityLayer;
 
 /**
@@ -70,7 +79,39 @@ public class PeriodoTirocinio extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Francesco Salvare il periodo del tirocinio
+		
+		HttpSession securitySession = SecurityLayer.checkSession(request);
+		String tipo = (String) securitySession.getAttribute("tipo");
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		if (tipo.equals("azienda")) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        	String dataInizio = request.getParameter("dataInizio");
+        	String dataFine = request.getParameter("dataFine");
+        	LocalDate Start = LocalDate.parse(dataInizio, formatter);
+        	LocalDate Finish = LocalDate.parse(dataFine, formatter);
+			
+        	Query query = session.createQuery("UPDATE Contratto set dataInizio = :dataInizio WHERE idContratto = :idContratto");
+			query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
+			query.setParameter("dataInizio", Start);
+			query.executeUpdate();
+			
+			Query query2 = session.createQuery("UPDATE Contratto set dataFine = :dataFine WHERE idContratto = :idContratto");
+			query2.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
+			query2.setParameter("dataFine", Finish);
+			query2.executeUpdate();
+		}
+		else {
+			
+		}
 		doGet(request, response);
 	}
 
