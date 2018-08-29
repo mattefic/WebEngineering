@@ -64,9 +64,9 @@ public class DettagliOfferta extends HttpServlet {
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 
-		String id = request.getParameter("idOfferta");
-		//TODO Rendere dinamica l'offerta (supereasy)
-		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = 1");
+		int id = Integer.parseInt(request.getParameter("idOfferta"));
+		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = :idOfferta");
+		query.setParameter("idOfferta", id);
 		Offerta offerta = (Offerta) query.uniqueResult();
 		input.put("offerta", offerta);
 		Query query2 = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");

@@ -1,5 +1,4 @@
 package servlet;
-//TODO Francesco rendere dinamico ftl e riempirlo
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;

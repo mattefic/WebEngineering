@@ -102,8 +102,7 @@
 						</div>
 						<div class="col-4 text-center">
 						<form>
-						<input type="hidden" value=${offerta.idOfferta}>
-						<button type="button" class="btn btn-primary">ADERISCI</button>
+						<a href="ConfermaAdesione?idOfferta=${offerta.idOfferta}" class="btn btn-primary">ADERISCI<a>
 						</form>
 						</div>
 						<div class="col-4">

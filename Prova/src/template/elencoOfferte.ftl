@@ -154,7 +154,7 @@
 							</p>
 							<div class="card-block">
 								<p>${offerta.descrizione}</p>
-								<a href="DettagliOfferta" class="btn btn-primary mr-10 float-right">DETTAGLI</a>
+								<a href="DettagliOfferta?idOfferta=${offerta.idOfferta}" class="btn btn-primary mr-10 float-right">DETTAGLI</a>
 							</div>
 						</#list>
 						</div>

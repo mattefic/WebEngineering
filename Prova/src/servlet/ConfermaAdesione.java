@@ -12,11 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Offerta;
 import security.SecurityLayer;
 
 /**
@@ -52,7 +59,25 @@ public class ConfermaAdesione extends HttpServlet {
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/confermaAdesione.ftl");
+		
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		
 		Map<String, Object> input = new HashMap<String, Object>();
+		
+		int id = Integer.parseInt(request.getParameter("idOfferta"));
+		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = :idOfferta");
+		query.setParameter("idOfferta", id);
+		Offerta offerta = (Offerta) query.uniqueResult();
+		input.put("offerta", offerta);
+		
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {

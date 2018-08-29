@@ -94,9 +94,12 @@
 
 								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>
-
+										
+										<div class="col-md-6 col-sm-6">
+													<h2>${offerta.titolo}<h2>													
+										</div>
+											
 										<div class="row">
-
 											<div class="col-md-6 col-sm-6">
 												<label>Nome tutor universitario</label>
 												<label class="input mb-10">
