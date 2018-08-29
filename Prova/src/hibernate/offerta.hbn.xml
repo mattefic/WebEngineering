@@ -16,12 +16,13 @@
 		<property name="orario" column="orario"></property>
 		<property name="obiettivi" column="obiettivi"></property>
 		<property name="modalità" column="modalita"></property>
-		<property name="rimborsiFacilitazioni" column="rimborsiFacilitazioni"></property>
-		<property name="idAzienda" column="idAzienda"></property>
+		<property name="rimborsiFacilitazioni"
+			column="rimborsiFacilitazioni"></property>
 		<property name="mesi" column="mesi"></property>
 		<property name="ore" column="ore"></property>
 		<property name="visibile" column="visibile"></property>
-
+		<many-to-one name="azienda" class="model.Azienda"
+			column="idAzienda" not-null="true" insert="false" update="false" />
 	</class>
 
 </hibernate-mapping> 

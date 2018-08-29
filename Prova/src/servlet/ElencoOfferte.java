@@ -61,14 +61,12 @@ public class ElencoOfferte extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
-
 		Query query = session.createQuery("FROM Offerta");
 		Query queryAzienda = session.createQuery("FROM Azienda");
 		List<Object> offerte = query.list();
 		Azienda azienda = (Azienda) queryAzienda.getResultList().get(0);
 		for (Iterator iterator = offerte.iterator(); iterator.hasNext();) {
 			Offerta offerta = (Offerta) iterator.next();
-			offerta.setAzienda(azienda);
 		}
 		input.put("offerte", offerte);
 
@@ -105,7 +103,8 @@ public class ElencoOfferte extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

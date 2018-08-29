@@ -2,13 +2,18 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+
 public class Offerta {
 
 	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
 	private int idAzienda, idOfferta, mesi, ore;
 	private boolean visibile;
-	private Azienda azienda;
 	private Date dataPub;
+	private Azienda azienda;
 
 	public Offerta() {
 
@@ -35,7 +40,7 @@ public class Offerta {
 	}
 
 	public void setModalità(String modalità) {
-		this.modalità= modalità;
+		this.modalità = modalità;
 	}
 
 	public String getRimborsiFacilitazioni() {
