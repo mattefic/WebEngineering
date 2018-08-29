@@ -1,6 +1,4 @@
 package servlet;
-
-//TODO Matteo Fare il fottuto JOIN
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
