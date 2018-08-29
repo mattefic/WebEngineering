@@ -111,31 +111,14 @@
 											</tr>
 										</thead>
 										<tbody>
-										
+											<#list tutori as tutore>
 											<tr>
-												<td>Lorenzo</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-												<td>6</td>
+												<td>${tutore.nome}</td>
+												<td>${tutore.cognome}</td>
+												<td>${tutore.telefono}</td>
+												<td>${tutore.numRichieste}</td>
 											</tr>
-											<tr>
-												<td>Matteo</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-												<td>4</td>
-											</tr>
-											<tr>
-												<td>Francesco</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-												<td>3</td>
-											</tr>
-											<tr>
-												<td>Giovanni</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-												<td>2</td>
-											</tr>
+											</#list>
 										</tbody>
 									</table>							
 								</div>
@@ -185,45 +168,18 @@
 											</tr>
 										</thead>
 										<tbody>
-										
+											<#list aziende as azienda>
 											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
+												<td><a class="puntatore" href="DettagliAzienda?idAzienda=${azienda.idAzienda}">${azienda.ragioneSocialeNome}</a></td>
 												<td>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star <#if azienda.valutazione gte 1>checked</#if>"></span>
+													<span class="fa fa-star <#if azienda.valutazione gte 2>checked</#if>"></span>
+													<span class="fa fa-star <#if azienda.valutazione gte 3>checked</#if>"></span>
+													<span class="fa fa-star <#if azienda.valutazione gte 4>checked</#if>"></span>
+													<span class="fa fa-star <#if azienda.valutazione gte 5>checked</#if>"></span>
 												</td>
 											</tr>
-											<tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star"></span>
-												</td>
-											</tr><tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</td>
-											</tr><tr>
-												<td><a class="puntatore" href="dettagliAzienda.html">Quark</a></td>
-												<td>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star checked"></span>
-													<span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</td>
-											</tr>
+											</#list>
 										</tbody>
 									</table>							
 								</div>

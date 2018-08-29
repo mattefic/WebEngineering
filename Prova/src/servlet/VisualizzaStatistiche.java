@@ -24,7 +24,9 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Offerta;
+import model.TutoreUniversitario;
 import security.SecurityLayer;
 
 /**
@@ -80,9 +82,16 @@ public class VisualizzaStatistiche extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		//TODO Fare query diverse + input.put delle liste ottenute
-		Query query = session.createQuery("");
-		List<Offerta> offerta = (List<Offerta>) query.getResultList();
-		input.put("offerta", offerta);
+		//Tutor più richiesti
+		Query queryTutori = session.createQuery("FROM TutoreUniversitario ORDER BY numRichieste DESC");
+		List<TutoreUniversitario> tutori = (List<TutoreUniversitario>) queryTutori.getResultList();
+		input.put("tutori", tutori);	
+		//Aziende con più tirocinanti
+		//Query queryTirocinanti = session.createQuery("FROM Azienda")
+		//Aziende con valutazioni migliori
+		Query queryValutazione = session.createQuery("FROM Azienda ORDER BY valutazione DESC");
+		List<Azienda> aziende = (List<Azienda>) queryValutazione.getResultList();	
+		input.put("aziende", aziende);
 		t.commit();
 		try {
 			template.process(input, response.getWriter());

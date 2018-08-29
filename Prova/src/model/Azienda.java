@@ -8,7 +8,7 @@ public class Azienda {
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
 			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password;
 	private boolean convenzionata;
-	private int idAzienda;
+	private int idAzienda, valutazione; //da 1 a 5
 
 	public Azienda() {
 
@@ -132,6 +132,14 @@ public class Azienda {
 
 	public void setIdAzienda(int idAzienda) {
 		this.idAzienda = idAzienda;
+	}
+
+	public int getValutazione() {
+		return valutazione;
+	}
+
+	public void setValutazione(int valutazione) {
+		this.valutazione = valutazione;
 	}
 
 }

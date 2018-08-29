@@ -28,6 +28,7 @@
 		<property name="orario" column="orario"></property>
 		<property name="email" column="email"></property>
 		<property name="password" column="password"></property>
+		<property name="valutazione" column="valutazione"></property>
 	</class>
 
 </hibernate-mapping> 
