@@ -8,7 +8,8 @@ public class Azienda {
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
 			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password;
 	private boolean convenzionata;
-	private int idAzienda, valutazione; //da 1 a 5
+	private int idAzienda;
+	private float valutazione; //da 1 a 5
 	private int numTirocinanti;
 	public Azienda() {
 
@@ -134,11 +135,11 @@ public class Azienda {
 		this.idAzienda = idAzienda;
 	}
 
-	public int getValutazione() {
+	public float getValutazione() {
 		return valutazione;
 	}
 
-	public void setValutazione(int valutazione) {
+	public void setValutazione(float valutazione) {
 		this.valutazione = valutazione;
 	}
 
