@@ -71,14 +71,14 @@
 			<section>
 				<div class="container">
 
-					<div class="row mt-50">
+					<div class="row">
 
 						<div class="col-md-3 col-sm-5">
 						</div>
 						<!-- LOGIN -->
 						<div class="col-md-6 col-sm-5">
 			
-							<div class="box-static box-transparent box-bordered p-30 h-300">
+							<div class="box-static box-transparent box-bordered p-30 h-350">
 								<div class="box-title mb-30">
 									<h2 class="fs-20">Password dimenticata?</h2>
 								</div>
@@ -93,10 +93,13 @@
 											<input name="email" required="" type="email" maxlength="60">
 											<b class="tooltip tooltip-bottom-right">Inserite l'indirizzo email di registrazione dove manderemo la nuova password</b>
 										</label>
+										<div class="alert alert-danger mb-30"><!-- DANGER -->
+											<strong>Oh no!</strong> Questo indirizzo email non esiste.
+										</div>
 
 									</div>
 
-									<div class="row mt-40 float-right">
+									<div class="row float-right">
 
 										<div class="col-md-6 col-sm-6 col-6">
 
