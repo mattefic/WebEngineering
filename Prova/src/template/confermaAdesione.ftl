@@ -135,7 +135,7 @@
 												<label for="register:phone">Numero CFU richiesti</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-question"></i>
-													<input required="" type="text" maxlength="30">
+													<input required="" name="CFU" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il numero di CFU richiesti</b>
 												</label>
 											</div>

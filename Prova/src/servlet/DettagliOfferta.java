@@ -65,14 +65,11 @@ public class DettagliOfferta extends HttpServlet {
 		Map<String, Object> input = new HashMap<String, Object>();
 
 		int id = Integer.parseInt(request.getParameter("idOfferta"));
+		
 		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = :idOfferta");
 		query.setParameter("idOfferta", id);
 		Offerta offerta = (Offerta) query.uniqueResult();
 		input.put("offerta", offerta);
-		Query query2 = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
-		query2.setParameter("idAzienda", offerta.getIdAzienda());
-		Azienda azienda = (Azienda) query2.uniqueResult();
-		input.put("azienda", azienda);
 
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
@@ -109,29 +106,7 @@ public class DettagliOfferta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession httpSession = SecurityLayer.checkSession(request);
-		String email = httpSession.getId();
-		response.setContentType("text/html;charset=UTF-8");
-		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if (sessionFactory != null) {
-
-		} else {
-			HibernateSettings settings = new HibernateSettings();
-			sessionFactory = settings.getSessionFactory();
-		}
-		Session session = sessionFactory.openSession();
-		Transaction t = session.beginTransaction();
-		Date data = new Date();
-		Candidatura candidatura = new Candidatura();
-		candidatura.setDataCanditatura(data);
-		candidatura.setStato("attesa");
-		int idUtente = Integer.parseInt((String)httpSession.getAttribute("userid"));
-		candidatura.setIdUtente(idUtente);
-		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
-
-		session.persist(candidatura);
-
-		response.sendRedirect("Home");
+	
 	}
 
 }

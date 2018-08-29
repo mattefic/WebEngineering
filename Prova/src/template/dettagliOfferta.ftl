@@ -76,7 +76,7 @@
 						<div class="col-4">
 						</div>
 						<div class="heading-title heading-border heading-color col-4" style="word-wrap: break-word;">
-							<p><h5>ENTE/AZIENDA OSPITANTE:</h5><a href="dettagliAzienda.html">${azienda.ragioneSocialeNome}</a></p>
+							<p><h5>ENTE/AZIENDA OSPITANTE:</h5><a href="DettagliAzienda">${offerta.azienda.ragioneSocialeNome}</a></p>
 							<br>
 							<p><h5>LUOGO DI EFFETTUAZIONE DEL TIROCINIO:</h5>${offerta.luogo}</p>
 							<br>
