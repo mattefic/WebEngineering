@@ -130,6 +130,8 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setConvenzionata(false);
 			e1.setEmail(request.getParameter("Email"));
 			e1.setPassword(request.getParameter("password"));
+			e1.setNumTirocinanti(0);
+			e1.setValutazione(0);
 			session.persist(e1);
 			Query queryAzienda=session.createQuery("FROM Azienda a WHERE a.email= :email");
 			queryAzienda.setParameter("email", request.getParameter("Email"));

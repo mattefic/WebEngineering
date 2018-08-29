@@ -145,7 +145,7 @@
 						<div class="card card-default mt-30 ml-60 mr-60">
 						<#list offerte as offerta>
 							<div class="card-heading card-heading-transparent">
-								<h2 class="card-title">${offerta.idOfferta}</h2>
+								<h2 class="card-title">${offerta.titolo} - ${offerta.azienda.ragioneSocialeNome}</h2>
 							</div>
 							<p class="sottotitolo">
 								<span class="data">Pubblicato il ${offerta.dataPub}</span>
@@ -153,8 +153,8 @@
 								<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 							</p>
 							<div class="card-block">
-								<p>${offerta.azienda.ragioneSocialeNome}</p>
-								<button type="button" class="btn btn-primary mr-10 float-right">DETTAGLI</button>
+								<p>${offerta.descrizione}</p>
+								<a href="DettagliOfferta" class="btn btn-primary mr-10 float-right">DETTAGLI</a>
 							</div>
 						</#list>
 						</div>
