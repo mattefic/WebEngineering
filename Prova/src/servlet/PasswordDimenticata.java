@@ -175,7 +175,7 @@ public class PasswordDimenticata extends HttpServlet {
 				t.commit();
 				session.close();
 		} else {
-			// TODO Lorenzo Notificare che la mail non esiste con un riquadro rosso di errore nella pagina password dimenticata.
+				
 		}
 		doGet(request, response);
 	}
