@@ -75,12 +75,9 @@
 							<div class="fancy-form fancy-form-select">
 								<select class="form-control select2">
 									<option value="">Ragione sociale</option>
-									<option value="1">Gallucci</option>
-									<option value="2">Panificio di nonna</option>
-									<option value="3">Azienda di papà</option>
-									<option value="4">Bonifica</option>
-									<option value="5">Salaria</option>
-									<option value="6">Parmalat</option>
+									<#list aziende as azienda>
+										<option value="${azienda.idAzienda}">${azienda.ragioneSocialeNome}</option>
+									</#list>
 								</select>
 
 								<!--
@@ -94,12 +91,9 @@
 							<div class="fancy-form fancy-form-select">
 								<select class="form-control select2">
 									<option value="">Foro competente</option>
-									<option value="1">Agrigento</option>
-									<option value="2">Alessandria</option>
-									<option value="3">Ancona</option>
-									<option value="4">Aosta</option>
-									<option value="5">L&rsquo;Aquila</option>
-									<option value="6">Arezzo</option>
+									<#list fori as foro>
+										<option value="${foro}">${foro}</option>
+									</#list>
 								</select>
 
 								<!--
@@ -146,18 +140,6 @@
 					</div>
 				</div>
 				
-				<div class="float-right mr-30">
-				<!-- Pagination Default -->
-				<ul class="pagination pagination-simple">
-					<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-					<li class="page-item active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
-					<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-				</ul>
-				</div>
 			</section>
 			
 			<!-- FOOTER -->

@@ -6,6 +6,7 @@ public class Contratto {
 
 	private int idContratto, idTutoreUniversitario, idTutoreAziendale, idUtente, idOfferta;
 	private Date dataAccettazione, dataInizio, dataFine;
+	private boolean votato;
 
 	public Contratto() {
 
@@ -73,6 +74,14 @@ public class Contratto {
 
 	public void setDataInizio(Date dataInizio) {
 		this.dataInizio = dataInizio;
+	}
+
+	public boolean isVotato() {
+		return votato;
+	}
+
+	public void setVotato(boolean votato) {
+		this.votato = votato;
 	}
 
 }

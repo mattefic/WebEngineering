@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO Matteo solo le aziende convenzionate devono poter pubblicare offerte
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;

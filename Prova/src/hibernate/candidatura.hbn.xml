@@ -8,8 +8,8 @@
 		<id name="idCandidatura" column="idCandidatura">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="idOfferta" column="idOfferta">
-		</property>
+		<property name="idAzienda" column="idAzienda"></property>
+		<property name="idOfferta" column="idOfferta"></property>
 		<property name="idTutore" column="idTutore"></property>
 		<property name="idUtente" column="idUtente"></property>
 		<property name="stato" column="stato"></property>

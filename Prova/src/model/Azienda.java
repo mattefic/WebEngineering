@@ -1,16 +1,12 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 public class Azienda {
 
 	private String codiceFiscaleIva, ragioneSocialeNome, indirizzo, nomeLegale, cognomeLegale, foro, nomeRespTirocinio,
-			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password;
+			cognomeRespTirocinio, emailRespTirocinio, telefonoRespTirocinio, orario, email, password, fileConvenzione;
 	private boolean convenzionata;
-	private int idAzienda;
+	private int idAzienda, numTirocinanti, numVoti;
 	private float valutazione; //da 1 a 5
-	private int numTirocinanti;
 	public Azienda() {
 
 	}
@@ -149,6 +145,22 @@ public class Azienda {
 
 	public void setNumTirocinanti(int numTirocinanti) {
 		this.numTirocinanti = numTirocinanti;
+	}
+
+	public String getFileConvenzione() {
+		return fileConvenzione;
+	}
+
+	public void setFileConvenzione(String fileConvenzione) {
+		this.fileConvenzione = fileConvenzione;
+	}
+
+	public int getNumVoti() {
+		return numVoti;
+	}
+
+	public void setNumVoti(int numVoti) {
+		this.numVoti = numVoti;
 	}
 
 }

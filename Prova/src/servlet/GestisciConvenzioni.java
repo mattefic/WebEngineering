@@ -120,15 +120,13 @@ public class GestisciConvenzioni extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		if (tipo.equals("admin") && request.getParameter("accetta") != null) {
-			System.out.println(request.getParameter("accetta"));
 			Query query = session.createQuery("UPDATE Azienda set convenzionata = 1 WHERE idAzienda = :idAzienda");
 			query.setParameter("idAzienda", Integer.parseInt(request.getParameter("accetta")));
 			query.executeUpdate();
 		} else {
-			System.out.println(request.getParameter("rifiuta"));
 			Query query = session.createQuery("DELETE FROM Azienda " + "WHERE idAzienda = :idAzienda");
 			query.setParameter("idAzienda", Integer.parseInt(request.getParameter("rifiuta")));
-			int result = query.executeUpdate();
+			query.executeUpdate();
 		}
 		t.commit();
 		response.sendRedirect("GestisciConvenzioni");

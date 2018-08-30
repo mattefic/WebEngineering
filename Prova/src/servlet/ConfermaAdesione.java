@@ -113,12 +113,16 @@ public class ConfermaAdesione extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		Date data = new Date();
+		Query query = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+		query.setParameter("idOfferta", Integer.parseInt(request.getParameter("idOfferta")));
+		Offerta offerta = (Offerta) query.uniqueResult();
 		Candidatura candidatura = new Candidatura();
 		candidatura.setDataCandidatura(data);
 		candidatura.setStato("attesa");
 		int idUtente = Integer.parseInt((String)httpSession.getAttribute("userid"));
 		candidatura.setIdUtente(idUtente);
 		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
+		candidatura.setIdAzienda(offerta.getIdAzienda());
 		candidatura.setCfu(Integer.parseInt(request.getParameter("CFU")));
 		session.persist(candidatura);
 		t.commit();

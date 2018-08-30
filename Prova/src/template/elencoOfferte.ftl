@@ -93,12 +93,9 @@
 									<div class="fancy-form fancy-form-select">
 										<select class="form-control select2">
 											<option value="">Azienda</option>
-											<option value="1">Gallucci</option>
-											<option value="2">Panificio di nonna</option>
-											<option value="3">Azienda di papà</option>
-											<option value="4">Bonifica</option>
-											<option value="5">Salaria</option>
-											<option value="6">Parmalat</option>
+											<#list aziende as azienda>
+												<option value="${azienda}">${azienda}</option>
+											</#list>
 										</select>
 
 										<!--
@@ -112,12 +109,9 @@
 									<div class="fancy-form fancy-form-select">
 										<select class="form-control select2">
 											<option value="">Città</option>
-											<option value="1">Agrigento</option>
-											<option value="2">Alessandria</option>
-											<option value="3">Ancona</option>
-											<option value="4">Aosta</option>
-											<option value="5">L&rsquo;Aquila</option>
-											<option value="6">Arezzo</option>
+												<#list luoghi as luogo>
+											<option value="${luogo}">${luogo}</option>
+											</#list>
 										</select>
 
 										<!--

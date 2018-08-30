@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Criteria;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -142,7 +143,10 @@ public class RegistrazioneUtente extends HttpServlet {
 			}
 			e1.setTipo("utente");
 			session.persist(e1);
-			SecurityLayer.createSession(request, request.getParameter("email"), request.getParameter("CF"), "utente");
+			Query query = session.createQuery("FROM Utente WHERE codiceFiscale = :CF");
+			query.setParameter("CF", request.getParameter("CF"));
+			Utente utente = (Utente) query.uniqueResult();
+			SecurityLayer.createSession(request, request.getParameter("email"), String.valueOf(utente.getIdUtente()), "utente");
 			response.sendRedirect("Home");
 		}
 		tx.commit();

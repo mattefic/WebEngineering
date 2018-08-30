@@ -32,7 +32,7 @@ import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
 import security.SecurityLayer;
-
+//TODO fare la post che upload il file
 /**
  * Servlet implementation class CaricaConvenzioni
  */
@@ -65,7 +65,7 @@ public class CaricaConvenzioni extends HttpServlet {
 		
 		Map<String, Object> input = new HashMap<String, Object>();
 		
-		Query query = session.createQuery("FROM Azienda WHERE convenzionata=0");
+		Query query = session.createQuery("FROM Azienda WHERE fileConvenzione=NULL");
 		List<Azienda> aziende = query.list();
 		for(Iterator iterator = aziende.iterator(); iterator.hasNext();){
 			Azienda azienda = (Azienda) iterator.next();

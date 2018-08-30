@@ -1,5 +1,7 @@
 package servlet;
-
+//TODO aggiungere div informativo se non sono presenti candidature per un'offerta
+//TODO eliminare candidatura appena approvata o bocciata
+//TODO Controllata generale
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -74,6 +76,7 @@ public class ElencoCandidature extends HttpServlet {
 				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
 			}
 		}
+		HttpSession httpSession = SecurityLayer.checkSession(request);
 		input.put("menu", serverData.menu.get(tipo));
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -84,9 +87,11 @@ public class ElencoCandidature extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		Query query = session.createQuery("FROM Candidatura");
+		Query query = session.createQuery("FROM Candidatura WHERE idAzienda = :idAzienda");
+		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
 		List<Candidatura> candidature = query.list();
-		query = session.createQuery("FROM Offerta");
+		query = session.createQuery("FROM Offerta WHERE idAzienda = :idAzienda");
+		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
 		List<Offerta> offerte = query.list();
 		for (Candidatura candidatura : candidature) {
 			for (Offerta offerta : offerte) {

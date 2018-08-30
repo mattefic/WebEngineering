@@ -1,6 +1,7 @@
 package servlet;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -60,9 +61,27 @@ public class ElencoOfferte extends HttpServlet {
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 		Query query = session.createQuery("FROM Offerta");
-		List<Object> offerte = query.list();
+		List<Offerta> offerte = query.list();
 		input.put("offerte", offerte);
-
+		
+		List<String> luoghi = new ArrayList<String>();
+		for(Offerta offerta : offerte) {
+			if(!luoghi.contains(offerta.getLuogo())){
+				luoghi.add(offerta.getLuogo());
+			}
+		}
+		luoghi.sort(null);
+		input.put("luoghi", luoghi);
+		
+		List<String> aziende = new ArrayList<String>();
+		for(Offerta offerta : offerte) {
+			if(!aziende.contains(offerta.getAzienda().getRagioneSocialeNome())){
+				aziende.add(offerta.getAzienda().getRagioneSocialeNome());
+			}
+		}
+		aziende.sort(null);
+		input.put("aziende", aziende);
+		
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {

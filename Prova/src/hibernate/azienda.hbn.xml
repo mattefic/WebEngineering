@@ -30,6 +30,8 @@
 		<property name="password" column="password"></property>
 		<property name="valutazione" column="valutazione"></property>
 		<property name="numTirocinanti" column="numTirocinanti"></property>
+		<property name="fileConvenzione" column="fileConvenzione"></property>
+		<property name="numVoti" column="numVoti"></property>
 	</class>
 
 </hibernate-mapping> 

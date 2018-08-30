@@ -3,6 +3,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -56,16 +57,21 @@ public class ListaAziende extends HttpServlet {
 			 sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-	Transaction t = session.beginTransaction();
+		Transaction t = session.beginTransaction();
 	
 		Map<String, Object> input = new HashMap<String, Object>();
 		
 		Query query = session.createQuery("FROM Azienda WHERE convenzionata=1");
 		List<Azienda> aziende = query.list();
-		for(Iterator iterator = aziende.iterator(); iterator.hasNext();){
-			Azienda azienda = (Azienda) iterator.next();
-		}
 		input.put("aziende", aziende);
+		List<String> fori = new ArrayList<String>();
+		for(Azienda azienda : aziende) {
+			if(!fori.contains(azienda.getForo())){
+				fori.add(azienda.getForo());
+			}
+		}
+		fori.sort(null);
+		input.put("fori", fori);
 		
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();

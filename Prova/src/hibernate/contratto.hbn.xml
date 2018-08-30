@@ -17,5 +17,6 @@
 		<property name="dataFine" column="dataFine"></property>
 		<property name="idTutoreAziendale" column="idTutoreAziendale"></property>
 		<property name="idUtente" column="idUtente"></property>
+		<property name="votato" column="votato"></property>
 	</class>
 </hibernate-mapping> 

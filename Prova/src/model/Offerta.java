@@ -2,14 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-
-import javax.persistence.OneToMany;
 
 public class Offerta {
 
-	private String luogo, obiettivi, modalit√†, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
+	private String luogo, obiettivi, modalit‡, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
 	private int idAzienda, idOfferta, mesi, ore;
 	private boolean visibile;
 	private Date dataPub;
@@ -36,12 +33,12 @@ public class Offerta {
 		this.obiettivi = obiettivi;
 	}
 
-	public String getModalit√†() {
-		return modalit√†;
+	public String getModalit‡() {
+		return modalit‡;
 	}
 
-	public void setModalit√†(String modalit√†) {
-		this.modalit√† = modalit√†;
+	public void setModalit‡(String modalit‡) {
+		this.modalit‡ = modalit‡;
 	}
 
 	public String getRimborsiFacilitazioni() {
