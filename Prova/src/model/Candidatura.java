@@ -6,7 +6,7 @@ public class Candidatura {
 
 	private int idCandidatura, idOfferta, idTutore, idUtente, cfu;
 	private String stato;
-	private Date dataCanditatura;
+	private Date dataCandidatura;
 
 	private Offerta offerta;
 	private Utente utente;
@@ -48,14 +48,6 @@ public class Candidatura {
 		this.stato = stato;
 	}
 
-	public Date getDataCanditatura() {
-		return dataCanditatura;
-	}
-
-	public void setDataCanditatura(Date dataCanditatura) {
-		this.dataCanditatura = dataCanditatura;
-	}
-
 	public int getIdCandidatura() {
 		return idCandidatura;
 	}
@@ -86,6 +78,14 @@ public class Candidatura {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Date getDataCandidatura() {
+		return dataCandidatura;
+	}
+
+	public void setDataCandidatura(Date dataCandidatura) {
+		this.dataCandidatura = dataCandidatura;
 	}
 
 }
