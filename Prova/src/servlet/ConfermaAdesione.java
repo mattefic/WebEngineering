@@ -1,5 +1,4 @@
 package servlet;
-//TODO da testare appena finito elenco offerte
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -103,7 +102,6 @@ public class ConfermaAdesione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO Matteo tutore universitario
 		HttpSession httpSession = SecurityLayer.checkSession(request);
-		String email = httpSession.getId();
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -116,13 +114,14 @@ public class ConfermaAdesione extends HttpServlet {
 		Transaction t = session.beginTransaction();
 		Date data = new Date();
 		Candidatura candidatura = new Candidatura();
-		candidatura.setDataCanditatura(data);
+		candidatura.setDataCandidatura(data);
 		candidatura.setStato("attesa");
 		int idUtente = Integer.parseInt((String)httpSession.getAttribute("userid"));
 		candidatura.setIdUtente(idUtente);
 		candidatura.setIdOfferta(Integer.parseInt(request.getParameter("idOfferta")));
 		candidatura.setCfu(Integer.parseInt(request.getParameter("CFU")));
 		session.persist(candidatura);
+		t.commit();
 
 		response.sendRedirect("Home");
 		doGet(request, response);

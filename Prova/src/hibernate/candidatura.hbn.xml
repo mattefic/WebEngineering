@@ -13,7 +13,7 @@
 		<property name="idTutore" column="idTutore"></property>
 		<property name="idUtente" column="idUtente"></property>
 		<property name="stato" column="stato"></property>
-		<property name="dataCanditatura" column="dataCanditatura"></property>
+		<property name="dataCandidatura" column="dataCandidatura"></property>
 		<property name="cfu" column="cfu"></property>
 		<many-to-one name="offerta" class="model.Offerta"
 			column="idOfferta" not-null="true" insert="false" update="false" />
