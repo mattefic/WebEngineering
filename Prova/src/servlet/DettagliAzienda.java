@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,6 +48,7 @@ public class DettagliAzienda extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		HttpSession httpSession = SecurityLayer.checkSession(request);
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
 
@@ -70,8 +72,15 @@ public class DettagliAzienda extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/dettagliAzienda.ftl");
 		Map<String, Object> input = new HashMap<String, Object>();
-		int idAzienda;
-		idAzienda = Integer.parseInt(request.getParameter("idAzienda"));
+		int idAzienda=0;
+		
+		if(request.getParameter("idAzienda")!=null) {
+			idAzienda = Integer.parseInt(request.getParameter("idAzienda"));
+		}
+		else if(httpSession.getAttribute("tipo").equals("azienda")){
+			idAzienda = Integer.parseInt((String)httpSession.getAttribute("userid"));
+		}
+		
 		Query query = session.createQuery("FROM Azienda a WHERE a.idAzienda = :idAzienda");
 		query.setParameter("idAzienda", idAzienda);
 		Azienda azienda = (Azienda) query.uniqueResult();

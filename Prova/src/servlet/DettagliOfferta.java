@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO mostrare aderisci solo se si è utenti
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;

@@ -93,7 +93,7 @@
 												<label>Email</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input name="Email" required="" type="email" maxlength="60">
+													<input name="email" required="" type="email" maxlength="60">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra email</b>
 												</label>
 											</div>
@@ -104,7 +104,7 @@
 												<label for="register:pass2">Password</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-lock"></i>
-													<input name="Password" required="" type="password" maxlength="30">
+													<input name="password" required="" type="password" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete la vostra password</b>
 												</label>
 											</div>

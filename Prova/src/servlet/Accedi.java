@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -83,10 +86,8 @@ public class Accedi extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String email = request.getParameter("Email");
-		String password = request.getParameter("Password");
-
-		// Carichiamo userid dal database se esiste l'utente
+		String email = request.getParameter("email");
+		MessageDigest digest;
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
 
@@ -95,6 +96,20 @@ public class Accedi extends HttpServlet {
 			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
+		String password="";
+		try {
+			//TODO Fixare Charsets
+			digest = MessageDigest.getInstance("SHA-256");
+			byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
+			password = new String(encodedhash, StandardCharsets.UTF_8);
+			System.out.println(password);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		// Carichiamo userid dal database se esiste l'utente
+		
+		//TODO Cambiare da Criteria a metodo classico con query
 		Criteria criteriaUtente = session.createCriteria(Utente.class);
 		Criteria criteriaAzienda = session.createCriteria(Azienda.class);
 		criteriaUtente.add(Restrictions.eq("email", email));

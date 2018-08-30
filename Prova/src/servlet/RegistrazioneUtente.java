@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -109,6 +112,7 @@ public class RegistrazioneUtente extends HttpServlet {
 			//Ritornare errore codice fiscale inesistente
 		}
 		else {
+			MessageDigest digest;
 			Utente e1 = new Utente();
 			e1.setCodiceFiscale(request.getParameter("CF"));
 			e1.setNome(request.getParameter("Nome"));
@@ -126,32 +130,22 @@ public class RegistrazioneUtente extends HttpServlet {
 			e1.setTelefono(request.getParameter("Numero"));
 			e1.setLuogoNascita(request.getParameter("LuogoNascita"));
 			e1.setEmail(request.getParameter("email"));
-			e1.setPassword(request.getParameter("password"));
+			try {
+				//TODO Fixare Charsets
+				digest = MessageDigest.getInstance("SHA-256");
+				byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
+				String password = new String(encodedhash, StandardCharsets.UTF_8);
+				System.out.println(password);
+				e1.setPassword(password);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 			e1.setTipo("utente");
 			session.persist(e1);
 			SecurityLayer.createSession(request, request.getParameter("email"), request.getParameter("CF"), "utente");
 			response.sendRedirect("Home");
 		}
 		tx.commit();
-		
-		Configuration cfg = new Configuration();
-		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
-			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
-		}
-		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
-		cfg.setDefaultEncoding("UTF-8");
-		cfg.setLocale(Locale.ITALIAN);
-		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/home.ftl");
-		try {
-			template.process(null, response.getWriter());
-		} catch (TemplateException e) {
-			e.printStackTrace();
-		}
 		// doGet(request, response);
 	}
 
