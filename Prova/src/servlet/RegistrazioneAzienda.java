@@ -2,7 +2,11 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -116,6 +120,7 @@ public class RegistrazioneAzienda extends HttpServlet {
 			//Ritornare errore email già utilizzata da un utente
 		}
 		else {
+			MessageDigest digest;
 			Azienda e1 = new Azienda();
 			e1.setCodiceFiscaleIva(request.getParameter("CF"));
 			e1.setRagioneSocialeNome(request.getParameter("Nome"));
@@ -129,18 +134,26 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
 			e1.setConvenzionata(false);
 			e1.setEmail(request.getParameter("Email"));
-			e1.setPassword(request.getParameter("password"));
+			try {
+				digest = MessageDigest.getInstance("SHA-256");
+				byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
+				String password = new String(encodedhash);
+				e1.setPassword(password);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 			e1.setNumTirocinanti(0);
 			e1.setValutazione(0);
 			session.persist(e1);
 			Query queryAzienda=session.createQuery("FROM Azienda a WHERE a.email= :email");
 			queryAzienda.setParameter("email", request.getParameter("Email"));
 			Azienda azienda= (Azienda) queryAzienda.uniqueResult();
+			t.commit();// transaction is committed
 			SecurityLayer.createSession(request, request.getParameter("Email"), String.valueOf(azienda.getIdAzienda()), "azienda");
 			response.sendRedirect("Home");
+			
 		}
 		
-		t.commit();// transaction is committed
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {

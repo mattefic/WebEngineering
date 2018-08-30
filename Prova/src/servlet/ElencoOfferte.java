@@ -60,12 +60,7 @@ public class ElencoOfferte extends HttpServlet {
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 		Query query = session.createQuery("FROM Offerta");
-		Query queryAzienda = session.createQuery("FROM Azienda");
 		List<Object> offerte = query.list();
-		Azienda azienda = (Azienda) queryAzienda.getResultList().get(0);
-		for (Iterator iterator = offerte.iterator(); iterator.hasNext();) {
-			Offerta offerta = (Offerta) iterator.next();
-		}
 		input.put("offerte", offerte);
 
 		Configuration cfg = new Configuration();
