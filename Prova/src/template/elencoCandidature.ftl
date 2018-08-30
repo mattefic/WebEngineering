@@ -70,22 +70,24 @@
 			</section>
 					
 			<div class="container">
-				
+				<#list offerte as offerta>
 				<!-- Nav tabs -->
 				<div class="mt-90 ml-60 mr-60"> 
 					<ul class="nav nav-tabs nav-top-border" id="myTab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">OFFERTA DI TIROCINIO</a>
+							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home${offerta.idOfferta}" role="tab" aria-controls="home" aria-selected="true">OFFERTA DI TIROCINIO</a>
 						 </li>
 						<li class="nav-item">
-							<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">CANDIDATURE RICEVUTE</a>
+							<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile${offerta.idOfferta}" role="tab" aria-controls="profile" aria-selected="false">CANDIDATURE RICEVUTE</a>
 						</li>
 					</ul>
 
 					<!-- Tab panes -->
+					
 					<div class="tab-content mt-10">
-						<div class="tab-pane active" id="home" role="tabpanel">			
-							<#list offerte as offerta>
+					
+						<div class="tab-pane active" id="home${offerta.idOfferta}" role="tabpanel">			
+							
 							<div class="row d-flex justify-content-center">    					
 								<div class="col-xs-8">
 									<div class="card card-default ml-15 mr-15">
@@ -108,7 +110,7 @@
 							
 						</div>
 						
-						<div class="tab-pane fade" id="profile" role="tabpanel">
+						<div class="tab-pane fade" id="profile${offerta.idOfferta}" role="tabpanel">
 							
 							<div class="form-inline">
 							<#list offerta.candidature as candidatura>
@@ -128,19 +130,21 @@
 										<div class="text-center">
 											<button type="submit" class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
 										<form>
-											<input name="accetta" value="accetta">
+											<input name="accetta" value="accetta" type="hidden">
 											<button type="submit" class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
 										</form>
 										</div>
 									</div>								
 								</div>		
-							</#list>
 							</#list>				
 							</div>
 							
 						</div>
+					
 					</div>
+					
 				</div>
+				</#list>
 			</div>
 			
 			<!-- FOOTER -->
