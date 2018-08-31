@@ -139,12 +139,15 @@ public class ConfermaAdesione extends HttpServlet {
 			tutore.setNome(request.getParameter("nome"));
 			tutore.setCognome(request.getParameter("cognome"));
 			tutore.setTelefono(request.getParameter("telefono"));
+			tutore.setNumRichieste(1);
+			session.persist(tutore);
+			t.commit();
+			t = session.beginTransaction();
+			tutore = (TutoreUniversitario) query.uniqueResult();
+		} else {
+			tutore.setNumRichieste(tutore.getNumRichieste() + 1);
 			session.persist(tutore);
 		}
-		t.commit();
-		tutore = (TutoreUniversitario) query.uniqueResult();
-		
-		t = session.beginTransaction();
 		candidatura.setIdTutore(tutore.getIdTutore());
 		session.persist(candidatura);
 		t.commit();
