@@ -32,7 +32,6 @@ public class CompilaResoconto extends HttpServlet {
      */
     public CompilaResoconto() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
