@@ -1,5 +1,5 @@
 package servlet;
-//TODO Matteo solo le aziende convenzionate devono poter pubblicare offerte
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -25,6 +26,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Offerta;
 import security.SecurityLayer;
 
@@ -85,10 +87,11 @@ public class InserisciTirocinio extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession httpSession = SecurityLayer.checkSession(request);
+		int idAzienda = Integer.parseInt((String) httpSession.getAttribute("userid"));
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
 			Offerta offerta = new Offerta();
-			Date today= Calendar.getInstance().getTime();
-			offerta.setIdAzienda(Integer.parseInt((String) httpSession.getAttribute("userid")));
+			Date today = Calendar.getInstance().getTime();
+			offerta.setIdAzienda(idAzienda);
 			offerta.setTitolo(request.getParameter("titolo"));
 			offerta.setLuogo(request.getParameter("luogo"));
 			offerta.setSettore(request.getParameter("settore"));
@@ -111,9 +114,16 @@ public class InserisciTirocinio extends HttpServlet {
 			}
 			Session session = sessionFactory.openSession();
 			Transaction t = session.beginTransaction();
-
+		
+			Query query = session.createQuery("FROM Azienda where idAzienda = :idAzienda");
+			query.setParameter("idAzienda", idAzienda);
+			Azienda azienda = (Azienda) query.uniqueResult();
+			
+			if(azienda.isConvenzionata()) {
 			session.persist(offerta);
+			}
 			t.commit();
+
 			response.sendRedirect("Home");
 		}
 	}
