@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO decidere se dinamicizzare il grafico
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
