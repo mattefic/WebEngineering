@@ -93,7 +93,7 @@ public class InserisciTirocinio extends HttpServlet {
 			offerta.setLuogo(request.getParameter("luogo"));
 			offerta.setSettore(request.getParameter("settore"));
 			offerta.setMesi(Integer.parseInt((String) request.getParameter("mesi")));
-			offerta.setModalità(request.getParameter("modalita"));
+			offerta.setModalita(request.getParameter("modalita"));
 			offerta.setObiettivi(request.getParameter("obiettivi"));
 			offerta.setOrario(request.getParameter("orario"));
 			offerta.setRimborsiFacilitazioni(request.getParameter("facilitazioni"));

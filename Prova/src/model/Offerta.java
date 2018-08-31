@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Offerta {
 
-	private String luogo, obiettivi, modalità, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
+	private String luogo, obiettivi, modalita, rimborsiFacilitazioni, orario, titolo, settore, descrizione;
 	private int idAzienda, idOfferta, mesi, ore;
 	private boolean visibile;
 	private Date dataPub;
@@ -33,12 +33,12 @@ public class Offerta {
 		this.obiettivi = obiettivi;
 	}
 
-	public String getModalità() {
-		return modalità;
+	public String getModalita() {
+		return modalita;
 	}
 
-	public void setModalità(String modalità) {
-		this.modalità = modalità;
+	public void setModalita(String modalita) {
+		this.modalita = modalita;
 	}
 
 	public String getRimborsiFacilitazioni() {
