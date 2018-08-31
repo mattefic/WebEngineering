@@ -19,6 +19,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -109,17 +110,14 @@ public class Accedi extends HttpServlet {
 		
 		// Carichiamo userid dal database se esiste l'utente
 		
-		//TODO Cambiare da Criteria a metodo classico con query
-		Criteria criteriaUtente = session.createCriteria(Utente.class);
-		Criteria criteriaAzienda = session.createCriteria(Azienda.class);
-		criteriaUtente.add(Restrictions.eq("email", email));
-		criteriaUtente.add(Restrictions.eq("password", password));
-
-		criteriaAzienda.add(Restrictions.eq("email", email));
-		criteriaAzienda.add(Restrictions.eq("password", password));
-
-		Utente U = (Utente) criteriaUtente.uniqueResult();
-		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
+		Query <Utente> queryUtente = session.createQuery("FROM Utente WHERE email= :email AND password= :password");
+		Query <Azienda> queryAzienda = session.createQuery("FROM Azienda WHERE email= :email AND password= :password");
+		queryUtente.setParameter("email", email);
+		queryUtente.setParameter("password", password);
+		queryAzienda.setParameter("email", email);
+		queryAzienda.setParameter("password", password);
+		Utente U = (Utente) queryUtente.uniqueResult();
+		Azienda A = (Azienda) queryAzienda.uniqueResult();
 		String userid;
 
 		if (U != null) {
