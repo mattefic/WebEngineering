@@ -179,21 +179,6 @@
 
 						</div>
 						
-						
-						<div class="col-md-2">
-
-							<!-- Links -->
-							<br>
-							<h4 class="letter-spacing-1">ACCEDI O REGISTRATI</h4>
-							<ul class="footer-links list-unstyled">
-								<li><a href="accedi.html">Accedi</a></li>
-								<li><a href="registrazioneUtente.html">Registrati come utente</a></li>
-								<li><a href="registrazioneAzienda.html">Registrati come azienda</a></li>
-							</ul>
-							<!-- /Links -->
-
-						</div>
-						
 						<div class="col-md-2">
 
 							<!-- Links -->
