@@ -90,7 +90,7 @@
 							<br>
 							<p><h5>OBIETTIVI TIROCINIO:</h5>${offerta.obiettivi}</p>
 							<br>
-							<p><h5>MODALIT&Aacute; TIROCINIO:</h5>${offerta.modalità}</p>
+							<p><h5>MODALIT&Aacute; TIROCINIO:</h5>${offerta.modalita}</p>
 							<br>
 							<p><h5>FACILITAZIONI PREVISTE:</h5>${offerta.rimborsiFacilitazioni}</p>
 						</div>
