@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Candidatura {
 
-	private int idCandidatura, idAzienda, idOfferta, idTutore, idUtente, cfu;
+	private int idCandidatura, idAzienda, idOfferta, idTutoreUniversitario, idTutoreAziendale, idUtente, cfu;
 	private String stato;
 	private Date dataCandidatura;
 
@@ -24,12 +24,12 @@ public class Candidatura {
 		this.idOfferta = idOfferta;
 	}
 
-	public int getIdTutore() {
-		return idTutore;
+	public int getIdTutoreUniversitario() {
+		return idTutoreUniversitario;
 	}
 
-	public void setIdTutore(int idTutore) {
-		this.idTutore = idTutore;
+	public void setIdTutoreUniversitario(int idTutoreUniversitario) {
+		this.idTutoreUniversitario = idTutoreUniversitario;
 	}
 
 	public int getIdUtente() {
@@ -94,6 +94,14 @@ public class Candidatura {
 
 	public void setIdAzienda(int idAzienda) {
 		this.idAzienda = idAzienda;
+	}
+
+	public int getIdTutoreAziendale() {
+		return idTutoreAziendale;
+	}
+
+	public void setIdTutoreAziendale(int idTutoreAziendale) {
+		this.idTutoreAziendale = idTutoreAziendale;
 	}
 
 }

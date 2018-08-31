@@ -128,9 +128,14 @@
 										<p><b>Email:</b> ${candidatura.utente.email}</p>
 										<p><b>Numero CFU richiesti:</b> ${candidatura.cfu}</p>
 										<div class="text-center">
+										<form method="post">
+											<input name="check" value="0" type="hidden">
+											<input name="candidatura" value=${candidatura.idCandidatura} type="hidden">
 											<button type="submit" class="btn btn-danger w-120"><i class="fa fa-close"></i> BOCCIA</button>
-										<form>
-											<input name="accetta" value="accetta" type="hidden">
+										</form>
+										<form method="post">
+											<input name="check" value="1" type="hidden">
+											<input name="candidatura" value=${candidatura.idCandidatura} type="hidden">
 											<button type="submit" class="btn btn-primary w-120 ml-10"><i class="fa fa-check"></i> APPROVA</button>
 										</form>
 										</div>

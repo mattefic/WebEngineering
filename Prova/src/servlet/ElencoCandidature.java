@@ -1,9 +1,8 @@
 package servlet;
 //TODO aggiungere div informativo se non sono presenti candidature per un'offerta
-//TODO eliminare candidatura appena approvata o bocciata
-//TODO Controllata generale
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,8 +86,10 @@ public class ElencoCandidature extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		Query query = session.createQuery("FROM Candidatura WHERE idAzienda = :idAzienda");
+		String stato="attesa";
+		Query query = session.createQuery("FROM Candidatura WHERE idAzienda = :idAzienda AND stato= :stato");
 		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
+		query.setParameter("stato", stato);
 		List<Candidatura> candidature = query.list();
 		query = session.createQuery("FROM Offerta WHERE idAzienda = :idAzienda");
 		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
@@ -114,50 +115,72 @@ public class ElencoCandidature extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession httpSession = SecurityLayer.checkSession(request);
-		int idAzienda = Integer.parseInt((String) httpSession.getAttribute("userid"));
-		int idCandidatura = Integer.parseInt((String) request.getParameter("candidatura"));
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		
 		if (sessionFactory != null) {
 
 		} else {
 			HibernateSettings settings = new HibernateSettings();
 			sessionFactory = settings.getSessionFactory();
 		}
+		
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
+		
+		int idCandidatura = Integer.parseInt((String) request.getParameter("candidatura"));
+		
+		
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
-			if (request.getParameter("accetta").equals("accetta")) {
+			
+			if (request.getParameter("check").equals("1")) {
 				// Accetta
 				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
 				int idOfferta = candidatura.getIdOfferta();
+				System.out.println("IdCandidatura = "+idCandidatura);
+				System.out.println(idOfferta);
 				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
-				queryOfferta.setParameter("idAzienda", httpSession.getAttribute("iduser"));
+				queryOfferta.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
 				queryOfferta.setParameter("idOfferta", idOfferta);
 				Offerta offerta = (Offerta) queryOfferta.uniqueResult();
+				System.out.println(offerta.getIdOfferta());
 				if (offerta != null) {
 					Contratto contratto = new Contratto();
 					contratto.setIdOfferta(offerta.getIdOfferta());
 					contratto.setIdAzienda(Integer.parseInt((String)httpSession.getAttribute("userid")));
-					contratto.setIdTutoreAziendale(candidatura.getIdTutore());
-					contratto.setIdTutoreUniversitario(candidatura.getIdTutore());
+					contratto.setIdTutoreAziendale(candidatura.getIdTutoreAziendale());
+					contratto.setIdTutoreUniversitario(candidatura.getIdTutoreUniversitario());
 					contratto.setIdUtente(candidatura.getIdUtente());
 					contratto.setDataAccettazione(new Date());
 					contratto.setCfu(candidatura.getCfu());
-					candidatura.setStato("Accettata");
+					String stato="accettata";
+					Query query2 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura = :idCandidatura");
+					query2.setParameter("idCandidatura", idCandidatura);
+					query2.setParameter("stato", stato);
+					query2.executeUpdate();
+					session.persist(contratto);
+					response.sendRedirect("ElencoCandidature");
+					t.commit();
 				}
+			
 			} else {
 				// Rifiuta
-				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
-				query.setParameter("idCandidatura", idCandidatura);
-				Candidatura candidatura = (Candidatura) query.uniqueResult();
-				candidatura.setStato("Rifiutata");
-
+				System.out.println("Bocciata");
+				String stato="rifiuata";
+				Query query2 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura = :idCandidatura");
+				query2.setParameter("idCandidatura", idCandidatura);
+				query2.setParameter("stato", stato);
+				query2.executeUpdate();
+				response.sendRedirect("ElencoCandidature");
+				t.commit();
 			}
+			
+			
+			
 		}
 	}
 

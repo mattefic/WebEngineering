@@ -148,7 +148,7 @@ public class ConfermaAdesione extends HttpServlet {
 			tutore.setNumRichieste(tutore.getNumRichieste() + 1);
 			session.persist(tutore);
 		}
-		candidatura.setIdTutore(tutore.getIdTutore());
+		candidatura.setIdTutoreUniversitario(tutore.getIdTutore());
 		session.persist(candidatura);
 		t.commit();
 
