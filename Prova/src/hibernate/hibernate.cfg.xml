@@ -18,6 +18,7 @@
 		<mapping resource="hibernate/tutoreAziendale.hbn.xml" />
 		<mapping resource="hibernate/offerta.hbn.xml" />
 		<mapping resource="hibernate/candidatura.hbn.xml" />
+		<mapping resource="hibernate/contratto.hbn.xml" />
 	</session-factory>
 
 </hibernate-configuration>  

@@ -8,10 +8,7 @@
 		<id name="idContratto" column="idContratto">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="dataAccettazione" column="dataAccettazione">
-		</property>
-		<property name="idTutoreUniversitario"
-			column="idTutoreUniversitario"></property>
+		<property name="idTutoreUniversitario" column="idTutoreUniversitario"></property>
 		<property name="dataAccettazione" column="dataAccettazione"></property>
 		<property name="dataInizio" column="dataInizio"></property>
 		<property name="dataFine" column="dataFine"></property>
