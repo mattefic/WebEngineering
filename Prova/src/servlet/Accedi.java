@@ -97,21 +97,13 @@ public class Accedi extends HttpServlet {
 			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
-		String password="";
-		try {
-			//TODO Fixare Charsets
-			digest = MessageDigest.getInstance("SHA-256");
-			byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
-			password = new String(encodedhash, StandardCharsets.UTF_8);
-			System.out.println(password);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+		String password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(request.getParameter("password"));
 		
+
 		// Carichiamo userid dal database se esiste l'utente
-		
-		Query <Utente> queryUtente = session.createQuery("FROM Utente WHERE email= :email AND password= :password");
-		Query <Azienda> queryAzienda = session.createQuery("FROM Azienda WHERE email= :email AND password= :password");
+
+		Query<Utente> queryUtente = session.createQuery("FROM Utente WHERE email= :email AND password= :password");
+		Query<Azienda> queryAzienda = session.createQuery("FROM Azienda WHERE email= :email AND password= :password");
 		queryUtente.setParameter("email", email);
 		queryUtente.setParameter("password", password);
 		queryAzienda.setParameter("email", email);

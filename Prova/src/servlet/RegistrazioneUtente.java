@@ -41,25 +41,26 @@ import security.SecurityLayer;
 @WebServlet("/RegistrazioneUtente")
 public class RegistrazioneUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistrazioneUtente() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RegistrazioneUtente() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
@@ -77,42 +78,41 @@ public class RegistrazioneUtente extends HttpServlet {
 		}
 		input.put("menu", serverData.menu.get(tipo));
 		try {
-			template.process(input , response.getWriter());
+			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
 			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		
-		Criteria criteriaUtente= session.createCriteria(Utente.class);
+
+		Criteria criteriaUtente = session.createCriteria(Utente.class);
 		criteriaUtente.add(Restrictions.eq("codiceFiscale", request.getParameter("CF")));
 		Utente U = (Utente) criteriaUtente.uniqueResult();
-		
-		if(U!=null) {
-			//Ritornare errore utente già esistente
-		}
-		else if(!request.getParameter("password").equals(request.getParameter("check"))) {
-			//Ritornare errore password non confermata
-		}
-		else if(request.getParameter("CF").length()!=16) {
-			//Ritornare errore codice fiscale inesistente
-		}
-		else {
+
+		if (U != null) {
+			// Ritornare errore utente già esistente
+		} else if (!request.getParameter("password").equals(request.getParameter("check"))) {
+			// Ritornare errore password non confermata
+		} else if (request.getParameter("CF").length() != 16) {
+			// Ritornare errore codice fiscale inesistente
+		} else {
 			MessageDigest digest;
 			Utente e1 = new Utente();
 			e1.setCodiceFiscale(request.getParameter("CF"));
@@ -120,8 +120,8 @@ public class RegistrazioneUtente extends HttpServlet {
 			e1.setCognome(request.getParameter("Cognome"));
 			e1.setCorsoLaurea(request.getParameter("Corso"));
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        	String date = request.getParameter("Data");
-        	LocalDate localDate = LocalDate.parse(date, formatter);
+			String date = request.getParameter("Data");
+			LocalDate localDate = LocalDate.parse(date, formatter);
 			e1.setDataNascita(Date.valueOf(localDate));
 			e1.setHandicap(false);
 			if (request.getParameter("Handicap") != null) {
@@ -131,22 +131,15 @@ public class RegistrazioneUtente extends HttpServlet {
 			e1.setTelefono(request.getParameter("Numero"));
 			e1.setLuogoNascita(request.getParameter("LuogoNascita"));
 			e1.setEmail(request.getParameter("email"));
-			try {
-				//TODO Fixare Charsets
-				digest = MessageDigest.getInstance("SHA-256");
-				byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
-				String password = new String(encodedhash, StandardCharsets.UTF_8);
-				System.out.println(password);
-				e1.setPassword(password);
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			}
+			String password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(request.getParameter("password"));
+			e1.setPassword(password);
 			e1.setTipo("utente");
 			session.persist(e1);
 			Query query = session.createQuery("FROM Utente WHERE codiceFiscale = :CF");
 			query.setParameter("CF", request.getParameter("CF"));
 			Utente utente = (Utente) query.uniqueResult();
-			SecurityLayer.createSession(request, request.getParameter("email"), String.valueOf(utente.getIdUtente()), "utente");
+			SecurityLayer.createSession(request, request.getParameter("email"), String.valueOf(utente.getIdUtente()),
+					"utente");
 			response.sendRedirect("Home");
 		}
 		tx.commit();

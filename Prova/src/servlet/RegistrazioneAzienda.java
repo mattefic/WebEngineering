@@ -40,25 +40,26 @@ import security.SecurityLayer;
 @WebServlet("/RegistrazioneAzienda")
 public class RegistrazioneAzienda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistrazioneAzienda() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RegistrazioneAzienda() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
-		if(env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-		cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		}
-		else {
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
@@ -83,43 +84,41 @@ public class RegistrazioneAzienda extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
 			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		Criteria criteriaAzienda= session.createCriteria(Azienda.class);
-		Criteria criteriaUtente= session.createCriteria(Utente.class);
+		Criteria criteriaAzienda = session.createCriteria(Azienda.class);
+		Criteria criteriaUtente = session.createCriteria(Utente.class);
 		String PartitaIVA = request.getParameter("CF");
 		String Email = request.getParameter("Email");
 		String Password = request.getParameter("password");
-		String Check =request.getParameter("check");
-		criteriaAzienda.add(Restrictions.eq("codiceFiscaleIva", PartitaIVA ));
-		criteriaUtente.add(Restrictions.eq("email", Email ));
+		String Check = request.getParameter("check");
+		criteriaAzienda.add(Restrictions.eq("codiceFiscaleIva", PartitaIVA));
+		criteriaUtente.add(Restrictions.eq("email", Email));
 		Azienda A = (Azienda) criteriaAzienda.uniqueResult();
 		Utente U = (Utente) criteriaUtente.uniqueResult();
-		
-		if(PartitaIVA.length()!=11) {
-			//Ritornare errore partitaIVA inesistente
-		}
-		else if(!Password.equals(Check)) {
-			//Ritornare errore password non confermata
-		}	
-		else if(A!=null) {
-			//Ritornare errore Azienda già registrata
-		}
-		else if(U!=null) {
-			//Ritornare errore email già utilizzata da un utente
-		}
-		else {
+
+		if (PartitaIVA.length() != 11) {
+			// Ritornare errore partitaIVA inesistente
+		} else if (!Password.equals(Check)) {
+			// Ritornare errore password non confermata
+		} else if (A != null) {
+			// Ritornare errore Azienda già registrata
+		} else if (U != null) {
+			// Ritornare errore email già utilizzata da un utente
+		} else {
 			MessageDigest digest;
 			Azienda e1 = new Azienda();
 			e1.setCodiceFiscaleIva(request.getParameter("CF"));
@@ -134,28 +133,21 @@ public class RegistrazioneAzienda extends HttpServlet {
 			e1.setTelefonoRespTirocinio(request.getParameter("TelResp"));
 			e1.setConvenzionata(false);
 			e1.setEmail(request.getParameter("Email"));
-			try {
-				//TODO Fixare Charsets
-				digest = MessageDigest.getInstance("SHA-256");
-				byte[] encodedhash = digest.digest(request.getParameter("password").getBytes(StandardCharsets.UTF_8));
-				String password = new String(encodedhash, StandardCharsets.UTF_8);
-				System.out.println(password);
-				e1.setPassword(password);
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			}
+			String password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(request.getParameter("password"));
+			e1.setPassword(password);
 			e1.setNumTirocinanti(0);
 			e1.setValutazione(0);
 			session.persist(e1);
-			Query queryAzienda=session.createQuery("FROM Azienda a WHERE a.email= :email");
+			Query queryAzienda = session.createQuery("FROM Azienda a WHERE a.email= :email");
 			queryAzienda.setParameter("email", request.getParameter("Email"));
-			Azienda azienda= (Azienda) queryAzienda.uniqueResult();
+			Azienda azienda = (Azienda) queryAzienda.uniqueResult();
 			t.commit();// transaction is committed
-			SecurityLayer.createSession(request, request.getParameter("Email"), String.valueOf(azienda.getIdAzienda()), "azienda");
+			SecurityLayer.createSession(request, request.getParameter("Email"), String.valueOf(azienda.getIdAzienda()),
+					"azienda");
 			response.sendRedirect("Home");
-			
+
 		}
 		// doGet(request, response);
 	}
-	
+
 }
