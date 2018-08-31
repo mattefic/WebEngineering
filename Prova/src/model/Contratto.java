@@ -4,9 +4,10 @@ import java.util.Date;
 
 public class Contratto {
 
-	private int idContratto, idTutoreUniversitario, idTutoreAziendale, idUtente, idOfferta;
+	private int idContratto, idAzienda, idTutoreUniversitario, idTutoreAziendale, idUtente, idOfferta, cfu;
 	private Date dataAccettazione, dataInizio, dataFine;
 	private boolean votato;
+	private Utente utente;
 
 	public Contratto() {
 
@@ -82,6 +83,30 @@ public class Contratto {
 
 	public void setVotato(boolean votato) {
 		this.votato = votato;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public int getIdAzienda() {
+		return idAzienda;
+	}
+
+	public void setIdAzienda(int idAzienda) {
+		this.idAzienda = idAzienda;
+	}
+
+	public int getCfu() {
+		return cfu;
+	}
+
+	public void setCfu(int cfu) {
+		this.cfu = cfu;
 	}
 
 }

@@ -74,29 +74,31 @@
 				
 				<!-- Nav tabs -->
 				<div class="mt-90 ml-60 mr-60"> 
-
+							<#list contratti as contratto>
 							<div class="form-inline">
 								<div class="col-md-4">
 									<form action="#" method="post">
 										<div class="box-static box-border-top">
 											<div class="box-title">
-												<h4 class="text-center">Lorenzo Collevecchio</h4>
+												<h4 class="text-center">${contratto.utente.nome} ${contratto.utente.cognome}</h4>
 											</div>
 											
-											<p><b>Codice fiscale:</b> PPPPLT80R10M082K.</p>
-											<p><b>Telefono:</b> 3407678134.</p>
-											<p><b>Data di nascita:</b> 24/09/1993.</p>
-											<p><b>Luogo di nascita:</b> Teramo.</p>
-											<p><b>Residenza:</b> Teramo.</p>
-											<p><b>Corso di laurea:</b> informatica.</p>
-											<p><b>Email:</b> lorenzocollevecchio@outlook.com.</p>
-											<p><b>Numero CFU richiesti:</b> 12.</p>
+											<p><b>Codice fiscale:</b> ${contratto.utente.codiceFiscale}</p>
+											<p><b>Telefono:</b> ${contratto.utente.telefono}</p>
+											<p><b>Data di nascita:</b> ${contratto.utente.dataNascita}</p>
+											<p><b>Luogo di nascita:</b> ${contratto.utente.luogoNascita}</p>
+											<p><b>Residenza:</b> ${contratto.utente.residenza}</p>
+											<p><b>Corso di laurea:</b> ${contratto.utente.corsoLaurea}</p>
+											<p><b>Email:</b> ${contratto.utente.email}</p>
+											<p><b>Numero CFU richiesti:</b> ${contratto.cfu}</p>
+											<p><b>Data Inizio Tirocinio:</b> ${contratto.dataInizio}</p>
+											<p><b>Data Fine Tirocinio:</b> ${contratto.dataFine}</p>
 											
 											<input class="custom-file-upload" type="file" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
 											
 											<div class="text-center">
-												<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
-												<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
+												<a href="DettagliOfferta?idOfferta=${contratto.idOfferta}" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
+												<a href="CompilaResoconto" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
 												<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
 											</div>
 											
@@ -104,7 +106,7 @@
 									</form>
 								</div>
 							</div>
-							
+							</#list>
 				</div>
 				<br>
 			</div>

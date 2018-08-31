@@ -8,12 +8,16 @@
 		<id name="idContratto" column="idContratto">
 			<generator class="assigned"></generator>
 		</id>
+		<property name="idAzienda" column="idAzienda"></property>
+		<property name="idOfferta" column="idOfferta"></property>
 		<property name="idTutoreUniversitario" column="idTutoreUniversitario"></property>
 		<property name="dataAccettazione" column="dataAccettazione"></property>
 		<property name="dataInizio" column="dataInizio"></property>
 		<property name="dataFine" column="dataFine"></property>
 		<property name="idTutoreAziendale" column="idTutoreAziendale"></property>
 		<property name="idUtente" column="idUtente"></property>
+		<property name="cfu" column="cfu"></property>
 		<property name="votato" column="votato"></property>
+		<many-to-one name="utente" class="model.Utente" column="idUtente" not-null="true" insert="false" update="false" />	
 	</class>
 </hibernate-mapping> 

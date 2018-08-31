@@ -73,20 +73,15 @@ public class ElencoTirocinanti extends HttpServlet {
 		
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
-		Query query = session.createQuery("FROM Offerta WHERE idAzienda = :idAzienda");
-		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
-		List<Offerta> offerte = query.list();
-		Query query2 = session.createQuery("FROM Contratto WHERE idOfferta = :idOfferta");
 		List<Contratto> contratti = new ArrayList();
-		for(Offerta offerta : offerte) {
-			query2.setParameter("idOfferta", offerta.getIdOfferta());
-			Contratto contratto= (Contratto) query2.uniqueResult();
-			if(contratto!=null && !contratti.contains(contratto)){
-				contratti.add(contratto);
-			}
+		
+		if(tipo.equals("azienda")){
+		Query query = session.createQuery("FROM Contratto WHERE idAzienda = :idAzienda");
+		query.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
+		contratti = query.list();
 		}
 		input.put("contratti", contratti);
+		
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {

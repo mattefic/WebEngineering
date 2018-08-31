@@ -135,26 +135,27 @@ public class ElencoCandidature extends HttpServlet {
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
 				int idOfferta = candidatura.getIdOfferta();
-				Query queryOfferta = session
-						.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
+				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
 				queryOfferta.setParameter("idAzienda", httpSession.getAttribute("iduser"));
 				queryOfferta.setParameter("idOfferta", idOfferta);
 				Offerta offerta = (Offerta) queryOfferta.uniqueResult();
 				if (offerta != null) {
-					session.delete(candidatura);
 					Contratto contratto = new Contratto();
 					contratto.setIdOfferta(offerta.getIdOfferta());
+					contratto.setIdAzienda(Integer.parseInt((String)httpSession.getAttribute("userid")));
 					contratto.setIdTutoreAziendale(candidatura.getIdTutore());
 					contratto.setIdTutoreUniversitario(candidatura.getIdTutore());
 					contratto.setIdUtente(candidatura.getIdUtente());
 					contratto.setDataAccettazione(new Date());
+					contratto.setCfu(candidatura.getCfu());
+					candidatura.setStato("Accettata");
 				}
 			} else {
 				// Rifiuta
 				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
 				query.setParameter("idCandidatura", idCandidatura);
 				Candidatura candidatura = (Candidatura) query.uniqueResult();
-				session.delete(candidatura);
+				candidatura.setStato("Rifiutata");
 
 			}
 		}
