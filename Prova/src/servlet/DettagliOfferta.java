@@ -1,5 +1,4 @@
 package servlet;
-//TODO mostrare aderisci solo se si è utenti
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -91,6 +90,7 @@ public class DettagliOfferta extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
+		input.put("tipo", tipo);
 		try {
 			template.process(input, response.getWriter());
 		} catch (TemplateException e) {
