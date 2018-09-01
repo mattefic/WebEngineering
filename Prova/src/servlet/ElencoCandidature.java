@@ -1,5 +1,5 @@
 package servlet;
-//TODO aggiungere div informativo se non sono presenti candidature per un'offerta
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;

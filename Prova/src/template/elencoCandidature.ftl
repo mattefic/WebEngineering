@@ -111,7 +111,13 @@
 						</div>
 						
 						<div class="tab-pane fade" id="profile${offerta.idOfferta}" role="tabpanel">
-							
+						<#if !(offerta.candidature[0]??)>	
+							<div class="card card-default">
+								<div class="card-block text-center">
+									Non sono presenti candidature per questa offerta al momento.
+								</div>
+							</div>
+						</#if>	
 							<div class="form-inline">
 							<#list offerta.candidature as candidatura>
 								<div class="col-md-3">
@@ -143,9 +149,8 @@
 								</div>		
 							</#list>				
 							</div>
-							
 						</div>
-					
+
 					</div>
 					
 				</div>
