@@ -74,7 +74,8 @@ public class CompilaResoconto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO fare doPost
+		//TODO generare file html e creare flusso dati per riempimento
+		//TODO convertire da html a pdf e salvare
 		doGet(request, response);
 	}
 

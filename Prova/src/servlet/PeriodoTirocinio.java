@@ -113,6 +113,8 @@ public class PeriodoTirocinio extends HttpServlet {
 			contract.setDataFine(dataFine);
 			session.persist(contract);
         	t.commit();
+        	//TODO Generare il file html e il flusso dati per riempimento
+        	//TODO Convertire il file da html a pdf e salvarlo
 			response.sendRedirect("ElencoTirocinanti");
 			
 		}
