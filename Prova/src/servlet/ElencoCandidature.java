@@ -3,7 +3,8 @@ package servlet;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
+import java.util.Calendar;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -134,42 +135,49 @@ public class ElencoCandidature extends HttpServlet {
 		
 		
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
-			
+			Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
+			query.setParameter("idCandidatura", idCandidatura);
+			Candidatura candidatura = (Candidatura) query.uniqueResult();
 			if (request.getParameter("check").equals("1")) {
 				// Accetta
-				Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
-				query.setParameter("idCandidatura", idCandidatura);
-				Candidatura candidatura = (Candidatura) query.uniqueResult();
+				
 				int idOfferta = candidatura.getIdOfferta();
-				System.out.println("IdCandidatura = "+idCandidatura);
-				System.out.println(idOfferta);
 				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
 				queryOfferta.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
 				queryOfferta.setParameter("idOfferta", idOfferta);
 				Offerta offerta = (Offerta) queryOfferta.uniqueResult();
-				System.out.println(offerta.getIdOfferta());
 				if (offerta != null) {
+					Date oggi = new Date(Calendar.getInstance().getTime().getTime());
 					Contratto contratto = new Contratto();
 					contratto.setIdOfferta(offerta.getIdOfferta());
 					contratto.setIdAzienda(Integer.parseInt((String)httpSession.getAttribute("userid")));
 					contratto.setIdTutoreAziendale(candidatura.getIdTutoreAziendale());
 					contratto.setIdTutoreUniversitario(candidatura.getIdTutoreUniversitario());
 					contratto.setIdUtente(candidatura.getIdUtente());
-					contratto.setDataAccettazione(new Date());
+					contratto.setDataAccettazione(oggi);
 					contratto.setCfu(candidatura.getCfu());
+					
+					
 					String stato="accettata";
 					Query query2 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura = :idCandidatura");
 					query2.setParameter("idCandidatura", idCandidatura);
 					query2.setParameter("stato", stato);
 					query2.executeUpdate();
+					
 					session.persist(contratto);
-					response.sendRedirect("ElencoCandidature");
 					t.commit();
+					
+					t= session.beginTransaction();
+					Query query3 = session.createQuery("FROM Contratto WHERE idUtente = :idUtente");
+					query3.setParameter("idUtente", candidatura.getIdUtente());
+					Contratto contract = (Contratto) query3.uniqueResult(); 
+					response.sendRedirect("PeriodoTirocinio?idContratto="+contract.getIdContratto());
+					t.commit();
+
 				}
 			
 			} else {
 				// Rifiuta
-				System.out.println("Bocciata");
 				String stato="rifiuata";
 				Query query2 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura = :idCandidatura");
 				query2.setParameter("idCandidatura", idCandidatura);
@@ -178,8 +186,6 @@ public class ElencoCandidature extends HttpServlet {
 				response.sendRedirect("ElencoCandidature");
 				t.commit();
 			}
-			
-			
 			
 		}
 	}

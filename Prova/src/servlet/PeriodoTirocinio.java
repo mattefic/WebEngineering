@@ -7,6 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +29,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Contratto;
 import security.SecurityLayer;
 
 /**
@@ -93,21 +97,24 @@ public class PeriodoTirocinio extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		if (tipo.equals("azienda")) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        	String dataInizio = request.getParameter("dataInizio");
-        	String dataFine = request.getParameter("dataFine");
-        	LocalDate Start = LocalDate.parse(dataInizio, formatter);
-        	LocalDate Finish = LocalDate.parse(dataFine, formatter);
-			
-        	Query query = session.createQuery("UPDATE Contratto set dataInizio = :dataInizio WHERE idContratto = :idContratto");
+        	
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd") ;
+			String date = request.getParameter("dataInizio");
+			LocalDate localDate = LocalDate.parse(date, format);
+			String date2 = request.getParameter("dataFine");
+			LocalDate localDate2 = LocalDate.parse(date2, format);
+			Date dataInizio=Date.valueOf(localDate);
+			Date dataFine=Date.valueOf(localDate2);
+		
+			Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
 			query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
-			query.setParameter("dataInizio", Start);
-			query.executeUpdate();
+			Contratto contract = (Contratto) query.uniqueResult();
+			contract.setDataInizio(dataInizio);
+			contract.setDataFine(dataFine);
+			session.persist(contract);
+        	t.commit();
+			response.sendRedirect("ElencoTirocinanti");
 			
-			Query query2 = session.createQuery("UPDATE Contratto set dataFine = :dataFine WHERE idContratto = :idContratto");
-			query2.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
-			query2.setParameter("dataFine", Finish);
-			query2.executeUpdate();
 		}
 		else {
 			
