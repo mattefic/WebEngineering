@@ -108,7 +108,7 @@
 							<div class="col-6 col-md-3 mt--30 pb-150">
 								<div class="cart-visual-pin"><div class="cart-visual-pin-ball"> </div></div>
 								<div class="pl-20 pr-20">
-									<h2><i class="countTo" data-speed="2000">1000</i>+</h2>
+									<h2><i class="countTo" data-speed="2000">${numAziende}</i>+</h2>
 									<p class="fw--300">Aziende convenzionate</p>
 									<a href="ListaAziende" class="marker-more">Guarda +</a>
 								</div>
@@ -117,7 +117,7 @@
 							<div class="col-6 col-md-3 mt-80 pb-120">
 								<div class="cart-visual-pin"><div class="cart-visual-pin-ball"> </div></div>
 								<div class="pl-20 pr-20">
-									<h2><i class="countTo" data-speed="2000">4000</i>+</h2>
+									<h2><i class="countTo" data-speed="2000">${numStudenti}</i>+</h2>
 									<p class="fw--300">Studenti universitari registrati</p>
 								</div>
 							</div>
@@ -133,7 +133,7 @@
 							<div class="col-6 col-md-3 mt-0">
 								<div class="cart-visual-pin"><div class="cart-visual-pin-ball"> </div></div>
 								<div class="pl-20 pr-20">
-									<h2><i class="countTo" data-speed="2000">1200</i>+</h2>
+									<h2><i class="countTo" data-speed="2000">${numOfferte}</i>+</h2>
 									<p class="fw--300">Offerte di tirocinio</p>
 									<a href="ElencoOfferte" class="marker-more">Guarda +</a>
 								</div>
