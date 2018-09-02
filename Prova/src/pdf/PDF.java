@@ -1,4 +1,4 @@
-package servlet;
+package pdf;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,11 +16,9 @@ import com.itextpdf.text.DocumentException;
 
 public class PDF {
 
-	public static void main(String[] args) throws com.lowagie.text.DocumentException, DocumentException {
-		String inputFile = "C:\\Users\\Matteo\\git\\repository\\Prova\\src\\template\\document\\Progetto\\progetto.html";
-		String outputFile = "C:/Users/Matteo/Desktop/TestPdfWithoutCSS.pdf";
+	public static void generatePDF(String inputFile, String outputFile)
+			throws com.lowagie.text.DocumentException, DocumentException {
 
-		// PDF
 		try {
 
 			String url = new File(inputFile).toURI().toURL().toString();
@@ -28,7 +26,6 @@ public class PDF {
 
 			OutputStream out = new FileOutputStream(outputFile);
 
-			// Flying Saucer part
 			ITextRenderer renderer = new ITextRenderer();
 
 			renderer.setDocument(url);
