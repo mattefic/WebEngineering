@@ -69,10 +69,7 @@
 			</section>
 	
 			<section>
-				<div class="container" style="height: 100vh; min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;">
+				<div class="container">
 					
 					<div class="row">
 						<!-- H4 -->

@@ -70,10 +70,7 @@
 			
 			<!-- SEARCH -->
 					
-			<div class="container" style="height: 100vh; min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;">
+			<div class="container">
 				<#list aziende as azienda>
 				<div class="box-static box-border-top mt-50 ml-30 mr-30 p-30">
 
