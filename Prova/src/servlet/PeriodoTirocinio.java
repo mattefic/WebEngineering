@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -114,6 +115,27 @@ public class PeriodoTirocinio extends HttpServlet {
 			session.persist(contract);
         	t.commit();
         	//TODO Generare il file html e il flusso dati per riempimento
+        	response.setContentType("text/html;charset=UTF-8");
+    		Configuration cfg = new Configuration();
+    		Map<String, String> env = System.getenv();
+    		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+    			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+    		} else {
+    			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+    		}
+    		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+    		cfg.setDefaultEncoding("UTF-8");
+    		cfg.setLocale(Locale.ITALIAN);
+    		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+    		Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo.ftl");
+    		Map<String, Object> input = new HashMap<String, Object>();
+    		FileWriter w;
+			w=new FileWriter("ProgettoFormativo"+request.getParameter("idContratto")+".html");
+    		try {
+				template.process(input, w);
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
         	//TODO Convertire il file da html a pdf e salvarlo
 			response.sendRedirect("ElencoTirocinanti");
 			
