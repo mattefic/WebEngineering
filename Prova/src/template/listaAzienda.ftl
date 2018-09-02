@@ -73,9 +73,9 @@
 					<form autocomplete="off" action="#">
 						<div id="ragFor" class="autocomplete text-center mt-15">
 							<div class="fancy-form fancy-form-select">
-								<select class="form-control select2">
+								<select name="ragioneSociale" class="form-control select2">
 									<option value="">Ragione sociale</option>
-									<#list aziende as azienda>
+									<#list aziendeRicerca as azienda>
 										<option value="${azienda.idAzienda}">${azienda.ragioneSocialeNome}</option>
 									</#list>
 								</select>
@@ -89,7 +89,7 @@
 						</div>
 						<div id="ragFor" class="autocomplete text-center mt-15 ml-20">
 							<div class="fancy-form fancy-form-select">
-								<select class="form-control select2">
+								<select name="foro" class="form-control select2">
 									<option value="">Foro competente</option>
 									<#list fori as foro>
 										<option value="${foro}">${foro}</option>
