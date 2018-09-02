@@ -60,9 +60,134 @@ public class ElencoOfferte extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
+		
+		String queryRicerca="FROM Offerta ";
+		int check=0;
+		
+		if(request.getParameter("azienda")!=null) {
+			if(request.getParameter("azienda")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND idAzienda= :idAzienda ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE idAzienda= :idAzienda ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("luogo")!=null) {
+			if(request.getParameter("luogo")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND luogo= :luogo ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE luogo= :luogo ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("mesimin")!=null) {
+			if(request.getParameter("mesimin")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND mesi>= :mesimin ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE mesi>= :mesimin ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("mesimax")!=null) {
+			if(request.getParameter("mesimax")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND mesi<= :mesimax ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE mesi<= :mesimax ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("oremin")!=null) {
+			if(request.getParameter("oremin")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND ore>= :oremin ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE ore>= :oremin ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("oremax")!=null) {
+			if(request.getParameter("oremax")!="") {
+				if(check!=0) {
+					queryRicerca= queryRicerca+"AND ore<= :oremax ";
+				}
+				else {
+					queryRicerca= queryRicerca+"WHERE ore<= :oremax ";
+					check=1;
+				}
+			}
+		}
+		if(request.getParameter("cerca")!=null) {
+			if(request.getParameter("cerca")!="") {
+				if(check!=0) {
+					//TODO aggiungere AND ricerca tramite parole o lettere
+				}
+				else {
+					//TODO aggiungere WHERE ricerca tramite parole o lettere
+					check=1;
+				}
+			}
+		}
+		
 		Query query = session.createQuery("FROM Offerta");
 		List<Offerta> offerte = query.list();
 		input.put("offerte", offerte);
+		
+		Query query2 = session.createQuery(queryRicerca);
+		if(request.getParameter("azienda")!=null) {
+			if(request.getParameter("azienda")!="") {
+				int idAzienda;
+				Query query3=session.createQuery("FROM Azienda WHERE ragioneSocialeNome= :ragioneSocialeNome");
+				query3.setParameter("ragioneSocialeNome", request.getParameter("azienda"));
+				Azienda azienda=(Azienda) query3.uniqueResult();
+				query2.setParameter("idAzienda", azienda.getIdAzienda());
+			}
+		}
+		if(request.getParameter("luogo")!=null) {
+			if(request.getParameter("luogo")!="") {
+				query2.setParameter("luogo", request.getParameter("luogo"));
+			}
+		}
+		if(request.getParameter("mesimin")!=null) {
+			if(request.getParameter("mesimin")!="") {
+				query2.setParameter("mesimin", Integer.parseInt(request.getParameter("mesimin")));
+			}
+		}
+		if(request.getParameter("mesimax")!=null) {
+			if(request.getParameter("mesimax")!="") {
+				query2.setParameter("mesimax", Integer.parseInt(request.getParameter("mesimax")));
+			}
+		}
+		if(request.getParameter("oremin")!=null) {
+			if(request.getParameter("oremin")!="") {
+				query2.setParameter("oremin", Integer.parseInt(request.getParameter("oremin")));
+			}
+		}
+		if(request.getParameter("oremax")!=null) {
+			if(request.getParameter("oremax")!="") {
+				query2.setParameter("oremax", Integer.parseInt(request.getParameter("oremax")));
+			}
+		}
+		if(request.getParameter("cerca")!=null) {
+			if(request.getParameter("cerca")!="") {
+				//TODO ricerca per parola o lettera
+			}
+		}
+		List<Offerta> offerteTrovate = query2.list();
+		input.put("offerteTrovate", offerteTrovate);
 		
 		List<String> luoghi = new ArrayList<String>();
 		for(Offerta offerta : offerte) {

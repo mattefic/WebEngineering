@@ -91,7 +91,7 @@
 							<form autocomplete="off" action="#">
 								<div id="listaAziende" class="autocomplete text-center mt-15">
 									<div class="fancy-form fancy-form-select">
-										<select class="form-control select2">
+										<select name="azienda" class="form-control select2">
 											<option value="">Azienda</option>
 											<#list aziende as azienda>
 												<option value="${azienda}">${azienda}</option>
@@ -107,7 +107,7 @@
 								</div>
 								<div id="listaCit" class="autocomplete text-center mt-15 ml-20">
 									<div class="fancy-form fancy-form-select">
-										<select class="form-control select2">
+										<select name="luogo" class="form-control select2">
 											<option value="">Città</option>
 												<#list luoghi as luogo>
 											<option value="${luogo}">${luogo}</option>
@@ -122,12 +122,12 @@
 									</div>
 								</div>
 								<div class="form-inline">
-									<input class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi minimi">
-									<input class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi massimi">									
-									<input class="ore mt-15 ml-20 text-center" type="number" min="0" max="999" placeholder="Ore minime">
-									<input class="ore mt-15 ml-20 text-center" type="number" min="0" max="999" placeholder="Ore massime"> 
+									<input name="mesimin" class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi minimi">
+									<input name="mesimax" class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi massimi">									
+									<input name="oremin" class="ore mt-15 ml-20 text-center" type="number" min="0" max="9999" placeholder="Ore minime">
+									<input name="oremax" class="ore mt-15 ml-20 text-center" type="number" min="0" max="9999" placeholder="Ore massime"> 
 									<div id="cerc" class="autocomplete mt-15 ml-20">
-										<input id="cerca" class="text-center" type="text" name="Cerca" placeholder="Cerca">
+										<input id="cerca" class="text-center" type="text" name="cerca" placeholder="Cerca">
 									</div>
 									<div class="mt-15">
 										<button id="buttonCerca" class="btn btn-default rounded-0" type="submit"><i class="fa fa-search fa-lg p-0"></i></button>
@@ -137,7 +137,7 @@
 						</div>
 					
 						<div class="card card-default mt-30 ml-60 mr-60">
-						<#list offerte as offerta>
+						<#list offerteTrovate as offerta>
 							<div class="card-heading card-heading-transparent">
 								<h2 class="card-title">${offerta.titolo} - ${offerta.azienda.ragioneSocialeNome}</h2>
 							</div>
