@@ -75,7 +75,7 @@
 			</section>
 			
 			
-			<div class="container" style="height: 100vh; min-height: 100%;
+			<div class="container" style="height: 70vh; min-height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;">	

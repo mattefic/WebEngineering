@@ -69,10 +69,7 @@
 				</div>
 			</section>
 					
-			<div class="container" style="height: 100vh; min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;">
+			<div class="container">
 				<#list offerte as offerta>
 				<!-- Nav tabs -->
 				<div class="mt-90 ml-60 mr-60"> 

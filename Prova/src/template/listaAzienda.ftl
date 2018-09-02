@@ -68,7 +68,10 @@
 				</div>
 			</section>
 			
-			<section id="corpo">
+			<section id="corpo" style="height: 70vh; min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;">
 				<div class="ml-40 mr-40">
 					<form autocomplete="off" action="#">
 						<div id="ragFor" class="autocomplete text-center mt-15">

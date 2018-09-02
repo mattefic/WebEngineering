@@ -72,10 +72,7 @@
 			
 			<!-- SEARCH -->
 					
-			<div class="container" style="height: 100vh; min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;">
+			<div class="container">
 
 				<div class="row d-flex justify-content-center mt-50">    					
 					<div class="col-xs-8">
