@@ -61,11 +61,41 @@ public class ListaAziende extends HttpServlet {
 	
 		Map<String, Object> input = new HashMap<String, Object>();
 		
-		Query query = session.createQuery("FROM Azienda WHERE convenzionata=1");
-		List<Azienda> aziende = query.list();
+		String query="FROM Azienda WHERE convenzionata=1 ";
+		String query2="FROM Azienda WHERE convenzionata=1 ";
+		
+		if(request.getParameter("ragioneSociale")!=null) {
+			if(request.getParameter("ragioneSociale")!="") {
+				query=query+"AND idAzienda= :idAzienda ";
+				
+			}
+		}
+		if(request.getParameter("foro")!=null) {	
+			if(request.getParameter("foro")!="") {
+				query=query+"AND foro= :foro";
+			}
+		}
+		
+		Query queryA = session.createQuery(query);
+		Query queryB = session.createQuery(query2);
+		if(request.getParameter("ragioneSociale")!=null) {
+			if(request.getParameter("ragioneSociale")!="") {
+				queryA.setParameter("idAzienda", Integer.parseInt((String) request.getParameter("ragioneSociale")));
+			}
+		}
+		
+		if(request.getParameter("foro")!=null) {	
+			if(request.getParameter("foro")!="") {
+				queryA.setParameter("foro", request.getParameter("foro"));
+			}
+		}
+		
+		List<Azienda> aziendeRicerca= queryB.list();
+		List<Azienda> aziende = queryA.list();
 		input.put("aziende", aziende);
+		input.put("aziendeRicerca", aziendeRicerca);
 		List<String> fori = new ArrayList<String>();
-		for(Azienda azienda : aziende) {
+		for(Azienda azienda : aziendeRicerca) {
 			if(!fori.contains(azienda.getForo())){
 				fori.add(azienda.getForo());
 			}
