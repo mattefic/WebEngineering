@@ -1,0 +1,1 @@
+IDRViewer.config = {"pagecount":5,"title":"ALLEGATO 1","author":"Luca Stagni","fileName":"Modulo_4083_PROGETTO_FORMATIVO_DISIM_1.pdf","bounds":[[909,1286],[909,1286],[909,1286],[909,1286],[909,1286]],"bookmarks":[],"thumbnailType":"jpg","pageType":"html","pageLabels":[]};
