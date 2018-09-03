@@ -30,7 +30,12 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Contratto;
+import model.Offerta;
+import model.TutoreAziendale;
+import model.TutoreUniversitario;
+import model.Utente;
 import security.SecurityLayer;
 
 /**
@@ -131,6 +136,39 @@ public class PeriodoTirocinio extends HttpServlet {
     		Map<String, Object> input = new HashMap<String, Object>();
     		FileWriter w;
 			w=new FileWriter("ProgettoFormativo"+request.getParameter("idContratto")+".html");
+			int idUtente = contract.getIdUtente();
+			int idAzienda = contract.getIdAzienda();
+			int idOfferta = contract.getIdOfferta();
+			int idTutorU = contract.getIdTutoreUniversitario();
+			int idTutorA = contract.getIdTutoreAziendale();
+			
+			Query queryU = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
+			queryU.setParameter("idUtente", idUtente);
+			Utente U = (Utente) queryU.uniqueResult();
+			
+			Query queryA = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
+			queryA.setParameter("idAzienda", idAzienda);
+			Azienda A = (Azienda) queryA.uniqueResult();
+			
+			Query queryO = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+			queryO.setParameter("idOfferta", idOfferta);
+			Offerta O = (Offerta) queryO.uniqueResult();
+			
+			Query queryTA = session.createQuery("FROM TutoreAziendale WHERE idTutore = :idTutore");
+			queryTA.setParameter("idTutore", idTutorA);
+			TutoreAziendale TA = (TutoreAziendale) queryTA.uniqueResult();
+			
+			Query queryTU = session.createQuery("FROM TutoreUniversitario WHERE idTutore = :idTutore");
+			queryTU.setParameter("idTutore", idTutorU);
+			TutoreUniversitario TU = (TutoreUniversitario) queryU.uniqueResult();
+			
+			input.put("utente", U);
+			input.put("azienda", A);
+			input.put("offerta", O);
+			input.put("tutorA", TA);
+			input.put("tutorU", TU);
+			input.put("contract", contract);
+			
     		try {
 				template.process(input, w);
 			} catch (TemplateException e) {

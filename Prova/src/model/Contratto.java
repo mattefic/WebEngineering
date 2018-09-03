@@ -8,6 +8,7 @@ public class Contratto {
 	private Date dataAccettazione, dataInizio, dataFine;
 	private boolean votato;
 	private Utente utente;
+	private String percorso;
 
 	public Contratto() {
 
@@ -107,6 +108,14 @@ public class Contratto {
 
 	public void setCfu(int cfu) {
 		this.cfu = cfu;
+	}
+
+	public String getPercorso() {
+		return percorso;
+	}
+
+	public void setPercorso(String percorso) {
+		this.percorso = percorso;
 	}
 
 }
