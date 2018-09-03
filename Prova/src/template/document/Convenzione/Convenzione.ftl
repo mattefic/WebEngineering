@@ -2075,7 +2075,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -2093,7 +2093,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						PARTE RISERVA<span class="_ _0"></span>TA
 					</div>
 					<div class="t m0 xa h6 yd ff6 fs4 fc0 sc0 ls0 ws0">
-						ALL’UNIVERSITA<span class="_ _0"></span>’<span class="ff5">
+						ALLâ€™UNIVERSITA<span class="_ _0"></span>â€™<span class="ff5">
 						</span>
 					</div>
 				</div>
@@ -2142,7 +2142,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1"></span>E
 					</div>
 					<div class="t m0 x7 hb y16 ff3 fs5 fc0 sc0 ls0 ws0">
-						SCIENZE <span class="_ _5"> </span>DELL’INFORMAZIONE <span
+						SCIENZE <span class="_ _5"> </span>DELLâ€™INFORMAZIONE <span
 							class="_ _5"> </span>E <span class="_ _5"> </span>MA<span
 							class="_ _0"></span>TEM<span class="_ _1"></span>A<span
 							class="_ _0"></span>TIC<span class="_ _1"></span>A<span
@@ -2155,19 +2155,19 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 xc h7 y19 ff5 fs5 fc0 sc0 ls0 ws0">tra:</div>
 					<div class="t m0 x7 h7 y1a ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y1b ff6 fs5 fc0 sc0 ls0 ws0">
-						L’Università <span class="_ _6"> </span>degli <span class="_ _6">
-						</span>Studi <span class="_ _6"> </span>di <span class="_ _6"> </span>L’Aquila
-						<span class="_ _7"> </span>–<span class="ff5"> <span
+						Lâ€™UniversitÃ  <span class="_ _6"> </span>degli <span class="_ _6">
+						</span>Studi <span class="_ _6"> </span>di <span class="_ _6"> </span>Lâ€™Aquila
+						<span class="_ _7"> </span>â€“<span class="ff5"> <span
 							class="_ _6"> </span>Dipartimento <span class="_ _6"> </span>di <span
 							class="_ _6"> </span>Ingegneria <span class="_ _6"> </span>e <span
 							class="_ _6"> </span>Scienze
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y1c ff6 fs5 fc0 sc0 ls0 ws0">
-						dell’Informazione <span class="_ _8"> </span>e <span class="_ _8">
+						dellâ€™Informazione <span class="_ _8"> </span>e <span class="_ _8">
 						</span>Matematica, <span class="_ _8"> </span>con <span class="_ _8">
 						</span>sede <span class="_ _8"> </span>legale <span class="_ _9">
-						</span>in <span class="_ _8"> </span>L’<span class="_ _1"></span><span
+						</span>in <span class="_ _8"> </span>Lâ€™<span class="_ _1"></span><span
 							class="ff5">Aquila, <span class="_ _8"> </span>C.F./P.I. <span
 							class="_ _8"> </span>01021630668,
 						</span>
@@ -2180,7 +2180,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 h7 y1e ff6 fs5 fc0 sc0 ls0 ws0">
 						di <span class="_ _a"></span>Ingegneria <span class="_ _1"></span>e
-						<span class="_ _a"></span>Scienze <span class="_ _a"></span>dell’Informazione
+						<span class="_ _a"></span>Scienze <span class="_ _a"></span>dellâ€™Informazione
 						<span class="_ _a"></span>e <span class="_ _1"></span>Matematica <span
 							class="_ _a"></span>Prof<span class="_ _1"></span><span
 							class="ff5 ls3">. <span class="_ _4"></span><span
@@ -2193,8 +2193,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y1f ff5 fs5 fc0 sc0 ls0 ws0">
 						i<span class="ls5">l </span>13/06/1966,domiciliato per il presente
 						a<span class="ff6">tto <span class="_ _b"> </span>presso la
-							se<span class="_ _0"></span>de legale del l’Univ<span
-							class="_ _0"></span>ersità, e
+							se<span class="_ _0"></span>de legale del lâ€™Univ<span
+							class="_ _0"></span>ersitÃ , e
 						</span>
 					</div>
 					<div class="t m0 x7 hc y20 ff6 fs5 fc0 sc0 ls0 ws0">
@@ -2202,7 +2202,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _4"></span>alla <span class="_ _c"></span>stipula <span
 							class="_ _4"></span>della <span class="_ _c"></span>presente <span
 							class="_ _4"></span>Convenzione <span class="_ _4"></span>dal <span
-							class="_ _c"></span>Rettore <span class="_ _4"></span>dell’Università
+							class="_ _c"></span>Rettore <span class="_ _4"></span>dellâ€™UniversitÃ 
 					</div>
 					<div class="t m0 x7 h7 y21 ff5 fs5 fc0 sc0 ls0 ws0">con D.R.
 						n. 522/2018, prot. n. 22151 del 17.05.2018</div>
@@ -2210,23 +2210,23 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 xd h7 y23 ff5 fs5 fc0 sc0 ls0 ws0">e</div>
 					<div class="t m0 x7 h7 y24 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y25 ff6 fs5 fc0 sc0 ls0 ws0">
-						L’Ente/Azienda___________________________________<span
+						Lâ€™Ente/Azienda_____<u>${azienda.ragioneSocialeNome}</u>______<span
 							class="_ _0"></span>______________<span class="_ _a"></span><span
 							class="ff5">__________, </span>
 					</div>
 					<div class="t m0 x7 h7 y26 ff5 fs5 fc0 sc0 ls0 ws0">
 						con <span class="_ _d"> </span>sede <span class="_ _d"> </span>legale
 						<span class="_ _d"> </span>in <span class="_ _e"> </span>(indirizzo)
-						<span class="_ _e"> </span>___<span class="_ _1"></span>_________________________________<span
+						<span class="_ _e"> </span>___<span class="_ _1"></span>___<u>${azienda.indirizzo}</u>____<span
 							class="_ _0"></span>_______,
 					</div>
 					<div class="t m0 x7 h7 y27 ff5 fs5 fc0 sc0 ls0 ws0">
 						Codice Fiscale <span class="_ _1"></span>(o <span class="_ _1"></span>Partita
-						IVA) <span class="_ _1"></span>________________________________________________<span
+						IVA) <span class="_ _1"></span>______<u>${azienda.codiceFiscaleIva}</u>_____<span
 							class="_ _0"></span>
 					</div>
 					<div class="t m0 x7 h7 y28 ff5 fs5 fc0 sc0 ls0 ws0">
-						rappresentato da _________________________________<span
+						rappresentato da ___<u>${azienda.nomeLegale} ${azienda.cognomeLegale}</u>_____<span
 							class="_ _0"></span>_______<span class="_ _1"></span>
 					</div>
 					<div class="t m0 x7 h7 y29 ff5 fs5 fc0 sc0 ls0 ws0"></div>
@@ -2235,7 +2235,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x5 h7 y2c ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y2d ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _f"> </span>che <span
+						ï‚·<span class="ff5"> <span class="_ _f"> </span>che <span
 							class="_ _5"></span>i <span class="_ _5"></span>tirocini <span
 							class="_ _5"></span>formativ<span class="_ _0"></span>i <span
 							class="_ _5"> </span>e <span class="_ _5"></span>di <span
@@ -2260,12 +2260,12 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						1998, n.142 e dalla legge 148 del 14/09/2011;</div>
 					<div class="t m0 x7 h7 y30 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y31 ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _10"> </span><span
+						ï‚·<span class="ff5"> <span class="_ _10"> </span><span
 							class="ff6">che <span class="_ _b"> </span>il <span
 								class="_ _11"> </span>Dipartimento <span class="_ _11"> </span>di
 								<span class="_ _b"> </span>Ingegneria <span class="_ _11">
 							</span>e <span class="_ _11"> </span>S<span class="_ _1"></span>cienze <span
-								class="_ _11"> </span>dell’Informazione <span class="_ _b">
+								class="_ _11"> </span>dellâ€™Informazione <span class="_ _b">
 							</span>e <span class="_ _11"> </span>Matematica <span class="_ _11">
 							</span>intende
 						</span></span>
@@ -2274,7 +2274,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						attuare <span class="_ _5"></span>progetti <span class="_ _12"></span>diretti
 						<span class="_ _12"></span>al <span class="_ _5"></span>raggiungimento
 						<span class="_ _12"></span>delle <span class="_ _12"></span>f<span
-							class="_ _1"></span>inalità <span class="_ _12"></span>ind<span
+							class="_ _1"></span>inalitÃ  <span class="_ _12"></span>ind<span
 							class="_ _1"></span>icate <span class="_ _12"></span>dall&apos;art.18
 						<span class="_ _12"></span>L<span class="_ _1"></span>. <span
 							class="_ _12"></span>24 <span class="_ _5"></span>giugno<span
@@ -2293,7 +2293,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						formativi e di orientamento presso le aziende;</div>
 					<div class="t m0 x7 h7 y35 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y36 ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _10"> </span>che al <span
+						ï‚·<span class="ff5"> <span class="_ _10"> </span>che al <span
 							class="_ _b"> </span>fine <span class="_ _b"> </span>di <span
 							class="_ _b"> </span>agevolare <span class="_ _b"> </span>le
 							scelte <span class="_ _b"> </span>professi<span class="_ _0"></span>onali
@@ -2319,7 +2319,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x10 h7 y39 ff5 fs5 fc0 sc0 ls0 ws0">
 						giugno <span class="_ _11"> </span>1997 <span class="_ _11">
 						</span>n.196, <span class="_ _11"> </span>tra <span class="_ _11">
-						</span>cui <span class="_ _11"> </span>le <span class="_ _11"> </span>Università,
+						</span>cui <span class="_ _11"> </span>le <span class="_ _11"> </span>UniversitÃ ,
 						<span class="_ _11"> </span>possono <span class="_ _11"> </span>promuovere
 						<span class="_ _11"> </span>tirocini <span class="_ _11"> </span>f<span
 							class="_ _1"></span>ormativi <span class="_ _11"> </span>e <span
@@ -2334,7 +2334,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _4"></span>coloro <span class="_ _4"></span>che <span
 							class="_ _4"></span>abbiano
 					</div>
-					<div class="t m0 x10 h7 y3b ff5 fs5 fc0 sc0 ls0 ws0">già
+					<div class="t m0 x10 h7 y3b ff5 fs5 fc0 sc0 ls0 ws0">giÃ 
 						assolto l&apos;obbligo scolastico ai sensi della legge 31.12.62
 						n.1859;</div>
 					<div class="t m0 x7 h7 y3c ff5 fs5 fc0 sc0 ls0 ws0"></div>
@@ -2355,7 +2355,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -2439,9 +2439,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y4b ff6 fs5 fc0 sc0 ls0 ws0">
 						Dipartimento <span class="_ _4"></span>di <span class="_ _4"></span>Ingegneria
 						<span class="_ _4"></span>e <span class="_ _4"></span>Scienze <span
-							class="_ _4"></span>dell’Informazione <span class="_ _4"></span>e
+							class="_ _4"></span>dellâ€™Informazione <span class="_ _4"></span>e
 						<span class="_ _4"></span>Matematica <span class="_ _4"></span>dell&apos;Univer<span
-							class="_ _1"></span><span class="ff5">sità <span
+							class="_ _1"></span><span class="ff5">sitÃ  <span
 							class="_ _4"></span>degli
 						</span>
 					</div>
@@ -2468,7 +2468,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 								class="_ _9"> </span>d<span class="_ _1"></span>ello <span
 								class="_ _9"> </span>svolgimento <span class="_ _9"> </span>del
 								<span class="_ _14"> </span>tirocinio <span class="_ _9">
-							</span>l’ <span class="_ _14"> </span>Ente/l&apos;Azienda <span
+							</span>lâ€™ <span class="_ _14"> </span>Ente/l&apos;Azienda <span
 								class="_ _9"> </span>mette <span class="_ _14"> </span>a <span
 								class="_ _9"> </span>disposizione <span class="_ _14"> </span>del
 						</span></span>
@@ -2477,18 +2477,18 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						Dipartimento <span class="_ _b"> </span>di<span class="_ _0"></span>
 						<span class="_ _b"> </span>Ingegneria <span class="_ _11">
 						</span>e <span class="_ _b"> </span>Scienze <span class="_ _11"> </span>de<span
-							class="_ _1"></span>ll’In<span class="_ _0"></span>fo<span
+							class="_ _1"></span>llâ€™In<span class="_ _0"></span>fo<span
 							class="_ _1"></span>rmazione <span class="_ _11"> </span>e <span
-							class="_ _b"> </span>Matematica <span class="_ _11"> </span>dell&apos;Università
+							class="_ _b"> </span>Matematica <span class="_ _11"> </span>dell&apos;UniversitÃ 
 						<span class="_ _b"> </span>le
 					</div>
 					<div class="t m0 x7 h7 y53 ff5 fs5 fc0 sc0 ls0 ws0">
 						proprie <span class="_ _b"> </span>strutture. <span class="_ _b">
 						</span>L&apos;accesso <span class="_ _b"> </span>alle <span class="_ _b">
-						</span>stru<span class="ff6">tture s<span class="_ _0"></span>arà
+						</span>stru<span class="ff6">tture s<span class="_ _0"></span>arÃ 
 							g<span class="_ _0"></span>uidato<span class="_ _1"></span> <span
 							class="_ _b"> </span>dal <span class="_ _b"> </span>personale <span
-							class="_ _b"> </span>dell’Ente/Az<span class="_ _0"></span>ienda
+							class="_ _b"> </span>dellâ€™Ente/Az<span class="_ _0"></span>ienda
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y54 ff5 fs5 fc0 sc0 ls0 ws0">ospitante,
@@ -2512,11 +2512,11 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _a"></span>non <span class="_ _1"></span>costituisce <span
 							class="_ _1"></span>rapporto <span class="_ _1"></span>di <span
 							class="_ _1"></span>lavoro <span class="_ _1"></span>e <span
-							class="_ _a"></span>non <span class="_ _1"></span>dà <span
+							class="_ _a"></span>non <span class="_ _1"></span>dÃ  <span
 							class="_ _1"></span>luogo <span class="_ _1"></span>ad <span
 							class="_ _1"></span>alcuna <span class="_ _1"></span>ipotesi <span
 							class="_ _1"></span>d<span class="_ _1"></span>i <span
-							class="_ _1"></span>attività
+							class="_ _1"></span>attivitÃ 
 					</div>
 					<div class="t m0 x7 h7 y5a ff5 fs5 fc0 sc0 ls0 ws0">
 						occupazionale. <span class="_ _1"></span>L&apos;Ente/l&apos;Azienda
@@ -2531,9 +2531,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y5c ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y5d ff2 fs5 fc0 sc0 ls0 ws0">
 						2.2<span class="ff5"> <span class="_ _1"></span>Durante lo
-							svolgimento del tirocinio, <span class="_ _1"></span>l&apos;attività
+							svolgimento del tirocinio, <span class="_ _1"></span>l&apos;attivitÃ 
 							di formazione ed <span class="_ _1"></span>orien<span
-							class="_ _1"></span>tamento è <span class="_ _1"></span>seguita e
+							class="_ _1"></span>tamento Ã¨ <span class="_ _1"></span>seguita e
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y5e ff5 fs5 fc0 sc0 ls0 ws0">
@@ -2546,8 +2546,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1"></span>cienze
 					</div>
 					<div class="t m0 x7 h7 y5f ff6 fs5 fc0 sc0 ls0 ws0">
-						dell’Informazione <span class="_ _15"> </span>e <span
-							class="_ _15"> </span>Matematica <span class="_ _15"> </span>dell&apos;Università
+						dellâ€™Informazione <span class="_ _15"> </span>e <span
+							class="_ _15"> </span>Matematica <span class="_ _15"> </span>dell&apos;UniversitÃ 
 						<span class="_ _15"> </span>in <span class="_ _16"> </span>veste <span
 							class="_ _15"> </span>di <span class="_ _15"> </span>responsabile
 						<span class="_ _15"> </span>didattico <span class="_ _17">
@@ -2555,7 +2555,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 h7 y60 ff5 fs5 fc0 sc0 ls0 ws0">
 						organizzativo (il cui nominativ<span class="_ _0"></span>o
-						risulterà dal Progetto formativo e di orient<span class="_ _1"></span>amento
+						risulterÃ  dal Progetto formativo e di orient<span class="_ _1"></span>amento
 						dei
 					</div>
 					<div class="t m0 x7 hc y61 ff6 fs5 fc0 sc0 ls0 ws0">
@@ -2563,7 +2563,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _a"></span>da<span class="_ _1"></span> <span
 							class="_ _a"></span>un <span class="_ _4"></span>responsabile <span
 							class="_ _a"></span>aziendale <span class="_ _4"></span>indicato
-						<span class="_ _a"></span>dall’ <span class="_ _4"></span>Ente/l&apos;Azienda
+						<span class="_ _a"></span>dallâ€™ <span class="_ _4"></span>Ente/l&apos;Azienda
 						<span class="_ _a"></span>(risultante <span class="_ _4"></span>dal
 					</div>
 					<div class="t m0 x7 h7 y62 ff5 fs5 fc0 sc0 ls0 ws0">predetto
@@ -2574,7 +2574,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1"></span>ciascun <span class="_ _a"></span>tirocinante
 							<span class="_ _1"></span>da <span class="_ _a"></span>inserirsi
 							<span class="_ _1"></span>nell&apos;Ente/Azienda <span
-							class="_ _1"></span>ospitante <span class="_ _1"></span>verrà <span
+							class="_ _1"></span>ospitante <span class="_ _1"></span>verrÃ  <span
 							class="_ _a"></span>predisposto <span class="_ _1"></span>tra <span
 							class="_ _a"></span>le
 						</span>
@@ -2584,7 +2584,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						contenente:</div>
 					<div class="t m0 x13 h7 y66 ff5 fs5 fc0 sc0 ls6 ws0">
 						a)<span class="ls0"> <span class="_ _8"> </span>le
-							generalità del tirocinante;
+							generalitÃ  del tirocinante;
 						</span>
 					</div>
 					<div class="t m0 x13 h7 y67 ff5 fs5 fc0 sc0 ls6 ws0">
@@ -2594,7 +2594,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x13 h7 y68 ff5 fs5 fc0 sc0 ls0 ws0">
 						c) <span class="_ _14"> </span>du<span class="_ _1"></span>rata,
-						obiettivi e modalità di svolg<span class="_ _0"></span>imento de<span
+						obiettivi e modalitÃ  di svolg<span class="_ _0"></span>imento de<span
 							class="_ _1"></span>l tirocinio;
 					</div>
 					<div class="t m0 x13 h7 y69 ff5 fs5 fc0 sc0 ls6 ws0">
@@ -2606,7 +2606,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x13 h7 y6a ff5 fs5 fc0 sc0 ls6 ws0">
 						e)<span class="ls0"> <span class="_ _8"> </span>gli estremi
 							identificativi delle assicurazioni INAIL e per la responsabil<span
-							class="_ _0"></span>ità civile.<span class="_ _1"></span>
+							class="_ _0"></span>itÃ  civile.<span class="_ _1"></span>
 						</span>
 					</div>
 					<div class="t m0 x13 h7 y6b ff5 fs5 fc0 sc0 ls0 ws0"></div>
@@ -2627,7 +2627,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -2644,7 +2644,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 ha y3e ff2 fs5 fc0 sc0 ls0 ws0">
 						2.4<span class="ff5"> L&apos;avvio operativo per lo
 							svolgimento<span class="_ _1"></span> dei singoli tirocini
-							avverrà con scambio di lettera<span class="_ _a"></span> di
+							avverrÃ  con scambio di lettera<span class="_ _a"></span> di
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y3f ff5 fs5 fc0 sc0 ls0 ws0">
@@ -2662,13 +2662,13 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						</span>cui <span class="_ _12"> </span>al <span class="_ _5"> </span>n.2.3
 						<span class="_ _12"> </span>che <span class="_ _5"> </span>precede,
 						<span class="_ _5"> </span>sottoscri<span class="_ _0"></span>tto
-						<span class="_ _5"> </span>dall’Ente/l&apos;Azienda, <span
+						<span class="_ _5"> </span>dallâ€™Ente/l&apos;Azienda, <span
 							class="_ _5"> </span>dal <span class="_ _5"> </span>Dipartimento
 						<span class="_ _12"> </span>di
 					</div>
 					<div class="t m0 x7 h7 y41 ff6 fs5 fc0 sc0 ls0 ws0">
 						Ingegneria <span class="_ _11"> </span>e <span class="_ _11">
-						</span>Scienze<span class="_ _0"></span> <span class="_ _11"> </span>dell’Informazione
+						</span>Scienze<span class="_ _0"></span> <span class="_ _11"> </span>dellâ€™Informazione
 						<span class="_ _11"> </span>e <span class="_ _18"> </span>Matematica
 						<span class="_ _11"> </span>e <span class="_ _18"> </span>dallo <span
 							class="_ _11"> </span>stagista <span class="_ _b"> </span><span
@@ -2690,7 +2690,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y45 ff5 fs5 fc0 sc0 ls0 ws0">
-						tirocinante <span class="_ _4"></span>ad <span class="_ _a"></span>attività
+						tirocinante <span class="_ _4"></span>ad <span class="_ _a"></span>attivitÃ 
 						<span class="_ _a"></span>aziendali <span class="_ _a"></span>f<span
 							class="_ _1"></span>uori <span class="_ _a"></span>sede. <span
 							class="_ _4"></span>In <span class="_ _a"></span>tal <span
@@ -2724,7 +2724,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1"></span> <span class="_ _1"></span>la <span
 							class="_ _1"></span>durata <span class="_ _1"></span>m<span
 							class="_ _1"></span>assima <span class="_ _1"></span>dei <span
-							class="_ _1"></span>tirocini <span class="_ _a"></span>potrà <span
+							class="_ _1"></span>tirocini <span class="_ _a"></span>potrÃ  <span
 							class="_ _1"></span>essere <span class="_ _1"></span>di <span
 							class="_ _1"></span>6<span class="_ _1"></span>
 						</span>
@@ -2734,7 +2734,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _0"></span> gli studenti. Nel caso di
 					</div>
 					<div class="t m0 x7 h7 y4d ff5 fs5 fc0 sc0 ls0 ws0">
-						iniziative rivolte a persone con disabilità la durata è
+						iniziative rivolte a persone con disabilitÃ  la durata Ã¨
 						estensibile a 18 <span class="_ _0"></span>mesi.<span class="_ _1"></span>
 					</div>
 					<div class="t m0 x7 h7 y4e ff5 fs5 fc0 sc0 ls0 ws0">
@@ -2754,7 +2754,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 h7 y50 ff5 fs5 fc0 sc0 ls0 ws0">
 						La <span class="_ _4"></span>durata <span class="_ _a"></span>stessa
-						<span class="_ _4"></span>potrà <span class="_ _a"></span>essere <span
+						<span class="_ _4"></span>potrÃ  <span class="_ _a"></span>essere <span
 							class="_ _4"></span>prorogata, <span class="_ _a"></span>p<span
 							class="_ _1"></span>rev<span class="_ _0"></span>io <span
 							class="_ _4"></span>accordo <span class="_ _4"></span>tra <span
@@ -2767,7 +2767,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						dall&apos;art. 7 del decreto n. 142/98.</div>
 					<div class="t m0 x7 h7 y52 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y53 ff2 fs5 fc0 sc0 ls0 ws0">
-						3.2<span class="ff5"> <span class="_ _9"> </span>È <span
+						3.2<span class="ff5"> <span class="_ _9"> </span>Ãˆ <span
 							class="_ _14"> </span>consentita, <span class="_ _9"> </span>per
 							<span class="_ _9"> </span>giustificati <span class="_ _9">
 						</span>motivi, <span class="_ _14"> </span>la <span class="_ _9">
@@ -2782,13 +2782,13 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1a"> </span>dello <span class="_ _1a"> </span>stage, <span
 							class="_ _1a"> </span>comunque <span class="_ _1a"> </span>no<span
 							class="_ _1"></span>n <span class="_ _1a"> </span>superiore <span
-							class="_ _15"> </span>a <span class="_ _15"> </span>n.° <span
+							class="_ _15"> </span>a <span class="_ _15"> </span>n.Â° <span
 							class="_ _1a"> </span>2 <span class="_ _1a"> </span>sett<span
 							class="_ _1"></span>imane
 					</div>
 					<div class="t m0 x7 hc y55 ff6 fs5 fc0 sc0 ls0 ws0">
 						consecutive, <span class="_ _5"> </span>previa <span class="_ _18">
-						</span>comunicazione <span class="_ _5"> </span>all’Ente/Azienda <span
+						</span>comunicazione <span class="_ _5"> </span>allâ€™Ente/Azienda <span
 							class="_ _5"> </span>ospitante, <span class="_ _5"> </span>fe<span
 							class="_ _1"></span>rma <span class="_ _5"> </span>restando <span
 							class="_ _18"> </span>la <span class="_ _5"> </span>durata
@@ -2806,19 +2806,19 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							<span class="_ _4"></span>e <span class="_ _4"></span>di <span
 							class="_ _a"></span>orientamento <span class="_ _4"></span>il <span
 							class="_ _4"></span>ti<span class="_ _1"></span>rocinante <span
-							class="_ _4"></span>è <span class="_ _4"></span>tenuto
+							class="_ _4"></span>Ã¨ <span class="_ _4"></span>tenuto
 						</span>
 					</div>
 					<div class="t m0 xf h7 y59 ff5 fs5 fc0 sc0 ls6 ws0">
 						a:<span class="ls0"> </span>
 					</div>
 					<div class="t m0 x7 h7 y6c ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _2"> </span>svolgere le
-							attività previste dal Progetto formativo e di orientamento;
+						ï€­<span class="ff5"> <span class="_ _2"> </span>svolgere le
+							attivitÃ  previste dal Progetto formativo e di orientamento;
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y6d ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _2"> </span>cooperare al
+						ï€­<span class="ff5"> <span class="_ _2"> </span>cooperare al
 							conseguimento deg<span class="_ _0"></span>li obiettivi che lo ri<span
 							class="_ _0"></span>guardano, osserv<span class="_ _0"></span>ando
 							gli orari
@@ -2827,12 +2827,12 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 xf h7 y6e ff5 fs5 fc0 sc0 ls0 ws0">
 						concordati e rispettando l&apos;ambiente <span class="_ _1"></span>di
 						lavoro e le <span class="_ _1"></span>esigenze di coordinament<span
-							class="_ _1"></span>o de<span class="_ _1"></span>ll&apos;attività
+							class="_ _1"></span>o de<span class="_ _1"></span>ll&apos;attivitÃ 
 					</div>
 					<div class="t m0 xf h7 y6f ff5 fs5 fc0 sc0 ls0 ws0">di
 						ricerca dell&apos;azienda;</div>
 					<div class="t m0 x7 h7 y70 ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _2"> </span>rispettare <span
+						ï€­<span class="ff5"> <span class="_ _2"> </span>rispettare <span
 							class="_ _11"> </span>le <span class="_ _5"> </span>norme <span
 							class="_ _18"> </span>in <span class="_ _18"> </span>materia <span
 							class="_ _18"> </span>di <span class="_ _18"> </span>igiene, <span
@@ -2843,12 +2843,12 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						</span>
 					</div>
 					<div class="t m0 xf h7 y71 ff6 fs5 fc0 sc0 ls0 ws0">
-						particolare riferimento all’art. 20 del D.Lgs. n. 81/2008
-						“Obblighi del lav<span class="_ _0"></span>oratore”;<span
+						particolare riferimento allâ€™art. 20 del D.Lgs. n. 81/2008
+						â€œObblighi del lav<span class="_ _0"></span>oratoreâ€�;<span
 							class="_ _a"></span><span class="ff5"> </span>
 					</div>
 					<div class="t m0 x7 h7 y72 ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _2"> </span>mantenere <span
+						ï€­<span class="ff5"> <span class="_ _2"> </span>mantenere <span
 							class="_ _8"> </span>la <span class="_ _13"> </span>necessaria <span
 							class="_ _13"> </span>riservatezza <span class="_ _13"> </span>per<span
 							class="_ _1"></span> <span class="_ _13"> </span>quan<span
@@ -2860,27 +2860,27 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 xf hc y73 ff6 fs5 fc0 sc0 ls0 ws0">
 						conoscenze <span class="_ _a"></span>in <span class="_ _a"></span>m<span
 							class="_ _1"></span>erito <span class="_ _a"></span>ad <span
-							class="_ _a"></span>att<span class="_ _1"></span>ività <span
+							class="_ _a"></span>att<span class="_ _1"></span>ivitÃ  <span
 							class="_ _a"></span>di <span class="_ _a"></span>ricerca <span
-							class="_ _4"></span>dell’Ente/l&apos;Azienda <span class="_ _a"></span>(ed
+							class="_ _4"></span>dellâ€™Ente/l&apos;Azienda <span class="_ _a"></span>(ed
 						<span class="_ _a"></span>ai <span class="_ _4"></span>relativi <span
 							class="_ _a"></span>contenuti <span class="_ _a"></span>e
 					</div>
 					<div class="t m0 xf h7 y74 ff5 fs5 fc0 sc0 ls0 ws0">risultati),
 						acquisiti durante lo svolgimento del tirocinio;</div>
 					<div class="t m0 x7 h7 y75 ff7 fs5 fc0 sc0 ls0 ws0">
-						<span class="ff5"> <span class="_ _2"> </span><span
+						ï€­<span class="ff5"> <span class="_ _2"> </span><span
 							class="ff6">inviare <span class="_ _9"> </span>a<span
 								class="_ _1"></span>l <span class="_ _9"> </span>Direttore <span
 								class="_ _9"> </span>del <span class="_ _14"> </span>Dipartimento
 								<span class="_ _9"> </span>di <span class="_ _9"> </span>Ingegneria
 								<span class="_ _9"> </span>e <span class="_ _14"> </span>Scienze
-								<span class="_ _9"> </span>dell’Info<span class="_ _1"></span>rmazione
+								<span class="_ _9"> </span>dellâ€™Info<span class="_ _1"></span>rmazione
 								<span class="_ _8"> </span>e
 						</span></span>
 					</div>
 					<div class="t m0 xf h7 y76 ff5 fs5 fc0 sc0 ls0 ws0">
-						Matematica <span class="_ _4"></span>dell&apos;Università <span
+						Matematica <span class="_ _4"></span>dell&apos;UniversitÃ  <span
 							class="_ _a"></span>de<span class="_ _1"></span>gli <span
 							class="_ _a"></span>Studi <span class="_ _4"></span>dell&apos;Aquila,
 						<span class="_ _4"></span>mensilmente <span class="_ _a"></span>ed<span
@@ -2899,9 +2899,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						</span>press<span class="_ _a"></span><span class="ls4">o </span>
 					</div>
 					<div class="t m0 xf hc y78 ff6 fs5 fc0 sc0 ls0 ws0">
-						l’Ente/Azienda, <span class="_ _5"> </span>rilev<span class="_ _0"></span>ate
+						lâ€™Ente/Azienda, <span class="_ _5"> </span>rilev<span class="_ _0"></span>ate
 						<span class="_ _5"> </span>dalla <span class="_ _5"> </span>scheda
-						<span class="_ _12"> </span>che <span class="_ _5"> </span>sarà <span
+						<span class="_ _12"> </span>che <span class="_ _5"> </span>sarÃ  <span
 							class="_ _5"> </span>consegnata <span class="_ _12"> </span>all&apos;atto
 						<span class="_ _12"> </span>d<span class="_ _1"></span>ella <span
 							class="_ _12"> </span>compilazione
@@ -2914,9 +2914,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							del tirocinante, comportamenti lesivi di diritti o </span>
 					</div>
 					<div class="t m0 x7 h7 y7c ff6 fs5 fc0 sc0 ls0 ws0">
-						interessi <span class="_ _9"> </span>dell’ <span class="_ _8">
+						interessi <span class="_ _9"> </span>dellâ€™ <span class="_ _8">
 						</span>Ente/l&apos;Azienda <span class="_ _9"> </span>essa <span
-							class="_ _9"> </span>potrà, <span class="_ _8"> </span>previa <span
+							class="_ _9"> </span>potrÃ , <span class="_ _8"> </span>previa <span
 							class="_ _9"> </span>informa<span class="_ _1"></span>zione <span
 							class="_ _9"> </span><span class="ff5">al <span
 							class="_ _9"> </span>tutore <span class="_ _9"> </span>incaricato
@@ -2940,7 +2940,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -2957,7 +2957,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 hc y3e ff6 fs5 fc0 sc0 ls0 ws0">
 						Dipartimento <span class="_ _8"> </span>di <span class="_ _9">
 						</span>Ingegneria <span class="_ _8"> </span>e <span class="_ _9">
-						</span>Scienze <span class="_ _8"> </span>dell’Informazione <span
+						</span>Scienze <span class="_ _8"> </span>dellâ€™Informazione <span
 							class="_ _8"> </span>e <span class="_ _9"> </span>Matematica, <span
 							class="_ _8"> </span>sospendere <span class="_ _8"> </span>o
 					</div>
@@ -2967,21 +2967,21 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 ha y41 ff2 fs5 fc0 sc0 ls0 ws0">
 						3.5<span class="ff5"> <span class="_ _1"></span><span
 							class="ff6">La realizzazione del <span class="_ _1"></span>tirocinio
-								non <span class="_ _1"></span>comporta per l’<span class="_ _1"></span></span>
+								non <span class="_ _1"></span>comporta per lâ€™<span class="_ _1"></span></span>
 							<span class="_ _1"></span>Ente/l&apos;Azienda e <span
 							class="_ _1"></span>per il Dipartimento <span class="_ _1"></span>di
 						</span>
 					</div>
 					<div class="t m0 x7 hc y42 ff6 fs5 fc0 sc0 ls0 ws0">
 						Ingegneria <span class="_ _a"></span>e <span class="_ _1"></span>Scienze
-						<span class="_ _a"></span>dell’Informazione <span class="_ _1"></span>e
-						<span class="_ _a"></span>Matematica <span class="_ _a"></span>dell&apos;Università
+						<span class="_ _a"></span>dellâ€™Informazione <span class="_ _1"></span>e
+						<span class="_ _a"></span>Matematica <span class="_ _a"></span>dell&apos;UniversitÃ 
 						<span class="_ _1"></span>degli <span class="_ _a"></span>Studi <span
 							class="_ _a"></span>dell&apos;Aquila
 					</div>
 					<div class="t m0 x7 h7 y43 ff5 fs5 fc0 sc0 ls0 ws0">
 						alcun on<span class="_ _0"></span>ere finanziario, <span
-							class="_ _b"> </span>né <span class="_ _b"> </span>obblig<span
+							class="_ _b"> </span>nÃ© <span class="_ _b"> </span>obblig<span
 							class="_ _0"></span>hi di <span class="_ _b"> </span>altra <span
 							class="_ _b"> </span>natura <span class="_ _b"> </span>salvo q<span
 							class="_ _0"></span>uelli <span class="_ _b"> </span>previsti <span
@@ -2990,8 +2990,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y44 ff5 fs5 fc0 sc0 ls0 ws0">Convenzione.
 					</div>
 					<div class="t m0 x7 h7 y45 ff6 fs5 fc0 sc0 ls0 ws0">
-						L’Ente/l&apos;Azienda <span class="_ _18"> </span>pot<span
-							class="ff5">rà <span class="_ _18"> </span>pe<span
+						Lâ€™Ente/l&apos;Azienda <span class="_ _18"> </span>pot<span
+							class="ff5">rÃ  <span class="_ _18"> </span>pe<span
 							class="_ _1"></span>raltro <span class="_ _18"> </span>erogare <span
 							class="_ _18"> </span>eventuali <span class="_ _18"> </span>somme
 							<span class="_ _18"> </span>a <span class="_ _18"> </span>tito<span
@@ -3007,7 +3007,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _15"> </span>le <span class="_ _15"> </span>norme <span
 							class="_ _1a"> </span>e <span class="_ _15"> </span>le <span
 							class="_ _15"> </span>procedure <span class="_ _15"> </span>interne
-						<span class="_ _1a"> </span>all’
+						<span class="_ _1a"> </span>allâ€™
 					</div>
 					<div class="t m0 x7 h7 y47 ff5 fs5 fc0 sc0 ls0 ws0">
 						Ente/l&apos;Azienda <span class="_ _18"> </span>stesso, <span
@@ -3036,7 +3036,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _3"> </span>presente
 					</div>
 					<div class="t m0 x7 h7 y4a ff5 fs5 fc0 sc0 ls0 ws0">
-						Convenzione, o facoltà o <span class="_ _1"></span>diritti
+						Convenzione, o facoltÃ  o <span class="_ _1"></span>diritti
 						ulteriori o diversi da quelli <span class="_ _1"></span>previsti
 						dalla Convenzione stessa
 					</div>
@@ -3055,7 +3055,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						risultati raggiunti.</div>
 					<div class="t m0 x7 h7 y4d ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y4e ff2 fs5 fc0 sc0 ls0 ws0">
-						3.6<span class="ff5"> <span class="ff6">L’Azienda<span
+						3.6<span class="ff5"> <span class="ff6">Lâ€™Azienda<span
 								class="_ _1"></span>/Ente ospitante si <span class="_ _13">
 							</span>impegna a garantire <span class="_ _13"> </span>che il tirocinio
 								si <span class="_ _13"> </span>svolga presso
@@ -3084,7 +3084,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y52 ff5 fs5 fc0 sc0 ls0 ws0">adeguate
 						ai sensi del D. lgs. 81del 9 Aprile 2008.</div>
 					<div class="t m0 x7 hc y53 ff6 fs5 fc0 sc0 ls0 ws0">
-						L’Azienda/Ente <span class="_ _4"></span>ospitante <span
+						Lâ€™Azienda/Ente <span class="_ _4"></span>ospitante <span
 							class="_ _4"></span>si <span class="_ _a"></span>impegna <span
 							class="_ _4"></span>inoltre <span class="_ _4"></span>ad <span
 							class="_ _4"></span>assolv<span class="_ _0"></span>ere <span
@@ -3095,12 +3095,12 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 hc y54 ff6 fs5 fc0 sc0 ls0 ws0">lgs
 						81/2008 con particolare riguardo al Titolo I, Capo III, sez. IV
-						“Formazione, informazione</div>
+						â€œFormazione, informazione</div>
 					<div class="t m0 x7 h7 y55 ff5 fs5 fc0 sc0 ls0 ws0">
 						e <span class="_ _18"> </span>a<span class="_ _1"></span>ddes<span
-							class="ff6">tramento”, <span class="_ _18"> </span>sezione
-							<span class="_ _11"> </span>V <span class="_ _18"> </span>“So<span
-							class="_ _1"></span>rveglianza <span class="_ _18"> </span>sanitaria”
+							class="ff6">tramentoâ€�, <span class="_ _18"> </span>sezione
+							<span class="_ _11"> </span>V <span class="_ _18"> </span>â€œSo<span
+							class="_ _1"></span>rveglianza <span class="_ _18"> </span>sanitariaâ€�
 							<span class="_ _18"> </span>p<span class="_ _1"></span>er <span
 							class="_ _18"> </span>i <span class="_ _11"> </span>casi <span
 							class="_ _18"> </span>eventualmente <span class="_ _11"> </span>previsti
@@ -3112,13 +3112,13 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _b"> </span>e <span class="_ _b"> </span>al <span
 							class="_ _b"> </span>Titolo <span class="_ _b"> </span>III,<span
 							class="_ _0"></span> Capo <span class="_ _b"> </span>II <span
-							class="_ _b"> </span>“U<span class="_ _0"></span>so <span
+							class="_ _b"> </span>â€œU<span class="_ _0"></span>so <span
 							class="_ _b"> </span>dei <span class="_ _b"> </span>dispositiv<span
 							class="_ _0"></span>i <span class="_ _b"> </span>di <span
 							class="_ _b"> </span>protezione
 					</div>
 					<div class="t m0 x7 ha y57 ff6 fs5 fc0 sc0 ls0 ws0">
-						individuali”.<span class="ff2"> </span>
+						individualiâ€�.<span class="ff2"> </span>
 					</div>
 					<div class="t m0 x7 ha y58 ff2 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y59 ff2 fs5 fc0 sc0 ls0 ws0">
@@ -3127,7 +3127,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 ha y5a ff2 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y5b ff2 fs5 fc0 sc0 ls0 ws0">
-						4.1<span class="ff5"> <span class="_ _11"> </span>L&apos;Università
+						4.1<span class="ff5"> <span class="_ _11"> </span>L&apos;UniversitÃ 
 							<span class="_ _11"> </span>degli <span class="_ _18"> </span>Studi
 							<span class="_ _11"> </span>di <span class="_ _11"> </span>L&apos;Aquila
 							<span class="_ _11"> </span>si <span class="_ _11"> </span>impegna
@@ -3140,9 +3140,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y5c ff5 fs5 fc0 sc0 ls0 ws0">
 						infortuni <span class="_ _12"></span>sul <span class="_ _12"></span>lavoro
 						<span class="_ _12"></span>presso<span class="_ _1"></span> <span
-							class="_ _12"></span>l&apos;INAIL, <span class="_ _12"></span>nonché
+							class="_ _12"></span>l&apos;INAIL, <span class="_ _12"></span>nonchÃ©
 						<span class="_ _12"></span>per <span class="_ _12"></span>la <span
-							class="_ _5"></span>responsabilità <span class="_ _12"></span>civ<span
+							class="_ _5"></span>responsabilitÃ  <span class="_ _12"></span>civ<span
 							class="_ _0"></span>ile <span class="_ _5"></span>presso <span
 							class="_ _12"></span>compagnie
 					</div>
@@ -3152,11 +3152,11 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _4"></span>indicate <span class="_ _a"></span>nel <span
 							class="_ _4"></span>progetto <span class="_ _4"></span>formativo.
 						<span class="_ _4"></span>L&apos;assicurazione <span class="_ _a"></span>do<span
-							class="_ _1"></span>vrà<span class="_ _0"></span>
+							class="_ _1"></span>vrÃ <span class="_ _0"></span>
 					</div>
 					<div class="t m0 x7 h7 y5e ff5 fs5 fc0 sc0 ls0 ws0">
 						coprire <span class="_ _1"></span>anche <span class="_ _1"></span>le
-						<span class="_ _1"></span>attività <span class="_ _a"></span>svolte
+						<span class="_ _1"></span>attivitÃ  <span class="_ _a"></span>svolte
 						<span class="_ _1"></span>nell&apos;ambito <span class="_ _1"></span>del
 						<span class="_ _1"></span>tirocinio <span class="_ _1"></span>fuori
 						<span class="_ _1"></span>sede <span class="_ _1"></span>ai <span
@@ -3175,7 +3175,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 								class="_ _1"></span>ortunio <span class="_ _1"></span>d<span
 								class="_ _1"></span>urante <span class="_ _a"></span>lo <span
 								class="_ _a"></span>svolgimento <span class="_ _4"></span>del <span
-								class="_ _a"></span>tirocinio, <span class="_ _a"></span>l’Ente/l&apos;Azienda
+								class="_ _a"></span>tirocinio, <span class="_ _a"></span>lâ€™Ente/l&apos;Azienda
 								<span class="_ _4"></span>si <span class="_ _a"></span>impegna <span
 								class="_ _a"></span>a
 						</span></span>
@@ -3199,9 +3199,9 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1"></span>l <span class="_ _4"></span>numero
 					</div>
 					<div class="t m0 x7 h7 y64 ff5 fs5 fc0 sc0 ls0 ws0">
-						della polizza sottoscritta dall&apos;Università degli Studi di
+						della polizza sottoscritta dall&apos;UniversitÃ  degli Studi di
 						L&apos;Aquila) ed <span class="_ _1"></span>all&apos;Univ<span
-							class="_ _0"></span>ersità stessa.
+							class="_ _0"></span>ersitÃ  stessa.
 					</div>
 					<div class="t m0 x14 h7 y65 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 ha y66 ff2 fs5 fc0 sc0 ls0 ws0">
@@ -3210,8 +3210,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 ha y67 ff2 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 hc y68 ff6 fs5 fc0 sc0 ls0 ws0">Il
-						Dipartimento di Ingegneria e Scienze dell’Informazione e
-						Matematica dell&apos;Università degli</div>
+						Dipartimento di Ingegneria e Scienze dellâ€™Informazione e
+						Matematica dell&apos;UniversitÃ  degli</div>
 					<div class="t m0 x7 h7 y69 ff5 fs5 fc0 sc0 ls0 ws0">
 						Studi <span class="_ _12"></span>di <span class="_ _5"></span>L&apos;Aquila
 						<span class="_ _12"></span>si <span class="_ _5"></span>impegna <span
@@ -3248,7 +3248,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -3273,10 +3273,10 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y3f ff5 fs5 fc0 sc0 ls0 ws0">di
 						orientamento.</div>
 					<div class="t m0 x7 h7 y40 ff6 fs5 fc0 sc0 ls0 ws0">
-						L’ <span class="_ _5"> </span>Ente/l&apos;Azienda <span
+						Lâ€™ <span class="_ _5"> </span>Ente/l&apos;Azienda <span
 							class="_ _12"> </span>p<span class="_ _1"></span>er <span
 							class="_ _12"> </span>delega <span class="_ _5"> </span>che <span
-							class="_ _5"> </span>l&apos;Università <span class="_ _5">
+							class="_ _5"> </span>l&apos;UniversitÃ  <span class="_ _5">
 						</span>degli <span class="_ _12"> </span>Studi <span class="_ _5">
 						</span>di <span class="_ _5"> </span>L&apos;Aquila <span class="_ _12">
 						</span>le <span class="_ _5"> </span>confe<span class="_ _1"></span>risce
@@ -3285,7 +3285,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						</span>
 					</div>
 					<div class="t m0 x7 h7 y41 ff5 fs5 fc0 sc0 ls0 ws0">
-						presente, <span class="_ _c"></span>provvederà <span class="_ _12"></span>a
+						presente, <span class="_ _c"></span>provvederÃ  <span class="_ _12"></span>a
 						<span class="_ _c"></span>far <span class="_ _c"></span>p<span
 							class="_ _1"></span>ervenire <span class="_ _c"></span>alle <span
 							class="_ _12"></span>Rappresentanz<span class="_ _0"></span>e <span
@@ -3312,8 +3312,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						<span class="_ _1b"> </span>2007)
 					</div>
 					<div class="t m0 x7 hc y45 ff6 fs5 fc0 sc0 ls0 ws0">
-						l’Ente/Azienda <span class="_ _19"> </span>ospitante <span
-							class="_ _10"> </span>è <span class="_ _19"> </span>tenuto <span
+						lâ€™Ente/Azienda <span class="_ _19"> </span>ospitante <span
+							class="_ _10"> </span>Ã¨ <span class="_ _19"> </span>tenuto <span
 							class="_ _19"> </span>ad <span class="_ _10"> </span>effettuare <span
 							class="_ _19"> </span>obbligatoriamente <span class="_ _19">
 						</span>la <span class="_ _10"> </span>comunicazione<span class="_ _0"></span>
@@ -3347,15 +3347,15 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 ha y4c ff2 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y4d ff5 fs5 fc0 sc0 ls0 ws0">
-						Ogni <span class="_ _1"></span>attività <span class="_ _a"></span>prevista
+						Ogni <span class="_ _1"></span>attivitÃ  <span class="_ _a"></span>prevista
 						<span class="_ _1"></span>dalla <span class="_ _a"></span>presente
 						<span class="_ _1"></span>Convenzione <span class="_ _a"></span>si
-						<span class="_ _1"></span>svolgerà <span class="_ _1"></span>n<span
+						<span class="_ _1"></span>svolgerÃ  <span class="_ _1"></span>n<span
 							class="_ _1"></span>el <span class="_ _1"></span>rispetto <span
 							class="_ _1"></span>dell&apos;Ordinamento
 					</div>
 					<div class="t m0 x7 h7 y4e ff5 fs5 fc0 sc0 ls0 ws0">generale
-						dello Stato e delle leggi che regolano l&apos;attività di entrambi
+						dello Stato e delle leggi che regolano l&apos;attivitÃ  di entrambi
 						gli Enti.</div>
 					<div class="t m0 x7 h7 y4f ff5 fs5 fc0 sc0 ls0 ws0">
 						Le <span class="_ _4"></span>parti <span class="_ _4"></span>concordano
@@ -3376,11 +3376,11 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _12"></span>dirimere <span class="_ _5"></span>la
 					</div>
 					<div class="t m0 x7 h7 y52 ff6 fs5 fc0 sc0 ls0 ws0">
-						controversia sarà quello di …………………..<span class="ff5"> </span>
+						controversia sarÃ  quello di â€¦â€¦â€¦â€¦â€¦â€¦â€¦..<span class="ff5"> </span>
 					</div>
 					<div class="t m0 x7 h7 y53 ff6 fs5 fc0 sc0 ls0 ws0">
-						L’imposta <span class="_ _c"></span>di <span class="_ _12"></span>bollo
-						<span class="_ _c"></span>è <span class="_ _12"></span>a <span
+						Lâ€™imposta <span class="_ _c"></span>di <span class="_ _12"></span>bollo
+						<span class="_ _c"></span>Ã¨ <span class="_ _12"></span>a <span
 							class="_ _c"></span>carico <span class="_ _12"></span>del <span
 							class="_ _c"></span>Soggetto <span class="_ _c"></span>ospitante,
 						<span class="_ _12"></span>salvo <span class="_ _c"></span>accordi
@@ -3430,7 +3430,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _c"></span>di <span class="_ _12"></span>quanto
 					</div>
 					<div class="t m0 x7 h7 y5b ff6 fs5 fc0 sc0 ls0 ws0">
-						previsto dall’art.13 dello stesso decreto.<span class="ff5">
+						previsto dallâ€™art.13 dello stesso decreto.<span class="ff5">
 						</span>
 					</div>
 					<div class="t m0 x7 ha y5c ff2 fs5 fc0 sc0 ls0 ws0"></div>
@@ -3467,7 +3467,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _b"> </span>si
 					</div>
 					<div class="t m0 x7 h7 y65 ff5 fs5 fc0 sc0 ls0 ws0">
-						intenderà rinn<span class="_ _1"></span>ovata tacitamente, a<span
+						intenderÃ  rinn<span class="_ _1"></span>ovata tacitamente, a<span
 							class="_ _1"></span> meno di <span class="_ _13"> </span>disdetta
 						da <span class="_ _13"> </span>comunicarsi entro <span
 							class="_ _13"> </span>i tre <span class="_ _13"> </span>mesi
@@ -3508,7 +3508,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x4 h5 y5 ff2 fs3 fc0 sc0 ls0 ws0">
 						Dipar<span class="ff3">timento <span class="_ _0"></span>di
 							INGEG<span class="_ _0"></span>NERIA<span class="_ _0"></span> E
-							SCIENZE DEL<span class="_ _0"></span>L’INFORMA<span class="_ _0"></span>ZIONE
+							SCIENZE DEL<span class="_ _0"></span>Lâ€™INFORMA<span class="_ _0"></span>ZIONE
 							E <span class="_ _0"></span>M<span class="_ _1"></span>A<span
 							class="_ _0"></span>TEMATICA<span class="ff4 fs4"> </span></span>
 					</div>
@@ -3527,10 +3527,10 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 						per <span class="_ _a"></span>Il <span class="_ _4"></span>Dipartimento
 						<span class="_ _a"></span>di <span class="_ _a"></span>Ingegneria
 						<span class="_ _a"></span>e <span class="_ _4"></span>Scienze <span
-							class="_ _a"></span>dell’Informazione <span class="_ _a"></span>e
+							class="_ _a"></span>dellâ€™Informazione <span class="_ _a"></span>e
 						<span class="_ _a"></span>Matem<span class="_ _1"></span>atic<span
 							class="_ _1"></span>a <span class="_ _a"></span>d<span
-							class="_ _1"></span>ell’Università
+							class="_ _1"></span>ellâ€™UniversitÃ 
 					</div>
 					<div class="t m0 x7 h7 y40 ff5 fs5 fc0 sc0 ls0 ws0">degli
 						Studi L&apos;Aquila:</div>
@@ -3539,7 +3539,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					</div>
 					<div class="t m0 x7 h7 y43 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y44 ff6 fs5 fc0 sc0 ls0 ws0">
-						per l’ Ente/l&apos;Azienda:<span class="ff5"> </span>
+						per lâ€™ Ente/l&apos;Azienda:<span class="ff5"> </span>
 					</div>
 					<div class="t m0 x7 h7 y45 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y46 ff5 fs5 fc0 sc0 ls0 ws0">__________________________________________
@@ -3552,7 +3552,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 ha y49 ff2 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y4a ff5 fs5 fc0 sc0 ls0 ws0">
 						La <span class="_ _1"></span>p<span class="_ _1"></span>resente <span
-							class="_ _a"></span>Convenzione <span class="_ _1"></span>sarà<span
+							class="_ _a"></span>Convenzione <span class="_ _1"></span>sarÃ <span
 							class="_ _1"></span> <span class="_ _a"></span>registrata <span
 							class="_ _a"></span>a <span class="_ _1"></span>tassa <span
 							class="_ _a"></span>fissa, <span class="_ _a"></span>in <span
@@ -3567,7 +3567,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 					<div class="t m0 x7 h7 y4c ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y4d ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y4e ff5 fs5 fc0 sc0 ls0 ws0">L&apos;Aquila,
-						lì _________________________</div>
+						lÃ¬ _________________________</div>
 					<div class="t m0 x7 h7 y4f ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y50 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 x7 h7 y51 ff5 fs5 fc0 sc0 ls7 ws0">
@@ -3586,7 +3586,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 							class="_ _1e"> </span> <span class="_ _1e"> </span><span
 							class="ls7"> </span> <span class="_ _6"> </span> <span
 							class="ls7"> <span class="_ _0"></span><span class="ls0">Legale
-								dell<span class="ff6">’Azienda</span>
+								dell<span class="ff6">â€™Azienda</span>
 						</span></span>
 					</div>
 					<div class="t m0 x15 h7 y55 ff5 fs5 fc0 sc0 ls0 ws0"></div>
