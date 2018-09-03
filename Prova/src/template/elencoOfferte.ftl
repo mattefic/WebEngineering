@@ -124,8 +124,8 @@
 								<div class="form-inline">
 									<input name="mesimin" class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi minimi">
 									<input name="mesimax" class="mesi mt-15 ml-20 text-center" type="number" min="0" max="12" placeholder="Mesi massimi">									
-									<input name="oremin" class="ore mt-15 ml-20 text-center" type="number" min="0" max="9999" placeholder="Ore minime">
-									<input name="oremax" class="ore mt-15 ml-20 text-center" type="number" min="0" max="9999" placeholder="Ore massime"> 
+									<input name="oremin" class="ore mt-15 ml-20 text-center" type="number" min="0" max="999" placeholder="Ore minime">
+									<input name="oremax" class="ore mt-15 ml-20 text-center" type="number" min="0" max="999" placeholder="Ore massime"> 
 									<div id="cerc" class="autocomplete mt-15 ml-20">
 										<input id="cerca" class="text-center" type="text" name="cerca" placeholder="Cerca">
 									</div>

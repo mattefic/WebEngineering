@@ -133,10 +133,10 @@ public class ElencoOfferte extends HttpServlet {
 		if(request.getParameter("cerca")!=null) {
 			if(request.getParameter("cerca")!="") {
 				if(check!=0) {
-					//TODO aggiungere AND ricerca tramite parole o lettere
+					queryRicerca= queryRicerca+"AND descrizione LIKE :descrizione OR titolo LIKE :titolo OR settore LIKE :settore OR obiettivi LIKE :obiettivi OR rimborsiFacilitazioni LIKE :rimborsi OR modalita LIKE :modalita ";
 				}
 				else {
-					//TODO aggiungere WHERE ricerca tramite parole o lettere
+					queryRicerca= queryRicerca+"WHERE descrizione LIKE :descrizione OR titolo LIKE :titolo OR settore LIKE :settore OR obiettivi LIKE :obiettivi OR rimborsiFacilitazioni LIKE :rimborsi OR modalita LIKE :modalita ";
 					check=1;
 				}
 			}
@@ -183,7 +183,12 @@ public class ElencoOfferte extends HttpServlet {
 		}
 		if(request.getParameter("cerca")!=null) {
 			if(request.getParameter("cerca")!="") {
-				//TODO ricerca per parola o lettera
+				query2.setParameter("descrizione","%"+request.getParameter("cerca")+"%");
+				query2.setParameter("titolo","%"+request.getParameter("cerca")+"%");
+				query2.setParameter("settore","%"+request.getParameter("cerca")+"%");
+				query2.setParameter("obiettivi","%"+request.getParameter("cerca")+"%");
+				query2.setParameter("rimborsi","%"+request.getParameter("cerca")+"%");
+				query2.setParameter("modalita","%"+request.getParameter("cerca")+"%");
 			}
 		}
 		List<Offerta> offerteTrovate = query2.list();
