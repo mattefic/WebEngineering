@@ -94,7 +94,7 @@
 											<p><b>Data Inizio Tirocinio:</b> ${contratto.dataInizio}</p>
 											<p><b>Data Fine Tirocinio:</b> ${contratto.dataFine}</p>
 											<form action="#" method="post" enctype="multipart/form-data">
-												<input class="custom-file-upload" type="file" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
+												<input class="custom-file-upload" type="file" id="file" name="convenzione" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
 												<div class="text-center">
 													<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
 													<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>

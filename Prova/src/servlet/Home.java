@@ -8,10 +8,12 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -34,6 +36,7 @@ import security.SecurityLayer;
  * Servlet implementation class Home
  */
 @WebServlet("/Home")
+@MultipartConfig
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -109,8 +112,8 @@ public class Home extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+			throws ServletException, IOException {	
+		
 	}
 
 }

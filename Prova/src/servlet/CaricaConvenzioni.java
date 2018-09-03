@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.hibernate.query.Query;
 import org.hibernate.Session;
@@ -109,6 +110,9 @@ public class CaricaConvenzioni extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = SecurityLayer.checkSession(request);
+		Part part = request.getPart("convenzione");
+		Part partNome = request.getPart("nome");
+		part.write("C:\\Users\\Matteo\\Desktop\\PDF.txt");
 		if (session.getAttribute("tipo").equals("admin")) {
 			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda") + ".pdf");
 			FileWriter fw = new FileWriter(file);
