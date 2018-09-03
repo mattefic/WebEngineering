@@ -119,7 +119,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			contract.setDataFine(dataFine);
 			session.persist(contract);
         	t.commit();
-        	//TODO Generare il file html e il flusso dati per riempimento
+
         	response.setContentType("text/html;charset=UTF-8");
     		Configuration cfg = new Configuration();
     		Map<String, String> env = System.getenv();
