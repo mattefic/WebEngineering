@@ -13,11 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lowagie.text.DocumentException;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import pdf.PDF;
 import security.SecurityLayer;
 
 /**
@@ -75,7 +78,18 @@ public class CompilaResoconto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO generare file html e creare flusso dati per riempimento
+		int idCandidatura = 0;
 		//TODO convertire da html a pdf e salvare
+		try {
+			String inputFile = ""; //Mettere qui il path l'html appena generato
+			String outputFile = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + String.valueOf(idCandidatura) + ".pdf";
+			PDF.generatePDF(inputFile, outputFile);
+			
+		} catch (DocumentException | com.itextpdf.text.DocumentException e) {
+			e.printStackTrace();
+		}
+		
+		
 		doGet(request, response);
 	}
 
