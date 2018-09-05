@@ -332,7 +332,7 @@
 						Obiettivi del tirocinio:<span class="_ _1"></span>
 					</div>
 					<div class="t m0 xb hb y62 ff5 fs5 fc0 sc0 ls0 ws0">
-						_______________________________________________<span class="_ _0"></span>_________________________
+						______<u>${offerta.obiettivi}</u>________<span class="_ _0"></span>_________________________
 					</div>
 					<div class="t m0 xb hb y63 ff5 fs5 fc0 sc0 ls0 ws0">
 						_______________________________________________<span class="_ _0"></span>_________________________<span
@@ -350,7 +350,7 @@
 					<div class="t m0 xb h10 y67 ff7 fs6 fc0 sc0 ls0 ws0">Modalità:
 					</div>
 					<div class="t m0 xb hb y68 ff5 fs5 fc0 sc0 ls0 ws0">
-						_______________________________________________<span class="_ _0"></span>_________________________
+						_______<u>${offerta.modalita}</u>______<span class="_ _0"></span>_________________________
 					</div>
 					<div class="t m0 xb hb y69 ff5 fs5 fc0 sc0 ls0 ws0">
 						_______________________________________________<span class="_ _0"></span>_________________________
@@ -368,7 +368,7 @@
 						aziendali (mensa) <span class="_ _5"></span>
 					</div>
 					<div class="t m0 xb hb y6f ff5 fs5 fc0 sc0 ls0 ws0">
-						_______________________________________________<span class="_ _0"></span>____________<span
+						______<u>${offerta.rimborsiFacilitazioni}</u>_______<span class="_ _0"></span>____________<span
 							class="_ _5"></span>_____________
 					</div>
 					<div class="t m0 xb ha y70 ff7 fs5 fc0 sc0 ls0 ws0"></div>

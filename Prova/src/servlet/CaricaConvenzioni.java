@@ -1,15 +1,13 @@
 package servlet;
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -33,7 +31,7 @@ import freemarker.template.Version;
 import hibernate.HibernateSettings;
 import model.Azienda;
 import security.SecurityLayer;
-//TODO fare la post che upload il file
+
 /**
  * Servlet implementation class CaricaConvenzioni
  */
@@ -52,27 +50,28 @@ public class CaricaConvenzioni extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
-		if(sessionFactory != null) {
-	
+		if (sessionFactory != null) {
+
 		} else {
 			HibernateSettings settings = new HibernateSettings();
-			 sessionFactory = settings.getSessionFactory();
+			sessionFactory = settings.getSessionFactory();
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
+
 		Map<String, Object> input = new HashMap<String, Object>();
-		
+
 		Query query = session.createQuery("FROM Azienda WHERE fileConvenzione=NULL");
 		List<Azienda> aziende = query.list();
-		for(Iterator iterator = aziende.iterator(); iterator.hasNext();){
+		for (Iterator iterator = aziende.iterator(); iterator.hasNext();) {
 			Azienda azienda = (Azienda) iterator.next();
 		}
 		input.put("aziende", aziende);
-		
+
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -85,8 +84,7 @@ public class CaricaConvenzioni extends HttpServlet {
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/caricaConvenzioni.ftl");
-		
-		
+
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {
@@ -109,18 +107,40 @@ public class CaricaConvenzioni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = SecurityLayer.checkSession(request);
-		Part part = request.getPart("convenzione");
-		Part partNome = request.getPart("nome");
-		part.write("C:\\Users\\Matteo\\Desktop\\PDF.txt");
-		if (session.getAttribute("tipo").equals("admin")) {
-			File file = new File("C:\\Users\\Matteo\\Desktop\\PDFs\\" + request.getParameter("azienda") + ".pdf");
-			FileWriter fw = new FileWriter(file);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(request.getParameter("file"));
-			bw.close();
-			fw.close();
-		}
-	}
+		HttpSession httpSession = SecurityLayer.checkSession(request);
 
+		Part idAziendaPart = request.getPart("nome");
+		Scanner s = new Scanner(idAziendaPart.getInputStream());
+		String idAziendaString = s.nextLine();
+
+		if (httpSession.getAttribute("tipo").equals("admin")) {
+
+			SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+			if (sessionFactory != null) {
+
+			} else {
+				HibernateSettings settings = new HibernateSettings();
+				sessionFactory = settings.getSessionFactory();
+			}
+			Session session = sessionFactory.openSession();
+			Transaction t = session.beginTransaction();
+
+			Query query = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda ");
+			query.setParameter("idAzienda", Integer.parseInt(idAziendaString));
+			Azienda azienda = (Azienda) query.uniqueResult();
+
+			azienda.setFileConvenzione(
+					System.getProperty("user.home") + "\\FileProgetto\\Convenzioni\\" + idAziendaString + ".pdf");
+			azienda.setConvenzionata(true);
+			session.persist(azienda);
+
+			t.commit();
+			Part part = request.getPart("convenzione");
+			Part partNome = request.getPart("nome");
+			part.write(
+					System.getProperty("user.home") + "\\FileProgetto\\Convenzioni\\" + partNome.toString() + ".pdf");
+
+		}
+
+	}
 }

@@ -15,14 +15,15 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import com.itextpdf.text.DocumentException;
 
 public class PDF {
-
+	
+	public static void main(String[] args) throws com.lowagie.text.DocumentException, DocumentException {
+	}
 	public static void generatePDF(String inputFile, String outputFile)
 			throws com.lowagie.text.DocumentException, DocumentException {
 
 		try {
 
 			String url = new File(inputFile).toURI().toURL().toString();
-			System.out.println("URL: " + url);
 
 			OutputStream out = new FileOutputStream(outputFile);
 
