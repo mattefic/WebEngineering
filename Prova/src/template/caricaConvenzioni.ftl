@@ -90,16 +90,21 @@
 							</thead>
 							<tbody>
 								<#list aziende as azienda>
-								<tr>
-									<td><a class="puntatore" href="DettagliAzienda">${azienda.ragioneSocialeNome}</a></td>
-									<td>
-										<div class="fancy-file-upload fancy-file-primary">
-											<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
-											<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
-											<span class="button">CARICA</span>
-										</div>
-									</td>
-								</tr>
+								<form action="#" method="post" enctype="multipart/form-data">
+									<tr>
+										<td><a class="puntatore" href="dettagliAzienda.html">${azienda.ragioneSocialeNome}</a></td>
+										<td>
+											<div class="fancy-file-upload fancy-file-primary">
+												<input type="file" class="form-control" name="name" onchange="jQuery(this).next('input').val(this.value);" />
+												<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+												<span class="button">CARICA</span>
+											</div>
+										</td>
+										<td>
+											<button type="submit" class="btn btn-primary mb-2">INVIA</button>
+										</td>
+									</tr>
+								</form>
 								</#list>								
 							</tbody>
 						</table>							

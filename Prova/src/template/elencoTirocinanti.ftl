@@ -74,10 +74,10 @@
 				
 				<!-- Nav tabs -->
 				<div class="mt-90 ml-60 mr-60"> 
-							<#list contratti as contratto>
 							<div class="form-inline">
+								<#list contratti as contratto>
 								<div class="col-md-4">
-									<form action="#" method="post">
+									<form action="#" method="post" enctype="multipart/form-data">
 										<div class="box-static box-border-top">
 											<div class="box-title">
 												<h4 class="text-center">${contratto.utente.nome} ${contratto.utente.cognome}</h4>
@@ -93,22 +93,18 @@
 											<p><b>Numero CFU richiesti:</b> ${contratto.cfu}</p>
 											<p><b>Data Inizio Tirocinio:</b> ${contratto.dataInizio}</p>
 											<p><b>Data Fine Tirocinio:</b> ${contratto.dataFine}</p>
-											<form action="#" method="post" enctype="multipart/form-data">
-												<input class="custom-file-upload" type="file" id="file" name="convenzione" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
-												<div class="text-center">
-													<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
-													<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
-													<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
-												</div>
-											</form>
-											
+											<input class="custom-file-upload" type="file" id="file" name="convenzione" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
+											<div class="text-center">
+												<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
+												<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
+												<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
+											</div>
 										</div>								
 									</form>
 								</div>
+								</#list>
 							</div>
-							</#list>
 				</div>
-				<br>
 			</div>
 			<!-- /SEARCH -->
 			
