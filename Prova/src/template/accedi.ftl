@@ -84,7 +84,13 @@
 								<div class="box-title mb-30">
 									<h2 class="fs-20">Accedi</h2>
 								</div>
-
+								
+								<#if errore==1>
+									<div class="alert alert-danger mb-30"><!-- DANGER -->
+										<strong>Oh no!</strong> Email e password non sono corretti.
+									</div>
+								</#if>
+								
 								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>
 

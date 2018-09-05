@@ -76,6 +76,14 @@ public class RegistrazioneUtente extends HttpServlet {
 				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
 			}
 		}
+		int errore;
+		if(request.getParameter("errore")!=null) {
+			errore= Integer.parseInt(request.getParameter("errore"));
+		}
+		else {
+			errore=0;
+		}
+		input.put("errore", errore);
 		input.put("menu", serverData.menu.get(tipo));
 		try {
 			template.process(input, response.getWriter());
@@ -103,17 +111,16 @@ public class RegistrazioneUtente extends HttpServlet {
 		Transaction tx = session.beginTransaction();
 
 		Criteria criteriaUtente = session.createCriteria(Utente.class);
-		criteriaUtente.add(Restrictions.eq("codiceFiscale", request.getParameter("CF")));
+		criteriaUtente.add(Restrictions.eq("email", request.getParameter("email")));
 		Utente U = (Utente) criteriaUtente.uniqueResult();
 
 		if (U != null) {
-			// Ritornare errore utente già esistente
+			response.sendRedirect("RegistrazioneUtente?errore=1");
 		} else if (!request.getParameter("password").equals(request.getParameter("check"))) {
-			// Ritornare errore password non confermata
+			response.sendRedirect("RegistrazioneUtente?errore=2");
 		} else if (request.getParameter("CF").length() != 16) {
-			// Ritornare errore codice fiscale inesistente
+			response.sendRedirect("RegistrazioneUtente?errore=3");
 		} else {
-			MessageDigest digest;
 			Utente e1 = new Utente();
 			e1.setCodiceFiscale(request.getParameter("CF"));
 			e1.setNome(request.getParameter("Nome"));

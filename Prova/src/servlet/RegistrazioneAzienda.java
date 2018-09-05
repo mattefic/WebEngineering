@@ -76,6 +76,14 @@ public class RegistrazioneAzienda extends HttpServlet {
 				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
 			}
 		}
+		int errore;
+		if(request.getParameter("errore")!=null) {
+			errore= Integer.parseInt(request.getParameter("errore"));
+		}
+		else {
+			errore=0;
+		}
+		input.put("errore", errore);
 		input.put("menu", serverData.menu.get(tipo));
 		try {
 			template.process(input, response.getWriter());
@@ -112,15 +120,14 @@ public class RegistrazioneAzienda extends HttpServlet {
 		Utente U = (Utente) criteriaUtente.uniqueResult();
 
 		if (PartitaIVA.length() != 11) {
-			// Ritornare errore partitaIVA inesistente
+			response.sendRedirect("RegistrazioneAzienda?errore=1");
 		} else if (!Password.equals(Check)) {
-			// Ritornare errore password non confermata
+			response.sendRedirect("RegistrazioneAzienda?errore=2");
 		} else if (A != null) {
-			// Ritornare errore Azienda già registrata
+			response.sendRedirect("RegistrazioneAzienda?errore=3");
 		} else if (U != null) {
-			// Ritornare errore email già utilizzata da un utente
+			response.sendRedirect("RegistrazioneAzienda?errore=4");
 		} else {
-			MessageDigest digest;
 			Azienda e1 = new Azienda();
 			e1.setCodiceFiscaleIva(request.getParameter("CF"));
 			e1.setRagioneSocialeNome(request.getParameter("Nome"));

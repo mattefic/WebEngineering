@@ -73,6 +73,14 @@ public class PasswordDimenticata extends HttpServlet {
 				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
 			}
 		}
+		int errore;
+		if(request.getParameter("errore")!=null) {
+			errore= Integer.parseInt(request.getParameter("errore"));
+		}
+		else {
+			errore=0;
+		}
+		input.put("errore", errore);
 		input.put("menu", serverData.menu.get(tipo));
 		try {
 			template.process(input, response.getWriter());
@@ -175,7 +183,7 @@ public class PasswordDimenticata extends HttpServlet {
 				t.commit();
 				session.close();
 		} else {
-				
+			response.sendRedirect("PasswordDimenticata?errore=1");	
 		}
 		doGet(request, response);
 	}

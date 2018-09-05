@@ -72,6 +72,14 @@ public class Accedi extends HttpServlet {
 				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
 			}
 		}
+		int errore;
+		if(request.getParameter("errore")!=null) {
+			errore= Integer.parseInt(request.getParameter("errore"));
+		}
+		else {
+			errore=0;
+		}
+		input.put("errore", errore);
 		input.put("menu", serverData.menu.get(tipo));
 		try {
 			template.process(input, response.getWriter());
@@ -121,7 +129,7 @@ public class Accedi extends HttpServlet {
 			SecurityLayer.createSession(request, email, userid, "azienda");
 			response.sendRedirect("Home");
 		} else {
-			// Ritornare errore utente o password errati
+			response.sendRedirect("Accedi?errore=1");
 		}
 	}
 

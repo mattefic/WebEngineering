@@ -93,9 +93,11 @@
 											<input name="email" required="" type="email" maxlength="60">
 											<b class="tooltip tooltip-bottom-right">Inserite l'indirizzo email di registrazione dove manderemo la nuova password</b>
 										</label>
+										<#if errore==1>
 										<div class="alert alert-danger mb-30"><!-- DANGER -->
 											<strong>Oh no!</strong> Questo indirizzo email non esiste.
 										</div>
+										</#if>
 
 									</div>
 

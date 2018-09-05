@@ -83,6 +83,30 @@
 								<div class="box-title mb-30">
 									<h2 class="fs-20">Registrati come azienda</h2>
 								</div>
+								
+								<#if errore==1>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+									<strong>Oh no!</strong> Questo codice di partita iva non esiste.
+								</div>
+								</#if>
+								
+								<#if errore==2>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+									<strong>Oh no!</strong> Sembra che le password non corrispondano.
+								</div>
+								</#if>
+								
+								<#if errore==3>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+									<strong>Oh no!</strong> Questa Azienda è già stata registrata.
+								</div>
+								</#if>
+								
+								<#if errore==4>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+									<strong>Oh no!</strong> Questa e-mail è già stata usata.
+								</div>
+								</#if>
 
 								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>

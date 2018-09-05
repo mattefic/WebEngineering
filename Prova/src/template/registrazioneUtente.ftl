@@ -83,7 +83,23 @@
 								<div class="box-title mb-30">
 									<h2 class="fs-20">Registrati come utente</h2>
 								</div>
-
+								
+								<#if errore==1>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+									<strong>Oh no!</strong> Questa e-mail è già registrata.
+								</div>
+								</#if>
+								<#if errore==2>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+											<strong>Oh no!</strong> Sembra che le password non corrispondano.
+								</div>
+								</#if>
+								<#if errore==3>
+								<div class="alert alert-danger mb-30"><!-- DANGER -->
+											<strong>Oh no!</strong> Questo codice fiscale non esiste.
+								</div>
+								</#if>
+								
 								<form class="m-0 sky-form" action="#" method="post">
 									<fieldset>
 
