@@ -29,6 +29,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Candidatura;
 import model.Contratto;
 import model.Offerta;
@@ -180,6 +181,14 @@ public class ElencoCandidature extends HttpServlet {
 					query3.setParameter("idUtente", candidatura.getIdUtente());
 					Contratto contract = (Contratto) query3.uniqueResult(); 
 					response.sendRedirect("PeriodoTirocinio?idContratto="+contract.getIdContratto());
+					t.commit();
+					
+					t= session.beginTransaction();
+					Query queryAzienda = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
+					queryAzienda.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
+					Azienda azienda = (Azienda)queryAzienda.uniqueResult();
+					azienda.setNumTirocinanti(azienda.getNumTirocinanti()+1);
+					session.persist(azienda);
 					t.commit();
 
 				}

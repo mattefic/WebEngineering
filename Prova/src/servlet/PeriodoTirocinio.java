@@ -143,7 +143,6 @@ public class PeriodoTirocinio extends HttpServlet {
 			int idAzienda = contract.getIdAzienda();
 			int idOfferta = contract.getIdOfferta();
 			int idTutorU = contract.getIdTutoreUniversitario();
-			int idTutorA = contract.getIdTutoreAziendale();
 
 			Query queryU = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
 			queryU.setParameter("idUtente", idUtente);

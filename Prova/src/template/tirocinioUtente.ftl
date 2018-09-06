@@ -106,7 +106,7 @@
 							<br>
 							<br>
 							<#if votato==false>
-							<form>
+							<form method="post">
 								<p>
 								<h3> Vota l'azienda: </h3>
 									<select name="voto">
@@ -130,7 +130,7 @@
 			</#if>
 			<#if mancante == true>
 				<section>
-					<h2>Non è presente alcun contratto a tuo carico</h2>
+					<h2>Non ï¿½ presente alcun contratto a tuo carico</h2>
 				</section>
 			</#if>
 			<!-- FOOTER -->
