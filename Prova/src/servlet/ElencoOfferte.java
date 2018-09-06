@@ -61,7 +61,7 @@ public class ElencoOfferte extends HttpServlet {
 		Transaction t = session.beginTransaction();
 		Map<String, Object> input = new HashMap<String, Object>();
 		
-		String queryRicerca="FROM Offerta ";
+		String queryRicerca="FROM Offerta WHERE visibile=1 ";
 		int check=0;
 		
 		if(request.getParameter("azienda")!=null) {

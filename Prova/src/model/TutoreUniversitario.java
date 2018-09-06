@@ -3,7 +3,7 @@ package model;
 public class TutoreUniversitario {
 
 	private int idTutore, numRichieste;
-	private String nome, cognome, telefono;
+	private String nome, cognome, email;
 
 	public TutoreUniversitario() {
 
@@ -17,12 +17,12 @@ public class TutoreUniversitario {
 		this.idTutore = idTutore;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getNome() {

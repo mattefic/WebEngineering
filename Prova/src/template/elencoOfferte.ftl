@@ -136,8 +136,9 @@
 							</form>
 						</div>
 					
-						<div class="card card-default mt-30 ml-60 mr-60">
+						
 						<#list offerteTrovate as offerta>
+						<div class="card card-default mt-30 ml-60 mr-60">
 							<div class="card-heading card-heading-transparent">
 								<h2 class="card-title">${offerta.titolo} - ${offerta.azienda.ragioneSocialeNome}</h2>
 							</div>
@@ -150,8 +151,9 @@
 								<p>${offerta.descrizione}</p>
 								<a href="DettagliOfferta?idOfferta=${offerta.idOfferta}" class="btn btn-primary mr-10 float-right">DETTAGLI</a>
 							</div>
-						</#list>
 						</div>
+						</#list>
+						
 					
 					</div>
 				</div>

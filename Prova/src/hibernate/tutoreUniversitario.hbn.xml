@@ -9,7 +9,7 @@
 		<id name="idTutore" column="idTutore">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="telefono" column="telefono"></property>
+		<property name="email" column="email"></property>
 		<property name="nome" column="nome"></property>
 		<property name="cognome" column="cognome"></property>
 		<property name="numRichieste" column="numRichieste"></property>

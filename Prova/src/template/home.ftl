@@ -191,22 +191,6 @@
 								<a href="ElencoOfferte" class="marker-more">Guarda +</a>
 							</div>
 						</div>
-						<form action="#" method="post" enctype="multipart/form-data">
-							<input class="custom-file-upload" type="file" id="file"
-								name="convenzione" id="contact:attachment"
-								data-btn-text="CARICA PROGETTO" />
-							<div class="text-center">
-								<a href="dettagliOfferta.html" class="btn btn-primary mt-20"
-									role="button">DETTAGLI OFFERTA</a> <a
-									href="compilaResoconto.html"
-									class="btn btn-primary mt-20 ml-15" role="button">COMPILA
-									RESOCONTO</a>
-								<button class="btn btn-primary mt-20 ml-15" type="submit">
-									&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i>
-								</button>
-							</div>
-						</form>
-
 					</div>
 
 				</div>

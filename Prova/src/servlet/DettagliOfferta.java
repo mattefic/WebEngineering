@@ -31,6 +31,7 @@ import model.Offerta;
 import model.Utente;
 import security.SecurityLayer;
 
+//TODO risolvere problema adesione di uno stesso utente ad una stessa offerta
 /**
  * Servlet implementation class DettagliOffertaServlet
  */

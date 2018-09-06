@@ -130,10 +130,18 @@ public class ElencoCandidature extends HttpServlet {
 		
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
+		//TODO Unire periodo tirocinio
+		if(request.getParameter("nascondi")!=null) {
+			Query queryHide = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+			queryHide.setParameter("idOfferta", Integer.parseInt(request.getParameter("offerta")));
+			Offerta offerta = (Offerta)queryHide.uniqueResult();
+			offerta.setVisibile(false);
+			session.persist(offerta);
+			t.commit();
+			response.sendRedirect("ElencoCandidature");
+		}
+		else {
 		int idCandidatura = Integer.parseInt((String) request.getParameter("candidatura"));
-		
-		
 		if (httpSession.getAttribute("tipo").equals("azienda")) {
 			Query query = session.createQuery("FROM Candidatura c WHERE c.idCandidatura = :idCandidatura");
 			query.setParameter("idCandidatura", idCandidatura);
@@ -178,7 +186,7 @@ public class ElencoCandidature extends HttpServlet {
 			
 			} else {
 				// Rifiuta
-				String stato="rifiuata";
+				String stato="rifiutata";
 				Query query2 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura = :idCandidatura");
 				query2.setParameter("idCandidatura", idCandidatura);
 				query2.setParameter("stato", stato);
@@ -187,6 +195,7 @@ public class ElencoCandidature extends HttpServlet {
 				t.commit();
 			}
 			
+		}
 		}
 	}
 

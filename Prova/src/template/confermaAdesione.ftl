@@ -104,7 +104,7 @@
 												<label>Nome tutor universitario</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input required="" name="nome" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il nome del tutor universitario</b>
 												</label>
 											</div>
@@ -113,7 +113,7 @@
 												<label for="register:last_name">Cognome tutor universitario</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-user"></i>
-													<input required="" type="text" maxlength="30">
+													<input required="" name="cognome" type="text" maxlength="30">
 													<b class="tooltip tooltip-bottom-right">Scrivete il cognome del tutor universitario</b>
 												</label>
 											</div>
@@ -126,7 +126,7 @@
 												<label for="register:last_name">Email tutor universitario</label>
 												<label class="input mb-10">
 													<i class="ico-append fa fa-envelope"></i>
-													<input required="" type="email" maxlength="40">
+													<input required="" name="email" type="email" maxlength="40">
 													<b class="tooltip tooltip-bottom-right">Scrivete l'email del tutor universitario</b>
 												</label>
 											</div>

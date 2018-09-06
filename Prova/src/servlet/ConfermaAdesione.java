@@ -130,28 +130,29 @@ public class ConfermaAdesione extends HttpServlet {
 		candidatura.setIdAzienda(offerta.getIdAzienda());
 		candidatura.setCfu(Integer.parseInt(request.getParameter("CFU")));
 
-		Query queryTutore = session.createQuery("FROM Tutore WHERE telefono = :telefono");
-		queryTutore.setParameter("telefono", request.getAttribute("telefono"));
-		TutoreUniversitario tutore = (TutoreUniversitario) query.uniqueResult();
+		Query queryTutore = session.createQuery("FROM TutoreUniversitario WHERE email = :email");
+		queryTutore.setParameter("email", request.getParameter("email").toLowerCase());
+		TutoreUniversitario tutore = (TutoreUniversitario) queryTutore.uniqueResult();
 
 		if (tutore == null) {
 			tutore = new TutoreUniversitario();
 			tutore.setNome(request.getParameter("nome"));
 			tutore.setCognome(request.getParameter("cognome"));
-			tutore.setTelefono(request.getParameter("telefono"));
+			tutore.setEmail(request.getParameter("email").toLowerCase());
 			tutore.setNumRichieste(1);
 			session.persist(tutore);
-			t.commit();
-			t = session.beginTransaction();
-			tutore = (TutoreUniversitario) query.uniqueResult();
 		} else {
 			tutore.setNumRichieste(tutore.getNumRichieste() + 1);
 			session.persist(tutore);
 		}
+		t.commit();
+		
+		t=session.beginTransaction();
+		tutore = (TutoreUniversitario) queryTutore.uniqueResult();
 		candidatura.setIdTutoreUniversitario(tutore.getIdTutore());
 		session.persist(candidatura);
 		t.commit();
-
+		
 		response.sendRedirect("Home");
 		doGet(request, response);
 	}

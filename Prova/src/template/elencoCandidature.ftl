@@ -91,19 +91,38 @@
 							<div class="row d-flex justify-content-center">    					
 								<div class="col-xs-8">
 									<div class="card card-default ml-15 mr-15">
-										<div class="card-heading card-heading-transparent">
-											<h2 class="card-title">${offerta.titolo}</h2>
-										</div>
+										<#if offerta.visibile == true>
+											<div class="card-heading card-heading-transparent">
+												<h2 class="card-title">${offerta.titolo}</h2>
+											</div>
+										</#if>
+										<#if offerta.visibile == false>
+											<div class="card-heading card-heading-transparent">
+												<h2 class="card-title">${offerta.titolo} <span class="card-title text-danger">- Offerta Chiusa</span></h2>
+											</div>
+										</#if>
 										<p class="sottotitolo">
 											<span class="data">Pubblicato il ${offerta.dataPub}</span>
 											<span class="emailResp">Email tutor aziendale: ${offerta.azienda.emailRespTirocinio}</span>
 											<span class="durata">Durata tirocinio: ${offerta.mesi} mesi in ${offerta.ore} ore</span>
 										</p>
+										<#if offerta.visibile == true>
 										<div class="card-block">
 											<p>${offerta.descrizione}</p>
-											<button type="button" class="btn btn-primary mr-10 float-right">DETTAGLI</button>
-											<button type="button" class="btn btn-danger float-right">NASCONDI</button>
+											<a class="btn btn-primary float-right" href="DettagliOfferta?idOfferta=${offerta.idOfferta}">DETTAGLI</a>
+											<form method="post">
+												<input type="hidden" name="offerta" value="${offerta.idOfferta}">
+												<input type="hidden" name="nascondi" value="nascondi">
+												<button type="submit" class="btn btn-danger float-right">CHIUDI OFFERTA</button>
+											</form>
 										</div>
+										</#if>
+										<#if offerta.visibile == false>
+											<div class="card-block">
+											<p>${offerta.descrizione}</p>
+											<a class="btn btn-primary float-right" href="DettagliOfferta?idOfferta=${offerta.idOfferta}">DETTAGLI</a>
+											</div>
+										</#if>
 									</div>				
 								</div>
 							</div>

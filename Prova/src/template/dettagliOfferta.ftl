@@ -103,13 +103,25 @@
 						</div>
 						<div class="col-4 text-center">
 						<form>
-						
 						<a href="ConfermaAdesione?idOfferta=${offerta.idOfferta}" class="btn btn-primary">ADERISCI<a>
 						</form>
 						</div>
 						<div class="col-4">
 						</div>
 					</div>
+					</#if>
+					<#if tipo == "visitatore">
+					<div class="row">
+							<div class="col-4">
+							</div>
+								<div class="col-4 text-center">
+									<form>
+										<a href="Accedi" class="btn btn-primary">ADERISCI<a>
+									</form>
+								</div>
+							<div class="col-4">
+							</div>
+						</div>
 					</#if>
 				</div>
 			</section>
