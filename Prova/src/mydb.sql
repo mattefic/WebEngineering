@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 03, 2018 alle 15:04
+-- Creato il: Set 06, 2018 alle 23:56
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -57,7 +57,9 @@ CREATE TABLE `azienda` (
 INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `valutazione`, `numTirocinanti`, `numVoti`, `fileConvenzione`) VALUES
 (1, '12345678912', 'Pippo', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Matteo', 'Ficorilli', '3339876543', 'MF@gmail.com', NULL, 1, 'pippo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
 (2, '12345678931', 'Pluto', 'Via Pluto 35', 'Paolino', 'Paperino', 'Roma', 'Mickey', 'Mouse', '3336459789', 'Disney@gmail.com', NULL, 1, 'pluto@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(3, '12345678921', 'Topolino', 'Via Topolino 22', 'Mickey', 'Mouse', 'Genova', 'Mickey', 'Mouse', '3333333333', 'MM@gmail.com', NULL, 1, 'topolino@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL);
+(3, '12345678921', 'Topolino', 'Via Topolino 22', 'Mickey', 'Mouse', 'Genova', 'Mickey', 'Mouse', '3333333333', 'MM@gmail.com', NULL, 1, 'topolino@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
+(4, '12345678936', 'Topolina', 'Via delle Querce, 10', 'Minnie', 'Mouse', 'Castel di Lama', 'Mickey', 'Mouse', '3334568741', 'MM2@gmail.com', NULL, 0, 'topolina@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
+(5, '98765432156', 'Titti', 'Via Silvestro 12', 'Titti', 'Pulcino', 'Warner City', 'Silvestro', 'Silvester', '3331234568', 'SS@gmail.com', NULL, 0, 'titti@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,6 @@ CREATE TABLE `candidatura` (
   `idOfferta` int(11) UNSIGNED NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idTutoreUniversitario` int(11) NOT NULL,
-  `idTutoreAziendale` int(11) NOT NULL,
   `stato` varchar(16) NOT NULL,
   `dataCandidatura` date NOT NULL,
   `cfu` int(11) NOT NULL
@@ -81,8 +82,10 @@ CREATE TABLE `candidatura` (
 -- Dump dei dati per la tabella `candidatura`
 --
 
-INSERT INTO `candidatura` (`idCandidatura`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `idTutoreAziendale`, `stato`, `dataCandidatura`, `cfu`) VALUES
-(1, 1, 1, 2, 0, 0, 'accettata', '2018-08-30', 12);
+INSERT INTO `candidatura` (`idCandidatura`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `stato`, `dataCandidatura`, `cfu`) VALUES
+(1, 1, 1, 2, 1, 'accettata', '2018-09-06', 12),
+(2, 2, 2, 3, 1, 'attesa', '2018-09-06', 3),
+(3, 2, 3, 3, 1, 'attesa', '2018-09-06', 12);
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,6 @@ INSERT INTO `candidatura` (`idCandidatura`, `idAzienda`, `idOfferta`, `idUtente`
 CREATE TABLE `contratto` (
   `idContratto` int(11) NOT NULL,
   `idAzienda` int(11) NOT NULL,
-  `idTutoreAziendale` int(11) NOT NULL,
   `idOfferta` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idTutoreUniversitario` int(11) NOT NULL,
@@ -101,15 +103,16 @@ CREATE TABLE `contratto` (
   `dataInizio` date DEFAULT NULL,
   `dataFine` date DEFAULT NULL,
   `cfu` int(11) NOT NULL,
-  `votato` tinyint(4) NOT NULL DEFAULT '0'
+  `votato` tinyint(4) NOT NULL DEFAULT '0',
+  `percorso` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `contratto`
 --
 
-INSERT INTO `contratto` (`idContratto`, `idAzienda`, `idTutoreAziendale`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `dataAccettazione`, `dataInizio`, `dataFine`, `cfu`, `votato`) VALUES
-(1, 1, 0, 1, 2, 0, '2018-09-01', '2018-11-01', '2019-03-31', 12, 0);
+INSERT INTO `contratto` (`idContratto`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `dataAccettazione`, `dataInizio`, `dataFine`, `cfu`, `votato`, `percorso`) VALUES
+(1, 1, 1, 2, 1, '2018-09-06', NULL, NULL, 12, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,11 +130,11 @@ CREATE TABLE `offerta` (
   `orario` varchar(100) NOT NULL,
   `mesi` int(10) UNSIGNED NOT NULL,
   `ore` int(10) UNSIGNED NOT NULL,
-  `obiettivi` varchar(300) NOT NULL,
-  `modalita` varchar(200) NOT NULL,
+  `obiettivi` varchar(500) NOT NULL,
+  `modalita` varchar(500) NOT NULL,
   `visibile` tinyint(4) NOT NULL,
   `idAzienda` int(11) UNSIGNED NOT NULL,
-  `rimborsiFacilitazioni` varchar(255) DEFAULT NULL
+  `rimborsiFacilitazioni` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -141,21 +144,8 @@ CREATE TABLE `offerta` (
 INSERT INTO `offerta` (`idOfferta`, `data`, `titolo`, `settore`, `descrizione`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalita`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
 (1, '2018-08-30', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 6, 180, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il LunedÃ¬, il MartedÃ¬ e il MercoledÃ¬ mattina', 1, 1, 'Rimborso spese'),
 (2, '2018-08-30', 'Tirocinio sceneggiatura', 'Intrattenimento', 'Ti schiavizziamo', 'DisneyWorld', '0:00 - 23:59', 12, 867, 'Schiavizzarti', 'Schiavizzati divertendoti', 1, 2, 'Sei uno schiavo negro'),
-(3, '2018-08-30', 'Tirocinio Manutenzione', 'Intrattenimento', 'Ti schiavizziamo', 'DisneyWorld', '0:00 - 23:59', 12, 500, 'Schiavizzarti', 'Schiavizzati divertendoti', 1, 2, 'Sei uno schiavo negro');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `tutore_aziendale`
---
-
-CREATE TABLE `tutore_aziendale` (
-  `idTutore` int(11) NOT NULL,
-  `idAzienda` int(11) UNSIGNED NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cognome` varchar(30) NOT NULL,
-  `telefono` varchar(14) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(3, '2018-08-30', 'Tirocinio Manutenzione', 'Intrattenimento', 'Ti schiavizziamo', 'DisneyWorld', '0:00 - 23:59', 12, 500, 'Schiavizzarti', 'Schiavizzati divertendoti', 1, 2, 'Sei uno schiavo negro'),
+(4, '2018-09-06', 'blable', 'industriale', 'asdvsd', 'roma', '9:00 - 13:00', 6, 120, 'dsavsvsav', 'vasdvsdavsd', 1, 1, 'jancabsdvkabsdyovafsdav');
 
 -- --------------------------------------------------------
 
@@ -167,9 +157,16 @@ CREATE TABLE `tutore_universitario` (
   `idTutore` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `telefono` varchar(14) NOT NULL,
+  `email` varchar(200) NOT NULL,
   `numRichieste` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `tutore_universitario`
+--
+
+INSERT INTO `tutore_universitario` (`idTutore`, `nome`, `cognome`, `email`, `numRichieste`) VALUES
+(1, 'Francesco', 'Giostra', 'franz@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -224,8 +221,7 @@ ALTER TABLE `candidatura`
 -- Indici per le tabelle `contratto`
 --
 ALTER TABLE `contratto`
-  ADD PRIMARY KEY (`idTutoreAziendale`,`idOfferta`,`idUtente`,`idTutoreUniversitario`),
-  ADD KEY `fk_Contratto_Tutore_Aziendale1_idx` (`idTutoreAziendale`),
+  ADD PRIMARY KEY (`idOfferta`,`idUtente`,`idTutoreUniversitario`),
   ADD KEY `fk_Contratto_Canditatura1_idx` (`idOfferta`,`idUtente`,`idTutoreUniversitario`),
   ADD KEY `idContratto` (`idContratto`),
   ADD KEY `FKgfwklpjqbta4rgrod138km59g` (`idUtente`);
@@ -238,18 +234,10 @@ ALTER TABLE `offerta`
   ADD KEY `FKnr1ximr4wh8aae2sf481wskpl` (`idAzienda`);
 
 --
--- Indici per le tabelle `tutore_aziendale`
---
-ALTER TABLE `tutore_aziendale`
-  ADD PRIMARY KEY (`idAzienda`),
-  ADD KEY `idTutore` (`idTutore`);
-
---
 -- Indici per le tabelle `tutore_universitario`
 --
 ALTER TABLE `tutore_universitario`
-  ADD PRIMARY KEY (`idTutore`),
-  ADD UNIQUE KEY `telefono` (`telefono`);
+  ADD PRIMARY KEY (`idTutore`);
 
 --
 -- Indici per le tabelle `utente`
@@ -265,12 +253,12 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `azienda`
 --
 ALTER TABLE `azienda`
-  MODIFY `idAzienda` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAzienda` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT per la tabella `candidatura`
 --
 ALTER TABLE `candidatura`
-  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT per la tabella `contratto`
 --
@@ -280,12 +268,12 @@ ALTER TABLE `contratto`
 -- AUTO_INCREMENT per la tabella `offerta`
 --
 ALTER TABLE `offerta`
-  MODIFY `idOfferta` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idOfferta` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT per la tabella `tutore_aziendale`
+-- AUTO_INCREMENT per la tabella `tutore_universitario`
 --
-ALTER TABLE `tutore_aziendale`
-  MODIFY `idTutore` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tutore_universitario`
+  MODIFY `idTutore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
