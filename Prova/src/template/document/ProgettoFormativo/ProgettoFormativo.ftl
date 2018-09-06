@@ -280,7 +280,7 @@
 						</span>
 					</div>
 					<div class="t m0 xb hb y4c ff5 fs5 fc0 sc0 ls0 ws0"></div>
-					<div class="t m0 xb hb y4d ff5 fs5 fc0 sc0 ls0 ws0">Telefono__<u>${tutorU.telefono}</u>__
+					<div class="t m0 xb hb y4d ff5 fs5 fc0 sc0 ls0 ws0">Telefono__<u>${tutorU.email}</u>__
 					</div>
 					<div class="t m0 xb hb y4e ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y4f ff7 fs5 fc0 sc0 ls0 ws0">
