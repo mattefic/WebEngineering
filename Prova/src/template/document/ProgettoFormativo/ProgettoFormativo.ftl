@@ -118,14 +118,14 @@
 					<div class="t m0 xb hb y19 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y1a ff7 fs5 fc0 sc0 ls0 ws0">
 						Nato<span class="ff5"> </span>a<span class="ff5 ls2"> <span
-							class="ls0">____________________<u>${utente.luogoNascita}</u>____________________Prov.__<u>${utente.provinciaNascita}</u>__<span
+							class="ls0">____________________<u>${utente.luogoNascita}</u>____________________Prov.____<span
 								class="_ _0"></span>_ il ____/___/ ____<span class="_ _5"></span>
 						</span></span>
 					</div>
 					<div class="t m0 xb hb y1b ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y1c ff7 fs5 fc0 sc0 ls0 ws0">
 						Residente in<span class="ff5">
-							_____<u>${utente.residenza}</u>_____Prov. (____<u>${utente.provinciaResidenza}____) </span>
+							_____<u>${utente.residenza}</u>_____Prov. (________) </span>
 					</div>
 					<div class="t m0 xb hb y1d ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y1e ff7 fs5 fc0 sc0 ls0 ws0">
@@ -284,13 +284,13 @@
 					</div>
 					<div class="t m0 xb hb y4e ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y4f ff7 fs5 fc0 sc0 ls0 ws0">
-						Tutore aziendale<span class="ff5">: __<u>${tutorA.nome} ${tutorA.cognome}</u>__<span
+						Tutore aziendale<span class="ff5">: __<u>${azienda.nomeRespTirocinio} ${azienda.cognomeRespTirocinio}</u>__<span
 							class="_ _1"></span>____________________<span class="_ _0"></span>__________________<span
 							class="_ _1"></span>
 						</span>
 					</div>
 					<div class="t m0 xb hb y50 ff5 fs5 fc0 sc0 ls0 ws0"></div>
-					<div class="t m0 xb hb y51 ff5 fs5 fc0 sc0 ls0 ws0">Telefono___<u>${tutorA.telefono}</u>___
+					<div class="t m0 xb hb y51 ff5 fs5 fc0 sc0 ls0 ws0">Telefono___<u>${azienda.telefonoRespTirocinio}</u>___
 					</div>
 					<div class="t m0 xb hb y52 ff5 fs5 fc0 sc0 ls0 ws0"></div>
 					<div class="t m0 xb ha y53 ff7 fs5 fc0 sc0 ls0 ws0">

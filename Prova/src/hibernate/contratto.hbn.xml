@@ -14,7 +14,6 @@
 		<property name="dataAccettazione" column="dataAccettazione"></property>
 		<property name="dataInizio" column="dataInizio"></property>
 		<property name="dataFine" column="dataFine"></property>
-		<property name="idTutoreAziendale" column="idTutoreAziendale"></property>
 		<property name="idUtente" column="idUtente"></property>
 		<property name="cfu" column="cfu"></property>
 		<property name="votato" column="votato"></property>

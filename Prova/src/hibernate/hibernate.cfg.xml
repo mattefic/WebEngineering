@@ -15,7 +15,6 @@
 		<mapping resource="hibernate/utente.hbn.xml" />
 		<mapping resource="hibernate/azienda.hbn.xml" />
 		<mapping resource="hibernate/tutoreUniversitario.hbn.xml" />
-		<mapping resource="hibernate/tutoreAziendale.hbn.xml" />
 		<mapping resource="hibernate/offerta.hbn.xml" />
 		<mapping resource="hibernate/candidatura.hbn.xml" />
 		<mapping resource="hibernate/contratto.hbn.xml" />

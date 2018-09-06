@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,6 +24,8 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
+import model.Contratto;
 import security.SecurityLayer;
 
 /**
@@ -30,18 +34,20 @@ import security.SecurityLayer;
 @WebServlet("/TirocinioUtente")
 public class TirocinioUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TirocinioUtente() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public TirocinioUtente() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
@@ -72,6 +78,16 @@ public class TirocinioUtente extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+		Query query = session.createQuery("FROM Contratto WHERE idUtente = :idUtente");
+		query.setParameter("idUtente", Integer.parseInt((String) httpSession.getAttribute("userid")));
+		Contratto contract = (Contratto) query.uniqueResult();
+		if (contract != null) {
+			input.put("votato", contract.isVotato());
+			input.put("mancante", false);
+		} else {
+			input.put("mancante", true);
+		}
 		Template template = cfg.getTemplate("template/tirocinioUtente.ftl");
 		try {
 			template.process(input, response.getWriter());
@@ -82,11 +98,45 @@ public class TirocinioUtente extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Votazione
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+
+		Query query = session.createQuery("FROM Contratto WHERE idUtente = :idUtente");
+		query.setParameter("idUtente", Integer.parseInt((String) httpSession.getAttribute("userid")));
+		Contratto contract = (Contratto) query.uniqueResult();
+
+		if (contract != null) {
+
+			contract.setVotato(true);
+			Query conto = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
+			conto.setParameter("idAzienda", contract.getIdAzienda());
+			Azienda azienda = (Azienda) conto.uniqueResult();
+			float calcolo = azienda.getValutazione();
+			int voto = Integer.parseInt(request.getParameter("voto"));
+			azienda.setNumVoti(azienda.getNumVoti() + 1);
+			int voti = azienda.getNumVoti();
+			calcolo = ((calcolo * (voti - 1)) + voto) / voti;
+			azienda.setValutazione(calcolo);
+			session.persist(azienda);
+			session.persist(contract);
+
+		}
+		t.commit();
+		response.sendRedirect("TirocinioUtente");
 	}
 
 }

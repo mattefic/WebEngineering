@@ -33,7 +33,6 @@ import hibernate.HibernateSettings;
 import model.Azienda;
 import model.Contratto;
 import model.Offerta;
-import model.TutoreAziendale;
 import model.TutoreUniversitario;
 import model.Utente;
 import pdf.PDF;
@@ -138,7 +137,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo.ftl");
 			Map<String, Object> input = new HashMap<String, Object>();
 			FileWriter w;
-			String path = "ProgettoFormativo" + request.getParameter("idContratto") + ".html";
+			String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
 			w = new FileWriter(path);
 			int idUtente = contract.getIdUtente();
 			int idAzienda = contract.getIdAzienda();
@@ -158,23 +157,20 @@ public class PeriodoTirocinio extends HttpServlet {
 			queryO.setParameter("idOfferta", idOfferta);
 			Offerta O = (Offerta) queryO.uniqueResult();
 
-			Query queryTA = session.createQuery("FROM TutoreAziendale WHERE idTutore = :idTutore");
-			queryTA.setParameter("idTutore", idTutorA);
-			TutoreAziendale TA = (TutoreAziendale) queryTA.uniqueResult();
-
 			Query queryTU = session.createQuery("FROM TutoreUniversitario WHERE idTutore = :idTutore");
 			queryTU.setParameter("idTutore", idTutorU);
-			TutoreUniversitario TU = (TutoreUniversitario) queryU.uniqueResult();
+			TutoreUniversitario TU = (TutoreUniversitario) queryTU.uniqueResult();
 
 			input.put("utente", U);
 			input.put("azienda", A);
 			input.put("offerta", O);
-			input.put("tutorA", TA);
 			input.put("tutorU", TU);
 			input.put("contract", contract);
 
 			try {
 				template.process(input, w);
+				w.flush();
+				w.close();
 			} catch (TemplateException e) {
 				e.printStackTrace();
 			}

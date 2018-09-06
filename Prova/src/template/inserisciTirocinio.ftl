@@ -169,9 +169,15 @@
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Facilitazioni previste</label>
 												<label class="input mb-10">
-													<input required="" name="facilitazioni" type="text" maxlength="80">
+													<textarea rows="5" class="form-control word-count" required="" name="facilitazioni" maxlength="500" data-info="textarea-words-info"></textarea>
 													<b class="tooltip tooltip-bottom-right">Scrivete gli eventuali rimborsi spese o altre facilitazioni previste</b>
 												</label>
+												
+												<span class="fancy-hint fs-11 text-muted">
+													<span class="float-right">
+														Massimo <span id="textarea-words-info">500</span> caratteri
+													</span>
+												</span>
 											</div>
 
 										</div>
@@ -180,7 +186,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Descrizione tirocinio</label>
-												<input required="" name="descrizione" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
+												<textarea required="" name="descrizione" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">
@@ -196,7 +202,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Obiettivi tirocinio</label>
-												<input required="" name="obiettivi" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
+												<textarea required="" name="obiettivi" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">
@@ -212,7 +218,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Modalità tirocinio</label>
-												<input required="" name="modalita" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info">
+												<textarea required="" name="modalita" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">

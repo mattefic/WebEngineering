@@ -30,7 +30,6 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
-import model.TutoreAziendale;
 import model.Azienda;
 import model.Utente;
 import security.SecurityLayer;
@@ -151,17 +150,6 @@ public class RegistrazioneAzienda extends HttpServlet {
 			Azienda azienda = (Azienda) queryAzienda.uniqueResult();
 			t.commit();
 			
-			t=session.beginTransaction();
-			TutoreAziendale e2 = new TutoreAziendale();
-			Query query = session.createQuery("FROM Azienda WHERE codiceFiscaleIva= :CF");
-			query.setParameter("CF", request.getParameter("CF"));
-			Azienda azienda2= (Azienda) query.uniqueResult();
-			e2.setIdAzienda(String.valueOf(azienda2.getIdAzienda()));
-			e2.setNome(request.getParameter("NomeResp"));
-			e2.setCognome(request.getParameter("CognomeResp"));
-			e2.setTelefono(request.getParameter("TelResp"));
-			session.persist(e2);
-			t.commit();
 			SecurityLayer.createSession(request, request.getParameter("Email"), String.valueOf(azienda.getIdAzienda()),
 					"azienda");
 			response.sendRedirect("Home");

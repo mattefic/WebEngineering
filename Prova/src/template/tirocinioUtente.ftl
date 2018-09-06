@@ -72,11 +72,11 @@
 			<section class="page-header page-header-xs">
 				<div class="container">
 
-					<h1 class="text-center">TIROCINIO</h1>
+					<h1 class="text-center bold">TIROCINIO</h1>
 
 				</div>
 			</section>
-	
+	<#if mancante == false>
 			<section>
 				<div class="container" style="height: 40vh; min-height: 100%;
         display: flex;
@@ -87,7 +87,14 @@
 						<!-- H4 -->
 						<div class="col-5">
 						</div>
+						
 						<div class="heading-title heading-border heading-color col-4">
+						<p> 								
+							<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a> 
+							<a href="dettagliAzienda.html" class="btn btn-primary mt-20 ml-5" role="button">DETTAGLI AZIENDA</a> 							
+						</p>
+						<br>
+						<br>
 							<p class="bold">
 								<a href="#"><i class="ico-light ico-rounded ico-hover fa fa-file-pdf-o"></i></a> DOCUMENTAZIONE TIROCINIO.
 							</p>
@@ -98,18 +105,21 @@
 							</p>
 							<br>
 							<br>
+							<#if votato==false>
 							<form>
 								<p>
-									<select>
-										<option>1 STELLA</option>
-										<option>2 STELLE</option>
-										<option>3 STELLE</option>
-										<option>4 STELLE</option>
-										<option>5 STELLE</option>
+								<h3> Vota l'azienda: </h3>
+									<select name="voto">
+										<option value="1"> 1 </option>
+										<option value="2"> 2 </option>
+										<option value="3"> 3 </option>
+										<option value="4"> 4 </option>
+										<option value="5"> 5 </option>
 									</select>	
-									<button type="submit" id="recensisci" class="btn btn-primary ml-20">RECENSISCI L'AZIENDA</button>
+									<button type="submit" id="recensisci" class="btn btn-primary ml-20">VOTA</button>
 								</p>
 							</form>
+							</#if>
 						</div>
 						<div class="col-4">
 						</div>
@@ -117,7 +127,12 @@
 				</div>
 			</section>
 			<!-- / -->
-			
+			</#if>
+			<#if mancante == true>
+				<section>
+					<h2>Non è presente alcun contratto a tuo carico</h2>
+				</section>
+			</#if>
 			<!-- FOOTER -->
 			<footer id="footer">
 				<div class="container">
