@@ -111,7 +111,7 @@
 											<div class="col-12">
 												<label for="register:last_name">Numero ore tirocinio effettivamente svolte</label>
 												<label class="input mb-10">
-													<input required="" type="number" maxlength="30">
+													<input required="" type="number" maxlength="30" name="ore">
 													<b class="tooltip tooltip-bottom-right">Scrivete le ore effettivamente svolte dal tirocinante</b>
 												</label>
 											</div>
@@ -121,7 +121,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Descrizione dettagliata dell'attività svolta dal tirocinante</label>
-												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
+												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info" name="descrizione"></textarea>
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">
@@ -137,7 +137,7 @@
 
 											<div class="col-md-12 col-sm-12">
 												<label for="register:last_name">Giudizio finale sul tirocinante</label>
-												<textarea required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
+												<textarea name="giudizio" required="" rows="5" class="form-control word-count" maxlength="500" data-info="textarea-words-info"></textarea>
 
 												<span class="fancy-hint fs-11 text-muted">
 													<span class="float-right">

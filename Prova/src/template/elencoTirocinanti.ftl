@@ -93,24 +93,13 @@
 											<p><b>Numero CFU richiesti:</b> ${contratto.cfu}</p>
 											<p><b>Data Inizio Tirocinio:</b> ${contratto.dataInizio}</p>
 											<p><b>Data Fine Tirocinio:</b> ${contratto.dataFine}</p>
-<<<<<<< HEAD
+
 											<input class="custom-file-upload" type="file" id="file" name="convenzione" id="contact:attachment" data-btn-text="CARICA PROGETTO" />
 											<div class="text-center">
-												<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
-												<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
+												<a href="DettagliOfferta?idOfferta=${contratto.idOfferta}" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
+												<a href="CompilaResoconto?idContratto=${contratto.idContratto}" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
 												<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
 											</div>
-=======
-											<form action="#" method="post" enctype="multipart/form-data">
-												<input class="custom-file-upload" type="file" id="file" name="convenzione" data-btn-text="CARICA PROGETTO" />
-												<div class="text-center">
-													<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
-													<a href="compilaResoconto.html" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
-													<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
-												</div>
-											</form>
-											
->>>>>>> c1437c2d48e081880a1d2b47374416b36ff15e2c
 										</div>								
 									</form>
 								</div>

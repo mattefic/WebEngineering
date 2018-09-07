@@ -103,7 +103,6 @@ public class TirocinioUtente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Votazione
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 		if (sessionFactory != null) {

@@ -134,7 +134,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			cfg.setDefaultEncoding("UTF-8");
 			cfg.setLocale(Locale.ITALIAN);
 			cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-			Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo.ftl");
+			Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo3.ftl");
 			Map<String, Object> input = new HashMap<String, Object>();
 			FileWriter w;
 			String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
@@ -190,7 +190,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			response.sendRedirect("ElencoTirocinanti");
 
 		} else {
-
+			//TODO errore se chi sta accedendo alla pagina non è un azienda
 		}
 		doGet(request, response);
 	}

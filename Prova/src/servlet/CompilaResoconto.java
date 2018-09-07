@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
@@ -13,6 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import com.lowagie.text.DocumentException;
 
 import freemarker.template.Configuration;
@@ -20,6 +26,12 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
+import hibernate.HibernateSettings;
+import model.Azienda;
+import model.Contratto;
+import model.Offerta;
+import model.TutoreUniversitario;
+import model.Utente;
 import pdf.PDF;
 import security.SecurityLayer;
 
@@ -78,17 +90,90 @@ public class CompilaResoconto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO generare file html e creare flusso dati per riempimento
-		int idCandidatura = 0;
-		//TODO convertire da html a pdf e salvare
+		response.setContentType("text/html;charset=UTF-8");
+		HttpSession securitySession = SecurityLayer.checkSession(request);
+		String tipo = (String) securitySession.getAttribute("tipo");
+		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+		if (sessionFactory != null) {
+
+		} else {
+			HibernateSettings settings = new HibernateSettings();
+			sessionFactory = settings.getSessionFactory();
+		}
+
+		
+		Configuration cfg = new Configuration();
+		Map<String, String> env = System.getenv();
+		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+		} else {
+			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		}
+		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+		cfg.setDefaultEncoding("UTF-8");
+		cfg.setLocale(Locale.ITALIAN);
+		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+		Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo5.ftl");
+		
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		
+		Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
+		query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
+		Contratto contract = (Contratto) query.uniqueResult();
+		
+		Map<String, Object> input = new HashMap<String, Object>();
+		FileWriter w;
+		String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
+		w = new FileWriter(path);
+		
+		int idUtente = contract.getIdUtente();
+		int idAzienda = contract.getIdAzienda();
+		int idOfferta = contract.getIdOfferta();
+		int idTutorU = contract.getIdTutoreUniversitario();
+
+		Query queryU = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
+		queryU.setParameter("idUtente", idUtente);
+		Utente U = (Utente) queryU.uniqueResult();
+
+		Query queryA = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
+		queryA.setParameter("idAzienda", idAzienda);
+		Azienda A = (Azienda) queryA.uniqueResult();
+
+		Query queryO = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+		queryO.setParameter("idOfferta", idOfferta);
+		Offerta O = (Offerta) queryO.uniqueResult();
+
+		Query queryTU = session.createQuery("FROM TutoreUniversitario WHERE idTutore = :idTutore");
+		queryTU.setParameter("idTutore", idTutorU);
+		TutoreUniversitario TU = (TutoreUniversitario) queryTU.uniqueResult();
+
+		input.put("utente", U);
+		input.put("azienda", A);
+		input.put("offerta", O);
+		input.put("tutorU", TU);
+		input.put("contract", contract);
+		input.put("ore", request.getParameter("ore"));
+		input.put("descrizione", request.getParameter("descrizione"));
+		input.put("giudizio", request.getParameter("giudizio"));
+
 		try {
-			String inputFile = ""; //Mettere qui il path l'html appena generato
-			String outputFile = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + String.valueOf(idCandidatura) + ".pdf";
+			template.process(input, w);
+			w.flush();
+			w.close();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+		try {
+			String inputFile = path; 
+			String outputFile = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + String.valueOf(request.getParameter("idContratto")) + ".pdf";
 			PDF.generatePDF(inputFile, outputFile);
 			
 		} catch (DocumentException | com.itextpdf.text.DocumentException e) {
 			e.printStackTrace();
 		}
 		
+		t.commit();
 		
 		doGet(request, response);
 	}
