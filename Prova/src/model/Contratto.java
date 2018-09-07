@@ -8,7 +8,7 @@ public class Contratto {
 	private Date dataAccettazione, dataInizio, dataFine;
 	private boolean votato;
 	private Utente utente;
-	private String percorso;
+	private String percorso, statoFile;
 
 	public Contratto() {
 
@@ -116,6 +116,14 @@ public class Contratto {
 
 	public void setPercorso(String percorso) {
 		this.percorso = percorso;
+	}
+
+	public String getStatoFile() {
+		return statoFile;
+	}
+
+	public void setStatoFile(String statoFile) {
+		this.statoFile = statoFile;
 	}
 
 }

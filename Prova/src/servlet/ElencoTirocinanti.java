@@ -1,5 +1,5 @@
 package servlet;
-
+//TODO settare path dei progetti formativi decentemente
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,13 +7,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,6 +29,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Candidatura;
 import model.Contratto;
 import model.Offerta;
@@ -35,6 +39,7 @@ import security.SecurityLayer;
  * Servlet implementation class ElencoTirocinanti
  */
 @WebServlet("/ElencoTirocinanti")
+@MultipartConfig
 public class ElencoTirocinanti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -107,6 +112,39 @@ public class ElencoTirocinanti extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO completare
+		HttpSession httpSession = SecurityLayer.checkSession(request);
+
+		Part idContrattoPart = request.getPart("id");
+		Scanner s = new Scanner(idContrattoPart.getInputStream());
+		String idContrattoString = s.nextLine();
+		//TODO controllo sicurezza
+		if (httpSession.getAttribute("tipo").equals("azienda")) {
+
+			SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
+			if (sessionFactory != null) {
+
+			} else {
+				HibernateSettings settings = new HibernateSettings();
+				sessionFactory = settings.getSessionFactory();
+			}
+			Session session = sessionFactory.openSession();
+			Transaction t = session.beginTransaction();
+
+			Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto ");
+			query.setParameter("idContratto", Integer.parseInt(idContrattoString));
+			Contratto contratto = (Contratto) query.uniqueResult();
+
+			contratto.setPercorso(
+					System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + idContrattoString + ".pdf");
+			contratto.setStatoFile("caricato");
+			session.persist(contratto);
+
+			t.commit();
+			Part part = request.getPart("progetto");
+			part.write(
+					System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + idContrattoString + ".pdf");
+
+		}
 		doGet(request, response);
 	}
 

@@ -18,6 +18,7 @@
 		<property name="cfu" column="cfu"></property>
 		<property name="votato" column="votato"></property>
 		<property name="percorso" column="percorso"></property>
+		<property name="statoFile" column="statoFile"></property>
 		<many-to-one name="utente" class="model.Utente" column="idUtente" not-null="true" insert="false" update="false" />	
 	</class>
 </hibernate-mapping> 

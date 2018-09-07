@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ import security.SecurityLayer;
  * Servlet implementation class CaricaConvenzioni
  */
 @WebServlet("/CaricaConvenzioni")
+@MultipartConfig
 public class CaricaConvenzioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

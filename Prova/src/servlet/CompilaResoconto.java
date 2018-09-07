@@ -89,7 +89,6 @@ public class CompilaResoconto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO generare file html e creare flusso dati per riempimento
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession securitySession = SecurityLayer.checkSession(request);
 		String tipo = (String) securitySession.getAttribute("tipo");
@@ -121,7 +120,8 @@ public class CompilaResoconto extends HttpServlet {
 		Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
 		query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
 		Contratto contract = (Contratto) query.uniqueResult();
-		
+		if(securitySession.getAttribute("userid").equals(contract.getIdAzienda()) && contract.getStatoFile().equals("precompilato")){
+			
 		Map<String, Object> input = new HashMap<String, Object>();
 		FileWriter w;
 		String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
@@ -172,10 +172,15 @@ public class CompilaResoconto extends HttpServlet {
 		} catch (DocumentException | com.itextpdf.text.DocumentException e) {
 			e.printStackTrace();
 		}
-		
+		contract.setStatoFile("compilato");
+		session.persist(contract);
 		t.commit();
 		
-		doGet(request, response);
+		response.sendRedirect("ElencoTirocinanti");
+		}
+		else {
+			response.sendRedirect("Home");
+		}
 	}
 
 }
