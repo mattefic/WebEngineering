@@ -131,7 +131,6 @@ public class ElencoCandidature extends HttpServlet {
 		
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		//TODO Unire periodo tirocinio
 		if(request.getParameter("nascondi")!=null) {
 			Query queryHide = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
 			queryHide.setParameter("idOfferta", Integer.parseInt(request.getParameter("offerta")));

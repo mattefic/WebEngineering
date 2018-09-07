@@ -190,7 +190,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			response.sendRedirect("ElencoTirocinanti");
 
 		} else {
-			//TODO errore se chi sta accedendo alla pagina non è un azienda
+			response.sendRedirect("Home");
 		}
 		doGet(request, response);
 	}

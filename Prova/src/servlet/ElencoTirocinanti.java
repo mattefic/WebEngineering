@@ -111,7 +111,6 @@ public class ElencoTirocinanti extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO completare
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 
 		Part idContrattoPart = request.getPart("id");
