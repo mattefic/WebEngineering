@@ -83,6 +83,7 @@ public class TirocinioUtente extends HttpServlet {
 		query.setParameter("idUtente", Integer.parseInt((String) httpSession.getAttribute("userid")));
 		Contratto contract = (Contratto) query.uniqueResult();
 		if (contract != null) {
+			input.put("contratto", contract);
 			input.put("votato", contract.isVotato());
 			input.put("mancante", false);
 		} else {

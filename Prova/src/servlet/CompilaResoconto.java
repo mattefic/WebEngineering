@@ -124,7 +124,7 @@ public class CompilaResoconto extends HttpServlet {
 		Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
 		query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
 		Contratto contract = (Contratto) query.uniqueResult();
-		if (securitySession.getAttribute("userid").equals(contract.getIdAzienda())
+		if (((String)securitySession.getAttribute("userid")).equals(String.valueOf(contract.getIdAzienda()))
 				&& contract.getStatoFile().equals("precompilato")) {
 
 			Map<String, Object> input = new HashMap<String, Object>();
@@ -185,6 +185,7 @@ public class CompilaResoconto extends HttpServlet {
 			} catch (DocumentException | com.itextpdf.text.DocumentException e) {
 				e.printStackTrace();
 			}
+			contract.setPercorso("FileProgetto/ProgettiFormativi/" + idContrattoString + ".pdf");
 			contract.setStatoFile("compilato");
 			session.persist(contract);
 			t.commit();

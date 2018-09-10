@@ -190,6 +190,7 @@ public class PeriodoTirocinio extends HttpServlet {
 				
 				outputFile="FileProgetto/ProgettiFormativi/" + idContrattoString + ".pdf";
 				contract.setPercorso(outputFile);
+				contract.setStatoFile("precompilato");
 
 			} catch (DocumentException | com.itextpdf.text.DocumentException e) {
 				e.printStackTrace();

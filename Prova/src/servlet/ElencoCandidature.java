@@ -150,6 +150,7 @@ public class ElencoCandidature extends HttpServlet {
 				// Accetta
 				
 				int idOfferta = candidatura.getIdOfferta();
+				int idUtente = candidatura.getIdUtente();
 				Query queryOfferta = session.createQuery("FROM Offerta o WHERE o.idAzienda = :idAzienda and o.idOfferta = :idOfferta");
 				queryOfferta.setParameter("idAzienda", Integer.parseInt((String)httpSession.getAttribute("userid")));
 				queryOfferta.setParameter("idOfferta", idOfferta);
@@ -164,6 +165,7 @@ public class ElencoCandidature extends HttpServlet {
 					contratto.setIdUtente(candidatura.getIdUtente());
 					contratto.setDataAccettazione(oggi);
 					contratto.setCfu(candidatura.getCfu());
+					contratto.setStatoFile("");
 					
 					
 					String stato="accettata";
@@ -171,6 +173,13 @@ public class ElencoCandidature extends HttpServlet {
 					query2.setParameter("idCandidatura", idCandidatura);
 					query2.setParameter("stato", stato);
 					query2.executeUpdate();
+					
+					String stato2="rifiutata";
+					Query query4 = session.createQuery("UPDATE Candidatura set stato= :stato WHERE idCandidatura != :idCandidatura AND idUtente = :idUtente");
+					query4.setParameter("idCandidatura", idCandidatura);
+					query4.setParameter("stato", stato2);
+					query4.setParameter("idUtente", idUtente);
+					query4.executeUpdate();
 					
 					session.persist(contratto);
 					t.commit();

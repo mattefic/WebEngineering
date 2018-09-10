@@ -90,18 +90,13 @@
 						
 						<div class="heading-title heading-border heading-color col-4">
 						<p> 								
-							<a href="dettagliOfferta.html" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a> 
-							<a href="dettagliAzienda.html" class="btn btn-primary mt-20 ml-5" role="button">DETTAGLI AZIENDA</a> 							
+							<a href="DettagliOfferta?idOfferta=${contratto.idOfferta}" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a> 
+							<a href="DettagliAzienda?idAzienda=${contratto.idAzienda}" class="btn btn-primary mt-20 ml-5" role="button">DETTAGLI AZIENDA</a> 							
 						</p>
 						<br>
 						<br>
 							<p class="bold">
-								<a href="#"><i class="ico-light ico-rounded ico-hover fa fa-file-pdf-o"></i></a> DOCUMENTAZIONE TIROCINIO.
-							</p>
-							<br>
-							<br>
-							<p class="bold">
-								<a href="#"><i class="ico-light ico-rounded ico-hover fa fa-file-pdf-o"></i></a> RESOCONTO FINALE DELL'AZIENDA.
+								<a href="VisualizzaPdf?progetto=${contratto.idContratto}"><i class="ico-light ico-rounded ico-hover fa fa-file-pdf-o"></i></a> DOCUMENTAZIONE TIROCINIO.
 							</p>
 							<br>
 							<br>
@@ -130,7 +125,7 @@
 			</#if>
 			<#if mancante == true>
 				<section>
-					<h2>Non � presente alcun contratto a tuo carico</h2>
+					<h2>Non è presente alcun contratto a tuo carico</h2>
 				</section>
 			</#if>
 			<!-- FOOTER -->

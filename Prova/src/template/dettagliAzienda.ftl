@@ -98,7 +98,7 @@
 							<br>
 							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="${azienda.emailRespTirocinio}">${azienda.emailRespTirocinio}</a></p>
 							<br>
-							<p><h5>CONVENZIONE:</h5><a href="${azienda.fileConvenzione}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
+							<p><h5>CONVENZIONE:</h5><a href="VisualizzaPdf?convenzione=${azienda.idAzienda}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
 							<br>
 							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
 								<span class="fa fa-star <#if azienda.valutazione gte 1>checked</#if>"></span>

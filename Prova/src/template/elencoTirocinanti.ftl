@@ -100,12 +100,18 @@
 											</#if>
 											<div class="text-center">
 												<a href="DettagliOfferta?idOfferta=${contratto.idOfferta}" class="btn btn-primary mt-20" role="button">DETTAGLI OFFERTA</a>
+												
 												<#if contratto.statoFile == "precompilato">
 												<a href="CompilaResoconto?idContratto=${contratto.idContratto}" class="btn btn-primary mt-20 ml-15" role="button">COMPILA RESOCONTO</a>
 												</#if>
+												
 												<#if contratto.statoFile == "compilato">
 												<button class="btn btn-primary mt-20 ml-15" type="submit">&nbsp;<i class="glyphicon glyphicon-floppy-disk"></i></button>
-												<a href="file:///${contratto.percorso}" class="btn btn-primary mt-20 ml-15" role="button">VISUALIZZA PROGETTO FORMATIVO</a>
+												<a href="VisualizzaPdf?progetto=${contratto.idContratto}" class="btn btn-primary mt-20 ml-15" role="button">VISUALIZZA PROGETTO FORMATIVO</a>
+												</#if>
+												
+												<#if contratto.statoFile == "caricato">
+												<a href="VisualizzaPdf?progetto=${contratto.idContratto}" class="btn btn-primary mt-20 ml-15" role="button">VISUALIZZA PROGETTO FORMATIVO</a>
 												</#if>
 												
 											</div>
