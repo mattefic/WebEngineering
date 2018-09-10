@@ -95,8 +95,9 @@
 										<td><a class="puntatore" href="dettagliAzienda.html">${azienda.ragioneSocialeNome}</a></td>
 										<td>
 											<div class="fancy-file-upload fancy-file-primary">
-												<input type="file" class="form-control" name="name" onchange="jQuery(this).next('input').val(this.value);" />
+												<input type="file" class="form-control" name="convenzione" onchange="jQuery(this).next('input').val(this.value);" />
 												<input type="text" class="form-control" placeholder="Nessun file selezionato" readonly="" />
+												<input type="hidden" class="form-control" name="name" value="${azienda.idAzienda}" />
 												<span class="button">CARICA</span>
 											</div>
 										</td>

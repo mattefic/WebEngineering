@@ -111,7 +111,7 @@ public class CaricaConvenzioni extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession httpSession = SecurityLayer.checkSession(request);
 
-		Part idAziendaPart = request.getPart("nome");
+		Part idAziendaPart = request.getPart("name");
 		Scanner s = new Scanner(idAziendaPart.getInputStream());
 		String idAziendaString = s.nextLine();
 
@@ -124,6 +124,16 @@ public class CaricaConvenzioni extends HttpServlet {
 				HibernateSettings settings = new HibernateSettings();
 				sessionFactory = settings.getSessionFactory();
 			}
+
+			Map<String, String> env = System.getenv();
+
+			String path;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/Convenzioni/";
+			} else {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/Convenzioni/";
+			}
+
 			Session session = sessionFactory.openSession();
 			Transaction t = session.beginTransaction();
 
@@ -131,17 +141,16 @@ public class CaricaConvenzioni extends HttpServlet {
 			query.setParameter("idAzienda", Integer.parseInt(idAziendaString));
 			Azienda azienda = (Azienda) query.uniqueResult();
 
-			azienda.setFileConvenzione(
-					System.getProperty("user.home") + "\\FileProgetto\\Convenzioni\\" + idAziendaString + ".pdf");
+			azienda.setFileConvenzione("FileProgetto/Convenzioni/" + idAziendaString + ".pdf");
 			azienda.setConvenzionata(true);
 			session.persist(azienda);
 
 			t.commit();
 			Part part = request.getPart("convenzione");
-			Part partNome = request.getPart("nome");
-			part.write(
-					System.getProperty("user.home") + "\\FileProgetto\\Convenzioni\\" + partNome.toString() + ".pdf");
-
+			part.write(path + idAziendaString + ".pdf");
+			response.sendRedirect("CaricaConvenzioni");
+		}else {
+			response.sendRedirect("Home");
 		}
 
 	}

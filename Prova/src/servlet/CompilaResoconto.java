@@ -41,22 +41,24 @@ import security.SecurityLayer;
 @WebServlet("/CompilaResoconto")
 public class CompilaResoconto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CompilaResoconto() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public CompilaResoconto() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=UTF-8");
 		Map<String, Object> input = new HashMap<String, Object>();
-		
+
 		ServerStart serverData = new ServerStart();
 		String tipo = "visitatore";
 		if (SecurityLayer.checkSession(request) != null) {
@@ -65,7 +67,7 @@ public class CompilaResoconto extends HttpServlet {
 			}
 		}
 		input.put("menu", serverData.menu.get(tipo));
-		
+
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -86,9 +88,11 @@ public class CompilaResoconto extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession securitySession = SecurityLayer.checkSession(request);
 		String tipo = (String) securitySession.getAttribute("tipo");
@@ -100,7 +104,6 @@ public class CompilaResoconto extends HttpServlet {
 			sessionFactory = settings.getSessionFactory();
 		}
 
-		
 		Configuration cfg = new Configuration();
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
@@ -113,72 +116,81 @@ public class CompilaResoconto extends HttpServlet {
 		cfg.setLocale(Locale.ITALIAN);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo5.ftl");
-		
+
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
+
+		String idContrattoString = request.getParameter("idContratto");
 		Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
 		query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
 		Contratto contract = (Contratto) query.uniqueResult();
-		if(securitySession.getAttribute("userid").equals(contract.getIdAzienda()) && contract.getStatoFile().equals("precompilato")){
-			
-		Map<String, Object> input = new HashMap<String, Object>();
-		FileWriter w;
-		String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
-		w = new FileWriter(path);
-		
-		int idUtente = contract.getIdUtente();
-		int idAzienda = contract.getIdAzienda();
-		int idOfferta = contract.getIdOfferta();
-		int idTutorU = contract.getIdTutoreUniversitario();
+		if (securitySession.getAttribute("userid").equals(contract.getIdAzienda())
+				&& contract.getStatoFile().equals("precompilato")) {
 
-		Query queryU = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
-		queryU.setParameter("idUtente", idUtente);
-		Utente U = (Utente) queryU.uniqueResult();
+			Map<String, Object> input = new HashMap<String, Object>();
+			FileWriter w;
+			String path;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
+						+ idContrattoString;
+			} else {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
+						+ idContrattoString;
+			}
+			w = new FileWriter(path + ".html");
 
-		Query queryA = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
-		queryA.setParameter("idAzienda", idAzienda);
-		Azienda A = (Azienda) queryA.uniqueResult();
+			int idUtente = contract.getIdUtente();
+			int idAzienda = contract.getIdAzienda();
+			int idOfferta = contract.getIdOfferta();
+			int idTutorU = contract.getIdTutoreUniversitario();
 
-		Query queryO = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
-		queryO.setParameter("idOfferta", idOfferta);
-		Offerta O = (Offerta) queryO.uniqueResult();
+			Query queryU = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
+			queryU.setParameter("idUtente", idUtente);
+			Utente U = (Utente) queryU.uniqueResult();
 
-		Query queryTU = session.createQuery("FROM TutoreUniversitario WHERE idTutore = :idTutore");
-		queryTU.setParameter("idTutore", idTutorU);
-		TutoreUniversitario TU = (TutoreUniversitario) queryTU.uniqueResult();
+			Query queryA = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
+			queryA.setParameter("idAzienda", idAzienda);
+			Azienda A = (Azienda) queryA.uniqueResult();
 
-		input.put("utente", U);
-		input.put("azienda", A);
-		input.put("offerta", O);
-		input.put("tutorU", TU);
-		input.put("contract", contract);
-		input.put("ore", request.getParameter("ore"));
-		input.put("descrizione", request.getParameter("descrizione"));
-		input.put("giudizio", request.getParameter("giudizio"));
+			Query queryO = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+			queryO.setParameter("idOfferta", idOfferta);
+			Offerta O = (Offerta) queryO.uniqueResult();
 
-		try {
-			template.process(input, w);
-			w.flush();
-			w.close();
-		} catch (TemplateException e) {
-			e.printStackTrace();
-		}
-		try {
-			String inputFile = path; 
-			String outputFile = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + String.valueOf(request.getParameter("idContratto")) + ".pdf";
-			PDF.generatePDF(inputFile, outputFile);
-			
-		} catch (DocumentException | com.itextpdf.text.DocumentException e) {
-			e.printStackTrace();
-		}
-		contract.setStatoFile("compilato");
-		session.persist(contract);
-		t.commit();
-		
-		response.sendRedirect("ElencoTirocinanti");
-		}
-		else {
+			Query queryTU = session.createQuery("FROM TutoreUniversitario WHERE idTutore = :idTutore");
+			queryTU.setParameter("idTutore", idTutorU);
+			TutoreUniversitario TU = (TutoreUniversitario) queryTU.uniqueResult();
+
+			input.put("utente", U);
+			input.put("azienda", A);
+			input.put("offerta", O);
+			input.put("tutorU", TU);
+			input.put("contract", contract);
+			input.put("ore", request.getParameter("ore"));
+			input.put("descrizione", request.getParameter("descrizione"));
+			input.put("giudizio", request.getParameter("giudizio"));
+
+			try {
+				template.process(input, w);
+				w.flush();
+				w.close();
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
+			try {
+				String inputFile = path + ".html";
+				String outputFile = path + ".pdf";
+				;
+				PDF.generatePDF(inputFile, outputFile);
+
+			} catch (DocumentException | com.itextpdf.text.DocumentException e) {
+				e.printStackTrace();
+			}
+			contract.setStatoFile("compilato");
+			session.persist(contract);
+			t.commit();
+
+			response.sendRedirect("ElencoTirocinanti");
+		} else {
 			response.sendRedirect("Home");
 		}
 	}

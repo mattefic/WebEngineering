@@ -116,6 +116,7 @@ public class PeriodoTirocinio extends HttpServlet {
 			Date dataInizio = Date.valueOf(localDate);
 			Date dataFine = Date.valueOf(localDate2);
 
+			String idContrattoString = request.getParameter("idContratto");
 			Query query = session.createQuery("FROM Contratto WHERE idContratto = :idContratto");
 			query.setParameter("idContratto", Integer.parseInt(request.getParameter("idContratto")));
 			Contratto contract = (Contratto) query.uniqueResult();
@@ -137,8 +138,17 @@ public class PeriodoTirocinio extends HttpServlet {
 			Template template = cfg.getTemplate("template/document/ProgettoFormativo/ProgettoFormativo3.ftl");
 			Map<String, Object> input = new HashMap<String, Object>();
 			FileWriter w;
-			String path = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\" + request.getParameter("idContratto") + ".html";
-			w = new FileWriter(path);
+
+			String path;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
+						+ idContrattoString;
+			} else {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
+						+ idContrattoString;
+			}
+
+			w = new FileWriter(path + ".html");
 			int idUtente = contract.getIdUtente();
 			int idAzienda = contract.getIdAzienda();
 			int idOfferta = contract.getIdOfferta();
@@ -174,11 +184,11 @@ public class PeriodoTirocinio extends HttpServlet {
 				e.printStackTrace();
 			}
 			try {
-				String inputFile = path;
-				String outputFile = System.getProperty("user.home") + "\\FileProgetto\\ProgettiFormativi\\"
-						+ contract.getIdContratto() + ".pdf";
+				String inputFile = path + ".html";
+				String outputFile = path + ".pdf";
 				PDF.generatePDF(inputFile, outputFile);
-
+				
+				outputFile="FileProgetto/ProgettiFormativi/" + idContrattoString + ".pdf";
 				contract.setPercorso(outputFile);
 
 			} catch (DocumentException | com.itextpdf.text.DocumentException e) {
@@ -192,7 +202,6 @@ public class PeriodoTirocinio extends HttpServlet {
 		} else {
 			response.sendRedirect("Home");
 		}
-		doGet(request, response);
 	}
 
 }
