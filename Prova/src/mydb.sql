@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 06, 2018 alle 23:56
+-- Creato il: Set 10, 2018 alle 21:56
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -55,11 +55,12 @@ CREATE TABLE `azienda` (
 --
 
 INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `valutazione`, `numTirocinanti`, `numVoti`, `fileConvenzione`) VALUES
-(1, '12345678912', 'Pippo', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Matteo', 'Ficorilli', '3339876543', 'MF@gmail.com', NULL, 1, 'pippo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(2, '12345678931', 'Pluto', 'Via Pluto 35', 'Paolino', 'Paperino', 'Roma', 'Mickey', 'Mouse', '3336459789', 'Disney@gmail.com', NULL, 1, 'pluto@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
+(1, '12345678912', 'Pippo', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Matteo', 'Ficorilli', '3339876543', 'MF@gmail.com', NULL, 1, 'pippo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 1, 0, 'FileProgetto/Convenzioni/1.pdf'),
+(2, '12345678931', 'Pluto', 'Via Pluto 35', 'Paolino', 'Paperino', 'Roma', 'Mickey', 'Mouse', '3336459789', 'Disney@gmail.com', NULL, 1, 'pluto@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '3.0', 3, 1, NULL),
 (3, '12345678921', 'Topolino', 'Via Topolino 22', 'Mickey', 'Mouse', 'Genova', 'Mickey', 'Mouse', '3333333333', 'MM@gmail.com', NULL, 1, 'topolino@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
 (4, '12345678936', 'Topolina', 'Via delle Querce, 10', 'Minnie', 'Mouse', 'Castel di Lama', 'Mickey', 'Mouse', '3334568741', 'MM2@gmail.com', NULL, 0, 'topolina@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(5, '98765432156', 'Titti', 'Via Silvestro 12', 'Titti', 'Pulcino', 'Warner City', 'Silvestro', 'Silvester', '3331234568', 'SS@gmail.com', NULL, 0, 'titti@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL);
+(5, '98765432156', 'Titti', 'Via Silvestro 12', 'Titti', 'Pulcino', 'Warner City', 'Silvestro', 'Silvester', '3331234568', 'SS@gmail.com', NULL, 0, 'titti@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
+(6, '15975345621', 'Fainplast', 'Via Caduti del Lavoro 10', 'Marco', 'Antonietti', 'Ascoli Piceno', 'Franco', 'Pierfranceschi', '3487659123', 'FP@gmail.com', NULL, 1, 'Fainplast@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -84,8 +85,14 @@ CREATE TABLE `candidatura` (
 
 INSERT INTO `candidatura` (`idCandidatura`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `stato`, `dataCandidatura`, `cfu`) VALUES
 (1, 1, 1, 2, 1, 'accettata', '2018-09-06', 12),
-(2, 2, 2, 3, 1, 'attesa', '2018-09-06', 3),
-(3, 2, 3, 3, 1, 'attesa', '2018-09-06', 12);
+(2, 2, 2, 3, 1, 'accettata', '2018-09-06', 3),
+(3, 2, 3, 3, 1, 'rifiutata', '2018-09-06', 12),
+(4, 2, 2, 4, 1, 'accettata', '2018-09-10', 9),
+(5, 2, 3, 4, 1, 'accettata', '2018-09-10', 12),
+(6, 2, 2, 5, 1, 'accettata', '2018-09-10', 14),
+(7, 1, 1, 5, 1, 'rifiutata', '2018-09-10', 9),
+(8, 1, 4, 5, 1, 'rifiutata', '2018-09-10', 4),
+(9, 2, 3, 5, 2, 'rifiutata', '2018-09-10', 9);
 
 -- --------------------------------------------------------
 
@@ -104,15 +111,19 @@ CREATE TABLE `contratto` (
   `dataFine` date DEFAULT NULL,
   `cfu` int(11) NOT NULL,
   `votato` tinyint(4) NOT NULL DEFAULT '0',
-  `percorso` varchar(200) DEFAULT NULL
+  `percorso` varchar(200) DEFAULT NULL,
+  `statoFile` varchar(20) NOT NULL DEFAULT 'precompilato'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `contratto`
 --
 
-INSERT INTO `contratto` (`idContratto`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `dataAccettazione`, `dataInizio`, `dataFine`, `cfu`, `votato`, `percorso`) VALUES
-(1, 1, 1, 2, 1, '2018-09-06', NULL, NULL, 12, 0, NULL);
+INSERT INTO `contratto` (`idContratto`, `idAzienda`, `idOfferta`, `idUtente`, `idTutoreUniversitario`, `dataAccettazione`, `dataInizio`, `dataFine`, `cfu`, `votato`, `percorso`, `statoFile`) VALUES
+(1, 1, 1, 2, 1, '2018-09-07', '2018-09-10', '2018-09-30', 12, 0, 'FileProgetto/ProgettiFormativi/1.pdf', 'caricato'),
+(2, 2, 2, 3, 1, '2018-09-10', '2018-09-24', '2018-12-24', 3, 1, 'FileProgetto/ProgettiFormativi/2.pdf', 'caricato'),
+(4, 2, 2, 5, 1, '2018-09-10', '2018-09-17', '2019-02-18', 14, 0, 'FileProgetto/ProgettiFormativi/4.pdf', 'precompilato'),
+(3, 2, 3, 4, 1, '2018-09-10', '2018-09-17', '2019-03-17', 12, 0, 'FileProgetto/ProgettiFormativi/3.pdf', 'compilato');
 
 -- --------------------------------------------------------
 
@@ -142,7 +153,7 @@ CREATE TABLE `offerta` (
 --
 
 INSERT INTO `offerta` (`idOfferta`, `data`, `titolo`, `settore`, `descrizione`, `luogo`, `orario`, `mesi`, `ore`, `obiettivi`, `modalita`, `visibile`, `idAzienda`, `rimborsiFacilitazioni`) VALUES
-(1, '2018-08-30', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 6, 180, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il LunedÃ¬, il MartedÃ¬ e il MercoledÃ¬ mattina', 1, 1, 'Rimborso spese'),
+(1, '2018-08-30', 'Lavoro MGM Service', 'Industriale', 'Possibilità  di lavorare in un industria di montaggio/smontaggio macchine industriali e successiva programmazione', 'Ascoli Piceno', '9:00 - 13:00', 6, 180, 'Istruire una figura professionale nel settore montaggio/smontaggio/programmazione macchinari industriali', '3 settimane al mese, si lavora il Lunedì, il Martedì e il Mercoledì mattina', 1, 1, 'Rimborso spese'),
 (2, '2018-08-30', 'Tirocinio sceneggiatura', 'Intrattenimento', 'Ti schiavizziamo', 'DisneyWorld', '0:00 - 23:59', 12, 867, 'Schiavizzarti', 'Schiavizzati divertendoti', 1, 2, 'Sei uno schiavo negro'),
 (3, '2018-08-30', 'Tirocinio Manutenzione', 'Intrattenimento', 'Ti schiavizziamo', 'DisneyWorld', '0:00 - 23:59', 12, 500, 'Schiavizzarti', 'Schiavizzati divertendoti', 1, 2, 'Sei uno schiavo negro'),
 (4, '2018-09-06', 'blable', 'industriale', 'asdvsd', 'roma', '9:00 - 13:00', 6, 120, 'dsavsvsav', 'vasdvsdavsd', 1, 1, 'jancabsdvkabsdyovafsdav');
@@ -166,7 +177,8 @@ CREATE TABLE `tutore_universitario` (
 --
 
 INSERT INTO `tutore_universitario` (`idTutore`, `nome`, `cognome`, `email`, `numRichieste`) VALUES
-(1, 'Francesco', 'Giostra', 'franz@gmail.com', 3);
+(1, 'Francesco', 'Giostra', 'franz@gmail.com', 8),
+(2, 'Romano', 'Patrizi', 'patrizi@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +209,9 @@ CREATE TABLE `utente` (
 INSERT INTO `utente` (`idUtente`, `codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
 (1, 'GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce, 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'admin'),
 (2, 'PLNPPR89D23H769B', 'Paolina', 'Paperina', '1989-08-17', 'DisneyWorld', 'Città  di Mezzo', '3485286945', 'Economia', 0, 'PP@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
-(3, 'MRIRSS28P05H678B', 'Mario', 'Rossi', '1928-01-01', 'TommorowLand', 'TomorrowLand', '3465987555', 'Ingegneria', 0, 'MR@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente');
+(3, 'MRIRSS28P05H678B', 'Mario', 'Rossi', '1928-01-01', 'TommorowLand', 'TomorrowLand', '3465987555', 'Ingegneria', 0, 'MR@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
+(4, 'GRGGGI94P34H754D', 'Gigi', 'Giorgi', '1994-01-22', 'Roma', 'Roma', '3214587965', 'Informatica', 0, 'Gigi@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
+(5, 'MTLGCM92S22Q123P', 'Giacomo', 'Mattioli', '1992-06-18', 'Milano', 'Milano', '3465986789', 'Lettere', 0, 'Mattioz@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente');
 
 --
 -- Indici per le tabelle scaricate
@@ -253,17 +267,17 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `azienda`
 --
 ALTER TABLE `azienda`
-  MODIFY `idAzienda` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idAzienda` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT per la tabella `candidatura`
 --
 ALTER TABLE `candidatura`
-  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT per la tabella `contratto`
 --
 ALTER TABLE `contratto`
-  MODIFY `idContratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idContratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la tabella `offerta`
 --
@@ -273,12 +287,12 @@ ALTER TABLE `offerta`
 -- AUTO_INCREMENT per la tabella `tutore_universitario`
 --
 ALTER TABLE `tutore_universitario`
-  MODIFY `idTutore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idTutore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Limiti per le tabelle scaricate
 --
