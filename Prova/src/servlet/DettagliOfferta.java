@@ -1,4 +1,5 @@
 package servlet;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -31,7 +32,6 @@ import model.Offerta;
 import model.Utente;
 import security.SecurityLayer;
 
-//TODO risolvere problema adesione di uno stesso utente ad una stessa offerta
 /**
  * Servlet implementation class DettagliOffertaServlet
  */
@@ -53,6 +53,7 @@ public class DettagliOfferta extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		HttpSession httpSession = SecurityLayer.checkSession(request);
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
 
@@ -66,39 +67,48 @@ public class DettagliOfferta extends HttpServlet {
 
 		int id = Integer.parseInt(request.getParameter("idOfferta"));
 		
-		Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = :idOfferta");
-		query.setParameter("idOfferta", id);
-		Offerta offerta = (Offerta) query.uniqueResult();
-		input.put("offerta", offerta);
+			Query queryCand = session
+					.createQuery("FROM Candidatura WHERE idOfferta = :idOfferta AND idUtente = :idUtente");
+			queryCand.setParameter("idOfferta", id);
+			queryCand.setParameter("idUtente", Integer.parseInt((String)httpSession.getAttribute("userid")));
+			Candidatura candidatura = (Candidatura) queryCand.uniqueResult();
 
-		Configuration cfg = new Configuration();
-		Map<String, String> env = System.getenv();
-		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		} else {
-			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
-		}
-		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
-		cfg.setDefaultEncoding("UTF-8");
-		cfg.setLocale(Locale.ITALIAN);
-		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		Template template = cfg.getTemplate("template/dettagliOfferta.ftl");
-		ServerStart serverData = new ServerStart();
-		String tipo = "visitatore";
-		if (SecurityLayer.checkSession(request) != null) {
-			if (SecurityLayer.checkSession(request).getAttribute("tipo") != null) {
-				tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
+				Query query = session.createQuery("FROM Offerta o WHERE o.idOfferta = :idOfferta");
+				query.setParameter("idOfferta", id);
+				Offerta offerta = (Offerta) query.uniqueResult();
+				input.put("offerta", offerta);
+			
+			Configuration cfg = new Configuration();
+			Map<String, String> env = System.getenv();
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
+			} else {
+				cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
 			}
-		}
-		input.put("menu", serverData.menu.get(tipo));
-		input.put("tipo", tipo);
-		try {
-			template.process(input, response.getWriter());
-		} catch (TemplateException e) {
-			e.printStackTrace();
-		}
+			cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+			cfg.setDefaultEncoding("UTF-8");
+			cfg.setLocale(Locale.ITALIAN);
+			cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+			Template template = cfg.getTemplate("template/dettagliOfferta.ftl");
+			ServerStart serverData = new ServerStart();
+			String tipo = "visitatore";
+			if (SecurityLayer.checkSession(request) != null) {
+				if (SecurityLayer.checkSession(request).getAttribute("tipo") != null) {
+					tipo = (String) SecurityLayer.checkSession(request).getAttribute("tipo");
+				}
+			}
+			input.put("menu", serverData.menu.get(tipo));
+			if(candidatura==null) {
+			input.put("tipo", tipo);
+			} else {
+				input.put("tipo", "");
+			}
+			try {
+				template.process(input, response.getWriter());
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}			
 		t.commit();
-
 	}
 
 	/**
@@ -107,7 +117,7 @@ public class DettagliOfferta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 	}
 
 }

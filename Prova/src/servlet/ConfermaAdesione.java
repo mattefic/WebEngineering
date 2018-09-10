@@ -116,6 +116,14 @@ public class ConfermaAdesione extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
+		
+		int id = Integer.parseInt(request.getParameter("idOfferta"));
+		Query queryCand = session.createQuery("FROM Candidatura WHERE idOfferta = :idOfferta AND idUtente = :idUtente");
+		queryCand.setParameter("idOfferta", id);
+		queryCand.setParameter("idUtente", Integer.parseInt((String)httpSession.getAttribute("userid")));
+		Candidatura candidaturaX = (Candidatura) queryCand.uniqueResult();
+		
+		if(httpSession.getAttribute("tipo").equals("utente") && candidaturaX==null) {
 		Date data = new Date();
 		int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
 		Query query = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
@@ -152,9 +160,11 @@ public class ConfermaAdesione extends HttpServlet {
 		candidatura.setIdTutoreUniversitario(tutore.getIdTutore());
 		session.persist(candidatura);
 		t.commit();
-		
 		response.sendRedirect("Home");
-		doGet(request, response);
+		}
+		else {
+			response.sendRedirect("Home");
+		}
 	}
 
 }
