@@ -161,13 +161,14 @@ public class PasswordDimenticata extends HttpServlet {
 				querycheck.setParameter("token", token);
 				utentecheck = querycheck2.uniqueResult();
 			}
-			
+				
 				//Setto il token come password dell'utente
-				utente.setPassword(token);
-
+				utente.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(token));
+				session.persist(utente);
+				
 				//Scrivo email
 				FileWriter w;
-				w=new FileWriter("Password Dimenticata.txt");
+				w=new FileWriter("FileProgetto/Password Dimenticata "+ utente.getEmail() +".txt");
 				BufferedWriter b;
 				b=new BufferedWriter (w);
 				b.write("Internship Tutor");
