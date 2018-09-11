@@ -106,7 +106,7 @@
 											<tr>
 												<th>NOME</th>
 												<th>COGNOME</th>
-												<th>TELEFONO</th>
+												<th>EMAIL</th>
 												<th>NUMERO RICHIESTE</th>
 											</tr>
 										</thead>
@@ -115,7 +115,7 @@
 											<tr>
 												<td>${tutore.nome}</td>
 												<td>${tutore.cognome}</td>
-												<td>${tutore.telefono}</td>
+												<td>${tutore.email}</td>
 												<td>${tutore.numRichieste}</td>
 											</tr>
 											</#list>
