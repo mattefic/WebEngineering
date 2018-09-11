@@ -92,7 +92,7 @@
 								<#list aziende as azienda>
 								<form action="#" method="post" enctype="multipart/form-data">
 									<tr>
-										<td><a class="puntatore" href="DettagliAzienda">${azienda.ragioneSocialeNome}</a></td>
+										<td><a class="puntatore" href="DettagliAzienda?idAzienda=${azienda.idAzienda}">${azienda.ragioneSocialeNome}</a></td>
 										<td>
 											<div class="fancy-file-upload fancy-file-primary">
 												<input type="file" class="form-control" name="convenzione" onchange="jQuery(this).next('input').val(this.value);" />

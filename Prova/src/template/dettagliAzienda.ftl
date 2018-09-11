@@ -98,8 +98,14 @@
 							<br>
 							<p><h5>EMAIL TUTOR AZIENDALE:</h5><a href="${azienda.emailRespTirocinio}">${azienda.emailRespTirocinio}</a></p>
 							<br>
+							<#if azienda.fileConvenzione == "assente">
+							<p><h5>CONVENZIONE:</h5> La convenzione non è ancora stata caricata</p>
+							<br>
+							</#if>
+							<#if azienda.fileConvenzione != "assente">
 							<p><h5>CONVENZIONE:</h5><a href="VisualizzaPdf?convenzione=${azienda.idAzienda}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
 							<br>
+							</#if>
 							<p><h5>VALUTAZIONE DEGLI UTENTI:</h5>
 								<span class="fa fa-star <#if azienda.valutazione gte 1>checked</#if>"></span>
 								<span class="fa fa-star <#if azienda.valutazione gte 2>checked</#if>"></span>
