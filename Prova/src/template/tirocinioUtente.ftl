@@ -105,6 +105,7 @@
 								<p>
 								<h3> Vota l'azienda: </h3>
 									<select name="voto">
+										<option value="0"> 0 </option>
 										<option value="1"> 1 </option>
 										<option value="2"> 2 </option>
 										<option value="3"> 3 </option>
