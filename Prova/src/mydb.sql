@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 10, 2018 alle 21:56
+-- Creato il: Set 12, 2018 alle 16:21
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -40,27 +40,27 @@ CREATE TABLE `azienda` (
   `cognomeRespTirocinio` varchar(30) NOT NULL,
   `telefonoRespTirocinio` varchar(14) NOT NULL,
   `emailRespTirocinio` varchar(45) NOT NULL,
-  `orario` varchar(100) DEFAULT NULL,
   `convenzionata` tinyint(4) DEFAULT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(300) NOT NULL,
   `valutazione` decimal(2,1) DEFAULT NULL,
   `numTirocinanti` int(11) DEFAULT NULL,
   `numVoti` int(11) NOT NULL DEFAULT '0',
-  `fileConvenzione` varchar(200) DEFAULT NULL
+  `fileConvenzione` varchar(200) DEFAULT 'assente',
+  `orario` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `azienda`
 --
 
-INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `orario`, `convenzionata`, `email`, `password`, `valutazione`, `numTirocinanti`, `numVoti`, `fileConvenzione`) VALUES
-(1, '12345678912', 'Pippo', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Matteo', 'Ficorilli', '3339876543', 'MF@gmail.com', NULL, 1, 'pippo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 1, 0, 'FileProgetto/Convenzioni/1.pdf'),
-(2, '12345678931', 'Pluto', 'Via Pluto 35', 'Paolino', 'Paperino', 'Roma', 'Mickey', 'Mouse', '3336459789', 'Disney@gmail.com', NULL, 1, 'pluto@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '3.0', 3, 1, NULL),
-(3, '12345678921', 'Topolino', 'Via Topolino 22', 'Mickey', 'Mouse', 'Genova', 'Mickey', 'Mouse', '3333333333', 'MM@gmail.com', NULL, 1, 'topolino@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(4, '12345678936', 'Topolina', 'Via delle Querce, 10', 'Minnie', 'Mouse', 'Castel di Lama', 'Mickey', 'Mouse', '3334568741', 'MM2@gmail.com', NULL, 0, 'topolina@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(5, '98765432156', 'Titti', 'Via Silvestro 12', 'Titti', 'Pulcino', 'Warner City', 'Silvestro', 'Silvester', '3331234568', 'SS@gmail.com', NULL, 0, 'titti@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL),
-(6, '15975345621', 'Fainplast', 'Via Caduti del Lavoro 10', 'Marco', 'Antonietti', 'Ascoli Piceno', 'Franco', 'Pierfranceschi', '3487659123', 'FP@gmail.com', NULL, 1, 'Fainplast@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, NULL);
+INSERT INTO `azienda` (`idAzienda`, `partitaIVACodiceFiscale`, `ragioneSocialeNome`, `indirizzo`, `nomeLegale`, `cognomeLegale`, `foro`, `nomeRespTirocinio`, `cognomeRespTirocinio`, `telefonoRespTirocinio`, `emailRespTirocinio`, `convenzionata`, `email`, `password`, `valutazione`, `numTirocinanti`, `numVoti`, `fileConvenzione`, `orario`) VALUES
+(1, '12345678912', 'Pippo', 'Via delle Querce, 10', 'Francesco', 'Giostra', 'Castel di Lama', 'Matteo', 'Ficorilli', '3339876543', 'MF@gmail.com', 1, 'pippo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 1, 0, 'FileProgetto/Convenzioni/1.pdf', NULL),
+(2, '12345678931', 'Pluto', 'Via Pluto 35', 'Paolino', 'Paperino', 'Roma', 'Mickey', 'Mouse', '3336459789', 'Disney@gmail.com', 1, 'pluto@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '3.0', 3, 1, 'assente', NULL),
+(3, '12345678921', 'Topolino', 'Via Topolino 22', 'Mickey', 'Mouse', 'Genova', 'Mickey', 'Mouse', '3333333333', 'MM@gmail.com', 1, 'topolino@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, 'assente', NULL),
+(4, '12345678936', 'Topolina', 'Via delle Querce, 10', 'Minnie', 'Mouse', 'Castel di Lama', 'Mickey', 'Mouse', '3334568741', 'MM2@gmail.com', 0, 'topolina@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, 'assente', NULL),
+(5, '98765432156', 'Titti', 'Via Silvestro 12', 'Titti', 'Pulcino', 'Warner City', 'Silvestro', 'Silvester', '3331234568', 'SS@gmail.com', 0, 'titti@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, 'assente', NULL),
+(6, '15975345621', 'Fainplast', 'Via Caduti del Lavoro 10', 'Marco', 'Antonietti', 'Ascoli Piceno', 'Franco', 'Pierfranceschi', '3487659123', 'FP@gmail.com', 1, 'Fainplast@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0.0', 0, 0, 'assente', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,9 @@ INSERT INTO `candidatura` (`idCandidatura`, `idAzienda`, `idOfferta`, `idUtente`
 (6, 2, 2, 5, 1, 'accettata', '2018-09-10', 14),
 (7, 1, 1, 5, 1, 'rifiutata', '2018-09-10', 9),
 (8, 1, 4, 5, 1, 'rifiutata', '2018-09-10', 4),
-(9, 2, 3, 5, 2, 'rifiutata', '2018-09-10', 9);
+(9, 2, 3, 5, 2, 'rifiutata', '2018-09-10', 9),
+(10, 1, 1, 6, 1, 'attesa', '2018-09-12', 12),
+(11, 2, 2, 6, 1, 'attesa', '2018-09-12', 12);
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,7 @@ CREATE TABLE `tutore_universitario` (
 --
 
 INSERT INTO `tutore_universitario` (`idTutore`, `nome`, `cognome`, `email`, `numRichieste`) VALUES
-(1, 'Francesco', 'Giostra', 'franz@gmail.com', 8),
+(1, 'Francesco', 'Giostra', 'franz@gmail.com', 10),
 (2, 'Romano', 'Patrizi', 'patrizi@gmail.com', 1);
 
 -- --------------------------------------------------------
@@ -208,10 +210,11 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`idUtente`, `codiceFiscale`, `nome`, `cognome`, `dataNascita`, `luogoNascita`, `residenza`, `telefono`, `corsoLaurea`, `handicap`, `email`, `password`, `tipo`) VALUES
 (1, 'GSTFNC95P02H769D', 'Francesco', 'Giostra', '1995-09-02', 'San Benedetto del Tronto', 'Via delle Querce, 10', '3466318898', 'Informatica', 0, 'france.1995@hotmail.it', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'admin'),
-(2, 'PLNPPR89D23H769B', 'Paolina', 'Paperina', '1989-08-17', 'DisneyWorld', 'Città  di Mezzo', '3485286945', 'Economia', 0, 'PP@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
+(2, 'PLNPPR89D23H769B', 'Paolina', 'Paperina', '1989-08-17', 'DisneyWorld', 'Città  di Mezzo', '3485286945', 'Economia', 0, 'PP@gmail.com', '4f11e29d58bbabcde408f33023dee661be94107a0d7d9e5f0b9c9946a1da1135', 'utente'),
 (3, 'MRIRSS28P05H678B', 'Mario', 'Rossi', '1928-01-01', 'TommorowLand', 'TomorrowLand', '3465987555', 'Ingegneria', 0, 'MR@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
 (4, 'GRGGGI94P34H754D', 'Gigi', 'Giorgi', '1994-01-22', 'Roma', 'Roma', '3214587965', 'Informatica', 0, 'Gigi@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
-(5, 'MTLGCM92S22Q123P', 'Giacomo', 'Mattioli', '1992-06-18', 'Milano', 'Milano', '3465986789', 'Lettere', 0, 'Mattioz@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente');
+(5, 'MTLGCM92S22Q123P', 'Giacomo', 'Mattioli', '1992-06-18', 'Milano', 'Milano', '3465986789', 'Lettere', 0, 'Mattioz@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente'),
+(6, 'CRLCRL22D45S654Q', 'Carlo', 'Carletti', '1992-08-06', 'Castel di Lama', 'Roma', '3465978123', 'Informatica', 0, 'Carlo@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'utente');
 
 --
 -- Indici per le tabelle scaricate
@@ -272,7 +275,7 @@ ALTER TABLE `azienda`
 -- AUTO_INCREMENT per la tabella `candidatura`
 --
 ALTER TABLE `candidatura`
-  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idCandidatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT per la tabella `contratto`
 --
@@ -292,7 +295,7 @@ ALTER TABLE `tutore_universitario`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Limiti per le tabelle scaricate
 --
