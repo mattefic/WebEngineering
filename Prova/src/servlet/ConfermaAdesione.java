@@ -1,6 +1,8 @@
 package servlet;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,9 +27,11 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import hibernate.HibernateSettings;
+import model.Azienda;
 import model.Candidatura;
 import model.Offerta;
 import model.TutoreUniversitario;
+import model.Utente;
 import security.SecurityLayer;
 
 /**
@@ -116,53 +120,159 @@ public class ConfermaAdesione extends HttpServlet {
 		}
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
-		
+
 		int id = Integer.parseInt(request.getParameter("idOfferta"));
 		Query queryCand = session.createQuery("FROM Candidatura WHERE idOfferta = :idOfferta AND idUtente = :idUtente");
 		queryCand.setParameter("idOfferta", id);
-		queryCand.setParameter("idUtente", Integer.parseInt((String)httpSession.getAttribute("userid")));
+		queryCand.setParameter("idUtente", Integer.parseInt((String) httpSession.getAttribute("userid")));
 		Candidatura candidaturaX = (Candidatura) queryCand.uniqueResult();
-		
-		if(httpSession.getAttribute("tipo").equals("utente") && candidaturaX==null) {
-		Date data = new Date();
-		int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
-		Query query = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
-		query.setParameter("idOfferta", idOfferta);
-		Offerta offerta = (Offerta) query.uniqueResult();
-		Candidatura candidatura = new Candidatura();
-		candidatura.setDataCandidatura(data);
-		candidatura.setStato("attesa");
-		int idUtente = Integer.parseInt((String) httpSession.getAttribute("userid"));
-		candidatura.setIdUtente(idUtente);
-		candidatura.setIdOfferta(idOfferta);
-		candidatura.setIdAzienda(offerta.getIdAzienda());
-		candidatura.setCfu(Integer.parseInt(request.getParameter("CFU")));
 
-		Query queryTutore = session.createQuery("FROM TutoreUniversitario WHERE email = :email");
-		queryTutore.setParameter("email", request.getParameter("email").toLowerCase());
-		TutoreUniversitario tutore = (TutoreUniversitario) queryTutore.uniqueResult();
+		if (httpSession.getAttribute("tipo").equals("utente") && candidaturaX == null) {
+			Date data = new Date();
+			int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+			Query query = session.createQuery("FROM Offerta WHERE idOfferta = :idOfferta");
+			query.setParameter("idOfferta", idOfferta);
+			Offerta offerta = (Offerta) query.uniqueResult();
+			Candidatura candidatura = new Candidatura();
+			candidatura.setDataCandidatura(data);
+			candidatura.setStato("attesa");
+			int idUtente = Integer.parseInt((String) httpSession.getAttribute("userid"));
+			candidatura.setIdUtente(idUtente);
+			candidatura.setIdOfferta(idOfferta);
+			candidatura.setIdAzienda(offerta.getIdAzienda());
+			candidatura.setCfu(Integer.parseInt(request.getParameter("CFU")));
 
-		if (tutore == null) {
-			tutore = new TutoreUniversitario();
-			tutore.setNome(request.getParameter("nome"));
-			tutore.setCognome(request.getParameter("cognome"));
-			tutore.setEmail(request.getParameter("email").toLowerCase());
-			tutore.setNumRichieste(1);
-			session.persist(tutore);
+			Query queryTutore = session.createQuery("FROM TutoreUniversitario WHERE email = :email");
+			queryTutore.setParameter("email", request.getParameter("email").toLowerCase());
+			TutoreUniversitario tutore = (TutoreUniversitario) queryTutore.uniqueResult();
+
+			if (tutore == null) {
+				tutore = new TutoreUniversitario();
+				tutore.setNome(request.getParameter("nome"));
+				tutore.setCognome(request.getParameter("cognome"));
+				tutore.setEmail(request.getParameter("email").toLowerCase());
+				tutore.setNumRichieste(1);
+				session.persist(tutore);
+			} else {
+				tutore.setNumRichieste(tutore.getNumRichieste() + 1);
+				session.persist(tutore);
+			}
+			t.commit();
+
+			t = session.beginTransaction();
+			tutore = (TutoreUniversitario) queryTutore.uniqueResult();
+			candidatura.setIdTutoreUniversitario(tutore.getIdTutore());
+			session.persist(candidatura);
+			t.commit();
+
+			t = session.beginTransaction();
+			Query queryUtente = session.createQuery("FROM Utente WHERE idUtente = :idUtente");
+			queryUtente.setParameter("idUtente", idUtente);
+			Utente utente = (Utente) queryUtente.uniqueResult();
+			t.commit();
+
+			// Scrivo email Tutor Universitario
+			FileWriter w;
+			Map<String, String> env = System.getenv();
+			String path;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/EmailTutorUniversitario/Candidatura "
+						+ candidatura.getIdCandidatura() + ".txt";
+			} else {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/EmailTutorUniversitario/Candidatura"
+						+ candidatura.getIdCandidatura() + ".txt";
+			}
+
+			w = new FileWriter(path);
+			BufferedWriter b;
+			b = new BufferedWriter(w);
+			b.write("Internship Tutor");
+			b.newLine();
+			b.write("È stata creata una candidatura da" + utente.getNome() + " " + utente.getCognome());
+			b.newLine();
+			b.write("Nato a " + utente.getLuogoNascita() + " il " + utente.getDataNascita());
+			b.newLine();
+			b.write("Residente a " + utente.getResidenza());
+			b.newLine();
+			b.write("Codice Fiscale: " + utente.getCodiceFiscale());
+			b.newLine();
+			b.write("Telefono: " + utente.getTelefono());
+			b.newLine();
+			b.write("Corso di Laurea " + utente.getCorsoLaurea());
+			b.newLine();
+			b.newLine();
+			b.write("Per la seguente offerta " + offerta.getTitolo());
+			b.newLine();
+			b.write("Descrizione Offerta: " + offerta.getDescrizione());
+			b.newLine();
+			b.write("Obiettivi Offerta " + offerta.getObiettivi());
+			b.newLine();
+			b.write("Modalità Offerta: " + offerta.getModalita());
+			b.newLine();
+			b.write("Totale Mesi: " + offerta.getMesi());
+			b.newLine();
+			b.write("Totale Ore: " + offerta.getOre());
+			b.newLine();
+			b.write("Facilitazioni Previste: " + offerta.getRimborsiFacilitazioni());
+			b.newLine();
+			b.write("Sede di effettuazione: " + offerta.getLuogo());
+			b.newLine();
+			b.write("Per l'azienda: " + offerta.getAzienda().getRagioneSocialeNome());
+			b.newLine();
+			b.write("Partita IVA: " + offerta.getAzienda().getCodiceFiscaleIva());
+			b.newLine();
+			b.close();
+
+			// Scrivo email Tutor Aziendale
+			FileWriter z;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/EmailTutorAziendale/Candidatura"
+						+ candidatura.getIdCandidatura() + ".txt";
+			} else {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/EmailTutorAziendale/Candidatura"
+						+ candidatura.getIdCandidatura() + ".txt";
+			}
+			z = new FileWriter(path);
+			b = new BufferedWriter(z);
+			b.write("Internship Tutor");
+			b.newLine();
+			b.write("È stata creata una candidatura da" + utente.getNome() + " " + utente.getCognome());
+			b.newLine();
+			b.write("Nato a " + utente.getLuogoNascita() + " il " + utente.getDataNascita());
+			b.newLine();
+			b.write("Residente a " + utente.getResidenza());
+			b.newLine();
+			b.write("Codice Fiscale: " + utente.getCodiceFiscale());
+			b.newLine();
+			b.write("Telefono: " + utente.getTelefono());
+			b.newLine();
+			b.write("Corso di Laurea " + utente.getCorsoLaurea());
+			b.newLine();
+			b.newLine();
+			b.write("Per la seguente offerta " + offerta.getTitolo());
+			b.newLine();
+			b.write("Descrizione Offerta: " + offerta.getDescrizione());
+			b.newLine();
+			b.write("Obiettivi Offerta " + offerta.getObiettivi());
+			b.newLine();
+			b.write("Modalità Offerta: " + offerta.getModalita());
+			b.newLine();
+			b.write("Totale Mesi: " + offerta.getMesi());
+			b.newLine();
+			b.write("Totale Ore: " + offerta.getOre());
+			b.newLine();
+			b.write("Facilitazioni Previste: " + offerta.getRimborsiFacilitazioni());
+			b.newLine();
+			b.write("Sede di effettuazione: " + offerta.getLuogo());
+			b.newLine();
+			b.write("Per l'azienda: " + offerta.getAzienda().getRagioneSocialeNome());
+			b.newLine();
+			b.write("Partita IVA: " + offerta.getAzienda().getCodiceFiscaleIva());
+			b.newLine();
+			b.close();
+
+			response.sendRedirect("Home");
 		} else {
-			tutore.setNumRichieste(tutore.getNumRichieste() + 1);
-			session.persist(tutore);
-		}
-		t.commit();
-		
-		t=session.beginTransaction();
-		tutore = (TutoreUniversitario) queryTutore.uniqueResult();
-		candidatura.setIdTutoreUniversitario(tutore.getIdTutore());
-		session.persist(candidatura);
-		t.commit();
-		response.sendRedirect("Home");
-		}
-		else {
 			response.sendRedirect("Home");
 		}
 	}

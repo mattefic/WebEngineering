@@ -168,7 +168,16 @@ public class PasswordDimenticata extends HttpServlet {
 				
 				//Scrivo email
 				FileWriter w;
-				w=new FileWriter("FileProgetto/Password Dimenticata "+ utente.getEmail() +".txt");
+				Map<String, String> env = System.getenv();
+				String path;
+				if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+					path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
+							+ utente.getEmail() + ".txt";
+				} else {
+					path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
+							+ utente.getEmail()+ ".txt";
+				}
+				w=new FileWriter(path);
 				BufferedWriter b;
 				b=new BufferedWriter (w);
 				b.write("Internship Tutor");
@@ -183,9 +192,9 @@ public class PasswordDimenticata extends HttpServlet {
 				b.close();
 				t.commit();
 				session.close();
+				response.sendRedirect("Accedi");
 		} else {
 			response.sendRedirect("PasswordDimenticata?errore=1");	
 		}
-		doGet(request, response);
 	}
 }
