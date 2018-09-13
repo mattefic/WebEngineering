@@ -67,7 +67,7 @@ public class CaricaConvenzioni extends HttpServlet {
 
 		Map<String, Object> input = new HashMap<String, Object>();
 
-		Query query = session.createQuery("FROM Azienda WHERE fileConvenzione=NULL");
+		Query query = session.createQuery("FROM Azienda WHERE fileConvenzione='assente'");
 		List<Azienda> aziende = query.list();
 		for (Iterator iterator = aziende.iterator(); iterator.hasNext();) {
 			Azienda azienda = (Azienda) iterator.next();

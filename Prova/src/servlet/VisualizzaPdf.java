@@ -59,7 +59,7 @@ public class VisualizzaPdf extends HttpServlet {
 
 			t.commit();
 
-			String filepath = "C:\\Users\\Win10\\git\\WebEngineering\\Prova\\src\\main\\webapp\\"
+			String filepath = "C:\\Users\\Matteo\\git\\repository\\WebEngineering\\Prova\\src\\main\\webapp\\"
 					+ azienda.getFileConvenzione();
 			FileInputStream fileIn = new FileInputStream(new File(filepath));
 			response.setHeader("Content-Disposition", "inline; filename=" + filepath + ";");
@@ -77,7 +77,7 @@ public class VisualizzaPdf extends HttpServlet {
 
 				t.commit();
 
-				String filepath = "C:\\Users\\Win10\\git\\WebEngineering\\Prova\\src\\main\\webapp\\"
+				String filepath = "C:\\Users\\Matteo\\git\\repository\\Prova\\src\\main\\webapp\\"
 						+ contratto.getPercorso();
 				FileInputStream fileIn = new FileInputStream(new File(filepath));
 				response.setHeader("Content-Disposition", "inline; filename=" + filepath + ";");

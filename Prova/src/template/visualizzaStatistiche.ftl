@@ -40,7 +40,7 @@
 	<!-- SIDE MENU -->
 			<div id="mainMenu" class="sidebar-vertical">
 
-				<a href="home.html" class="logo text-center">
+				<a href="Home" class="logo text-center">
 					<img src="assets/images/_smarty/logo.png" alt="">
 				</a>
 
@@ -111,6 +111,12 @@
 											</tr>
 										</thead>
 										<tbody>
+											<tr>
+												<td>Giuseppe</td>
+												<td>Della Penna</td>
+												<td>GiuseppeDellaPenna@univaq.it</td>
+												<td>100000000^597</td>
+											</tr>
 											<#list tutori as tutore>
 											<tr>
 												<td>${tutore.nome}</td>
@@ -221,9 +227,9 @@
 							<br>
 							<h4 class="letter-spacing-1">NAVIGA SUL SITO</h4>
 							<ul class="footer-links list-unstyled">
-								<li><a href="home.html">Home</a></li>
-								<li><a href="listaAziende.html">Aziende convenzionate</a></li>
-								<li><a href="elencoOfferte.html">Offerte di tirocinio</a></li>
+								<li><a href="Home">Home</a></li>
+								<li><a href="ListaAziende">Aziende convenzionate</a></li>
+								<li><a href="ElencoOfferte">Offerte di tirocinio</a></li>
 							</ul>
 							<!-- /Links -->
 
