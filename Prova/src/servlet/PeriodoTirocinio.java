@@ -63,8 +63,11 @@ public class PeriodoTirocinio extends HttpServlet {
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		} else {
+		} else if (env.get("COMPUTERNAME").equals("Win10")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		} else {
+			cfg.setDirectoryForTemplateLoading(
+					new File("C:\\Users\\Francesco Giostra\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
@@ -143,6 +146,9 @@ public class PeriodoTirocinio extends HttpServlet {
 			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
 						+ idContrattoString;
+			} else if (env.get("COMPUTERNAME").equals("Win10")) {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
+						+ idContrattoString;
 			} else {
 				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/ProgettiFormativi/"
 						+ idContrattoString;
@@ -187,8 +193,8 @@ public class PeriodoTirocinio extends HttpServlet {
 				String inputFile = path + ".html";
 				String outputFile = path + ".pdf";
 				PDF.generatePDF(inputFile, outputFile);
-				
-				outputFile="FileProgetto/ProgettiFormativi/" + idContrattoString + ".pdf";
+
+				outputFile = "FileProgetto/ProgettiFormativi/" + idContrattoString + ".pdf";
 				contract.setPercorso(outputFile);
 				contract.setStatoFile("precompilato");
 

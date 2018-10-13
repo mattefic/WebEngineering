@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,7 @@ public class VisualizzaPdf extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/pdf");
+		Map<String, String> env = System.getenv();
 		SessionFactory sessionFactory = HibernateSettings.getSessionFactory();
 		if (sessionFactory != null) {
 
@@ -52,15 +54,23 @@ public class VisualizzaPdf extends HttpServlet {
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		if (request.getParameter("convenzione") != null) {
-			
+
 			Query query = session.createQuery("FROM Azienda WHERE idAzienda = :idAzienda");
 			query.setParameter("idAzienda", Integer.parseInt(request.getParameter("convenzione")));
 			Azienda azienda = (Azienda) query.uniqueResult();
 
 			t.commit();
-
-			String filepath = "C:\\Users\\Matteo\\git\\repository\\WebEngineering\\Prova\\src\\main\\webapp\\"
-					+ azienda.getFileConvenzione();
+			String filepath="";
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				filepath = "C:\\Users\\Matteo\\git\\repository\\WebEngineering\\Prova\\src\\main\\webapp\\"
+						+ azienda.getFileConvenzione();
+			} else if (env.get("COMPUTERNAME").equals("Win10")) {
+				filepath = "C:\\Users\\Win10\\git\\repository\\WebEngineering\\Prova\\src\\main\\webapp\\"
+						+ azienda.getFileConvenzione();
+			} else {
+				filepath = "C:\\Users\\Francesco Giostra\\git\\repository\\WebEngineering\\Prova\\src\\main\\webapp\\"
+						+ azienda.getFileConvenzione();
+			}
 			FileInputStream fileIn = new FileInputStream(new File(filepath));
 			response.setHeader("Content-Disposition", "inline; filename=" + filepath + ";");
 			OutputStream output = response.getOutputStream();

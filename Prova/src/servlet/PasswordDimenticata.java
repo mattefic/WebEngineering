@@ -57,8 +57,11 @@ public class PasswordDimenticata extends HttpServlet {
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		} else {
+		} else if (env.get("COMPUTERNAME").equals("Win10")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		} else {
+			cfg.setDirectoryForTemplateLoading(
+					new File("C:\\Users\\Francesco Giostra\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
@@ -74,11 +77,10 @@ public class PasswordDimenticata extends HttpServlet {
 			}
 		}
 		int errore;
-		if(request.getParameter("errore")!=null) {
-			errore= Integer.parseInt(request.getParameter("errore"));
-		}
-		else {
-			errore=0;
+		if (request.getParameter("errore") != null) {
+			errore = Integer.parseInt(request.getParameter("errore"));
+		} else {
+			errore = 0;
 		}
 		input.put("errore", errore);
 		input.put("menu", serverData.menu.get(tipo));
@@ -110,91 +112,90 @@ public class PasswordDimenticata extends HttpServlet {
 		Query<Utente> query = session.createQuery("FROM Utente where email = :email");
 		query.setParameter("email", email);
 		Utente utente = query.uniqueResult();
-		
+
 		if (utente != null) {
-					
-			//Genero il token
-			Random r= new Random();
+
+			// Genero il token
+			Random r = new Random();
 			int x;
 			char c;
 			String token = "";
-			for(int i=0; i<18; i++) {
-				x=r.nextInt(3);
-				if(x==0) {
-					c= (char) ((int)'A'+ r.nextInt(26));
-					token= token + c;
-				}
-				else if(x==1) {
-					x=r.nextInt(10);
-					token= token + x;
-				}
-				else {
-					c= (char) ((int)'a' + r.nextInt(26));
-					token= token + c;
+			for (int i = 0; i < 18; i++) {
+				x = r.nextInt(3);
+				if (x == 0) {
+					c = (char) ((int) 'A' + r.nextInt(26));
+					token = token + c;
+				} else if (x == 1) {
+					x = r.nextInt(10);
+					token = token + x;
+				} else {
+					c = (char) ((int) 'a' + r.nextInt(26));
+					token = token + c;
 				}
 			}
-			
+
 			Query<Utente> querycheck = session.createQuery("FROM Utente where password = :token");
 			querycheck.setParameter("token", token);
 			Utente utentecheck = querycheck.uniqueResult();
-			
-			//Ciclo while nel caso in cui mettiamo colonna token.
-			while(utentecheck!=null) {
-				//Rigenero il token
-				token="";
-				for(int i=0; i<18; i++) {
-					x=r.nextInt(3);
-					if(x==0) {
-						c= (char) ((int)'A'+ r.nextInt(26));
-						token= token + c;
-					}
-					else if(x==1) {
-						x=r.nextInt(10);
-						token= token + x;
-					}
-					else {
-						c= (char) ((int)'a' + r.nextInt(26));
-						token= token + c;
+
+			// Ciclo while nel caso in cui mettiamo colonna token.
+			while (utentecheck != null) {
+				// Rigenero il token
+				token = "";
+				for (int i = 0; i < 18; i++) {
+					x = r.nextInt(3);
+					if (x == 0) {
+						c = (char) ((int) 'A' + r.nextInt(26));
+						token = token + c;
+					} else if (x == 1) {
+						x = r.nextInt(10);
+						token = token + x;
+					} else {
+						c = (char) ((int) 'a' + r.nextInt(26));
+						token = token + c;
 					}
 				}
 				Query<Utente> querycheck2 = session.createQuery("FROM Utente where password = :token");
 				querycheck.setParameter("token", token);
 				utentecheck = querycheck2.uniqueResult();
 			}
-				
-				//Setto il token come password dell'utente
-				utente.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(token));
-				session.persist(utente);
-				
-				//Scrivo email
-				FileWriter w;
-				Map<String, String> env = System.getenv();
-				String path;
-				if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
-					path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
-							+ utente.getEmail() + ".txt";
-				} else {
-					path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
-							+ utente.getEmail()+ ".txt";
-				}
-				w=new FileWriter(path);
-				BufferedWriter b;
-				b=new BufferedWriter (w);
-				b.write("Internship Tutor");
-				b.newLine();
-				b.write("Abbiamo ricevuto la tua richiesta");
-				b.newLine();
-				b.write("I tuoi nuovi dati di accesso sono");
-				b.newLine();
-				b.write("E-mail: " + utente.getEmail());
-				b.newLine();
-				b.write("Password: " + token);
-				b.close();
-				t.commit();
-				session.close();
-				response.sendRedirect("Accedi");
+
+			// Setto il token come password dell'utente
+			utente.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(token));
+			session.persist(utente);
+
+			// Scrivo email
+			FileWriter w;
+			Map<String, String> env = System.getenv();
+			String path;
+			if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
+				path = "C:\\Users\\Matteo\\git\\repository/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
+						+ utente.getEmail() + ".txt";
+			} else if (env.get("COMPUTERNAME").equals("Win10")) {
+				path = "C:\\Users\\Win10\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
+						+ utente.getEmail() + ".txt";
+			} else {
+				path = "C:\\Users\\Francesco Giostra\\git\\WebEngineering/Prova/src/main/webapp/FileProgetto/PasswordDimenticata/PD"
+						+ utente.getEmail() + ".txt";
+			}
+			w = new FileWriter(path);
+			BufferedWriter b;
+			b = new BufferedWriter(w);
+			b.write("Internship Tutor");
+			b.newLine();
+			b.write("Abbiamo ricevuto la tua richiesta");
+			b.newLine();
+			b.write("I tuoi nuovi dati di accesso sono");
+			b.newLine();
+			b.write("E-mail: " + utente.getEmail());
+			b.newLine();
+			b.write("Password: " + token);
+			b.close();
+			t.commit();
+			session.close();
+			response.sendRedirect("Accedi");
 		} else {
-			response.sendRedirect("PasswordDimenticata?errore=1");	
+			response.sendRedirect("PasswordDimenticata?errore=1");
 		}
 	}
 }

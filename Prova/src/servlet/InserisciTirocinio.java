@@ -52,8 +52,11 @@ public class InserisciTirocinio extends HttpServlet {
 		Map<String, String> env = System.getenv();
 		if (env.get("COMPUTERNAME").equals("DESKTOP-K8MRIMG")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Matteo\\git\\repository/Prova/src/"));
-		} else {
+		} else if (env.get("COMPUTERNAME").equals("Win10")) {
 			cfg.setDirectoryForTemplateLoading(new File("C:\\Users\\Win10\\git\\WebEngineering/Prova/src/"));
+		} else {
+			cfg.setDirectoryForTemplateLoading(
+					new File("C:\\Users\\Francesco Giostra\\git\\WebEngineering/Prova/src/"));
 		}
 		cfg.setIncompatibleImprovements(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
